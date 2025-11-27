@@ -33,7 +33,7 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* 2. 전체 레이아웃 */
+    /* 2. 레이아웃 */
     .app-container {
       display: grid;
       grid-template-columns: 300px 1fr;
@@ -98,7 +98,7 @@
     }
     .page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
 
-    /* 5. 3열 그리드 */
+    /* 3열 그리드 */
     .three-column-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr; 
@@ -109,21 +109,21 @@
     }
     .column { display: flex; flex-direction: column; }
 
+    /* ⭐️ 섹션 헤더 (폰트 수정 완료: 애플 스타일) */
     .col-header {
       margin-bottom: 25px; padding-bottom: 12px;
       border-bottom: 1px solid #1d1d1f; min-height: 50px;
       display: flex; align-items: end;
     }
-    
-    /* ⭐️ 요청하신 제목 폰트 통일 (Oswald 대문자) */
     .col-title {
-      font-family: 'Oswald', sans-serif; 
-      font-size: 1.4em; 
-      font-weight: 700; 
+      /* Oswald 제거 -> Inter 적용 */
+      font-family: "Inter", -apple-system, sans-serif; 
+      font-size: 1.25em; /* 크기 적절하게 */
+      font-weight: 700; /* 굵게 */
       color: #1d1d1f; 
       margin: 0; 
-      text-transform: uppercase; /* 대문자로 통일 */
-      letter-spacing: 0.05em;
+      letter-spacing: -0.02em; /* 자간 좁게 */
+      text-transform: none; /* 대문자 강제 해제 */
     }
 
     /* 카드 스타일 */
@@ -176,25 +176,22 @@
               <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub Profile</a></li>
             </ul>
           </div>
-          
           <div class="nav-group">
             <span class="nav-header">Dev Log</span>
             <ul>
               <li><a href="{{ "/Daily_Log/README.md" | relative_url }}">Daily Study Log</a></li>
             </ul>
           </div>
-          
           <div class="nav-group">
-            <span class="nav-header">RESEARCH TRACKS</span>
+            <span class="nav-header">RESEARCH</span>
             <ul>
-              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory & Math</a></li>
+              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
               <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
-              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">C++ & Engine Architecture</a></li>
+              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">Engine Architecture</a></li>
             </ul>
           </div>
-          
           <div class="nav-group">
-            <span class="nav-header">PROJECTS</span>
+            <span class="nav-header">Projects</span>
             <ul>
               <li><a href="{{ "/Daily_Log/Archive_Engine.md" | relative_url }}">Engine & Tech Demo</a></li>
               <li><a href="{{ "/Daily_Log/Archive_Shader.md" | relative_url }}">Shader & Art R&D</a></li>
