@@ -2,150 +2,146 @@
 ---
 
 @import "{{ site.theme }}";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-/* 🅰️ 펄어비스 스타일 폰트 가져오기 (Google Fonts) */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
-
-/* ⚪ 1. Mac OS 미니멀리스트 컬러 팔레트 */
+/* ⚪ 1. Mac OS 미니멀 스타일 변수 */
 :root {
   --bg-color: #ffffff;
-  --secondary-bg: #f5f5f7;   /* 애플 특유의 아주 연한 회색 */
+  --secondary-bg: #f5f5f7;
   --text-primary: #1d1d1f;
   --text-secondary: #86868b;
-  --accent-color: #0071e3;   /* Apple Blue */
+  --accent-color: #0066cc; /* Apple Blue */
   
-  /* ☁️ 그림자 & 테두리 */
-  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-  --border-light: #d2d2d7;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 body {
   background-color: var(--secondary-bg) !important;
   color: var(--text-primary) !important;
-  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", sans-serif;
-  line-height: 1.6;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* 설명 글씨 */
-header p, .project-tagline, p {
-  color: var(--text-secondary) !important;
-  font-weight: 400;
+/* ✂️ 2. 사이드바(헤더) 제목 디자인 수정 (요청하신 부분!) */
+header h1.sidebar-title {
+  font-size: 1.6em !important; /* 글자 크기 확 줄임 */
+  font-weight: 800;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+header h1.sidebar-title a {
+  color: #1d1d1f !important;
+  text-decoration: none;
 }
 
+header p.sidebar-desc {
+  font-size: 0.9em;
+  color: #86868b !important;
+  margin-bottom: 30px;
+}
+
+/* 🧭 사이드바 목차 메뉴 스타일 */
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  display: block; /* 세로 정렬 */
+}
+.sidebar-nav li {
+  margin-bottom: 12px;
+  background: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+.sidebar-nav a {
+  color: #424245 !important;
+  font-weight: 600;
+  font-size: 0.95em;
+  transition: color 0.2s;
+}
+.sidebar-nav a:hover {
+  color: var(--accent-color) !important;
+}
+
+/* 레이아웃 */
 .wrapper {
   max-width: 94% !important;
   width: 94% !important;
   margin: 0 auto;
-  padding: 0; /* 래퍼 패딩 제거 (전체화면 느낌) */
   background: transparent;
-  box-shadow: none;
 }
 
 section {
   width: 100% !important;
-  max-width: 1080px !important;
+  max-width: 1000px !important;
   float: none !important;
   margin: 0 auto;
-  padding-top: 60px;
-  padding-bottom: 100px;
+  padding-top: 40px;
 }
 
-/* 🎨 3. 타이틀 디자인 (NullAbyss 로고 스타일) */
-h1 {
-  font-family: 'Oswald', sans-serif; /* 펄어비스 느낌 폰트 */
-  font-size: 4.5em; /* 로고처럼 크게 */
-  font-weight: 600;
-  text-transform: uppercase; /* 무조건 대문자 */
-  letter-spacing: 0.15em; /* 자간 넓게 (펄어비스 스타일 핵심) */
-  color: #1d1d1f !important;
-  margin-bottom: 5px;
-  text-align: center;
-  border: none;
-  line-height: 1.2;
-}
-
-/* 부제목 (설명) */
-h1 + p, h1 + span, .logo-desc {
-  text-align: center;
-  display: block;
-  font-size: 1.1em;
-  color: #86868b;
-  margin-bottom: 60px;
-  font-weight: 300;
-}
-
-h2 {
-  font-size: 1.8em;
-  font-weight: 700;
-  margin-top: 70px;
-  margin-bottom: 25px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e5e5e5 !important;
-  color: #1d1d1f !important;
-}
-
-/* 🔗 4. 링크 */
+/* 메인 컨텐츠 제목 */
+h1 { font-weight: 800; color: #1d1d1f !important; font-size: 2.5em; border: none; }
+h2 { font-weight: 700; color: #1d1d1f !important; border-bottom: 1px solid #e5e5e5; margin-top: 60px; padding-bottom: 15px;}
+h3, h4 { color: #1d1d1f !important; }
+p { color: #424245 !important; }
 a { color: var(--accent-color) !important; text-decoration: none; }
-a:hover { text-decoration: underline; }
 
-/* 📦 5. 카드 리스트 (Daily Log 포함) */
+/* 📦 3. 카드 전체 클릭 가능하게 만들기 & 디자인 */
 ul {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
 }
 
-li {
+/* 카드는 껍데기일 뿐 */
+li.card-item {
   background: #ffffff;
-  border-radius: 20px; /* 애플 스타일 둥근 모서리 */
-  padding: 30px;
+  border-radius: 16px;
   box-shadow: var(--card-shadow);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border: 1px solid rgba(0,0,0,0.02);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  transition: all 0.3s ease;
+  padding: 0; /* 패딩 제거 (링크가 꽉 채우게) */
+  overflow: hidden; /* 둥근 모서리 유지 */
+  border: 1px solid rgba(0,0,0,0.03);
 }
 
-li:hover {
-  transform: translateY(-6px);
+li.card-item:hover {
+  transform: translateY(-4px);
   box-shadow: var(--hover-shadow);
 }
 
-li strong {
+/* 🔗 핵심: 링크(a)가 카드 전체를 덮도록 설정 */
+a.card-link {
+  display: block;      /* 박스 형태로 변경 */
+  padding: 28px;       /* 안쪽 여백은 여기서 줌 */
+  height: 100%;        /* 높이 꽉 채움 */
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* 카드 내부 텍스트 */
+.card-title {
   display: block;
-  font-size: 1.35em;
+  font-size: 1.25em;
   font-weight: 700;
-  color: #1d1d1f !important;
-  margin-bottom: 10px;
+  color: #1d1d1f;
+  margin-bottom: 8px;
 }
-
-li p {
+.card-desc {
   font-size: 0.95em;
+  color: #86868b;
   line-height: 1.5;
-  margin-bottom: 15px;
-  color: #6e6e73 !important;
 }
 
-/* 📂 6. 폴더 스타일 */
+/* 폴더 아이콘 색상 */
+.folder-icon { margin-right: 6px; }
+
+/* 옵시디언 폴더 스타일 */
 details {
-  background-color: #ffffff;
+  background: #fff;
   border-radius: 12px;
-  padding: 16px;
+  padding: 15px;
   margin-bottom: 15px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-summary { font-weight: 600; cursor: pointer; color: #1d1d1f !important; }
-
-/* 💻 7. 코드 블럭 */
-code {
-  background-color: #f5f5f7;
-  color: #d63384;
-  padding: 2px 5px;
-  border-radius: 4px;
-  font-family: 'SF Mono', 'Consolas', monospace;
-  font-size: 0.9em;
+  border: 1px solid #e5e5e5;
 }
