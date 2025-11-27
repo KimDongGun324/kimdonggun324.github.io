@@ -3,172 +3,165 @@
 
 @import "{{ site.theme }}";
 
-/* 🌑 1. 모던 테크 & 글래스모피즘 변수 설정 */
+/* ⚪ 1. Mac OS 미니멀리스트 컬러 팔레트 */
 :root {
-  --bg-color: #0d1117;       /* 깃허브 다크 모드의 깊은 배경색 */
-  --text-color: #e6edf3;     /* 눈이 편한 밝은 회색 (가독성 최상) */
-  --header-color: #ffffff;   /* 제목은 쨍한 흰색 */
+  --bg-color: #ffffff;       /* 순수한 흰색 배경 */
+  --secondary-bg: #fbfbfd;   /* 아주 연한 회색 (애플 스타일 배경) */
+  --text-primary: #1d1d1f;   /* 애플 스타일 진한 회색 텍스트 (완전 검정X) */
+  --text-secondary: #86868b; /* 보조 설명 텍스트 (연한 회색) */
+  --accent-color: #0066cc;   /* 세련된 애플 블루 */
   
-  /* 💎 포인트 컬러 (Tech Vibe) */
-  --accent-color: #2f81f7;   /* 신뢰감을 주는 테크 블루 */
-  --gradient-start: #79c0ff; /* 그라데이션 시작색 */
-  --gradient-end: #d2a8ff;   /* 그라데이션 끝색 (보라빛 한 방울) */
-  
-  /* 🪟 유리 질감 카드 (Glassmorphism) */
-  --card-bg: rgba(22, 27, 34, 0.8); /* 반투명 배경 */
-  --border-color: #30363d;   /* 은은한 테두리 */
-  --hover-border: #8b949e;   /* 마우스 올렸을 때 테두리 */
+  /* ☁️ Mac OS 스타일 부드러운 그림자 */
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --border-light: #d2d2d7;   /* 연한 구분선 */
 }
 
-/* 🏗️ 2. 전체 레이아웃 & 폰트 */
+/* 🏗️ 2. 전체 레이아웃 & 타이포그래피 */
 body {
-  background-color: var(--bg-color) !important;
-  color: var(--text-color) !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
-  line-height: 1.6;
+  background-color: var(--secondary-bg) !important; /* 전체 배경 연한 미색 */
+  color: var(--text-primary) !important;
+  /* 애플 시스템 폰트 우선 적용으로 '맥부심' 느낌 강조 */
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Segoe UI", sans-serif;
+  line-height: 1.7;
 }
 
-/* 설명 글씨들 잘 보이게 처리 */
+/* 설명 글씨들 */
 header p, .project-tagline, p {
-  color: #8b949e !important; /* 부드러운 회색 */
+  color: var(--text-secondary) !important;
   font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-/* 인용구 디자인 */
+/* 인용구 디자인 (깔끔하게) */
 blockquote {
-  color: #d2a8ff !important; /* 포인트 컬러로 변경 */
-  border-left: 3px solid #d2a8ff !important;
-  background: rgba(56, 139, 253, 0.1); /* 아주 연한 파란 배경 */
-  padding: 10px 20px;
-  border-radius: 0 8px 8px 0;
+  color: var(--text-primary) !important;
+  border-left: 3px solid var(--accent-color) !important;
+  background: #f5f5f7; /* 연한 회색 박스 */
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-style: normal;
 }
 
 /* 레이아웃 */
 .wrapper {
-  max-width: 90% !important;
-  width: 90% !important;
+  max-width: 92% !important;
+  width: 92% !important;
   margin: 0 auto;
+  background-color: var(--bg-color); /* 컨텐츠 영역은 순백색 */
+  padding: 40px; /* 안쪽 여백 줘서 고급스럽게 */
+  box-shadow: var(--card-shadow);
+  border-radius: 24px; /* 전체 컨테이너 둥글게 */
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 section {
   width: 100% !important;
-  max-width: 1200px !important;
+  max-width: 1100px !important; /* 글 읽기 최적화된 너비 */
   float: none !important;
   margin: 0 auto;
 }
 
-/* 🎨 3. 타이틀 디자인 (그라데이션 효과) */
+/* 🎨 3. 타이틀 디자인 (심플 & 모던) */
 h1 {
-  font-size: 3em;
-  font-weight: 800;
-  margin-bottom: 20px;
+  font-size: 3.2em;
+  font-weight: 700;
+  letter-spacing: -0.03em; /* 자간을 좁혀서 단단한 느낌 */
+  color: var(--text-primary) !important;
+  margin-bottom: 10px;
   border: none;
-  
-  /* 텍스트 그라데이션 (트렌디함의 핵심) */
-  background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
+/* 부제목 */
 h2 {
   font-size: 1.8em;
+  font-weight: 600;
   margin-top: 60px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-color) !important;
-  color: var(--header-color) !important;
-  display: flex;
-  align-items: center;
-}
-
-/* 제목 앞에 작은 아이콘 효과 */
-h2::before {
-  content: '#';
-  margin-right: 10px;
-  color: var(--accent-color);
-  font-weight: 300;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light) !important;
+  color: var(--text-primary) !important;
 }
 
 /* 🔗 4. 링크 디자인 */
-a { color: #44b9f1 !important; text-decoration: none; font-weight: 500; }
-a:hover { text-decoration: underline; color: #fff !important; text-shadow: 0 0 10px rgba(68, 185, 241, 0.6); }
+a { color: var(--accent-color) !important; text-decoration: none; font-weight: 500; transition: color 0.2s;}
+a:hover { color: #004499 !important; text-decoration: underline; }
 
-/* 📦 5. 카드 리스트 (모던한 그리드) */
+/* 📦 5. 카드 리스트 (Mac OS 스타일 - 핵심!) */
 ul {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px; /* 간격 넓게 */
 }
 
 li {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px; /* 더 둥글게 */
-  padding: 24px;
+  background: var(--bg-color); /* 순백색 카드 */
+  border: none; /* 테두리 없음 */
+  border-radius: 18px; /* 아주 둥근 모서리 */
+  padding: 28px;
+  /* 테두리 대신 부드러운 그림자로 깊이감 표현 */
+  box-shadow: var(--card-shadow);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  position: relative;
-  overflow: hidden;
 }
 
-/* 마우스 올렸을 때 효과 (살짝 떠오르며 빛남) */
+/* 마우스 올렸을 때 (떠오르는 효과) */
 li:hover {
-  transform: translateY(-5px);
-  border-color: var(--hover-border);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
-  background: #1c2128; /* 배경색 살짝 밝아짐 */
+  transform: translateY(-8px); /* 부드럽게 위로 */
+  box-shadow: var(--hover-shadow); /* 그림자 깊어짐 */
 }
 
 li strong {
   display: block;
-  font-size: 1.3em;
-  color: #fff !important;
+  font-size: 1.4em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary) !important;
   margin-bottom: 12px;
 }
 
 li p {
-  color: #8b949e !important;
-  font-size: 0.95em;
-  line-height: 1.5;
+  color: var(--text-secondary) !important;
+  font-size: 1em;
+  line-height: 1.6;
   margin: 0;
 }
 
-/* 📂 6. 옵시디언 스타일 폴더 (깔끔하게) */
+/* 📂 6. 폴더 (Details) - 깔끔하게 */
 details {
-  background-color: #161b22;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-}
-
-details details {
-  margin-left: 20px;
-  border-left: 2px solid #30363d;
-  padding-left: 15px;
-  background: transparent; /* 중첩 폴더는 투명하게 */
-  border-top: none; border-right: none; border-bottom: none;
+  background-color: #f9f9fb;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
 }
 
 summary {
-  color: var(--text-color) !important;
+  color: var(--text-primary) !important;
   font-weight: 600;
   cursor: pointer;
 }
 summary:hover { color: var(--accent-color) !important; }
 
-/* 💻 7. 코드 블럭 (가장 중요! VS Code 느낌) */
+/* 💻 7. 코드 블럭 (라이트 모드용 깔끔한 테마) */
 code {
-  background-color: rgba(110, 118, 129, 0.4);
-  color: #ff7b72; /* 코드 강조색 (빨강 계열) */
+  background-color: #f5f5f7;
+  color: #d63384; /* 세련된 핑크/레드 계열 포인트 */
   padding: 0.2em 0.4em;
   border-radius: 6px;
-  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
   font-size: 0.9em;
+  border: 1px solid #eaeaed;
 }
 
 pre code {
   background-color: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+}
   color: inherit;
   padding: 0;
 }
