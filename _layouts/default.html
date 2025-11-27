@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* 1. 기본 변수 */
@@ -20,29 +20,29 @@
       --border-color: #e5e5e5;
       --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      /* 기본 폰트 스택 정의 (애플 스타일) */
-      --font-stack: "Inter", -apple-system, BlinkMacSystemFont, system-ui, Roboto, Helvetica, Arial, sans-serif;
+      /* 애플 스타일 시스템 폰트 스택 */
+      --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0; padding: 0;
-      font-family: var(--font-stack); /* 전체 기본 폰트 적용 */
+      font-family: var(--font-stack);
       color: var(--text-primary); background-color: var(--bg-app);
       height: 100vh; overflow: hidden;
     }
 
     a { text-decoration: none; color: inherit; }
 
-    /* 2. 전체 레이아웃: 좌측(300px) | 메인(나머지) */
+    /* 2. 전체 레이아웃 */
     .app-container {
       display: grid;
       grid-template-columns: 300px 1fr;
       height: 100vh;
     }
 
-    /* 3. 좌측 사이드바 스타일 */
+    /* 3. 좌측 사이드바 */
     .sidebar {
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-color);
@@ -51,37 +51,63 @@
       overflow-y: auto;
     }
 
-    /* 🔥 사이드바 메인 타이틀 폰트 변경 (Oswald -> Inter Extra Bold) */
+    /* 🔥 타이틀 디자인 개선 (애플 스타일) */
     .sidebar-title {
-      font-family: var(--font-stack); /* 세련된 Inter 폰트 사용 */
-      font-size: 1.5em; /* 크기 약간 조정 */
-      font-weight: 800; /* 가장 두꺼운 웨이트로 존재감 부여 */
+      font-family: var(--font-stack);
+      font-size: 1.4em;       /* 부담스럽지 않은 크기 */
+      font-weight: 700;       /* Bold (너무 두껍지 않게) */
       color: #1d1d1f;
-      margin: 0 0 5px 0;
-      letter-spacing: -0.02em; /* 자간을 약간 좁혀서 단단한 느낌 */
+      margin: 0 0 4px 0;
+      letter-spacing: -0.03em; /* 자간을 좁혀서 세련됨 강조 */
       line-height: 1.2;
       text-transform: uppercase;
     }
-    .sidebar-desc { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 50px; font-weight: 400; margin-top:0; white-space: nowrap; }
+    .sidebar-desc { 
+      font-size: 0.9em; 
+      color: var(--text-secondary); 
+      margin-bottom: 50px; 
+      font-weight: 400; 
+      margin-top:0; 
+      letter-spacing: -0.01em;
+    }
 
+    /* 네비게이션 스타일 */
+    .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+    .sidebar-nav li { margin-bottom: 8px; }
+    
+    /* 링크 스타일 공통 */
+    .sidebar-nav a {
+      color: #424245; 
+      font-weight: 500; /* 미디엄 굵기로 가독성 확보 */
+      font-size: 0.95em;
+      transition: color 0.2s, transform 0.2s; 
+      display: flex; align-items: center;
+      letter-spacing: -0.01em;
+    }
+    .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
+
+    /* 🔥 Home 메뉴 전용 스타일 (독립적 느낌) */
+    .nav-home {
+      margin-bottom: 35px; /* 아래 메뉴들과 간격 띄우기 */
+    }
+    .nav-home a {
+      font-weight: 600; /* 조금 더 강조 */
+      color: #1d1d1f;
+      font-size: 1em;
+    }
+
+    /* 일반 메뉴 그룹 */
     .nav-group { margin-bottom: 25px; }
     .nav-header {
       display: block; font-size: 0.75em; font-weight: 700; color: #999;
-      margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;
     }
-    .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
-    .sidebar-nav li { margin-bottom: 8px; }
-    .sidebar-nav a {
-      color: #424245; font-weight: 600; font-size: 0.95em;
-      transition: color 0.2s; display: flex; align-items: center;
-    }
-    .sidebar-nav a:hover { color: var(--accent-color); }
 
+    /* 하단 프로필 영역 */
     .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
     .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
     .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
     
-    /* 기술 스택 배지 스타일 */
     .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
     .tech-badge {
       background: #fff; color: #1d1d1f; padding: 4px 8px; border-radius: 6px;
@@ -95,7 +121,7 @@
     }
     .contact-link:hover { color: var(--accent-color); }
 
-    /* 4. 중앙 메인 컨텐츠 스타일 */
+    /* 4. 중앙 메인 컨텐츠 */
     .main-content {
       padding: 60px 60px; 
       overflow-y: auto;
@@ -103,7 +129,6 @@
       display: flex; flex-direction: column;
     }
 
-    /* ⭐️ 메인 배너 스타일 */
     .main-banner {
       width: 100%;
       height: 350px; 
@@ -114,11 +139,8 @@
       flex-shrink: 0;
       border: 1px solid rgba(0,0,0,0.02);
     }
-    
     .main-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 100%; height: 100%; object-fit: cover;
       object-position: 50% 62%; 
       transition: transform 0.5s ease;
     }
@@ -127,14 +149,15 @@
       text-align: center; margin-bottom: 60px; margin-top: 20px;
       padding-bottom: 40px; border-bottom: 1px solid var(--border-color);
     }
-    /* 메인 컨텐츠 타이틀도 통일감을 위해 Inter로 변경 (선택사항) */
+    /* 페이지 타이틀도 Inter로 통일 */
     .page-title {
-      font-family: var(--font-stack); /* Oswald에서 변경 */
-      font-weight: 800;
-      font-size: 4em; letter-spacing: -0.02em;
-      margin: 0 0 5px 0; text-transform: uppercase; color: #1d1d1f;
+      font-family: var(--font-stack);
+      font-weight: 800; /* Extra Bold */
+      font-size: 4em; 
+      letter-spacing: -0.03em; /* 타이틀 자간 좁힘 */
+      margin: 0 0 10px 0; text-transform: uppercase; color: #1d1d1f;
     }
-    .page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
+    .page-desc { font-size: 1.1em; color: var(--text-secondary); font-weight: 400; letter-spacing: -0.01em; }
 
     /* 3열 그리드 */
     .three-column-wrapper {
@@ -146,7 +169,6 @@
       margin: 0 auto;
     }
     .column { display: flex; flex-direction: column; }
-
     .col-header {
       margin-bottom: 25px; padding-bottom: 12px;
       border-bottom: 1px solid #1d1d1f; min-height: 50px;
@@ -164,8 +186,8 @@
       transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
     }
     li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
-    .text-card-title { display: block; font-weight: 700; font-size: 1em; margin-bottom: 6px; color: #1d1d1f; }
-    .text-card-desc { font-size: 0.9em; color: #86868b; line-height: 1.4; }
+    .text-card-title { display: block; font-weight: 700; font-size: 1em; margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; }
+    .text-card-desc { font-size: 0.95em; color: #86868b; line-height: 1.5; }
 
     /* 갤러리 스타일 */
     .gallery-item { margin-bottom: 25px; }
@@ -176,8 +198,8 @@
     }
     .gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
     .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 2px; font-weight: 600; }
-    .gallery-info span { font-size: 0.85em; color: #86868b; }
+    .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 3px; font-weight: 600; letter-spacing: -0.01em; }
+    .gallery-info span { font-size: 0.9em; color: #86868b; }
 
     /* 반응형 */
     @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
@@ -200,14 +222,21 @@
         <p class="sidebar-desc">Real-time Rendering & Shader R&D</p>
         
         <nav class="sidebar-nav">
+          
+          <div class="nav-home">
+             <ul>
+               <li><a href="{{ "/" | relative_url }}">Home</a></li>
+             </ul>
+          </div>
+
           <div class="nav-group">
             <span class="nav-header">About</span>
             <ul>
-              <li><a href="{{ "/" | relative_url }}">Home</a></li>
               <li><a href="{{ "/about.md" | relative_url }}">Profile</a></li>
-              <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub Profile</a></li>
+              <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub</a></li>
             </ul>
           </div>
+
           <div class="nav-group">
             <span class="nav-header">Dev Log</span>
             <ul>
