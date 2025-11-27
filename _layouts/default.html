@@ -183,15 +183,15 @@
     li.text-card {
       background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
       transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
-      /* 🔥 li.text-card에 position: relative를 주어 자식 <a> 태그가 상자를 덮도록 함 */
+      /* li.text-card에 position: relative를 주어 자식 <a> 태그가 상자를 덮도록 함 */
       position: relative;
     }
     
-    /* 🔥 a 태그를 상자 전체로 확장하여 클릭 가능하게 함 */
+    /* a 태그를 상자 전체로 확장하여 클릭 가능하게 함 */
     li.text-card a {
       display: block;
-      padding: 20px; /* 원래 li에 있던 패딩을 a로 옮김 */
-      margin: -20px; /* a 태그가 li의 패딩 영역까지 덮도록 마진을 음수로 설정 */
+      padding: 20px; 
+      margin: -20px; 
       height: 100%;
       width: 100%;
     }
@@ -258,7 +258,7 @@
           <div class="nav-group">
             <span class="nav-header">Dev Log</span>
             <ul>
-              <li><a href="{{ "/Daily_Log/README.html" | relative_url }}">Daily Study Log</a></li>
+              <li><a href="{{ "/Daily_Log/" | relative_url }}">Daily Study Log</a></li>
             </ul>
           </div>
           <div class="nav-group">
@@ -334,7 +334,7 @@
             
             <ul style="margin-bottom: 50px;">
               <li class="text-card">
-                <a href="{{ "/Daily_Log/README.html" | relative_url }}">
+                <a href="{{ "/Daily_Log/" | relative_url }}">
                   <span class="text-card-title">Daily Study Log</span>
                   <span class="text-card-desc">
                     "I never saved anything for the swim back."<br>
