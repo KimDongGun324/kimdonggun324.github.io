@@ -1,4 +1,5 @@
 # 🌊 DongGun's Shader Lab
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 > **Real-time Rendering & Graphics Researcher**
 > *Master's Student @ Chonnam National Univ.*
 
