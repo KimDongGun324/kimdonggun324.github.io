@@ -3,13 +3,12 @@
 
 @import "{{ site.theme }}";
 
-/* 화면 폭을 90%까지 넓히는 코드 */
 .wrapper {
-  max-width: 90% !important; 
+  max-width: 90% !important;
   width: 90% !important;
+  margin: 0 auto;
 }
 
-/* 모바일에서는 여백 유지 */
 @media screen and (max-width: 600px) {
   .wrapper {
     max-width: 95% !important;
