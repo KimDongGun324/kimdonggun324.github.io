@@ -27,3 +27,16 @@ section {
     float: none !important;
   }
 }
+
+/* --- 폴더 계층 구조 디자인 --- */
+/* details 안에 또 details가 있으면 왼쪽 여백을 줌 */
+details details {
+  margin-left: 24px;       /* 오른쪽으로 24px 밀기 */
+  border-left: 2px solid #e5e5e5; /* 왼쪽에 얇은 회색 선 추가 (가이드라인) */
+  padding-left: 12px;      /* 선과 글자 사이 간격 */
+}
+
+summary {
+  cursor: pointer; /* 마우스 올리면 손가락 모양 */
+  padding: 4px 0;  /* 위아래 간격 살짝 줌 */
+}
