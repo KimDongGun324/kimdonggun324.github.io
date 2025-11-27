@@ -8,6 +8,15 @@
 # NULL ABYSS
 <span class="logo-desc">Graphics Research Lab by DongGun</span>
 
+<div class="hero-banner-container">
+  <img src="./assets/images/hero-shader.png" alt="DongGun's Shader Work" class="hero-banner">
+</div>
+---
+
+<div id="daily-dev-log"></div>
+
+## 🚀 Daily Dev Log
+... (이하 내용은 그대로)
 ---
 
 <div id="daily-dev-log"></div>
