@@ -52,10 +52,9 @@
       font-family: 'Oswald', sans-serif; font-size: 1.6em; color: #1d1d1f;
       margin: 0 0 5px 0; letter-spacing: 0.05em; line-height: 1.2;
     }
-    /* ⭐️ 수정: 한 줄로 강제 표시 (white-space: nowrap) */
     .sidebar-desc { 
       font-size: 0.85em; color: var(--text-secondary); margin-bottom: 50px; font-weight: 400; margin-top:0; 
-      white-space: nowrap; 
+      white-space: nowrap; /* 줄바꿈 방지 */
     }
 
     .nav-group { margin-bottom: 25px; }
@@ -91,7 +90,25 @@
       padding: 60px 60px; 
       overflow-y: auto;
       background-color: #fff;
+      display: flex; flex-direction: column; /* 세로 배치 */
     }
+
+    /* ⭐️ 신규: 메인 배너 스타일 */
+    .main-banner {
+      width: 100%;
+      height: 350px; /* 배너 높이 (조절 가능) */
+      margin-bottom: 40px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+    .main-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 이미지가 꽉 차게 */
+      object-position: center;
+    }
+
     .main-header { 
       text-align: center; margin-bottom: 60px; margin-top: 20px;
       padding-bottom: 40px; border-bottom: 1px solid var(--border-color);
@@ -102,7 +119,7 @@
     }
     .page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
 
-    /* ⭐️ 3열 그리드 (비율 조정: 텍스트 열을 조금 더 넓게 1.2fr) */
+    /* 3열 그리드 */
     .three-column-wrapper {
       display: grid;
       grid-template-columns: 1.2fr 1fr 1fr; 
@@ -113,7 +130,6 @@
     }
     .column { display: flex; flex-direction: column; }
 
-    /* 섹션 헤더 (애플 스타일 폰트) */
     .col-header {
       margin-bottom: 25px; padding-bottom: 12px;
       border-bottom: 1px solid #1d1d1f; min-height: 50px;
@@ -146,6 +162,7 @@
     .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 2px; font-weight: 600; }
     .gallery-info span { font-size: 0.85em; color: #86868b; }
 
+    /* 반응형 */
     @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 900px) {
       .three-column-wrapper { grid-template-columns: 1fr; }
@@ -181,7 +198,7 @@
             </ul>
           </div>
           <div class="nav-group">
-            <span class="nav-header">RESEARCH</span>
+            <span class="nav-header">Research</span>
             <ul>
               <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
               <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
@@ -219,6 +236,11 @@
     </aside>
 
     <main class="main-content">
+      
+      <div class="main-banner">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop" alt="Main Banner">
+      </div>
+
       <header class="main-header">
         <h1 class="page-title">NULL ABYSS</h1>
         <span class="page-desc">Deep Dive into Shaders & Engine Core</span>
