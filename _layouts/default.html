@@ -33,14 +33,14 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* 2. 전체 레이아웃: 좌측(300px) | 메인(나머지) */
+    /* 2. 전체 레이아웃 */
     .app-container {
       display: grid;
       grid-template-columns: 300px 1fr;
       height: 100vh;
     }
 
-    /* 3. 좌측 사이드바 스타일 */
+    /* 3. 좌측 사이드바 */
     .sidebar {
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-color);
@@ -82,7 +82,7 @@
     .contact-link:hover { color: var(--accent-color); }
     .icon { width: 18px; margin-right: 8px; text-align: center; }
 
-    /* 4. 중앙 메인 컨텐츠 스타일 */
+    /* 4. 중앙 메인 컨텐츠 */
     .main-content {
       padding: 60px 60px; 
       overflow-y: auto;
@@ -98,7 +98,7 @@
     }
     .page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
 
-    /* ⭐️ 3열 그리드 시스템 (index.md용) */
+    /* 5. 3열 그리드 */
     .three-column-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr; 
@@ -114,9 +114,16 @@
       border-bottom: 1px solid #1d1d1f; min-height: 50px;
       display: flex; align-items: end;
     }
+    
+    /* ⭐️ 요청하신 제목 폰트 통일 (Oswald 대문자) */
     .col-title {
-      font-family: "Inter", sans-serif; font-size: 1.3em; font-weight: 700; 
-      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
+      font-family: 'Oswald', sans-serif; 
+      font-size: 1.4em; 
+      font-weight: 700; 
+      color: #1d1d1f; 
+      margin: 0; 
+      text-transform: uppercase; /* 대문자로 통일 */
+      letter-spacing: 0.05em;
     }
 
     /* 카드 스타일 */
@@ -141,7 +148,6 @@
     .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 2px; font-weight: 600; }
     .gallery-info span { font-size: 0.85em; color: #86868b; }
 
-    /* 반응형 */
     @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 900px) {
       .three-column-wrapper { grid-template-columns: 1fr; }
@@ -170,24 +176,28 @@
               <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub Profile</a></li>
             </ul>
           </div>
+          
           <div class="nav-group">
             <span class="nav-header">Dev Log</span>
             <ul>
               <li><a href="{{ "/Daily_Log/README.md" | relative_url }}">Daily Study Log</a></li>
             </ul>
           </div>
+          
           <div class="nav-group">
-            <span class="nav-header">Research Lab</span>
+            <span class="nav-header">RESEARCH TRACKS</span>
             <ul>
-              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
+              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory & Math</a></li>
               <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
-              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">Engine Architecture</a></li>
+              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">C++ & Engine Architecture</a></li>
             </ul>
           </div>
+          
           <div class="nav-group">
-            <span class="nav-header">Gallery</span>
+            <span class="nav-header">PROJECTS</span>
             <ul>
-              <li><a href="#">Visual Experiments</a></li>
+              <li><a href="{{ "/Daily_Log/Archive_Engine.md" | relative_url }}">Engine & Tech Demo</a></li>
+              <li><a href="{{ "/Daily_Log/Archive_Shader.md" | relative_url }}">Shader & Art R&D</a></li>
             </ul>
           </div>
         </nav>
