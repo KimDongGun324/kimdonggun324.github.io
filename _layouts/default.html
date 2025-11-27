@@ -6,7 +6,7 @@
   <title>{{ page.title | default: site.title }}</title>
   
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  
+
   <style>
     /* 2. Basic Variables */
     :root {
@@ -121,14 +121,44 @@
       display: flex; flex-direction: column;
     }
 
-    /* 필요한 CSS 클래스는 여기에 유지됩니다. */
-    .three-column-wrapper {
+    /* 홈페이지용 스타일 */
+    .main-banner { width: 100%; height: 350px; margin-bottom: 40px; border-radius: 20px; overflow: hidden; box-shadow: var(--hover-shadow); flex-shrink: 0; border: 1px solid rgba(0,0,0,0.02); }
+    .main-banner img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; transition: transform 0.5s ease; }
+    .main-header { text-align: center; margin-bottom: 80px; margin-top: 30px; padding-bottom: 60px; border-bottom: 1px solid var(--border-color); }
+    .page-title { font-family: var(--font-stack); font-weight: 700; font-size: 4em; letter-spacing: 0.4em; margin: 0 0 25px 0; text-transform: uppercase; color: #1d1d1f; margin-right: -0.4em; }
+    .page-desc { font-size: 1.0em; color: var(--text-secondary); font-weight: 400; letter-spacing: 0.05em; }
+
+    /* Grid System */
+    .three-column-wrapper {
       display: grid;
       grid-template-columns: 1.2fr 1fr 1fr; 
       gap: 40px; align-items: start;
       max-width: 1800px; margin: 0 auto;
     }
-    /* ... 기타 CSS 스타일은 원본에서 복사해서 여기에 넣습니다. ... */
+    .column { display: flex; flex-direction: column; }
+    .col-header {
+      margin-bottom: 25px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color); min-height: 50px;
+      display: flex; align-items: end;
+    }
+    .col-title {
+      font-family: var(--font-stack); font-size: 1.25em; font-weight: 700; 
+      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
+    }
+
+    /* Card & Gallery Styles */
+    ul { padding: 0; list-style: none; margin: 0; }
+    li.text-card { background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px; transition: all 0.2s ease; padding: 20px; margin-bottom: 15px; position: relative; }
+    li.text-card a { display: block; padding: 20px; margin: -20px; height: 100%; width: 100%; }
+    li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
+    .text-card-title { display: block; font-weight: 700; font-size: 1em; margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; }
+    .text-card-desc { font-size: 0.95em; color: #86868b; line-height: 1.6; letter-spacing: -0.01em; word-break: keep-all; }
+    .gallery-item { margin-bottom: 25px; }
+    .gallery-thumb { width: 100%; aspect-ratio: 16/9; border-radius: 10px; overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 10px; transition: transform 0.2s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05); }
+    .gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 3px; font-weight: 600; letter-spacing: -0.01em; }
+    .gallery-info span { font-size: 0.9em; color: #86868b; }
 
     @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 900px) {
@@ -136,7 +166,7 @@
       .app-container { grid-template-columns: 1fr; }
       .sidebar { display: none; }
     }
-  </style>
+  </style>
 </head>
 <body>
 
@@ -174,10 +204,10 @@
                     <div class="nav-group">
             <span class="nav-header">Research</span>
             <ul>
-              <li><a href="{{ "/01_Graphics_Theory.html" | relative_url }}">Graphics Theory</a></li>
-              <li><a href="{{ "/02_Shader_Lab.html" | relative_url }}">Shader Implementation</a></li>
-              <li><a href="{{ "/03_Engine_CPP.html" | relative_url }}">C++ & Engine Core</a></li>
-              <li><a href="{{ "/04_TA_Tools.html" | relative_url }}">TA Tools & Pipeline</a></li>
+              <li><a href="{{ "/Graphics_Theory.html" | relative_url }}">Graphics Theory</a></li>
+              <li><a href="{{ "/Shader_Implementation.html" | relative_url }}">Shader Implementation</a></li>
+              <li><a href="{{ "/Engine_Core.html" | relative_url }}">C++ & Engine Core</a></li>
+              <li><a href="{{ "/TA_Tools.html" | relative_url }}">TA Tools & Pipeline</a></li>
             </ul>
           </div>
           <div class="nav-group">
