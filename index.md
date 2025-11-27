@@ -31,5 +31,15 @@ permalink: /
         <div class="col-header">
             <h3 class="col-title">Research</h3>
         </div>
-        </div>
+        <li class="text-card"><a href="{{ "/Graphics_Theory.html" | relative_url }}"><span class="text-card-title">Graphics Theory & Math</span><span class="text-card-desc">렌더링 파이프라인, PBR 이론, 선형대수학 등 그래픽스의 수학적 원리 탐구</span></a></li>
+        <li class="text-card"><a href="{{ "/Shader_Implementation.html" | relative_url }}"><span class="text-card-title">Shader Implementation</span><span class="text-card-desc">HLSL/GLSL을 활용한 커스텀 셰이더 구현 및 절차적 텍스처링 연구</span></a></li>
+        <li class="text-card"><a href="{{ "/Engine_Core.html" | relative_url }}"><span class="text-card-title">C++ & Engine Core</span><span class="text-card-desc">자료구조, 메모리 관리, 언리얼 엔진 소스 코드 분석을 통한 최적화 역량</span></a></li>
+        <li class="text-card"><a href="{{ "/TA_Tools.html" | relative_url }}"><span class="text-card-title">TA Tools & Pipeline</span><span class="text-card-desc">Substance Painter, Python 스크립팅을 활용한 에셋 제작 및 자동화 워크플로우</span></a></li>
     </div>
+    <div class="column">
+        <div class="col-header"><h3 class="col-title">Engine & Tech Demo</h3></div>
+        </div>
+    <div class="column">
+        <div class="col-header"><h3 class="col-title">Shader & Art R&D</h3></div>
+        </div>
+</div>
