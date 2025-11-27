@@ -2,7 +2,8 @@
 ---
 
 @import "{{ site.theme }}";
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;600&display=swap');
+/* 👇 펄어비스 스타일 폰트(Oswald)와 본문용 깔끔한 폰트(Inter) 함께 임포트 */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;600;700&display=swap');
 
 /* ⚪ Mac OS 미니멀 스타일 변수 */
 :root {
@@ -10,7 +11,7 @@
   --secondary-bg: #f5f5f7;
   --text-primary: #1d1d1f;
   --text-secondary: #86868b;
-  --accent-color: #0066cc;
+  --accent-color: #0066cc; /* Apple Blue */
   
   --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
@@ -20,78 +21,92 @@ body {
   background-color: var(--secondary-bg) !important;
   color: var(--text-primary) !important;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
 }
 
-/* 사이드바 스타일 유지 */
+/* ✂️ 2. 사이드바(헤더) 제목 디자인 - 펄어비스 스타일 적용 */
 header h1.sidebar-title {
-  font-family: 'Oswald', sans-serif !important; /* 사이드바 제목도 통일 */
-  font-size: 1.8em !important;
+  font-family: 'Oswald', sans-serif !important; /* 강렬한 폰트 */
+  font-size: 1.6em !important;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  text-transform: uppercase; /* 대문자 */
+  letter-spacing: 0.08em; /* 넓은 자간 */
   margin-bottom: 5px;
   line-height: 1.2;
 }
-header h1.sidebar-title a { color: #1d1d1f !important; text-decoration: none; }
-header p.sidebar-desc { font-size: 0.9em; color: #86868b !important; margin-bottom: 30px; }
+header h1.sidebar-title a {
+  color: #1d1d1f !important;
+  text-decoration: none;
+}
 
-/* 사이드바 메뉴 */
+header p.sidebar-desc {
+  font-size: 0.9em;
+  color: #86868b !important;
+  margin-bottom: 30px;
+}
+
+/* 사이드바 목차 메뉴 스타일 */
 .sidebar-nav ul { list-style: none; padding: 0; display: block; }
 .sidebar-nav li { margin-bottom: 12px; background: none; padding: 0; border: none; box-shadow: none; }
-.sidebar-nav a { color: #424245 !important; font-weight: 600; font-size: 0.95em; transition: color 0.2s; }
+.sidebar-nav a {
+  color: #424245 !important; font-weight: 600; font-size: 0.95em; transition: color 0.2s;
+}
 .sidebar-nav a:hover { color: var(--accent-color) !important; }
 
 /* 레이아웃 */
 .wrapper { max-width: 94% !important; width: 94% !important; margin: 0 auto; background: transparent; }
 section { width: 100% !important; max-width: 1100px !important; float: none !important; margin: 0 auto; padding-top: 50px; }
 
-/* 🎨 메인 타이틀 (CORE ABYSS 스타일) */
+/* 🎨 3. 메인 컨텐츠 타이틀 - 펄어비스 스타일 적용 */
 h1 {
-  font-family: 'Oswald', sans-serif !important;
-  font-size: 5em; /* 아주 크게 */
+  font-family: 'Oswald', sans-serif !important; /* 강렬한 폰트 */
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em; /* 자간 넓게 */
   color: #1d1d1f !important;
-  margin-bottom: 5px;
-  text-align: center;
+  font-size: 4.5em; /* 로고처럼 크게 */
+  text-transform: uppercase; /* 대문자 */
+  letter-spacing: 0.12em; /* 아주 넓은 자간 */
   border: none;
+  text-align: center;
+  margin-bottom: 5px;
   line-height: 1.1;
 }
 
-/* 부제목 */
+/* 부제목 스타일 */
 .logo-desc {
-  font-family: "Inter", -apple-system, sans-serif;
+  font-family: "Inter", -apple-system, sans-serif; /* 부제목은 깔끔하게 */
   display: block;
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: #86868b;
   font-weight: 300;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
 }
 
-h2 { font-weight: 700; color: #1d1d1f !important; border-bottom: 1px solid #e5e5e5; margin-top: 80px; padding-bottom: 15px;}
+h2 { font-weight: 700; color: #1d1d1f !important; border-bottom: 1px solid #e5e5e5; margin-top: 70px; padding-bottom: 15px;}
 h3, h4 { color: #1d1d1f !important; }
 p { color: #424245 !important; }
+a { color: var(--accent-color) !important; text-decoration: none; }
 
-/* 📦 카드 리스트 */
-ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+/* 📦 4. 카드 리스트 디자인 (이전과 동일) */
+ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px; }
+
 li.card-item {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
   padding: 0;
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.03);
 }
-li.card-item:hover { transform: translateY(-6px); box-shadow: var(--hover-shadow); }
 
-a.card-link { display: block; padding: 32px; height: 100%; text-decoration: none !important; color: inherit !important; }
-.card-title { display: block; font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; }
-.card-desc { font-size: 1em; color: #86868b; line-height: 1.5; }
-.folder-icon { margin-right: 8px; font-size: 1.1em; }
+li.card-item:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); }
 
-/* 옵시디언 폴더 */
+a.card-link { display: block; padding: 30px; height: 100%; text-decoration: none !important; color: inherit !important; }
+
+.card-title { display: block; font-size: 1.25em; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; }
+.card-desc { font-size: 0.95em; color: #86868b; line-height: 1.5; }
+.folder-icon { margin-right: 6px; }
+
+/* 옵시디언 폴더 스타일 */
 details { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid #e5e5e5; }
-code { background-color: #f5f5f7; color: #d63384; padding: 2px 5px; border-radius: 4px; font-family: 'SF Mono', monospace; font-size: 0.9em; border: 1px solid #eaeaed; }
