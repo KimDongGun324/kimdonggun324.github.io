@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Daily Study Log
-permalink: /Daily_Log/
 ---
 
 # 📅 Daily Study Log
