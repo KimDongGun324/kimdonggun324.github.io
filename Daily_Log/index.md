@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Daily Study Log
+permalink: /Daily_Log/index.html   <-- 1. index.html까지 명시
 ---
 
 # 📅 Daily Study Log
