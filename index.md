@@ -19,7 +19,7 @@ permalink: /
         </div>
         <ul style="margin-bottom: 50px;">
             <li class="text-card">
-                <a href="{{ "/Daily_Log.html" | relative_url }}">
+                <a href="{{ "/Daily_Log/" | relative_url }}">
                     <span class="text-card-title">Daily Study Log</span>
                     <span class="text-card-desc">
                         "I never saved anything for the swim back."<br>
@@ -38,10 +38,4 @@ permalink: /
             <li class="text-card"><a href="{{ "/TA_Tools.html" | relative_url }}"><span class="text-card-title">TA Tools & Pipeline</span><span class="text-card-desc">Substance Painter, Python 스크립팅을 활용한 에셋 제작 및 자동화 워크플로우</span></a></li>
         </ul>
     </div>
-    <div class="column">
-        <div class="col-header"><h3 class="col-title">Engine & Tech Demo</h3></div>
-        </div>
-    <div class="column">
-        <div class="col-header"><h3 class="col-title">Shader & Art R&D</h3></div>
-        </div>
-</div>
+    </div>
