@@ -8,7 +8,7 @@
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
   <style>
-    /* 2. 기본 변수 설정 */
+    /* 2. Basic Variables */
     :root {
       --bg-app: #ffffff;
       --bg-sidebar: #fbfbfd;
@@ -19,7 +19,7 @@
       --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       
-      /* 🔥 폰트 스택: Pretendard 우선 적용 */
+      /* Font Stack: Pretendard First */
       --font-stack: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
 
@@ -30,21 +30,20 @@
       font-family: var(--font-stack);
       color: var(--text-primary); background-color: var(--bg-app);
       height: 100vh; overflow: hidden;
-      /* 글자 렌더링 최적화 (애플 스타일의 부드러움) */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     a { text-decoration: none; color: inherit; }
 
-    /* 전체 레이아웃 */
+    /* Layout */
     .app-container {
       display: grid;
       grid-template-columns: 300px 1fr;
       height: 100vh;
     }
 
-    /* 좌측 사이드바 */
+    /* Sidebar */
     .sidebar {
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-color);
@@ -53,14 +52,14 @@
       overflow-y: auto;
     }
 
-    /* 사이드바 타이틀 (세련된 볼드 처리) */
+    /* Sidebar Title */
     .sidebar-title {
       font-family: var(--font-stack);
       font-size: 1.4em;       
       font-weight: 700;       
       color: #1d1d1f;
       margin: 0 0 4px 0;
-      letter-spacing: -0.03em; /* 자간 좁힘 -> 단단한 느낌 */
+      letter-spacing: -0.03em;
       line-height: 1.2;
       text-transform: uppercase;
     }
@@ -73,7 +72,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* 네비게이션 */
+    /* Navigation */
     .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
     .sidebar-nav li { margin-bottom: 8px; }
     
@@ -87,7 +86,7 @@
     }
     .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
 
-    /* 🔥 Home 메뉴 분리 스타일 */
+    /* Home Menu */
     .nav-home { margin-bottom: 35px; }
     .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
 
@@ -97,7 +96,7 @@
       margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;
     }
 
-    /* 하단 프로필 */
+    /* Sidebar Bottom */
     .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
     .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
     .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
@@ -115,7 +114,7 @@
     }
     .contact-link:hover { color: var(--accent-color); }
 
-    /* 메인 컨텐츠 */
+    /* Main Content */
     .main-content {
       padding: 60px 60px; 
       overflow-y: auto;
@@ -137,14 +136,21 @@
       text-align: center; margin-bottom: 60px; margin-top: 20px;
       padding-bottom: 40px; border-bottom: 1px solid var(--border-color);
     }
+    
+    /* Page Title (Pearl Abyss Style) */
     .page-title {
       font-family: var(--font-stack);
-      font-weight: 800; font-size: 4em; letter-spacing: -0.03em;
-      margin: 0 0 10px 0; text-transform: uppercase; color: #1d1d1f;
+      font-weight: 700;       
+      font-size: 4em; 
+      letter-spacing: 0.4em;  
+      margin: 0 0 10px 0; 
+      text-transform: uppercase; 
+      color: #1d1d1f;
+      margin-right: -0.4em;   
     }
     .page-desc { font-size: 1.1em; color: var(--text-secondary); font-weight: 400; letter-spacing: -0.01em; }
 
-    /* 그리드 시스템 */
+    /* Grid System */
     .three-column-wrapper {
       display: grid;
       grid-template-columns: 1.2fr 1fr 1fr; 
@@ -162,7 +168,7 @@
       color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
     }
 
-    /* 카드 스타일 */
+    /* Card Style */
     ul { padding: 0; list-style: none; margin: 0; }
     li.text-card {
       background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
@@ -174,13 +180,12 @@
       display: block; font-weight: 700; font-size: 1em; 
       margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; 
     }
-    /* 🔥 카드 설명 폰트 스타일 (한글 줄바꿈 최적화) */
     .text-card-desc { 
       font-size: 0.95em; color: #86868b; line-height: 1.6; 
-      letter-spacing: -0.01em; word-break: keep-all; /* 단어 단위 줄바꿈 */
+      letter-spacing: -0.01em; word-break: keep-all; 
     }
 
-    /* 갤러리 스타일 */
+    /* Gallery Style */
     .gallery-item { margin-bottom: 25px; }
     .gallery-thumb {
       width: 100%; aspect-ratio: 16/9; border-radius: 10px;
