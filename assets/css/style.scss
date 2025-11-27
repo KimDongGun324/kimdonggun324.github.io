@@ -3,162 +3,152 @@
 
 @import "{{ site.theme }}";
 
+/* 🅰️ 펄어비스 스타일 폰트 가져오기 (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+
 /* ⚪ 1. Mac OS 미니멀리스트 컬러 팔레트 */
 :root {
-  --bg-color: #ffffff;       /* 순수한 흰색 배경 */
-  --secondary-bg: #fbfbfd;   /* 아주 연한 회색 (애플 스타일 배경) */
-  --text-primary: #1d1d1f;   /* 애플 스타일 진한 회색 텍스트 (완전 검정X) */
-  --text-secondary: #86868b; /* 보조 설명 텍스트 (연한 회색) */
-  --accent-color: #0066cc;   /* 세련된 애플 블루 */
+  --bg-color: #ffffff;
+  --secondary-bg: #f5f5f7;   /* 애플 특유의 아주 연한 회색 */
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent-color: #0071e3;   /* Apple Blue */
   
-  /* ☁️ Mac OS 스타일 부드러운 그림자 */
-  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --border-light: #d2d2d7;   /* 연한 구분선 */
+  /* ☁️ 그림자 & 테두리 */
+  --card-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --border-light: #d2d2d7;
 }
 
-/* 🏗️ 2. 전체 레이아웃 & 타이포그래피 */
 body {
-  background-color: var(--secondary-bg) !important; /* 전체 배경 연한 미색 */
+  background-color: var(--secondary-bg) !important;
   color: var(--text-primary) !important;
-  /* 애플 시스템 폰트 우선 적용으로 '맥부심' 느낌 강조 */
-  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Segoe UI", sans-serif;
-  line-height: 1.7;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", sans-serif;
+  line-height: 1.6;
 }
 
-/* 설명 글씨들 */
+/* 설명 글씨 */
 header p, .project-tagline, p {
   color: var(--text-secondary) !important;
   font-weight: 400;
-  letter-spacing: -0.01em;
 }
 
-/* 인용구 디자인 (깔끔하게) */
-blockquote {
-  color: var(--text-primary) !important;
-  border-left: 3px solid var(--accent-color) !important;
-  background: #f5f5f7; /* 연한 회색 박스 */
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-style: normal;
-}
-
-/* 레이아웃 */
 .wrapper {
-  max-width: 92% !important;
-  width: 92% !important;
+  max-width: 94% !important;
+  width: 94% !important;
   margin: 0 auto;
-  background-color: var(--bg-color); /* 컨텐츠 영역은 순백색 */
-  padding: 40px; /* 안쪽 여백 줘서 고급스럽게 */
-  box-shadow: var(--card-shadow);
-  border-radius: 24px; /* 전체 컨테이너 둥글게 */
-  margin-top: 40px;
-  margin-bottom: 40px;
+  padding: 0; /* 래퍼 패딩 제거 (전체화면 느낌) */
+  background: transparent;
+  box-shadow: none;
 }
 
 section {
   width: 100% !important;
-  max-width: 1100px !important; /* 글 읽기 최적화된 너비 */
+  max-width: 1080px !important;
   float: none !important;
   margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 100px;
 }
 
-/* 🎨 3. 타이틀 디자인 (심플 & 모던) */
+/* 🎨 3. 타이틀 디자인 (NullAbyss 로고 스타일) */
 h1 {
-  font-size: 3.2em;
-  font-weight: 700;
-  letter-spacing: -0.03em; /* 자간을 좁혀서 단단한 느낌 */
-  color: var(--text-primary) !important;
-  margin-bottom: 10px;
-  border: none;
+  font-family: 'Oswald', sans-serif; /* 펄어비스 느낌 폰트 */
+  font-size: 4.5em; /* 로고처럼 크게 */
+  font-weight: 600;
+  text-transform: uppercase; /* 무조건 대문자 */
+  letter-spacing: 0.15em; /* 자간 넓게 (펄어비스 스타일 핵심) */
+  color: #1d1d1f !important;
+  margin-bottom: 5px;
   text-align: center;
+  border: none;
+  line-height: 1.2;
 }
 
-/* 부제목 */
+/* 부제목 (설명) */
+h1 + p, h1 + span, .logo-desc {
+  text-align: center;
+  display: block;
+  font-size: 1.1em;
+  color: #86868b;
+  margin-bottom: 60px;
+  font-weight: 300;
+}
+
 h2 {
   font-size: 1.8em;
-  font-weight: 600;
-  margin-top: 60px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-light) !important;
-  color: var(--text-primary) !important;
+  font-weight: 700;
+  margin-top: 70px;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5 !important;
+  color: #1d1d1f !important;
 }
 
-/* 🔗 4. 링크 디자인 */
-a { color: var(--accent-color) !important; text-decoration: none; font-weight: 500; transition: color 0.2s;}
-a:hover { color: #004499 !important; text-decoration: underline; }
+/* 🔗 4. 링크 */
+a { color: var(--accent-color) !important; text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-/* 📦 5. 카드 리스트 (Mac OS 스타일 - 핵심!) */
+/* 📦 5. 카드 리스트 (Daily Log 포함) */
 ul {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 30px; /* 간격 넓게 */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
 }
 
 li {
-  background: var(--bg-color); /* 순백색 카드 */
-  border: none; /* 테두리 없음 */
-  border-radius: 18px; /* 아주 둥근 모서리 */
-  padding: 28px;
-  /* 테두리 대신 부드러운 그림자로 깊이감 표현 */
+  background: #ffffff;
+  border-radius: 20px; /* 애플 스타일 둥근 모서리 */
+  padding: 30px;
   box-shadow: var(--card-shadow);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-/* 마우스 올렸을 때 (떠오르는 효과) */
 li:hover {
-  transform: translateY(-8px); /* 부드럽게 위로 */
-  box-shadow: var(--hover-shadow); /* 그림자 깊어짐 */
+  transform: translateY(-6px);
+  box-shadow: var(--hover-shadow);
 }
 
 li strong {
   display: block;
-  font-size: 1.4em;
+  font-size: 1.35em;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text-primary) !important;
-  margin-bottom: 12px;
+  color: #1d1d1f !important;
+  margin-bottom: 10px;
 }
 
 li p {
-  color: var(--text-secondary) !important;
-  font-size: 1em;
-  line-height: 1.6;
-  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  color: #6e6e73 !important;
 }
 
-/* 📂 6. 폴더 (Details) - 깔끔하게 */
+/* 📂 6. 폴더 스타일 */
 details {
-  background-color: #f9f9fb;
-  border: 1px solid var(--border-light);
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
+summary { font-weight: 600; cursor: pointer; color: #1d1d1f !important; }
 
-summary {
-  color: var(--text-primary) !important;
-  font-weight: 600;
-  cursor: pointer;
-}
-summary:hover { color: var(--accent-color) !important; }
-
-/* 💻 7. 코드 블럭 (라이트 모드용 깔끔한 테마) */
+/* 💻 7. 코드 블럭 */
 code {
   background-color: #f5f5f7;
-  color: #d63384; /* 세련된 핑크/레드 계열 포인트 */
-  padding: 0.2em 0.4em;
-  border-radius: 6px;
-  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+  color: #d63384;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: 'SF Mono', 'Consolas', monospace;
   font-size: 0.9em;
-  border: 1px solid #eaeaed;
 }
-
-pre code {
-  background-color: transparent;
-  color: inherit;
   border: none;
   padding: 0;
 }
