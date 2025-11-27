@@ -70,17 +70,20 @@
     .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
     .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
     .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px; }
+    
+    /* 기술 스택 배지 스타일 */
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
     .tech-badge {
-      background: #fff; color: #1d1d1f; padding: 3px 8px; border-radius: 6px;
-      font-size: 0.7em; font-weight: 600; border: 1px solid #e5e5e5;
+      background: #fff; color: #1d1d1f; padding: 4px 8px; border-radius: 6px;
+      font-size: 0.75em; font-weight: 600; border: 1px solid #e5e5e5;
+      white-space: nowrap; /* 텍스트 줄바꿈 방지 */
     }
+
     .contact-link {
       display: flex; align-items: center; margin-bottom: 8px;
-      color: #424245; font-size: 0.85em; font-weight: 500; transition: color 0.2s;
+      color: #424245; font-size: 0.9em; font-weight: 500; transition: color 0.2s;
     }
     .contact-link:hover { color: var(--accent-color); }
-    .icon { width: 18px; margin-right: 8px; text-align: center; }
 
     /* 4. 중앙 메인 컨텐츠 스타일 */
     .main-content {
@@ -108,12 +111,7 @@
       object-fit: cover;
       
       /* 👇 여기서 이미지 위치를 조절하세요! */
-      /* center center: 정중앙 (기본) */
-      /* center top: 이미지의 윗부분을 보여줌 */
-      /* center bottom: 이미지의 아랫부분을 보여줌 */
-      /* 50% 20%: 가로는 중앙, 세로는 위에서 20% 지점 */
-      
-      object-position: 50% 62%; /* <--- 이 값을 바꾸시면 됩니다 */
+      object-position: 50% 62%; 
       
       transition: transform 0.5s ease;
     }
@@ -230,16 +228,18 @@
         <div class="profile-info">
           <strong>DongGun Kim</strong><br>M.S. Student @ CNU<br>Goal: Pearl Abyss TA
         </div>
+        
         <div class="tech-stack">
           <span class="tech-badge">C++</span>
           <span class="tech-badge">UE5</span>
           <span class="tech-badge">HLSL</span>
-          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Houdini</span>
+          <span class="tech-badge">Substance Designer</span>
         </div>
+
         <div style="margin-top: 25px;">
           <div class="profile-header">Connect</div>
-          <a href="mailto:your-email@example.com" class="contact-link"><span class="icon">✉️</span> Email Me</a>
-          <a href="#" class="contact-link"><span class="icon">💼</span> LinkedIn</a>
+          <a href="mailto:kdg324@naver.com" class="contact-link">Email</a>
         </div>
       </div>
     </aside>
