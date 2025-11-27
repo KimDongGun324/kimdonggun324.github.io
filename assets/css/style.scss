@@ -1,142 +1,165 @@
 ---
 ---
 
-@import "{{ site.theme }}";
-/* 👇 펄어비스 스타일 폰트(Oswald)와 본문용 깔끔한 폰트(Inter) 함께 임포트 */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;500;700&display=swap');
 
-/* ⚪ Mac OS 미니멀 스타일 변수 */
+/* ⚪ 1. Mac OS + Expert Style Variables */
 :root {
-  --bg-color: #ffffff;
-  --secondary-bg: #f5f5f7;
+  --bg-app: #ffffff;         /* 전체 배경 */
+  --bg-sidebar: #f9f9f9;     /* 사이드바 배경 (아주 연한 회색) */
   --text-primary: #1d1d1f;
   --text-secondary: #86868b;
-  --accent-color: #0066cc; /* Apple Blue */
-  
-  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --accent-color: #0071e3;   /* Apple Blue */
+  --border-color: #e5e5e5;   /* 구분선 색상 */
 }
+
+* { box-sizing: border-box; }
 
 body {
-  background-color: var(--secondary-bg) !important;
-  color: var(--text-primary) !important;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+  height: 100vh; /* 화면 전체 높이 사용 */
+  overflow: hidden; /* 전체 스크롤 방지 (각 영역별 스크롤) */
 }
 
-/* ✂️ 2. 사이드바(헤더) 제목 디자인 - 펄어비스 스타일 적용 */
-header h1.sidebar-title {
-  font-family: 'Oswald', sans-serif !important; /* 강렬한 폰트 */
-  font-size: 1.6em !important;
-  font-weight: 700;
-  text-transform: uppercase; /* 대문자 */
-  letter-spacing: 0.08em; /* 넓은 자간 */
-  margin-bottom: 5px;
-  line-height: 1.2;
+/* 🏗️ 3단 레이아웃 그리드 설정 */
+.app-container {
+  display: grid;
+  grid-template-columns: 260px 1fr 320px; /* 좌측(260px) - 중앙(자동) - 우측(320px) */
+  height: 100vh;
 }
-header h1.sidebar-title a {
-  color: #1d1d1f !important;
+
+/* 1. 좌측 사이드바 (Navigation) */
+.sidebar {
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color); /* 구분선 */
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8em;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  color: #1d1d1f;
+}
+
+.sidebar-desc {
+  font-size: 0.85em;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.sidebar-nav ul { list-style: none; padding: 0; }
+.sidebar-nav li { margin-bottom: 15px; }
+.sidebar-nav a {
   text-decoration: none;
+  color: #424245;
+  font-weight: 600;
+  font-size: 0.95em;
+  transition: color 0.2s;
+  display: flex; align-items: center;
+}
+.sidebar-nav a:hover { color: var(--accent-color); }
+
+
+/* 2. 중앙 메인 컨텐츠 (Scrollable) */
+.main-content {
+  padding: 60px 80px; /* 여백 넉넉하게 */
+  overflow-y: auto;   /* 여기만 스크롤 되게 설정 */
 }
 
-header p.sidebar-desc {
-  font-size: 0.9em;
-  color: #86868b !important;
+.main-header { text-align: center; margin-bottom: 60px; }
+.page-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 4em;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.page-desc { font-size: 1.1em; color: var(--text-secondary); font-weight: 300; }
+
+/* 컨텐츠 내부 스타일 (기존 유지) */
+h2 { border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-top: 50px; }
+a { color: var(--accent-color); text-decoration: none; }
+
+/* 카드 리스트 (중앙) */
+ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+li.card-item {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 24px;
+}
+li.card-item:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.card-title { display: block; font-weight: 700; font-size: 1.1em; margin-bottom: 8px; }
+.card-desc { font-size: 0.9em; color: #86868b; }
+
+
+/* 3. 우측 갤러리 사이드바 (Right Panel) */
+.gallery-sidebar {
+  background-color: #fff;
+  border-left: 1px solid var(--border-color); /* 구분선 */
+  padding: 30px;
+  overflow-y: auto; /* 갤러리만 따로 스크롤 */
+}
+
+.gallery-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 갤러리 아이템 (ArtStation Style) */
+.gallery-item {
   margin-bottom: 30px;
 }
 
-/* 사이드바 목차 메뉴 스타일 */
-.sidebar-nav ul { list-style: none; padding: 0; display: block; }
-.sidebar-nav li { margin-bottom: 12px; background: none; padding: 0; border: none; box-shadow: none; }
-.sidebar-nav a {
-  color: #424245 !important; font-weight: 600; font-size: 0.95em; transition: color 0.2s;
-}
-.sidebar-nav a:hover { color: var(--accent-color) !important; }
-
-/* 레이아웃 */
-.wrapper { max-width: 94% !important; width: 94% !important; margin: 0 auto; background: transparent; }
-section { width: 100% !important; max-width: 1100px !important; float: none !important; margin: 0 auto; padding-top: 50px; }
-
-/* 🎨 3. 메인 컨텐츠 타이틀 - 펄어비스 스타일 적용 */
-h1 {
-  font-family: 'Oswald', sans-serif !important; /* 강렬한 폰트 */
-  font-weight: 700;
-  color: #1d1d1f !important;
-  font-size: 4.5em; /* 로고처럼 크게 */
-  text-transform: uppercase; /* 대문자 */
-  letter-spacing: 0.12em; /* 아주 넓은 자간 */
-  border: none;
-  text-align: center;
-  margin-bottom: 5px;
-  line-height: 1.1;
-}
-
-/* 부제목 스타일 */
-.logo-desc {
-  font-family: "Inter", -apple-system, sans-serif; /* 부제목은 깔끔하게 */
-  display: block;
-  text-align: center;
-  font-size: 1.2em;
-  color: #86868b;
-  font-weight: 300;
-  margin-bottom: 70px;
-}
-
-h2 { font-weight: 700; color: #1d1d1f !important; border-bottom: 1px solid #e5e5e5; margin-top: 70px; padding-bottom: 15px;}
-h3, h4 { color: #1d1d1f !important; }
-p { color: #424245 !important; }
-a { color: var(--accent-color) !important; text-decoration: none; }
-
-/* 📦 4. 카드 리스트 디자인 (이전과 동일) */
-ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px; }
-
-li.card-item {
-  background: #ffffff;
-  border-radius: 18px;
-  box-shadow: var(--card-shadow);
-  transition: all 0.3s ease;
-  padding: 0;
+.gallery-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(0,0,0,0.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+  transition: transform 0.2s;
+  cursor: pointer;
 }
+.gallery-thumb:hover { transform: scale(1.02); }
 
-li.card-item:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); }
-
-a.card-link { display: block; padding: 30px; height: 100%; text-decoration: none !important; color: inherit !important; }
-
-.card-title { display: block; font-size: 1.25em; font-weight: 700; color: #1d1d1f; margin-bottom: 10px; }
-.card-desc { font-size: 0.95em; color: #86868b; line-height: 1.5; }
-.folder-icon { margin-right: 6px; }
-
-/* 옵시디언 폴더 스타일 */
-details { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid #e5e5e5; }
-
-/* --- 🖼️ 메인 히어로 이미지 (Hero Banner) 스타일 --- */
-.hero-banner-container {
-  /* 기존 section의 패딩을 무시하고 화면 끝까지 닿게 하기 위한 설정 */
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  width: 100vw;
-  max-width: 100vw;
-  
-  /* 이미지 높이 설정 (너무 높으면 스크롤이 길어지므로 적당히) */
-  height: 400px; 
-  overflow: hidden; /* 넘치는 부분 자르기 */
-  margin-bottom: 60px; /* 아래 내용과 간격 띄우기 */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 부드러운 그림자 */
-}
-
-.hero-banner {
+.gallery-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 비율 유지하며 영역 꽉 채우기 */
-  object-position: center; /* 이미지 중앙을 중심으로 보여주기 */
+  object-fit: cover;
 }
 
-/* 모바일에서는 높이를 좀 줄임 */
-@media screen and (max-width: 768px) {
-  .hero-banner-container {
-    height: 250px;
-    margin-bottom: 40px;
-  }
+.gallery-info strong {
+  display: block;
+  font-size: 0.95em;
+  color: #1d1d1f;
+  margin-bottom: 4px;
+}
+.gallery-info span {
+  font-size: 0.8em;
+  color: #86868b;
+  display: block;
+}
+
+/* 반응형 (모바일에서는 1단으로 변경) */
+@media (max-width: 1200px) {
+  .app-container { grid-template-columns: 240px 1fr; } /* 우측 갤러리 숨김 or 아래로 */
+  .gallery-sidebar { display: none; } /* 일단 태블릿에선 갤러리 숨김 */
+}
+@media (max-width: 800px) {
+  .app-container { grid-template-columns: 1fr; }
+  .sidebar { display: none; } /* 모바일에선 사이드바 숨김 (햄버거 메뉴 필요하지만 일단 생략) */
 }
