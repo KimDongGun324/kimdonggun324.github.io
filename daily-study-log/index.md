@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Daily Study Log Index
 permalink: /daily-study-log/
 ---
+
 
 # ⭐ Daily Study Log - 접속 성공 확인 ⭐
 
