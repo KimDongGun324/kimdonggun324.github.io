@@ -19,7 +19,7 @@
       --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       
-      /* Font Stack: Pretendard First */
+      /* Font Stack */
       --font-stack: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
 
@@ -132,9 +132,13 @@
       object-position: 50% 62%; transition: transform 0.5s ease;
     }
 
+    /* 🔥 Main Header 수정됨 (여백 확보) */
     .main-header { 
-      text-align: center; margin-bottom: 60px; margin-top: 20px;
-      padding-bottom: 40px; border-bottom: 1px solid var(--border-color);
+      text-align: center; 
+      margin-bottom: 80px;  /* 아래 컨텐츠와의 간격 */
+      margin-top: 30px;     /* 배너와의 간격 */
+      padding-bottom: 60px; /* 텍스트와 구분선 사이의 간격 (답답함 해소) */
+      border-bottom: 1px solid var(--border-color);
     }
     
     /* Page Title (Pearl Abyss Style) */
@@ -143,12 +147,19 @@
       font-weight: 700;       
       font-size: 4em; 
       letter-spacing: 0.4em;  
-      margin: 0 0 10px 0; 
+      margin: 0 0 25px 0;     /* 타이틀과 부제 사이 간격 넓힘 (10px -> 25px) */
       text-transform: uppercase; 
       color: #1d1d1f;
       margin-right: -0.4em;   
     }
-    .page-desc { font-size: 1.1em; color: var(--text-secondary); font-weight: 400; letter-spacing: -0.01em; }
+    
+    /* 🔥 부제 스타일 수정 (작고 세련되게) */
+    .page-desc { 
+      font-size: 1.0em;        /* 크기 살짝 줄임 (1.1 -> 1.0) */
+      color: var(--text-secondary); 
+      font-weight: 400; 
+      letter-spacing: 0.05em;  /* 자간 살짝 넓힘 (세련미) */
+    }
 
     /* Grid System */
     .three-column-wrapper {
