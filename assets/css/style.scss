@@ -67,4 +67,52 @@ ul {
 }
 
 li {
-  background-
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color); /* 테두리 확실하게 줌 */
+  border-radius: 6px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+li:hover {
+  border-color: var(--accent-color); /* 마우스 올리면 금색 테두리 */
+  transform: translateY(-2px);
+}
+
+/* 카드 내부 텍스트 */
+li strong {
+  display: block;
+  font-size: 1.2em;
+  color: #ffffff !important;
+  margin-bottom: 8px;
+}
+
+li p {
+  color: #b0b0b0 !important; /* 설명글은 살짝 회색이지만 잘 보이게 */
+  font-size: 0.95em;
+  margin: 0;
+}
+
+/* 📂 6. 옵시디언 스타일 폴더 (Details) */
+details {
+  background-color: #161b22;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+summary {
+  color: #ffffff !important;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 💻 7. 코드 블럭 (VS Code 스타일) */
+code {
+  background-color: #2d2d2d;
+  color: #dcdcaa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Consolas', monospace;
+}
