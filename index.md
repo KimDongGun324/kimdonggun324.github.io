@@ -1,3 +1,6 @@
+---
+layout: default
+---
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
@@ -15,7 +18,7 @@
     
     <ul style="margin-bottom: 50px;">
       <li class="text-card">
-                <a href="{{ "/Daily_Log/README.md" | relative_url }}">
+        <a href="{{ "/Daily_Log/README.md" | relative_url }}">
           <span class="text-card-title">Daily Study Log</span>
           <span class="text-card-desc">
             "I never saved anything for the swim back."<br>
@@ -31,28 +34,28 @@
 
     <ul>
       <li class="text-card">
-                <a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">
+        <a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">
           <span class="text-card-title">Graphics Theory & Math</span>
           <span class="text-card-desc">렌더링 파이프라인, PBR 이론, 선형대수학 등 그래픽스의 수학적 원리 탐구</span>
         </a>
       </li>
 
       <li class="text-card">
-                <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
+        <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
           <span class="text-card-title">Shader Implementation</span>
           <span class="text-card-desc">HLSL/GLSL을 활용한 커스텀 셰이더 구현 및 절차적 텍스처링 연구</span>
         </a>
       </li>
 
       <li class="text-card">
-                <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
+        <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
           <span class="text-card-title">C++ & Engine Core</span>
           <span class="text-card-desc">자료구조, 메모리 관리, 언리얼 엔진 소스 코드 분석을 통한 최적화 역량</span>
         </a>
       </li>
 
       <li class="text-card">
-                <a href="{{ "/04_TA_Tools/README.md" | relative_url }}">
+        <a href="{{ "/04_TA_Tools/README.md" | relative_url }}">
           <span class="text-card-title">TA Tools & Pipeline</span>
           <span class="text-card-desc">Substance Painter, Python 스크립팅을 활용한 에셋 제작 및 자동화 워크플로우</span>
         </a>
@@ -68,7 +71,7 @@
     </div>
 
     <div class="gallery-item">
-            <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
+      <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
         <div class="gallery-thumb">
           <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" alt="C++ Optimization">
         </div>
@@ -80,7 +83,7 @@
     </div>
 
     <div class="gallery-item">
-            <a href="{{ "/03_Engine_CPP/UE5_Analysis.md" | relative_url }}">
+      <a href="{{ "/03_Engine_CPP/UE5_Analysis.md" | relative_url }}">
         <div class="gallery-thumb">
           <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600&auto=format&fit=crop" alt="UE5">
         </div>
@@ -99,7 +102,7 @@
     </div>
 
     <div class="gallery-item">
-            <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
+      <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
         <div class="gallery-thumb">
           <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Water">
         </div>
@@ -111,7 +114,7 @@
     </div>
 
     <div class="gallery-item">
-            <a href="{{ "/02_Shader_Lab/Procedural.md" | relative_url }}">
+      <a href="{{ "/02_Shader_Lab/Procedural.md" | relative_url }}">
         <div class="gallery-thumb">
           <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit=crop" alt="Ice">
         </div>
