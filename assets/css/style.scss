@@ -3,149 +3,27 @@
 
 @import "{{ site.theme }}";
 
-/* 🌑 1. 펄어비스 스타일 다크 모드 변수 설정 */
+/* 🌑 1. 펄어비스(검은사막) 스타일 컬러 팔레트 */
 :root {
-  --bg-color: #1e1e1e;       /* VS Code 배경색 */
-  --text-color: #e0e0e0;     /* 글자색을 더 밝게 수정 (가독성 UP) */
-  --header-color: #ffffff;   /* 제목은 완전 흰색 */
-  --accent-color: #4ec9b0;   /* 민트색 강조 */
-  --link-color: #569cd6;     /* 파란색 강조 */
-  --card-bg: #252526;        /* 카드 배경색 */
-  --border-color: #3e3e42;   /* 테두리 색 */
+  --bg-color: #121212;       /* 더 깊은 검은색 (검은사막 배경) */
+  --text-color: #e0e0e0;     /* 기본 글자 */
+  --header-color: #ffffff;   /* 제목 */
+  --accent-color: #ffc800;   /* 펄어비스 포인트 컬러 (Gold/Yellow 계열) */
+  --link-color: #ffffff;     /* 링크는 흰색으로 깔끔하게 */
+  --card-bg: #1e1e1e;        /* 카드 배경 */
+  --hover-bg: #2a2a2a;       /* 마우스 올렸을 때 배경 */
 }
 
-/* 🏗️ 2. 전체 레이아웃 & 폰트 컬러 강제 적용 */
+/* 🏗️ 2. 전체 레이아웃 */
 body {
   background-color: var(--bg-color) !important;
   color: var(--text-color) !important;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Noto Sans KR', 'Segoe UI', sans-serif; /* 한글 폰트 최적화 */
 }
 
-/* 🚨 안 보이는 글자 해결 1: 헤더 설명 글씨 밝게 하기 */
+/* 헤더 설명 글씨 */
 header p, .project-tagline {
-  color: #cccccc !important; /* 밝은 회색으로 강제 변경 */
-  font-weight: 400;
+  color: #999999 !important;
 }
 
-/* 🚨 안 보이는 글자 해결 2: 본문, 인용구 밝게 하기 */
-p, li, span {
-  color: var(--text-color);
-}
-
-blockquote {
-  color: #bbbbbb !important; /* 인용구 글자도 밝게 */
-  border-left: 4px solid var(--accent-color) !important; /* 인용구 옆줄 민트색 */
-  background-color: #2d2d30; /* 인용구 배경을 살짝 다르게 */
-  padding: 10px 15px;
-}
-
-/* 레이아웃 설정 (기존 동일) */
-.wrapper {
-  max-width: 90% !important;
-  width: 90% !important;
-  margin: 0 auto;
-}
-
-section {
-  width: 80% !important;
-  max-width: 1400px !important;
-  float: right !important;
-}
-
-@media screen and (max-width: 900px) {
-  section { width: 100% !important; float: none !important; }
-}
-
-/* 🎨 3. 타이틀 디자인 */
-h1, h2, h3, h4 {
-  color: var(--header-color) !important;
-  border-bottom: none; 
-}
-
-h1 {
-  font-weight: 800;
-  letter-spacing: -1px;
-  background: linear-gradient(90deg, #4ec9b0, #569cd6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
-}
-
-h2 {
-  margin-top: 50px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--border-color) !important;
-}
-
-/* 🔗 4. 링크 디자인 */
-a { color: var(--link-color) !important; text-decoration: none; font-weight: 500; }
-a:hover { text-decoration: underline; color: var(--accent-color) !important; }
-
-/* 📦 5. 카드 UI 디자인 */
-ul {
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 카드를 조금 더 넓게 */
-  gap: 15px;
-}
-
-li {
-  background-color: var(--card-bg);
-  padding: 20px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* 그림자 더 진하게 */
-  border-color: var(--accent-color);
-}
-
-/* 카드 내부 텍스트 정리 */
-li p {
-  margin: 5px 0 0 0;
-  font-size: 0.9em;
-  color: #aaaaaa !important; /* 카드 설명 글씨는 살짝 어둡게 */
-}
-
-li strong {
-    color: #ffffff !important; /* 카드 제목은 완전 흰색 */
-    font-size: 1.1em;
-}
-
-/* 📂 6. 폴더(Details) 디자인 */
-details {
-  background-color: #2d2d30;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid var(--border-color);
-}
-
-/* 폴더 계층 구조 */
-details details {
-  margin-left: 20px;
-  border-left: 2px solid #555;
-  padding-left: 10px;
-}
-
-summary { 
-    font-weight: bold; 
-    cursor: pointer; 
-    color: var(--header-color) !important; 
-}
-
-/* 💻 7. 코드 블럭 스타일 */
-code {
-  background-color: #101010;
-  color: #ce9178;
-  padding: 2px 5px;
-  border-radius: 4px;
-  font-family: 'Consolas', monospace;
-}
-  padding: 2px 5px;
-  border-radius: 4px;
-}
+/* 본문
