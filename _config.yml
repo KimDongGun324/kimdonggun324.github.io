@@ -4,3 +4,7 @@ markdown: kramdown
 # theme: jekyll-theme-minimal # 이 라인을 제거하여 사용자 정의 디자인이 적용되도록 합니다.
 url: "https://kimdonggun324.github.io"
 baseurl: ""
+
+collections:
+  daily-study-log:
+    output: true
