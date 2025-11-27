@@ -5,30 +5,29 @@
   window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
 
-<div class="three-column-wrapper">
+<div class="content-split-wrapper">
 
-  <div class="column">
+  <div class="column-left">
     
     <div class="col-header">
       <h3 class="col-title">Dev Log</h3>
     </div>
-    
-    <ul>
+    <ul style="margin-bottom: 50px;">
       <li class="text-card">
         <a href="./Daily_Log/README.md">
           <span class="text-card-title">Daily Study Log</span>
-          <span class="text-card-desc">"Consistency is the key."<br>2025년 11월부터의 기술 기록.</span>
+          <span class="text-card-desc">"Consistency is the key."<br>2025년 11월부터의 꾸준한 기술 기록.</span>
           <span style="display:block; margin-top:10px; font-weight:600; color:#0066cc; font-size:0.85em;">View All →</span>
         </a>
       </li>
     </ul>
 
-    <div class="col-header" style="margin-top: 40px;">
-      <h3 class="col-title">Research</h3>
+    <div class="col-header">
+      <h3 class="col-title">Research Tracks</h3>
     </div>
 
-    <div style="margin-bottom: 20px;">
-      <h4 style="font-size:0.85em; color:#86868b; margin-bottom:10px; font-weight:700; text-transform:uppercase;">Graphics Theory & Math</h4>
+    <div class="text-section">
+      <h4>Graphics Theory & Math</h4>
       <ul>
         <li class="text-card">
           <a href="./01_Graphics_Theory/README.md">
@@ -45,8 +44,8 @@
       </ul>
     </div>
 
-    <div style="margin-bottom: 20px;">
-      <h4 style="font-size:0.85em; color:#86868b; margin-bottom:10px; font-weight:700; text-transform:uppercase;">Shader Implementation</h4>
+    <div class="text-section">
+      <h4>Shader Implementation</h4>
       <ul>
         <li class="text-card">
           <a href="./02_Shader_Lab/README.md">
@@ -63,8 +62,8 @@
       </ul>
     </div>
 
-    <div style="margin-bottom: 20px;">
-      <h4 style="font-size:0.85em; color:#86868b; margin-bottom:10px; font-weight:700; text-transform:uppercase;">Engine Architecture</h4>
+    <div class="text-section">
+      <h4>C++ & Engine Core</h4>
       <ul>
         <li class="text-card">
           <a href="./03_Engine_CPP/README.md">
@@ -75,7 +74,25 @@
         <li class="text-card">
           <a href="./03_Engine_CPP/UE5_Analysis.md">
             <span class="text-card-title">Unreal Engine Analysis</span>
-            <span class="text-card-desc">언리얼 엔진 5 소스 코드 분석</span>
+            <span class="text-card-desc">언리얼 엔진 5 소스 코드 및 구조 분석</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="text-section">
+      <h4>TA Tools & Pipeline</h4>
+      <ul>
+        <li class="text-card">
+          <a href="#">
+            <span class="text-card-title">Python Automation</span>
+            <span class="text-card-desc">테크니컬 아트 툴 및 파이프라인 자동화</span>
+          </a>
+        </li>
+        <li class="text-card">
+          <a href="#">
+            <span class="text-card-title">Substance Workflow</span>
+            <span class="text-card-desc">PBR 텍스처링 및 머티리얼 제작 연구</span>
           </a>
         </li>
       </ul>
@@ -84,7 +101,8 @@
   </div>
 
 
-  <div class="column">
+  <div class="column-right">
+    
     <div class="col-header">
       <h3 class="col-title">Engine & Tech Demo</h3>
     </div>
@@ -112,11 +130,8 @@
         </div>
       </a>
     </div>
-  </div>
 
-
-  <div class="column">
-    <div class="col-header">
+    <div class="col-header" style="margin-top: 50px;">
       <h3 class="col-title">Shader & Art R&D</h3>
     </div>
 
@@ -144,17 +159,6 @@
       </a>
     </div>
 
-    <div class="gallery-item">
-      <a href="#">
-        <div class="gallery-thumb">
-          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop" alt="PBR">
-        </div>
-        <div class="gallery-info">
-          <strong>Custom PBR Model</strong>
-          <span>Cook-Torrance Implementation</span>
-        </div>
-      </a>
-    </div>
   </div>
 
 </div>
