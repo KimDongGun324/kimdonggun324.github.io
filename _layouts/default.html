@@ -1,154 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang | default: "en-US" }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ site.title | default: site.github.repository_name }}</title>
   
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* 1. 기본 변수 설정 */
-    :root {
-      --bg-app: #ffffff;
-      --bg-sidebar: #fbfbfd;
-      --text-primary: #1d1d1f;
-      --text-secondary: #86868b;
-      --accent-color: #0066cc;
-      --border-color: #e5e5e5;
-      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0; padding: 0;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text-primary); background-color: var(--bg-app);
-      height: 100vh; overflow: hidden;
-    }
-
-    a { text-decoration: none; color: inherit; }
-
-    /* 2. 전체 레이아웃: 좌측 메뉴(300px) | 메인(나머지) */
-    .app-container {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      height: 100vh;
-    }
-
-    /* 3. 좌측 사이드바 스타일 */
-    .sidebar {
-      background-color: var(--bg-sidebar);
-      border-right: 1px solid var(--border-color);
-      padding: 40px 30px; padding-top: 140px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      overflow-y: auto;
-    }
-    .sidebar-title {
-      font-family: 'Oswald', sans-serif; font-size: 1.6em; color: #1d1d1f;
-      margin: 0 0 5px 0; letter-spacing: 0.05em; line-height: 1.2;
-    }
-    .sidebar-desc { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 50px; font-weight: 400; margin-top:0; }
-
-    .nav-group { margin-bottom: 25px; }
-    .nav-header {
-      display: block; font-size: 0.75em; font-weight: 700; color: #999;
-      margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
-    .sidebar-nav li { margin-bottom: 8px; }
-    .sidebar-nav a {
-      color: #424245; font-weight: 600; font-size: 0.95em;
-      transition: color 0.2s; display: flex; align-items: center;
-    }
-    .sidebar-nav a:hover { color: var(--accent-color); }
-
-    .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
-    .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
-    .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px; }
-    .tech-badge {
-      background: #fff; color: #1d1d1f; padding: 3px 8px; border-radius: 6px;
-      font-size: 0.7em; font-weight: 600; border: 1px solid #e5e5e5;
-    }
-    .contact-link {
-      display: flex; align-items: center; margin-bottom: 8px;
-      color: #424245; font-size: 0.85em; font-weight: 500; transition: color 0.2s;
-    }
-    .contact-link:hover { color: var(--accent-color); }
-    .icon { width: 18px; margin-right: 8px; text-align: center; }
-
-    /* 4. 중앙 메인 컨텐츠 스타일 */
-    .main-content {
-      padding: 60px 60px; 
-      overflow-y: auto;
-      background-color: #fff;
-    }
-    .main-header { 
-      text-align: center; margin-bottom: 60px; margin-top: 20px;
-      padding-bottom: 40px; border-bottom: 1px solid var(--border-color);
-    }
-    .page-title {
-      font-family: 'Oswald', sans-serif; font-size: 4em; letter-spacing: 0.1em;
-      margin: 0 0 5px 0; text-transform: uppercase; color: #1d1d1f;
-    }
-    .page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
-
-    /* ⭐️ 3열 그리드 시스템 */
-    .three-column-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr; 
-      gap: 40px; 
-      align-items: start;
-      max-width: 1800px; 
-      margin: 0 auto;
-    }
-    .column { display: flex; flex-direction: column; }
-
-    .col-header {
-      margin-bottom: 25px; padding-bottom: 12px;
-      border-bottom: 1px solid #1d1d1f; min-height: 50px;
-      display: flex; align-items: end;
-    }
-    .col-title {
-      font-family: "Inter", sans-serif; font-size: 1.3em; font-weight: 700; 
-      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
-    }
-
-    /* 카드 스타일 */
-    ul { padding: 0; list-style: none; margin: 0; }
-    li.text-card {
-      background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
-      transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
-    }
-    li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
-    .text-card-title { display: block; font-weight: 700; font-size: 1em; margin-bottom: 6px; color: #1d1d1f; }
-    .text-card-desc { font-size: 0.9em; color: #86868b; line-height: 1.4; }
-
-    /* 갤러리 스타일 */
-    .gallery-item { margin-bottom: 25px; }
-    .gallery-thumb {
-      width: 100%; aspect-ratio: 16/9; border-radius: 10px;
-      overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 10px;
-      transition: transform 0.2s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
-    }
-    .gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
-    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 2px; font-weight: 600; }
-    .gallery-info span { font-size: 0.85em; color: #86868b; }
-
-    /* 반응형 */
-    @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 900px) {
-      .three-column-wrapper { grid-template-columns: 1fr; }
-      .app-container { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+  
+  <title>{{ site.title | default: site.github.repository_name }}</title>
 </head>
 <body>
 
@@ -156,57 +14,74 @@
     
     <aside class="sidebar">
       <div class="sidebar-top">
-        <h1 class="sidebar-title">
-          <a href="{{ "/" | relative_url }}">DONGGUN KIM</a>
+        <h1 class="sidebar-title" style="letter-spacing: 0.05em;">
+          <a href="{{ "/" | relative_url }}" style="color:inherit; text-decoration:none;">DONGGUN KIM</a>
         </h1>
-        <p class="sidebar-desc">Graphics R&D & Tech Artist</p>
+        <p class="sidebar-desc" style="margin-top:5px; color:#666;">
+          Graphics R&D & Tech Artist
+        </p>
         
         <nav class="sidebar-nav">
+          
           <div class="nav-group">
-            <span class="nav-header">About</span>
+            <span class="nav-header">ABOUT</span>
             <ul>
-              <li><a href="{{ "/" | relative_url }}">Home</a></li>
-              <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub Profile</a></li>
+              <li><a href="{{ "/" | relative_url }}">🏠 Home</a></li>
+              <li><a href="{{ "/about.md" | relative_url }}">📄 Profile & Resume</a></li>
+              <li><a href="https://github.com/kimdonggun324" target="_blank">💻 GitHub Profile</a></li>
             </ul>
           </div>
+
           <div class="nav-group">
-            <span class="nav-header">Dev Log</span>
+            <span class="nav-header">DEV LOG</span>
             <ul>
-              <li><a href="{{ "/Daily_Log/README.md" | relative_url }}">Daily Study Log</a></li>
+              <li><a href="{{ "/Daily_Log/README.md" | relative_url }}">🚀 Daily Study Log</a></li>
             </ul>
           </div>
+
           <div class="nav-group">
-            <span class="nav-header">Research Lab</span>
+            <span class="nav-header">RESEARCH TRACKS</span>
             <ul>
-              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
-              <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
-              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">Engine Architecture</a></li>
+              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">📐 Graphics Theory</a></li>
+              <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">🎨 Shader Implementation</a></li>
+              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">⚙️ Engine Architecture</a></li>
             </ul>
           </div>
+
           <div class="nav-group">
-            <span class="nav-header">Gallery</span>
+            <span class="nav-header">PROJECTS</span>
             <ul>
-              <li><a href="#">Visual Experiments</a></li>
+              <li><a href="{{ "/Daily_Log/Archive_Engine.md" | relative_url }}">⚙️ Engine & Tech Demo</a></li>
+              <li><a href="{{ "/Daily_Log/Archive_Shader.md" | relative_url }}">🎨 Shader & Art R&D</a></li>
             </ul>
           </div>
+
         </nav>
       </div>
 
       <div class="sidebar-bottom">
         <div class="profile-header">Researcher</div>
         <div class="profile-info">
-          <strong>DongGun Kim</strong><br>M.S. Student @ CNU<br>Goal: Pearl Abyss TA
+          <strong>DongGun Kim</strong><br>
+          M.S. Student @ CNU<br>
+          Goal: Pearl Abyss TA
         </div>
+        
         <div class="tech-stack">
           <span class="tech-badge">C++</span>
           <span class="tech-badge">UE5</span>
           <span class="tech-badge">HLSL</span>
           <span class="tech-badge">Python</span>
         </div>
-        <div style="margin-top: 25px;">
+
+        <div style="margin-top: 20px;">
           <div class="profile-header">Connect</div>
-          <a href="mailto:your-email@example.com" class="contact-link"><span class="icon">✉️</span> Email Me</a>
-          <a href="#" class="contact-link"><span class="icon">💼</span> LinkedIn</a>
+          <a href="mailto:your-email@example.com" class="contact-link">
+            <span class="icon">✉️</span> Email Me
+          </a>
+          <a href="#" class="contact-link">
+            <span class="icon">💼</span> LinkedIn
+          </a>
         </div>
       </div>
     </aside>
