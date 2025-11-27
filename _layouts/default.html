@@ -1,41 +1,75 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    {% seo %}
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="sidebar-title">
-          <a href="{{ "/" | relative_url }}">{{ site.title | default: site.github.repository_name }}</a>
-        </h1>
-        
-        <p class="sidebar-desc">{{ site.description | default: site.github.project_tagline }}</p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  <title>{{ site.title | default: site.github.repository_name }}</title>
+</head>
+<body>
 
-        <nav class="sidebar-nav">
-          <ul>
-            <li><a href="#daily-dev-log">🚀 Daily Dev Log</a></li>
-            <li><a href="#research-tracks">🧪 Research Tracks</a></li>
-            <li><a href="https://github.com/kimdonggun324" target="_blank">💻 GitHub Profile</a></li>
-          </ul>
-        </nav>
+  <div class="app-container">
+    
+    <aside class="sidebar">
+      <h1 class="sidebar-title">DONGGUN'S<br>SHADER LAB</h1>
+      <p class="sidebar-desc">Real-time Rendering & Graphics Researcher</p>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#daily-dev-log">🚀 Daily Dev Log</a></li>
+          <li><a href="#research-tracks">🧪 Research Tracks</a></li>
+          <li><a href="https://github.com/kimdonggun324" target="_blank">💻 GitHub Profile</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-        {% if site.show_downloads %}
-          <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_name }}</small></a></p>
-        {% endif %}
+    <main class="main-content">
+      <header class="main-header">
+        <h1 class="page-title">NULL ABYSS</h1>
+        <span class="page-desc">Graphics Research Lab by DongGun</span>
       </header>
       
-      <section>
+      <div class="content-body">
         {{ content }}
-      </section>
+      </div>
+    </main>
+
+    <aside class="gallery-sidebar">
+      <h3 class="gallery-title">✨ Shader Showcase</h3>
       
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
-  </body>
+      <div class="gallery-item">
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Water Shader">
+        </div>
+        <div class="gallery-info">
+          <strong>Ocean Simulation</strong>
+          <span>Gerstner Wave / FFT</span>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit=crop" alt="Ice Shader">
+        </div>
+        <div class="gallery-info">
+          <strong>Subsurface Scattering</strong>
+          <span>Ice & Jade Material</span>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <div class="gallery-thumb">
+          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop" alt="PBR">
+        </div>
+        <div class="gallery-info">
+          <strong>Custom PBR</strong>
+          <span>Cook-Torrance BRDF</span>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+</body>
 </html>
