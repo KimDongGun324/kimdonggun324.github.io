@@ -160,7 +160,7 @@
       letter-spacing: 0.05em;  
     }
 
-    /* Grid System */
+    /* Grid System and Cards (NOTE: CSS is here, but HTML structure will be moved to index.md) */
     .three-column-wrapper {
       display: grid;
       grid-template-columns: 1.2fr 1fr 1fr; 
@@ -183,11 +183,9 @@
     li.text-card {
       background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
       transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
-      /* li.text-card에 position: relative를 주어 자식 <a> 태그가 상자를 덮도록 함 */
       position: relative;
     }
     
-    /* a 태그를 상자 전체로 확장하여 클릭 가능하게 함 */
     li.text-card a {
       display: block;
       padding: 20px; 
@@ -198,7 +196,6 @@
 
     li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
     
-    /* 카드 내부 콘텐츠는 원래대로 보이도록 위치 보정 */
     .text-card-title { 
       display: block; font-weight: 700; font-size: 1em; 
       margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; 
@@ -420,7 +417,7 @@
             <div class="gallery-item">
               <a href="{{ "/02_Shader_Lab/README.html" | relative_url }}">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit-crop" alt="Water">
+                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto-format&fit-crop" alt="Water">
                 </div>
                 <div class="gallery-info">
                   <strong>Ocean Simulation</strong>
@@ -432,7 +429,7 @@
             <div class="gallery-item">
               <a href="{{ "/02_Shader_Lab/Procedural.html" | relative_url }}">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit-crop" alt="Ice">
+                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto-format&fit-crop" alt="Ice">
                 </div>
                 <div class="gallery-info">
                   <strong>Ice Material</strong>
@@ -444,7 +441,7 @@
             <div class="gallery-item">
               <a href="#">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit-crop" alt="PBR">
+                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto-format&fit-crop" alt="PBR">
                 </div>
                 <div class="gallery-info">
                   <strong>Custom PBR Model</strong>
