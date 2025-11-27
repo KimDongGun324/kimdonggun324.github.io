@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Daily Study Log
-permalink: /Daily_Log.html
+permalink: https://kimdonggun324.github.io/Daily_Log.html
 ---
 
 # 📅 Daily Study Log Index
