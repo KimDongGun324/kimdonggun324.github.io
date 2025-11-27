@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* 1. 기본 설정 */
+    /* 1. 기본 변수 설정 */
     :root {
       --bg-app: #ffffff;
       --bg-sidebar: #fbfbfd;
@@ -33,14 +33,14 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* 2. 레이아웃 (좌측 300px | 나머지) */
+    /* 2. 전체 레이아웃: 좌측 메뉴(300px) | 메인(나머지) */
     .app-container {
       display: grid;
       grid-template-columns: 300px 1fr;
       height: 100vh;
     }
 
-    /* 3. 좌측 사이드바 */
+    /* 3. 좌측 사이드바 스타일 */
     .sidebar {
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-color);
@@ -50,11 +50,10 @@
     }
     .sidebar-title {
       font-family: 'Oswald', sans-serif; font-size: 1.6em; color: #1d1d1f;
-      margin: 0 0 10px 0; letter-spacing: 0.05em; line-height: 1.2;
+      margin: 0 0 5px 0; letter-spacing: 0.05em; line-height: 1.2;
     }
     .sidebar-desc { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 50px; font-weight: 400; margin-top:0; }
 
-    /* 목차 */
     .nav-group { margin-bottom: 25px; }
     .nav-header {
       display: block; font-size: 0.75em; font-weight: 700; color: #999;
@@ -68,7 +67,6 @@
     }
     .sidebar-nav a:hover { color: var(--accent-color); }
 
-    /* 하단 프로필 */
     .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
     .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
     .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
@@ -84,7 +82,7 @@
     .contact-link:hover { color: var(--accent-color); }
     .icon { width: 18px; margin-right: 8px; text-align: center; }
 
-    /* 4. 중앙 메인 컨텐츠 */
+    /* 4. 중앙 메인 컨텐츠 스타일 */
     .main-content {
       padding: 60px 60px; 
       overflow-y: auto;
@@ -100,7 +98,7 @@
     }
     .page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
 
-    /* 3열 그리드 */
+    /* ⭐️ 3열 그리드 시스템 */
     .three-column-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr; 
@@ -109,6 +107,8 @@
       max-width: 1800px; 
       margin: 0 auto;
     }
+    .column { display: flex; flex-direction: column; }
+
     .col-header {
       margin-bottom: 25px; padding-bottom: 12px;
       border-bottom: 1px solid #1d1d1f; min-height: 50px;
@@ -119,7 +119,7 @@
       color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
     }
 
-    /* 카드 및 갤러리 */
+    /* 카드 스타일 */
     ul { padding: 0; list-style: none; margin: 0; }
     li.text-card {
       background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
@@ -129,6 +129,7 @@
     .text-card-title { display: block; font-weight: 700; font-size: 1em; margin-bottom: 6px; color: #1d1d1f; }
     .text-card-desc { font-size: 0.9em; color: #86868b; line-height: 1.4; }
 
+    /* 갤러리 스타일 */
     .gallery-item { margin-bottom: 25px; }
     .gallery-thumb {
       width: 100%; aspect-ratio: 16/9; border-radius: 10px;
@@ -155,9 +156,7 @@
     
     <aside class="sidebar">
       <div class="sidebar-top">
-        <h1 class="sidebar-title">
-          <a href="{{ "/" | relative_url }}">DONGGUN KIM</a>
-        </h1>
+        <h1 class="sidebar-title"><a href="{{ "/" | relative_url }}">DONGGUN KIM</a></h1>
         <p class="sidebar-desc">Graphics R&D & Tech Artist</p>
         
         <nav class="sidebar-nav">
