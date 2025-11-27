@@ -23,7 +23,7 @@
     </ul>
 
     <div style="margin-top: 40px;">
-      <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700;">Graphics Theory & Math</h4>
+      <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700; text-transform:uppercase;">Graphics Theory & Math</h4>
       <ul>
         <li class="text-card">
           <a href="./01_Graphics_Theory/README.md">
@@ -41,7 +41,7 @@
     </div>
 
     <div style="margin-top: 20px;">
-      <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700;">C++ & Engine Architecture</h4>
+      <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700; text-transform:uppercase;">C++ & Engine Architecture</h4>
       <ul>
         <li class="text-card">
           <a href="./03_Engine_CPP/README.md">
