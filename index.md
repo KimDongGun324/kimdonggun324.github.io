@@ -13,17 +13,17 @@
       <h3 class="col-title">Dev Log</h3>
     </div>
     
-    <ul style="margin-bottom: 50px;">
-      <li class="text-card">
-        <a href="./Daily_Log/README.md">
-          <span class="text-card-title">Daily Study Log</span>
-          <span class="text-card-desc">
-            "I never saved anything for the swim back."<br>
-            Shaders & Engine Core Log. Since 2025.11
-          </span>
-        </a>
-      </li>
-    </ul>
+<ul style="margin-bottom: 50px;">
+  <li class="text-card">
+    <a href="./Daily_Log/README.md"> 
+      <span class="text-card-title">Daily Study Log</span>
+      <span class="text-card-desc">
+        "I never saved anything for the swim back."<br>
+        Shaders & Engine Core Log. Since 2025.11
+      </span>
+    </a>
+  </li>
+</ul>
 
     <div class="col-header">
       <h3 class="col-title">Research</h3>
