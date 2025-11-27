@@ -6,7 +6,7 @@
 </script>
 
 # NULL ABYSS
-<span style="font-size: 1.1em; color: #86868b; font-weight: 400;">Graphics Research Lab by DongGun</span>
+<span class="logo-desc">Graphics Research Lab by DongGun</span>
 
 ---
 
