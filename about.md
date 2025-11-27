@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Profile & Resume
+title: Profile
 ---
 
 <div style="max-width: 800px; margin: 0 auto;">
 
-# 📄 Profile & Resume
+# 📄 Profile
 
 ### 👨‍💻 Introduction
 안녕하세요, **Real-time Rendering & Graphics Researcher** 김동건입니다.
