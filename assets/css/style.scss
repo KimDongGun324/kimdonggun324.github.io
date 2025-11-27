@@ -3,15 +3,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;500;700&display=swap');
 
-/* ⚪ 1. Mac OS + Expert Style Variables */
+/* ⚪ 1. Pure Mac OS Minimal Variables */
 :root {
-  --bg-app: #ffffff;         
-  --bg-sidebar: #fbfbfd;     /* 애플 스타일 아주 연한 회색 */
-  --text-primary: #1d1d1f;
-  --text-secondary: #86868b;
-  --accent-color: #0071e3;   /* Apple Blue */
-  --divider-color: #e5e5e5;  /* 연한 회색 구분선 */
-  --blue-divider: #0071e3;   /* 요청하신 파란색 구분선 */
+  --bg-app: #ffffff;
+  --bg-sidebar: #fbfbfd;     /* 좌측 사이드바: 아주 연한 미색 */
+  --bg-right: #ffffff;       /* 우측 사이드바: 흰색 */
+  
+  --text-primary: #1d1d1f;   /* 애플 블랙 */
+  --text-secondary: #86868b; /* 애플 그레이 */
+  
+  --accent-color: #0066cc;   /* 포인트 컬러 (링크 등) */
+  --border-color: #e5e5e5;   /* ✨ 핵심: 은은한 회색 구분선 */
+  
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 * { box-sizing: border-box; }
@@ -22,27 +27,26 @@ body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
   background-color: var(--bg-app);
-  height: 100vh; 
-  overflow: hidden; 
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* 🏗️ 3단 레이아웃 그리드 설정 (수정됨) */
+/* 🏗️ 3단 레이아웃 (좌측 넓힘) */
 .app-container {
   display: grid;
-  /* 좌측(340px로 확장) - 중앙(자동) - 우측(360px) */
-  grid-template-columns: 340px 1fr 360px; 
+  /* 좌측(320px) - 중앙(자동) - 우측(380px) */
+  grid-template-columns: 320px 1fr 380px;
   height: 100vh;
 }
 
-/* 1. 좌측 사이드바 (Sidebar) */
+/* ==============================
+   1. 좌측 사이드바 (Navigation)
+   ============================== */
 .sidebar {
   background-color: var(--bg-sidebar);
-  /* 오른쪽 구분선은 연한 회색 유지 (애플 스타일) */
-  border-right: 1px solid var(--divider-color); 
-  padding: 0 40px; /* 좌우 여백 */
-  
-  /* ⭐️ 핵심 수정: 메뉴를 아래로 내리기 */
-  padding-top: 180px; 
+  border-right: 1px solid var(--border-color); /* ⭐️ 맥 스타일 회색 선 */
+  padding: 0 40px;
+  padding-top: 160px; /* 메뉴 위치 중앙 라인에 맞춤 */
   display: flex;
   flex-direction: column;
 }
@@ -50,22 +54,20 @@ body {
 .sidebar-title {
   font-family: 'Oswald', sans-serif;
   font-size: 1.8em;
-  line-height: 1.1;
-  margin-bottom: 8px;
   color: #1d1d1f;
+  margin-bottom: 10px;
   letter-spacing: 0.05em;
 }
 
 .sidebar-desc {
   font-size: 0.9em;
   color: var(--text-secondary);
-  margin-bottom: 50px;
-  line-height: 1.5;
+  margin-bottom: 40px;
   font-weight: 400;
 }
 
 .sidebar-nav ul { list-style: none; padding: 0; }
-.sidebar-nav li { margin-bottom: 18px; }
+.sidebar-nav li { margin-bottom: 16px; }
 .sidebar-nav a {
   text-decoration: none;
   color: #424245;
@@ -74,23 +76,24 @@ body {
   transition: color 0.2s;
   display: flex; align-items: center;
 }
-.sidebar-nav a:hover { color: var(--accent-color); transform: translateX(5px); transition: transform 0.2s; }
+.sidebar-nav a:hover { color: var(--accent-color); }
 
 
-/* 2. 중앙 메인 컨텐츠 (Main Content) */
+/* ==============================
+   2. 중앙 메인 컨텐츠 (Main Content)
+   ============================== */
 .main-content {
-  padding: 60px 80px; 
-  overflow-y: auto;   
-  
-  /* ⭐️ 핵심 수정: 우측에 파란색 구분선 추가 */
-  border-right: 2px solid var(--blue-divider);
+  padding: 60px 80px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-right: 1px solid var(--border-color); /* ⭐️ 맥 스타일 회색 선 */
 }
 
-.main-header { text-align: center; margin-bottom: 80px; margin-top: 20px;}
+.main-header { text-align: center; margin-bottom: 80px; margin-top: 20px; }
 .page-title {
   font-family: 'Oswald', sans-serif;
   font-size: 4.5em;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   margin-bottom: 5px;
   text-transform: uppercase;
   color: #1d1d1f;
@@ -98,78 +101,115 @@ body {
 .page-desc { font-size: 1.1em; color: var(--text-secondary); font-weight: 300; }
 
 /* 컨텐츠 내부 스타일 */
-h2 { border-bottom: 1px solid var(--divider-color); padding-bottom: 10px; margin-top: 60px; color:#1d1d1f; }
-h3 { margin-top: 40px; color:#1d1d1f; }
+h2 { 
+  font-weight: 700; 
+  font-size: 1.5em;
+  color: #1d1d1f; 
+  border-bottom: 1px solid var(--border-color); 
+  padding-bottom: 12px; 
+  margin-top: 60px; 
+}
+h3 { margin-top: 40px; font-size: 1.2em; color: #1d1d1f; }
 a { color: var(--accent-color); text-decoration: none; }
 
-/* 카드 리스트 (중앙) */
-ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+/* 중앙 카드 리스트 */
+ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 li.card-item {
-  background: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 18px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: #ffffff;
+  border: 1px solid #eaeaea; /* 아주 연한 테두리 */
+  border-radius: 16px;
+  transition: all 0.2s ease;
   padding: 24px;
 }
-li.card-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-color: var(--accent-color); }
+li.card-item:hover { 
+  transform: translateY(-3px); 
+  box-shadow: var(--hover-shadow); 
+  border-color: #d2d2d7;
+}
 .card-title { display: block; font-weight: 700; font-size: 1.1em; margin-bottom: 8px; color: #1d1d1f; }
 .card-desc { font-size: 0.95em; color: #86868b; line-height: 1.5; }
 
 
-/* 3. 우측 갤러리 사이드바 (Right Gallery) */
-.gallery-sidebar {
+/* ==============================
+   3. 우측 갤러리 & 프로필 (Right Sidebar)
+   ============================== */
+.right-sidebar {
   background-color: #fff;
   padding: 40px;
   overflow-y: auto;
-  
-  /* ⭐️ 메뉴를 아래로 내리기 (좌측과 라인 맞춤) */
-  padding-top: 180px; 
+  padding-top: 160px; /* 좌측 메뉴와 라인 맞춤 */
 }
 
-.gallery-header {
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #1d1d1f; /* 제목 밑에 짧은 검은 선 */
+.section-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1d1d1f; /* 제목 밑 검은 선 포인트 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-.gallery-title {
-  font-size: 1.4em;
+.section-title {
+  font-size: 1.1em;
   font-weight: 800;
   color: #1d1d1f;
   margin: 0;
   font-family: 'Oswald', sans-serif;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* 갤러리 아이템 */
-.gallery-item { margin-bottom: 35px; }
+/* 🖼️ 갤러리 아이템 (Featured Works) */
+.gallery-item { margin-bottom: 30px; }
 
 .gallery-thumb {
   width: 100%;
-  aspect-ratio: 16/10;
-  border-radius: 14px;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: var(--card-shadow);
   margin-bottom: 12px;
   transition: transform 0.2s;
   cursor: pointer;
   border: 1px solid rgba(0,0,0,0.05);
 }
-.gallery-thumb:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-
+.gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
 .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
-.gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 4px; font-weight: 600; }
-.gallery-info span { font-size: 0.85em; color: #86868b; display: block; }
+.gallery-info strong { display: block; font-size: 0.95em; color: #1d1d1f; margin-bottom: 2px; }
+.gallery-info span { font-size: 0.8em; color: #86868b; }
+
+/* 👤 프로필 섹션 (하단 활용) */
+.profile-section {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-color);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tech-badge {
+  background: #f5f5f7;
+  color: #1d1d1f;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75em;
+  font-weight: 600;
+  border: 1px solid #e5e5e5;
+}
 
 /* 반응형 */
 @media (max-width: 1200px) {
   .app-container { grid-template-columns: 260px 1fr; } 
-  .gallery-sidebar { display: none; } 
+  .right-sidebar { display: none; } /* 태블릿에선 우측 숨김 */
 }
 @media (max-width: 800px) {
   .app-container { grid-template-columns: 1fr; }
   .sidebar { display: none; } 
-  .main-content { border-right: none; } /* 모바일엔 파란선 제거 */
+  .main-content { border-right: none; }
 }
