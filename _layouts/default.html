@@ -1,453 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ site.title | default: site.github.repository_name }}</title>
-  
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-  <style>
-    /* 2. Basic Variables */
-    :root {
-      --bg-app: #ffffff;
-      --bg-sidebar: #fbfbfd;
-      --text-primary: #1d1d1f;
-      --text-secondary: #86868b;
-      --accent-color: #0066cc;
-      --border-color: #e5e5e5;
-      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      
-      /* Font Stack: Pretendard First */
-      --font-stack: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-    }
+  <style>
+    /* 2. Basic Variables */
+    :root {
+      --bg-app: #ffffff;
+      --bg-sidebar: #fbfbfd;
+      --text-primary: #1d1d1f;
+      --text-secondary: #86868b;
+      --accent-color: #0066cc;
+      --border-color: #e5e5e5;
+      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      
+      /* Font Stack: Pretendard First */
+      --font-stack: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; }
 
-    body {
-      margin: 0; padding: 0;
-      font-family: var(--font-stack);
-      color: var(--text-primary); background-color: var(--bg-app);
-      height: 100vh; overflow: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    body {
+      margin: 0; padding: 0;
+      font-family: var(--font-stack);
+      color: var(--text-primary); background-color: var(--bg-app);
+      height: 100vh; overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-    a { text-decoration: none; color: inherit; }
+    a { text-decoration: none; color: inherit; }
 
-    /* 전체 레이아웃 */
-    .app-container {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      height: 100vh;
-    }
+    /* 전체 레이아웃 */
+    .app-container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      height: 100vh;
+    }
 
-    /* 좌측 사이드바 */
-    .sidebar {
-      background-color: var(--bg-sidebar);
-      border-right: 1px solid var(--border-color);
-      padding: 40px 30px; padding-top: 140px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      overflow-y: auto;
-    }
+    /* 좌측 사이드바 */
+    .sidebar {
+      background-color: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      padding: 40px 30px; padding-top: 140px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      overflow-y: auto;
+    }
 
-    /* Sidebar Title */
-    .sidebar-title {
-      font-family: var(--font-stack);
-      font-size: 1.4em;       
-      font-weight: 600;       
-      color: #424245;         
-      margin: 0 0 4px 0;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-    }
-    .sidebar-desc { 
-      font-size: 0.9em; 
-      color: var(--text-secondary); 
-      margin-bottom: 50px; 
-      font-weight: 400; 
-      margin-top: 0; 
-      letter-spacing: -0.01em;
-    }
+    /* Sidebar Title */
+    .sidebar-title {
+      font-family: var(--font-stack);
+      font-size: 1.4em;       
+      font-weight: 600;       
+      color: #424245;         
+      margin: 0 0 4px 0;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .sidebar-desc { 
+      font-size: 0.9em; 
+      color: var(--text-secondary); 
+      margin-bottom: 50px; 
+      font-weight: 400; 
+      margin-top: 0; 
+      letter-spacing: -0.01em;
+    }
 
-    /* Navigation */
-    .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
-    .sidebar-nav li { margin-bottom: 8px; }
-    
-    .sidebar-nav a {
-      color: #424245; 
-      font-weight: 500; 
-      font-size: 0.95em;
-      transition: color 0.2s, transform 0.2s; 
-      display: flex; align-items: center;
-      letter-spacing: -0.01em;
-    }
-    .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
+    /* Navigation */
+    .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+    .sidebar-nav li { margin-bottom: 8px; }
+    
+    .sidebar-nav a {
+      color: #424245; 
+      font-weight: 500; 
+      font-size: 0.95em;
+      transition: color 0.2s, transform 0.2s; 
+      display: flex; align-items: center;
+      letter-spacing: -0.01em;
+    }
+    .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
 
-    /* Home 메뉴 🔥 Margin 수정됨: 35px -> 45px */
-    .nav-home { margin-bottom: 45px; }
-    .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
+    /* Home 메뉴 */
+    .nav-home { margin-bottom: 45px; }
+    .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
 
-    /* 그룹 메뉴 🔥 Margin 수정됨: 25px -> 35px */
-    .nav-group { margin-bottom: 35px; }
-    .nav-header {
-      display: block; font-size: 0.75em; font-weight: 700; color: #999;
-      margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;
-    }
+    /* 그룹 메뉴 */
+    .nav-group { margin-bottom: 35px; }
+    .nav-header {
+      display: block; font-size: 0.75em; font-weight: 700; color: #999;
+      margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+    }
 
-    /* Sidebar Bottom */
-    .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
-    .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
-    .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
-    
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-    .tech-badge {
-      background: #fff; color: #1d1d1f; padding: 4px 8px; border-radius: 6px;
-      font-size: 0.75em; font-weight: 600; border: 1px solid #e5e5e5;
-      white-space: nowrap; 
-    }
+    /* Sidebar Bottom */
+    .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
+    .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
+    .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
+    
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .tech-badge {
+      background: #fff; color: #1d1d1f; padding: 4px 8px; border-radius: 6px;
+      font-size: 0.75em; font-weight: 600; border: 1px solid #e5e5e5;
+      white-space: nowrap; 
+    }
 
-    .contact-link {
-      display: flex; align-items: center; margin-bottom: 8px;
-      color: #424245; font-size: 0.9em; font-weight: 500; transition: color 0.2s;
-    }
-    .contact-link:hover { color: var(--accent-color); }
+    .contact-link {
+      display: flex; align-items: center; margin-bottom: 8px;
+      color: #424245; font-size: 0.9em; font-weight: 500; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent-color); }
 
-    /* Main Content */
-    .main-content {
-      padding: 60px 60px; 
-      overflow-y: auto;
-      background-color: #fff;
-      display: flex; flex-direction: column;
-    }
+    /* Main Content */
+    .main-content {
+      padding: 60px 60px; 
+      overflow-y: auto;
+      background-color: #fff;
+      display: flex; flex-direction: column;
+    }
 
-    .main-banner {
-      width: 100%; height: 350px; 
-      margin-bottom: 40px; border-radius: 20px; overflow: hidden;
-      box-shadow: var(--hover-shadow); flex-shrink: 0; border: 1px solid rgba(0,0,0,0.02);
-    }
-    .main-banner img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: 50% 62%; transition: transform 0.5s ease;
-    }
+    .main-banner {
+      width: 100%; height: 350px; 
+      margin-bottom: 40px; border-radius: 20px; overflow: hidden;
+      box-shadow: var(--hover-shadow); flex-shrink: 0; border: 1px solid rgba(0,0,0,0.02);
+    }
+    .main-banner img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: 50% 62%; transition: transform 0.5s ease;
+    }
 
-    /* Main Header */
-    .main-header { 
-      text-align: center; 
-      margin-bottom: 80px;  
-      margin-top: 30px;     
-      padding-bottom: 60px; 
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    /* Page Title (Pearl Abyss Style) */
-    .page-title {
-      font-family: var(--font-stack);
-      font-weight: 700;       
-      font-size: 4em; 
-      letter-spacing: 0.4em;  
-      margin: 0 0 25px 0;     
-      text-transform: uppercase; 
-      color: #1d1d1f;
-      margin-right: -0.4em;   
-    }
-    
-    /* Subtitle Style */
-    .page-desc { 
-      font-size: 1.0em;        
-      color: var(--text-secondary); 
-      font-weight: 400; 
-      letter-spacing: 0.05em;  
-    }
+    /* Main Header */
+    .main-header { 
+      text-align: center; 
+      margin-bottom: 80px;  
+      margin-top: 30px;     
+      padding-bottom: 60px; 
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    /* Page Title (Pearl Abyss Style) */
+    .page-title {
+      font-family: var(--font-stack);
+      font-weight: 700;       
+      font-size: 4em; 
+      letter-spacing: 0.4em;  
+      margin: 0 0 25px 0;     
+      text-transform: uppercase; 
+      color: #1d1d1f;
+      margin-right: -0.4em;   
+    }
+    
+    /* Subtitle Style */
+    .page-desc { 
+      font-size: 1.0em;        
+      color: var(--text-secondary); 
+      font-weight: 400; 
+      letter-spacing: 0.05em;  
+    }
 
-    /* Grid System */
-    .three-column-wrapper {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr; 
-      gap: 40px; align-items: start;
-      max-width: 1800px; margin: 0 auto;
-    }
-    .column { display: flex; flex-direction: column; }
-    .col-header {
-      margin-bottom: 25px; padding-bottom: 12px;
-      border-bottom: 1px solid #1d1d1f; min-height: 50px;
-      display: flex; align-items: end;
-    }
-    .col-title {
-      font-family: var(--font-stack); font-size: 1.25em; font-weight: 700; 
-      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
-    }
+    /* Grid System */
+    .three-column-wrapper {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr; 
+      gap: 40px; align-items: start;
+      max-width: 1800px; margin: 0 auto;
+    }
+    .column { display: flex; flex-direction: column; }
+    .col-header {
+      margin-bottom: 25px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color); min-height: 50px;
+      display: flex; align-items: end;
+    }
+    .col-title {
+      font-family: var(--font-stack); font-size: 1.25em; font-weight: 700; 
+      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
+    }
 
-    /* Card Style */
-    ul { padding: 0; list-style: none; margin: 0; }
-    li.text-card {
-      background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
-      transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
-    }
-    li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
-    
-    .text-card-title { 
-      display: block; font-weight: 700; font-size: 1em; 
-      margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; 
-    }
-    .text-card-desc { 
-      font-size: 0.95em; color: #86868b; line-height: 1.6; 
-      letter-spacing: -0.01em; word-break: keep-all; 
-    }
+    /* Card Style */
+    ul { padding: 0; list-style: none; margin: 0; }
+    li.text-card {
+      background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
+      transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
+      position: relative;
+    }
+    li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
+    /* 클릭 영역 확장 CSS */
+    li.text-card a { display: block; padding: 20px; margin: -20px; height: 100%; width: 100%; position: absolute; top: 0; left: 0; }
+    
+    .text-card-title { 
+      display: block; font-weight: 700; font-size: 1em; 
+      margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; 
+    }
+    .text-card-desc { 
+      font-size: 0.95em; color: #86868b; line-height: 1.6; 
+      letter-spacing: -0.01em; word-break: keep-all; 
+    }
 
-    /* Gallery Style */
-    .gallery-item { margin-bottom: 25px; }
-    .gallery-thumb {
-      width: 100%; aspect-ratio: 16/9; border-radius: 10px;
-      overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 10px;
-      transition: transform 0.2s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
-    }
-    .gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
-    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 3px; font-weight: 600; letter-spacing: -0.01em; }
-    .gallery-info span { font-size: 0.9em; color: #86868b; }
+    /* Gallery Style */
+    .gallery-item { margin-bottom: 25px; }
+    .gallery-thumb {
+      width: 100%; aspect-ratio: 16/9; border-radius: 10px;
+      overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 10px;
+      transition: transform 0.2s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
+    }
+    .gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 3px; font-weight: 600; letter-spacing: -0.01em; }
+    .gallery-info span { font-size: 0.9em; color: #86868b; }
 
-    @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 900px) {
-      .three-column-wrapper { grid-template-columns: 1fr; }
-      .app-container { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-    }
-  </style>
+    @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 900px) {
+      .three-column-wrapper { grid-template-columns: 1fr; }
+      .app-container { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="app-container">
-    
-    <aside class="sidebar">
-      <div class="sidebar-top">
-        <h1 class="sidebar-title">
-          <a href="{{ "/" | relative_url }}">DongGun Kim</a>
-        </h1>
-        <p class="sidebar-desc">Real-time Rendering & Shader R&D</p>
+  <div class="app-container">
+    
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <h1 class="sidebar-title">
+          <a href="{{ "/" | relative_url }}">DongGun Kim</a>
+        </h1>
+        <p class="sidebar-desc">Real-time Rendering & Shader R&D</p>
+        
+        <nav class="sidebar-nav">
+          
+          <div class="nav-home">
+             <ul>
+               <li><a href="{{ "/" | relative_url }}">Home</a></li>
+             </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-header">About</span>
+            <ul>
+              <li><a href="{{ "/about.html" | relative_url }}">Profile</a></li>
+              <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-header">Dev Log</span>
+            <ul>
+              <li><a href="{{ "/daily-study-log/" | relative_url }}">Daily Study Log</a></li> 
+            </ul>
+          </div>
+          <div class="nav-group">
+            <span class="nav-header">Research</span>
+            <ul>
+              <li><a href="{{ "/Graphics_Theory.html" | relative_url }}">Graphics Theory</a></li>
+              <li><a href="{{ "/Shader_Implementation.html" | relative_url }}">Shader Implementation</a></li>
+              <li><a href="{{ "/Engine_Core.html" | relative_url }}">C++ & Engine Core</a></li>
+              <li><a href="{{ "/TA_Tools.html" | relative_url }}">TA Tools & Pipeline</a></li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <span class="nav-header">Projects</span>
+            <ul>
+              <li><a href="{{ "/Engine_Archive.html" | relative_url }}">Engine & Tech Demo</a></li>
+              <li><a href="{{ "/Shader_Archive.html" | relative_url }}">Shader & Art R&D</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="profile-header">Researcher</div>
+        <div class="profile-info">
+          <strong>DongGun Kim</strong><br>M.S. Student @ CNU<br>Goal: Pearl Abyss TA
+        </div>
+        
+        <div class="tech-stack">
+          <span class="tech-badge">C++</span>
+          <span class="tech-badge">UE5</span>
+          <span class="tech-badge">HLSL</span>
+          <span class="tech-badge">Houdini</span>
+          <span class="tech-badge">Substance Designer</span>
+        </div>
+
+        <div style="margin-top: 25px;">
+          <div class="profile-header">Connect</div>
+          <div style="margin-bottom: 2px; font-size: 0.85em; color: #1d1d1f; font-weight: 600;">Email</div>
+          <a href="mailto:kdg324@naver.com" class="contact-link" style="color: #666; font-weight: 400; font-size: 0.85em;">
+            kdg324@naver.com
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      
+      <div class="main-banner">
+        <img src="/assets/images/main-banner.png" alt="Main Banner">
+      </div>
+
+      <header class="main-header">
+        <h1 class="page-title">NULL ABYSS</h1>
+        <span class="page-desc">Deep Dive into Shaders & Engine Core</span>
+      </header>
+      
+      <div class="content-body">
+        
+        <script type="text/javascript" id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+        </script>
+        <script>
+          window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+        </script>
+
+        {{ content }}
         
-        <nav class="sidebar-nav">
-          
-          <div class="nav-home">
-             <ul>
-               <li><a href="{{ "/" | relative_url }}">Home</a></li>
-             </ul>
-          </div>
+        <div class="three-column-wrapper">
 
-          <div class="nav-group">
-            <span class="nav-header">About</span>
-            <ul>
-              <li><a href="{{ "/about.md" | relative_url }}">Profile</a></li>
-              <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub</a></li>
-            </ul>
-          </div>
+          <div class="column">
+            
+            <div class="col-header">
+              <h3 class="col-title">Dev Log</h3>
+            </div>
+            
+            <ul style="margin-bottom: 50px;">
+              <li class="text-card">
+                <a href="{{ "/daily-study-log/" | relative_url }}">
+                  <span class="text-card-title">Daily Study Log</span>
+                  <span class="text-card-desc">
+                    "I never saved anything for the swim back."<br>
+                    Shaders & Engine Core Log. Since 2025.11
+                  </span>
+                </a>
+              </li>
+            </ul>
 
-          <div class="nav-group">
-            <span class="nav-header">Dev Log</span>
-            <ul>
-              <li><a href="{{ "/Daily_Log/README.md" | relative_url }}">Daily Study Log</a></li>
-            </ul>
-          </div>
-          <div class="nav-group">
-            <span class="nav-header">Research</span>
-            <ul>
-              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
-              <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
-              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">C++ & Engine Core</a></li>
-              <li><a href="{{ "/04_TA_Tools/README.md" | relative_url }}">TA Tools & Pipeline</a></li>
-            </ul>
-          </div>
-          <div class="nav-group">
-            <span class="nav-header">Projects</span>
-            <ul>
-              <li><a href="{{ "/Daily_Log/Archive_Engine.md" | relative_url }}">Engine & Tech Demo</a></li>
-              <li><a href="{{ "/Daily_Log/Archive_Shader.md" | relative_url }}">Shader & Art R&D</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+            <div class="col-header">
+              <h3 class="col-title">Research</h3>
+            </div>
 
-      <div class="sidebar-bottom">
-        <div class="profile-header">Researcher</div>
-        <div class="profile-info">
-          <strong>DongGun Kim</strong><br>M.S. Student @ CNU<br>Goal: Pearl Abyss TA
-        </div>
-        
-        <div class="tech-stack">
-          <span class="tech-badge">C++</span>
-          <span class="tech-badge">UE5</span>
-          <span class="tech-badge">HLSL</span>
-          <span class="tech-badge">Houdini</span>
-          <span class="tech-badge">Substance Designer</span>
-        </div>
+            <ul>
+              <li class="text-card">
+                <a href="{{ "/Graphics_Theory.html" | relative_url }}">
+                  <span class="text-card-title">Graphics Theory & Math</span>
+                  <span class="text-card-desc">렌더링 파이프라인, PBR 이론, 선형대수학 등 그래픽스의 수학적 원리 탐구</span>
+                </span></a>
+              </li>
 
-        <div style="margin-top: 25px;">
-          <div class="profile-header">Connect</div>
-          <div style="margin-bottom: 2px; font-size: 0.85em; color: #1d1d1f; font-weight: 600;">Email</div>
-          <a href="mailto:kdg324@naver.com" class="contact-link" style="color: #666; font-weight: 400; font-size: 0.85em;">
-            kdg324@naver.com
-          </a>
-        </div>
-      </div>
-    </aside>
+              <li class="text-card">
+                <a href="{{ "/Shader_Implementation.html" | relative_url }}">
+                  <span class="text-card-title">Shader Implementation</span>
+                  <span class="text-card-desc">HLSL/GLSL을 활용한 커스텀 셰이더 구현 및 절차적 텍스처링 연구</span>
+                </span></a>
+              </li>
 
-    <main class="main-content">
-      
-      <div class="main-banner">
-        <img src="/assets/images/main-banner.png" alt="Main Banner">
-      </div>
+              <li class="text-card">
+                <a href="{{ "/Engine_Core.html" | relative_url }}">
+                  <span class="text-card-title">C++ & Engine Core</span>
+                  <span class="text-card-desc">자료구조, 메모리 관리, 언리얼 엔진 소스 코드 분석을 통한 최적화 역량</span>
+                </span></a>
+              </li>
 
-      <header class="main-header">
-        <h1 class="page-title">NULL ABYSS</h1>
-        <span class="page-desc">Deep Dive into Shaders & Engine Core</span>
-      </header>
-      
-      <div class="content-body">
-        
-        <script type="text/javascript" id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-        </script>
-        <script>
-          window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
-        </script>
+              <li class="text-card">
+                <a href="{{ "/TA_Tools.html" | relative_url }}">
+                  <span class="text-card-title">TA Tools & Pipeline</span>
+                  <span class="text-card-desc">Substance Painter, Python 스크립팅을 활용한 에셋 제작 및 자동화 워크플로우</span>
+                </span></a>
+              </li>
+            </ul>
 
-        <div class="three-column-wrapper">
-
-          <div class="column">
-            
-            <div class="col-header">
-              <h3 class="col-title">Dev Log</h3>
-            </div>
-            
-            <ul style="margin-bottom: 50px;">
-              <li class="text-card">
-                <a href="{{ "/Daily_Log/README.md" | relative_url }}">
-                  <span class="text-card-title">Daily Study Log</span>
-                  <span class="text-card-desc">
-                    "I never saved anything for the swim back."<br>
-                    Shaders & Engine Core Log. Since 2025.11
-                  </span>
-                </a>
-              </li>
-            </ul>
-
-            <div class="col-header">
-              <h3 class="col-title">Research</h3>
-            </div>
-
-            <ul>
-              <li class="text-card">
-                <a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">
-                  <span class="text-card-title">Graphics Theory & Math</span>
-                  <span class="text-card-desc">렌더링 파이프라인, PBR 이론, 선형대수학 등 그래픽스의 수학적 원리 탐구</span>
-                </a>
-              </li>
-
-              <li class="text-card">
-                <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
-                  <span class="text-card-title">Shader Implementation</span>
-                  <span class="text-card-desc">HLSL/GLSL을 활용한 커스텀 셰이더 구현 및 절차적 텍스처링 연구</span>
-                </a>
-              </li>
-
-              <li class="text-card">
-                <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
-                  <span class="text-card-title">C++ & Engine Core</span>
-                  <span class="text-card-desc">자료구조, 메모리 관리, 언리얼 엔진 소스 코드 분석을 통한 최적화 역량</span>
-                </a>
-              </li>
-
-              <li class="text-card">
-                <a href="{{ "/04_TA_Tools/README.md" | relative_url }}">
-                  <span class="text-card-title">TA Tools & Pipeline</span>
-                  <span class="text-card-desc">Substance Painter, Python 스크립팅을 활용한 에셋 제작 및 자동화 워크플로우</span>
-                </a>
-              </li>
-            </ul>
-
-          </div>
+          </div>
 
 
-          <div class="column">
-            <div class="col-header">
-              <h3 class="col-title">Engine & Tech Demo</h3>
-            </div>
+          <div class="column">
+            <div class="col-header">
+              <h3 class="col-title">Engine & Tech Demo</h3>
+            </div>
 
-            <div class="gallery-item">
-              <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" alt="C++ Optimization">
-                </div>
-                <div class="gallery-info">
-                  <strong>C++ Memory Optimization</strong>
-                  <span>Smart Pointer & Custom Allocator</span>
-                </div>
-              </a>
-            </div>
+            <div class="gallery-item">
+              <a href="{{ "/Engine_Core.html" | relative_url }}">
+                <div class="gallery-thumb">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit-crop" alt="C++ Optimization">
+                </div>
+                <div class="gallery-info">
+                  <strong>C++ Memory Optimization</strong>
+                  <span>Smart Pointer & Custom Allocator</span>
+                </div>
+              </a>
+            </div>
 
-            <div class="gallery-item">
-              <a href="{{ "/03_Engine_CPP/UE5_Analysis.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600&auto=format&fit=crop" alt="UE5">
-                </div>
-                <div class="gallery-info">
-                  <strong>UE5 Source Analysis</strong>
-                  <span>Rendering Pipeline Deep Dive</span>
-                </div>
-              </a>
-            </div>
-          </div>
+            <div class="gallery-item">
+              <a href="{{ "/Engine_Core_Analysis.html" | relative_url }}">
+                <div class="gallery-thumb">
+                  <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600&auto=format&fit-crop" alt="UE5">
+                </div>
+                <div class="gallery-info">
+                  <strong>UE5 Source Analysis</strong>
+                  <span>Rendering Pipeline Deep Dive</span>
+                </div>
+              </a>
+            </div>
+          </div>
 
 
-          <div class="column">
-            <div class="col-header">
-              <h3 class="col-title">Shader & Art R&D</h3>
-            </div>
+          <div class="column">
+            <div class="col-header">
+              <h3 class="col-title">Shader & Art R&D</h3>
+            </div>
 
-            <div class="gallery-item">
-              <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Water">
-                </div>
-                <div class="gallery-info">
-                  <strong>Ocean Simulation</strong>
-                  <span>Gerstner Wave / HLSL</span>
-                </div>
-              </a>
-            </div>
+            <div class="gallery-item">
+              <a href="{{ "/Shader_Implementation.html" | relative_url }}">
+                <div class="gallery-thumb">
+                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit-crop" alt="Water">
+                </div>
+                <div class="gallery-info">
+                  <strong>Ocean Simulation</strong>
+                  <span>Gerstner Wave / HLSL</span>
+                </div>
+              </a>
+            </div>
 
-            <div class="gallery-item">
-              <a href="{{ "/02_Shader_Lab/Procedural.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit-crop" alt="Ice">
-                </div>
-                <div class="gallery-info">
-                  <strong>Ice Material</strong>
-                  <span>Subsurface Scattering</span>
-                </div>
-              </a>
-            </div>
+            <div class="gallery-item">
+              <a href="{{ "/Shader_Implementation.html" | relative_url }}">
+                <div class="gallery-thumb">
+                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto-format&fit-crop" alt="Ice">
+                </div>
+                <div class="gallery-info">
+                  <strong>Ice Material</strong>
+                  <span>Subsurface Scattering</span>
+                </div>
+              </a>
+            </div>
 
-            <div class="gallery-item">
-              <a href="#">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop" alt="PBR">
-                </div>
-                <div class="gallery-info">
-                  <strong>Custom PBR Model</strong>
-                  <span>Cook-Torrance Implementation</span>
-                </div>
-              </a>
-            </div>
-          </div>
+            <div class="gallery-item">
+              <a href="#">
+                <div class="gallery-thumb">
+                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit-crop" alt="PBR">
+                </div>
+                <div class="gallery-info">
+                  <strong>Custom PBR Model</strong>
+                  <span>Cook-Torrance Implementation</span>
+                </div>
+              </a>
+            </div>
+          </div>
 
-        </div>
+        </div>
 
-      </div>
-    </main>
+      </div>
+    </main>
 
-  </div>
+  </div>
 
 </body>
 </html>
