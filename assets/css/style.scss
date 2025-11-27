@@ -3,40 +3,102 @@
 
 @import "{{ site.theme }}";
 
-/* 1. 전체 틀(Wrapper) 넓히기 */
+/* 🌑 1. 펄어비스 스타일 다크 모드 변수 설정 */
+:root {
+  --bg-color: #1e1e1e;       /* VS Code 배경색 */
+  --text-color: #d4d4d4;     /* 기본 글자색 */
+  --header-color: #ffffff;   /* 제목 글자색 */
+  --accent-color: #4ec9b0;   /* 민트색 강조 (클래스 컬러) */
+  --link-color: #569cd6;     /* 파란색 강조 (키워드 컬러) */
+  --card-bg: #252526;        /* 카드 배경색 */
+  --border-color: #3e3e42;   /* 테두리 색 */
+}
+
+/* 🏗️ 2. 전체 레이아웃 (화면 넓게 쓰기) */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', sans-serif; /* 깔끔한 폰트 */
+}
+
 .wrapper {
   max-width: 90% !important;
   width: 90% !important;
   margin: 0 auto;
 }
 
-/* 2. 글자 영역(Section)도 같이 넓히기 (이게 핵심!) */
 section {
-  width: 80% !important; /* 전체 화면의 80%를 글자 공간으로 사용 */
-  max-width: 1400px !important; /* 최대 너비 제한을 1400px까지 품 */
-  float: right !important; /* 내용을 오른쪽 공간에 꽉 채우기 */
+  width: 80% !important;
+  max-width: 1400px !important;
+  float: right !important;
 }
 
-/* 3. 모바일 화면 최적화 */
 @media screen and (max-width: 900px) {
-  .wrapper {
-    max-width: 95% !important;
-  }
-  section {
-    width: 100% !important;
-    float: none !important;
-  }
+  section { width: 100% !important; float: none !important; }
 }
 
-/* --- 폴더 계층 구조 디자인 --- */
-/* details 안에 또 details가 있으면 왼쪽 여백을 줌 */
-details details {
-  margin-left: 24px;       /* 오른쪽으로 24px 밀기 */
-  border-left: 2px solid #e5e5e5; /* 왼쪽에 얇은 회색 선 추가 (가이드라인) */
-  padding-left: 12px;      /* 선과 글자 사이 간격 */
+/* 🎨 3. 타이틀 & 헤더 디자인 */
+h1, h2, h3, h4 {
+  color: var(--header-color);
+  border-bottom: none; /* 기존 밑줄 제거 */
 }
 
-summary {
-  cursor: pointer; /* 마우스 올리면 손가락 모양 */
-  padding: 4px 0;  /* 위아래 간격 살짝 줌 */
+h1 {
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #4ec9b0, #569cd6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* 타이틀에 그라데이션 효과 */
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 50px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color) !important;
+}
+
+/* 🔗 4. 링크 디자인 */
+a { color: var(--link-color); text-decoration: none; font-weight: 500; }
+a:hover { text-decoration: underline; color: var(--accent-color); }
+
+/* 📦 5. 리스트를 '카드(Card)' 형태로 변신시키기 (핵심!) */
+ul {
+  padding: 0;
+  list-style: none; /* 점 없애기 */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 반응형 그리드 */
+  gap: 15px;
+}
+
+li {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px; /* 둥근 모서리 */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+li:hover {
+  transform: translateY(-5px); /* 마우스 올리면 살짝 뜸 */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  border-color: var(--accent-color);
+}
+
+/* 📂 6. 폴더(Details) 디자인 (옵시디언 느낌) */
+details {
+  background-color: #2d2d30;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+}
+summary { font-weight: bold; cursor: pointer; color: var(--header-color); }
+
+/* 💻 7. 코드 블럭 스타일 */
+code {
+  background-color: #101010;
+  color: #ce9178; /* 문자열 색상 */
+  padding: 2px 5px;
+  border-radius: 4px;
 }
