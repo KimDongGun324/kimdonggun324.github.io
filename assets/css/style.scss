@@ -5,12 +5,13 @@
 
 /* ⚪ 1. Mac OS + Expert Style Variables */
 :root {
-  --bg-app: #ffffff;         /* 전체 배경 */
-  --bg-sidebar: #f9f9f9;     /* 사이드바 배경 (아주 연한 회색) */
+  --bg-app: #ffffff;         
+  --bg-sidebar: #fbfbfd;     /* 애플 스타일 아주 연한 회색 */
   --text-primary: #1d1d1f;
   --text-secondary: #86868b;
   --accent-color: #0071e3;   /* Apple Blue */
-  --border-color: #e5e5e5;   /* 구분선 색상 */
+  --divider-color: #e5e5e5;  /* 연한 회색 구분선 */
+  --blue-divider: #0071e3;   /* 요청하신 파란색 구분선 */
 }
 
 * { box-sizing: border-box; }
@@ -21,22 +22,27 @@ body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
   background-color: var(--bg-app);
-  height: 100vh; /* 화면 전체 높이 사용 */
-  overflow: hidden; /* 전체 스크롤 방지 (각 영역별 스크롤) */
+  height: 100vh; 
+  overflow: hidden; 
 }
 
-/* 🏗️ 3단 레이아웃 그리드 설정 */
+/* 🏗️ 3단 레이아웃 그리드 설정 (수정됨) */
 .app-container {
   display: grid;
-  grid-template-columns: 260px 1fr 320px; /* 좌측(260px) - 중앙(자동) - 우측(320px) */
+  /* 좌측(340px로 확장) - 중앙(자동) - 우측(360px) */
+  grid-template-columns: 340px 1fr 360px; 
   height: 100vh;
 }
 
-/* 1. 좌측 사이드바 (Navigation) */
+/* 1. 좌측 사이드바 (Sidebar) */
 .sidebar {
   background-color: var(--bg-sidebar);
-  border-right: 1px solid var(--border-color); /* 구분선 */
-  padding: 40px 30px;
+  /* 오른쪽 구분선은 연한 회색 유지 (애플 스타일) */
+  border-right: 1px solid var(--divider-color); 
+  padding: 0 40px; /* 좌우 여백 */
+  
+  /* ⭐️ 핵심 수정: 메뉴를 아래로 내리기 */
+  padding-top: 180px; 
   display: flex;
   flex-direction: column;
 }
@@ -45,121 +51,125 @@ body {
   font-family: 'Oswald', sans-serif;
   font-size: 1.8em;
   line-height: 1.1;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: #1d1d1f;
+  letter-spacing: 0.05em;
 }
 
 .sidebar-desc {
-  font-size: 0.85em;
+  font-size: 0.9em;
   color: var(--text-secondary);
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   line-height: 1.5;
+  font-weight: 400;
 }
 
 .sidebar-nav ul { list-style: none; padding: 0; }
-.sidebar-nav li { margin-bottom: 15px; }
+.sidebar-nav li { margin-bottom: 18px; }
 .sidebar-nav a {
   text-decoration: none;
   color: #424245;
   font-weight: 600;
-  font-size: 0.95em;
+  font-size: 1em;
   transition: color 0.2s;
   display: flex; align-items: center;
 }
-.sidebar-nav a:hover { color: var(--accent-color); }
+.sidebar-nav a:hover { color: var(--accent-color); transform: translateX(5px); transition: transform 0.2s; }
 
 
-/* 2. 중앙 메인 컨텐츠 (Scrollable) */
+/* 2. 중앙 메인 컨텐츠 (Main Content) */
 .main-content {
-  padding: 60px 80px; /* 여백 넉넉하게 */
-  overflow-y: auto;   /* 여기만 스크롤 되게 설정 */
+  padding: 60px 80px; 
+  overflow-y: auto;   
+  
+  /* ⭐️ 핵심 수정: 우측에 파란색 구분선 추가 */
+  border-right: 2px solid var(--blue-divider);
 }
 
-.main-header { text-align: center; margin-bottom: 60px; }
+.main-header { text-align: center; margin-bottom: 80px; margin-top: 20px;}
 .page-title {
   font-family: 'Oswald', sans-serif;
-  font-size: 4em;
-  letter-spacing: 0.1em;
+  font-size: 4.5em;
+  letter-spacing: 0.12em;
   margin-bottom: 5px;
   text-transform: uppercase;
+  color: #1d1d1f;
 }
 .page-desc { font-size: 1.1em; color: var(--text-secondary); font-weight: 300; }
 
-/* 컨텐츠 내부 스타일 (기존 유지) */
-h2 { border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-top: 50px; }
+/* 컨텐츠 내부 스타일 */
+h2 { border-bottom: 1px solid var(--divider-color); padding-bottom: 10px; margin-top: 60px; color:#1d1d1f; }
+h3 { margin-top: 40px; color:#1d1d1f; }
 a { color: var(--accent-color); text-decoration: none; }
 
 /* 카드 리스트 (중앙) */
-ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+ul { padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
 li.card-item {
   background: #fff;
   border: 1px solid #eaeaea;
-  border-radius: 16px;
+  border-radius: 18px;
   transition: transform 0.2s, box-shadow 0.2s;
   padding: 24px;
 }
-li.card-item:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-.card-title { display: block; font-weight: 700; font-size: 1.1em; margin-bottom: 8px; }
-.card-desc { font-size: 0.9em; color: #86868b; }
+li.card-item:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-color: var(--accent-color); }
+.card-title { display: block; font-weight: 700; font-size: 1.1em; margin-bottom: 8px; color: #1d1d1f; }
+.card-desc { font-size: 0.95em; color: #86868b; line-height: 1.5; }
 
 
-/* 3. 우측 갤러리 사이드바 (Right Panel) */
+/* 3. 우측 갤러리 사이드바 (Right Gallery) */
 .gallery-sidebar {
   background-color: #fff;
-  border-left: 1px solid var(--border-color); /* 구분선 */
-  padding: 30px;
-  overflow-y: auto; /* 갤러리만 따로 스크롤 */
+  padding: 40px;
+  overflow-y: auto;
+  
+  /* ⭐️ 메뉴를 아래로 내리기 (좌측과 라인 맞춤) */
+  padding-top: 180px; 
+}
+
+.gallery-header {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #1d1d1f; /* 제목 밑에 짧은 검은 선 */
 }
 
 .gallery-title {
-  font-size: 1.1em;
-  font-weight: 700;
-  margin-bottom: 25px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  font-size: 1.4em;
+  font-weight: 800;
+  color: #1d1d1f;
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-/* 갤러리 아이템 (ArtStation Style) */
-.gallery-item {
-  margin-bottom: 30px;
-}
+/* 갤러리 아이템 */
+.gallery-item { margin-bottom: 35px; }
 
 .gallery-thumb {
   width: 100%;
-  aspect-ratio: 16/9;
-  border-radius: 12px;
+  aspect-ratio: 16/10;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   margin-bottom: 12px;
   transition: transform 0.2s;
   cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
 }
-.gallery-thumb:hover { transform: scale(1.02); }
+.gallery-thumb:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
 
-.gallery-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
 
-.gallery-info strong {
-  display: block;
-  font-size: 0.95em;
-  color: #1d1d1f;
-  margin-bottom: 4px;
-}
-.gallery-info span {
-  font-size: 0.8em;
-  color: #86868b;
-  display: block;
-}
+.gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 4px; font-weight: 600; }
+.gallery-info span { font-size: 0.85em; color: #86868b; display: block; }
 
-/* 반응형 (모바일에서는 1단으로 변경) */
+/* 반응형 */
 @media (max-width: 1200px) {
-  .app-container { grid-template-columns: 240px 1fr; } /* 우측 갤러리 숨김 or 아래로 */
-  .gallery-sidebar { display: none; } /* 일단 태블릿에선 갤러리 숨김 */
+  .app-container { grid-template-columns: 260px 1fr; } 
+  .gallery-sidebar { display: none; } 
 }
 @media (max-width: 800px) {
   .app-container { grid-template-columns: 1fr; }
-  .sidebar { display: none; } /* 모바일에선 사이드바 숨김 (햄버거 메뉴 필요하지만 일단 생략) */
+  .sidebar { display: none; } 
+  .main-content { border-right: none; } /* 모바일엔 파란선 제거 */
 }
