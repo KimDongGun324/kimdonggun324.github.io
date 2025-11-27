@@ -52,16 +52,16 @@
       overflow-y: auto;
     }
 
-    /* 🔥 Sidebar Title (무게감 및 색상 조정) */
+    /* 🔥 Sidebar Title (Title Case 반영) */
     .sidebar-title {
       font-family: var(--font-stack);
       font-size: 1.4em;       
-      font-weight: 600;       /* 700 -> 600 (SemiBold)로 조정 */
-      color: #424245;         /* 1d1d1f -> 424245로 색상 연하게 */
+      font-weight: 600;       
+      color: #424245;         
       margin: 0 0 4px 0;
       letter-spacing: -0.03em;
       line-height: 1.2;
-      text-transform: uppercase;
+      /* text-transform: uppercase; <-- 제거됨 */
     }
     .sidebar-desc { 
       font-size: 0.9em; 
@@ -223,7 +223,7 @@
     <aside class="sidebar">
       <div class="sidebar-top">
         <h1 class="sidebar-title">
-          <a href="{{ "/" | relative_url }}">DONGGUN KIM</a>
+          <a href="{{ "/" | relative_url }}">DongGun Kim</a>
         </h1>
         <p class="sidebar-desc">Real-time Rendering & Shader R&D</p>
         
