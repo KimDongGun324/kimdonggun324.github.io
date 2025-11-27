@@ -16,6 +16,16 @@
 ## 🎯 Portfolio Highlights
 HLSL, PBR, Linear Algebra**를 중점적으로 연구하며, 펄어비스의 엔진 개발 문화에 기여할 수 있는 테크니컬 아티스트가 되기 위해 공부하고 있습니다.
 
+---
+
+## 🔥 Daily Dev Log
+매일의 학습 과정과 트러블 슈팅 기록은 아래 **Dev Log**에 년도/월별로 아카이빙하고 있습니다.
+
+### 👉 [📂 **Daily Dev Log (TIL) 입장하기**](./Daily_Log/README.md)
+> *"꾸준함이 비범함을 만든다."*
+
+---
+
 ### 1. Graphics Theory & Math
 단순 구현을 넘어 **"왜 이렇게 렌더링 되는가?"**에 대한 수학적/물리적 원리를 탐구합니다.
 - [📂 Real-Time Rendering 4.e Study Log](./01_Graphics_Theory/README.md)
@@ -31,10 +41,3 @@ HLSL, PBR, Linear Algebra**를 중점적으로 연구하며, 펄어비스의 엔
 - [📂 C++ 학습 목차 & 전체 리스트 보기](./03_Engine_CPP/README.md)
    - *스마트 포인터, 가상 함수, STL 등 C++ 및 언리얼 엔진 관련 심층 연구 모음*
 
----
-
-## 🔥 Daily Dev Log
-매일의 학습 과정과 트러블 슈팅 기록은 아래 **Dev Log**에 년도/월별로 아카이빙하고 있습니다.
-
-### 👉 [📂 **Daily Dev Log (TIL) 입장하기**](./Daily_Log/README.md)
-> *"꾸준함이 비범함을 만든다."*
