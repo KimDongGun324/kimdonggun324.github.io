@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Daily Study Log
-permalink: /Daily_Log/index.html   <-- 1. index.html까지 명시
+permalink: /Daily_Log/   <-- index.html 제거, 폴더 루트만 남김
 ---
 
 # 📅 Daily Study Log
