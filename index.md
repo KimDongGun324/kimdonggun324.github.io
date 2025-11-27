@@ -17,7 +17,10 @@
       <li class="text-card">
         <a href="./Daily_Log/README.md">
           <span class="text-card-title">Daily Study Log</span>
-          <span class="text-card-desc">"Consistency is the key."<br>2025년 11월부터의 기술 기록.</span>
+          <span class="text-card-desc">
+            "I never saved anything for the swim back."<br>
+            Shaders & Engine Core Log. Since 2025.11
+          </span>
         </a>
       </li>
     </ul>
