@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Daily Study Log
-// permalink: /Daily_Log/ 라인을 완전히 삭제합니다.
 ---
 
 #  Daily Study Log
