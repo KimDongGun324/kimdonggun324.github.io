@@ -1,0 +1,169 @@
+---
+---
+
+@import "{{ site.theme }}";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* ⚪ 1. Mac OS Clean Variables */
+:root {
+  --bg-app: #ffffff;
+  --bg-sidebar: #fbfbfd;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent-color: #0066cc;
+  --border-color: #e5e5e5;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0; padding: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary); background-color: var(--bg-app);
+  height: 100vh; overflow: hidden;
+}
+
+/* 전체 레이아웃 */
+.app-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+}
+
+/* ==============================
+   1. 좌측 사이드바 (Sidebar)
+   ============================== */
+.sidebar {
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 40px 30px; padding-top: 140px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  overflow-y: auto;
+}
+.sidebar-title {
+  font-family: 'Oswald', sans-serif; font-size: 1.6em; color: #1d1d1f;
+  margin-bottom: 10px; letter-spacing: 0.05em; line-height: 1.2;
+}
+.sidebar-desc { font-size: 0.9em; color: var(--text-secondary); margin-bottom: 50px; font-weight: 400; }
+
+/* 네비게이션 그룹 스타일 */
+.nav-group { margin-bottom: 25px; }
+.nav-header {
+  display: block; font-size: 0.75em; font-weight: 700; color: #999;
+  margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+.sidebar-nav ul { list-style: none; padding: 0; }
+.sidebar-nav li { margin-bottom: 8px; }
+.sidebar-nav a {
+  text-decoration: none; color: #424245; font-weight: 600; font-size: 0.95em;
+  transition: color 0.2s; display: flex; align-items: center;
+}
+.sidebar-nav a:hover { color: var(--accent-color); }
+
+.sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
+.profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
+.profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
+.tech-stack { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px; }
+.tech-badge {
+  background: #fff; color: #1d1d1f; padding: 3px 8px; border-radius: 6px;
+  font-size: 0.7em; font-weight: 600; border: 1px solid #e5e5e5;
+}
+.contact-link {
+  display: flex; align-items: center; margin-bottom: 8px;
+  color: #424245; font-size: 0.85em; font-weight: 500; transition: color 0.2s;
+}
+.contact-link:hover { color: var(--accent-color); text-decoration: none; }
+.icon { width: 18px; margin-right: 8px; text-align: center; }
+
+
+/* ==============================
+   2. 중앙 메인 컨텐츠 (3열 분할)
+   ============================== */
+.main-content {
+  padding: 60px 60px; 
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.main-header { 
+  text-align: center; 
+  margin-bottom: 60px; 
+  margin-top: 20px;
+  padding-bottom: 40px; 
+  border-bottom: 1px solid var(--border-color);
+}
+.page-title {
+  font-family: 'Oswald', sans-serif; font-size: 4em; letter-spacing: 0.1em;
+  margin-bottom: 5px; text-transform: uppercase; color: #1d1d1f;
+}
+.page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
+
+
+/* ⭐️ 3열 그리드 시스템 */
+.three-column-wrapper {
+  display: grid;
+  /* 1:1:1 비율로 균등 분할 */
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 40px; 
+  align-items: start;
+  max-width: 1800px; 
+  margin: 0 auto;
+}
+
+.column { display: flex; flex-direction: column; }
+
+/* 섹션 헤더 */
+.col-header {
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1d1d1f;
+  min-height: 50px;
+  display: flex;
+  align-items: end;
+}
+
+.col-title {
+  font-family: "Inter", -apple-system, sans-serif; 
+  font-size: 1.3em; 
+  font-weight: 700; 
+  color: #1d1d1f; 
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* 카드 스타일 */
+ul { padding: 0; list-style: none; margin: 0; }
+li.text-card {
+  background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
+  transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
+}
+li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
+.text-card-title { display: block; font-weight: 700; font-size: 1em; margin-bottom: 6px; color: #1d1d1f; }
+.text-card-desc { font-size: 0.9em; color: #86868b; line-height: 1.4; }
+a { text-decoration: none; color: inherit; }
+
+/* 갤러리 스타일 */
+.gallery-item { margin-bottom: 25px; }
+.gallery-thumb {
+  width: 100%; aspect-ratio: 16/9; border-radius: 10px;
+  overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 10px;
+  transition: transform 0.2s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
+}
+.gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 2px; font-weight: 600; }
+.gallery-info span { font-size: 0.85em; color: #86868b; }
+
+
+/* 반응형 */
+@media (max-width: 1400px) {
+  .three-column-wrapper { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px) {
+  .three-column-wrapper { grid-template-columns: 1fr; }
+  .app-container { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
