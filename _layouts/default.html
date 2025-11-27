@@ -86,8 +86,11 @@
     .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
 
     /* Home Menu */
-    .nav-home { margin-bottom: 35px; }
-    .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
+    <div class="nav-home">
+             <ul>
+               <li><a href="{{ "/" | relative_url }}">Home</a></li>
+             </ul>
+          </div>
 
     .nav-group { margin-bottom: 25px; }
     .nav-header {
