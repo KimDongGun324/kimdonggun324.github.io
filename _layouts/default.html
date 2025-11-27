@@ -183,9 +183,22 @@
     li.text-card {
       background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
       transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
+      /* 🔥 li.text-card에 position: relative를 주어 자식 <a> 태그가 상자를 덮도록 함 */
+      position: relative;
     }
+    
+    /* 🔥 a 태그를 상자 전체로 확장하여 클릭 가능하게 함 */
+    li.text-card a {
+      display: block;
+      padding: 20px; /* 원래 li에 있던 패딩을 a로 옮김 */
+      margin: -20px; /* a 태그가 li의 패딩 영역까지 덮도록 마진을 음수로 설정 */
+      height: 100%;
+      width: 100%;
+    }
+
     li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
     
+    /* 카드 내부 콘텐츠는 원래대로 보이도록 위치 보정 */
     .text-card-title { 
       display: block; font-weight: 700; font-size: 1em; 
       margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; 
@@ -376,7 +389,7 @@
             <div class="gallery-item">
               <a href="{{ "/03_Engine_CPP/README.html" | relative_url }}">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" alt="C++ Optimization">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit-crop" alt="C++ Optimization">
                 </div>
                 <div class="gallery-info">
                   <strong>C++ Memory Optimization</strong>
