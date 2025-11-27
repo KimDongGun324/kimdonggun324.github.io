@@ -85,14 +85,12 @@
     }
     .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
 
-    /* Home Menu */
-    <div class="nav-home">
-             <ul>
-               <li><a href="{{ "/" | relative_url }}">Home</a></li>
-             </ul>
-          </div>
+    /* Home 메뉴 🔥 Margin 수정됨: 35px -> 45px */
+    .nav-home { margin-bottom: 45px; }
+    .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
 
-    .nav-group { margin-bottom: 25px; }
+    /* 그룹 메뉴 🔥 Margin 수정됨: 25px -> 35px */
+    .nav-group { margin-bottom: 35px; }
     .nav-header {
       display: block; font-size: 0.75em; font-weight: 700; color: #999;
       margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;
@@ -422,7 +420,7 @@
             <div class="gallery-item">
               <a href="{{ "/02_Shader_Lab/Procedural.md" | relative_url }}">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit=crop" alt="Ice">
+                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit-crop" alt="Ice">
                 </div>
                 <div class="gallery-info">
                   <strong>Ice Material</strong>
