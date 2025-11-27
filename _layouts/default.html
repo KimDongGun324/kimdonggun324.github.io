@@ -19,7 +19,7 @@
       --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       
-      /* Font Stack */
+      /* Font Stack: Pretendard First */
       --font-stack: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     }
 
@@ -36,14 +36,14 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* Layout */
+    /* 전체 레이아웃 */
     .app-container {
       display: grid;
       grid-template-columns: 300px 1fr;
       height: 100vh;
     }
 
-    /* Sidebar */
+    /* 좌측 사이드바 */
     .sidebar {
       background-color: var(--bg-sidebar);
       border-right: 1px solid var(--border-color);
@@ -52,12 +52,12 @@
       overflow-y: auto;
     }
 
-    /* Sidebar Title */
+    /* 🔥 Sidebar Title (무게감 및 색상 조정) */
     .sidebar-title {
       font-family: var(--font-stack);
       font-size: 1.4em;       
-      font-weight: 700;       
-      color: #1d1d1f;
+      font-weight: 600;       /* 700 -> 600 (SemiBold)로 조정 */
+      color: #424245;         /* 1d1d1f -> 424245로 색상 연하게 */
       margin: 0 0 4px 0;
       letter-spacing: -0.03em;
       line-height: 1.2;
@@ -72,7 +72,7 @@
       letter-spacing: -0.01em;
     }
 
-    /* Navigation */
+    /* 네비게이션 */
     .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
     .sidebar-nav li { margin-bottom: 8px; }
     
@@ -86,7 +86,7 @@
     }
     .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
 
-    /* Home Menu */
+    /* Home 메뉴 */
     .nav-home { margin-bottom: 35px; }
     .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
 
@@ -96,7 +96,7 @@
       margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;
     }
 
-    /* Sidebar Bottom */
+    /* 하단 프로필 */
     .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
     .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
     .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
@@ -114,7 +114,7 @@
     }
     .contact-link:hover { color: var(--accent-color); }
 
-    /* Main Content */
+    /* 메인 컨텐츠 */
     .main-content {
       padding: 60px 60px; 
       overflow-y: auto;
@@ -132,12 +132,12 @@
       object-position: 50% 62%; transition: transform 0.5s ease;
     }
 
-    /* 🔥 Main Header 수정됨 (여백 확보) */
+    /* Main Header */
     .main-header { 
       text-align: center; 
-      margin-bottom: 80px;  /* 아래 컨텐츠와의 간격 */
-      margin-top: 30px;     /* 배너와의 간격 */
-      padding-bottom: 60px; /* 텍스트와 구분선 사이의 간격 (답답함 해소) */
+      margin-bottom: 80px;  
+      margin-top: 30px;     
+      padding-bottom: 60px; 
       border-bottom: 1px solid var(--border-color);
     }
     
@@ -147,18 +147,18 @@
       font-weight: 700;       
       font-size: 4em; 
       letter-spacing: 0.4em;  
-      margin: 0 0 25px 0;     /* 타이틀과 부제 사이 간격 넓힘 (10px -> 25px) */
+      margin: 0 0 25px 0;     
       text-transform: uppercase; 
       color: #1d1d1f;
       margin-right: -0.4em;   
     }
     
-    /* 🔥 부제 스타일 수정 (작고 세련되게) */
+    /* Subtitle Style */
     .page-desc { 
-      font-size: 1.0em;        /* 크기 살짝 줄임 (1.1 -> 1.0) */
+      font-size: 1.0em;        
       color: var(--text-secondary); 
       font-weight: 400; 
-      letter-spacing: 0.05em;  /* 자간 살짝 넓힘 (세련미) */
+      letter-spacing: 0.05em;  
     }
 
     /* Grid System */
