@@ -22,7 +22,7 @@ permalink: /
         </div>
         <ul style="margin-bottom: 50px; padding:0; list-style:none;">
             <li class="text-card" style="margin-bottom:20px;">
-                <a href="/dsl/" style="display:block; text-decoration:none; color:inherit; padding:10px;">
+                <a href="{{ '/dsl/' | relative_url }}" style="display:block; text-decoration:none; color:inherit; padding:10px;">
                     <span class="text-card-title">DSL</span>
                     <span class="text-card-desc">
                         Daily Study Log 간단 버전
