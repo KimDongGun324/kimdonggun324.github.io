@@ -1,5 +1,15 @@
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
 # 🌊 DongGun's Shader Lab
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 > **Real-time Rendering & Graphics Researcher**
 > *Master's Student @ Chonnam National Univ.*
 
@@ -20,10 +30,15 @@
 ### 1. Specular Calculation (Cook-Torrance)
 물리 기반 렌더링(PBR)을 위한 쿡-토런스 BRDF를 HLSL로 구현한 내용입니다.
 
-$$f_r = k_d f_{lambert} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)}$$
+$$
+f_r = k_d f_{lambert} + k_s \frac{DFG}{4(\omega_o \cdot n)(\omega_i \cdot n)}
+$$
+
+<br>
+
+**[HLSL Code Snippet]**
 
 ```hlsl
-// HLSL Code Snippet
 float3 SpecularBRDF(float3 N, float3 V, float3 L, float roughness, float3 F0)
 {
     float3 H = normalize(V + L);
