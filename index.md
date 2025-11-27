@@ -41,6 +41,24 @@
     </div>
 
     <div style="margin-top: 20px;">
+      <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700; text-transform:uppercase;">Shader Implementation</h4>
+      <ul>
+        <li class="text-card">
+          <a href="./02_Shader_Lab/README.md">
+            <span class="text-card-title">📂 Unity/Unreal Sketches</span>
+            <span class="text-card-desc">HLSL/GLSL 커스텀 셰이더 구현</span>
+          </a>
+        </li>
+        <li class="text-card">
+          <a href="./02_Shader_Lab/Procedural.md">
+            <span class="text-card-title">📂 Procedural Rendering</span>
+            <span class="text-card-desc">노이즈 알고리즘 절차적 텍스처링</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-top: 20px;">
       <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700; text-transform:uppercase;">C++ & Engine Architecture</h4>
       <ul>
         <li class="text-card">
