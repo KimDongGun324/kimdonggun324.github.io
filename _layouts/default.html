@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* 1. 기본 변수 (애플 스타일) */
+    /* 1. 기본 변수 */
     :root {
       --bg-app: #ffffff;
       --bg-sidebar: #fbfbfd;
@@ -18,8 +18,8 @@
       --text-secondary: #86868b;
       --accent-color: #0066cc;
       --border-color: #e5e5e5;
-      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-      --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     }
 
     * { box-sizing: border-box; }
@@ -33,7 +33,7 @@
 
     a { text-decoration: none; color: inherit; }
 
-    /* 2. 전체 레이아웃 */
+    /* 2. 전체 레이아웃: 좌측(300px) | 메인(나머지) */
     .app-container {
       display: grid;
       grid-template-columns: 300px 1fr;
@@ -93,16 +93,17 @@
       display: flex; flex-direction: column;
     }
 
-    /* ⭐️ [복구됨] 애플 스타일 배너 (둥근 모서리, 여백 있음) */
+    /* ⭐️ 메인 배너 스타일 */
     .main-banner {
-      width: 100%;
-      height: 350px; 
-      margin-bottom: 40px;
-      border-radius: 20px; /* 둥근 모서리 복구 */
+      width: calc(100% + 120px); 
+      margin-left: -60px;
+      margin-right: -60px;
+      margin-top: -60px; 
+      height: 300px; 
+      margin-bottom: 60px;
+      border-radius: 0; 
       overflow: hidden;
-      box-shadow: var(--hover-shadow); /* 부드러운 그림자 */
       flex-shrink: 0;
-      border: 1px solid rgba(0,0,0,0.02);
     }
     .main-banner img {
       width: 100%;
@@ -231,8 +232,8 @@
         </div>
         <div style="margin-top: 25px;">
           <div class="profile-header">Connect</div>
-          <a href="mailto:your-email@example.com" class="contact-link"><span class="icon">✉️</span> Email Me</a>
-          <a href="#" class="contact-link"><span class="icon">💼</span> LinkedIn</a>
+          <a href="mailto:your-email@example.com" class="contact-link">Email Me</a>
+          <a href="#" class="contact-link">LinkedIn</a>
         </div>
       </div>
     </aside>
