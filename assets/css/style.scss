@@ -3,134 +3,68 @@
 
 @import "{{ site.theme }}";
 
-/* 🌑 1. 펄어비스(검은사막) 스타일 컬러 팔레트 */
+/* 🌑 1. 펄어비스 컬러(Black & Gold) + 개발자 가독성 세팅 */
 :root {
-  --bg-color: #121212;       /* 더 깊은 검은색 (검은사막 배경) */
-  --text-color: #e0e0e0;     /* 기본 글자 */
-  --header-color: #ffffff;   /* 제목 */
-  --accent-color: #ffc800;   /* 펄어비스 포인트 컬러 (Gold/Yellow 계열) */
-  --link-color: #ffffff;     /* 링크는 흰색으로 깔끔하게 */
+  --bg-color: #121212;       /* 깊은 검은색 배경 */
+  --text-color: #e6e6e6;     /* 글자는 거의 흰색에 가깝게 (가독성 최우선) */
+  --header-color: #ffffff;   /* 제목은 쨍한 흰색 */
+  --accent-color: #ffc800;   /* 펄어비스 포인트 컬러 (Gold) */
+  --link-color: #58a6ff;     /* 링크는 개발자에게 익숙한 파란색 (잘 보임) */
   --card-bg: #1e1e1e;        /* 카드 배경 */
-  --hover-bg: #2a2a2a;       /* 마우스 올렸을 때 배경 */
+  --border-color: #30363d;   /* 깃허브 다크모드와 유사한 테두리 색 */
 }
 
-/* 🏗️ 2. 전체 레이아웃 */
+/* 🏗️ 2. 기본 레이아웃 */
 body {
   background-color: var(--bg-color) !important;
   color: var(--text-color) !important;
-  font-family: 'Noto Sans KR', 'Segoe UI', sans-serif; /* 한글 폰트 최적화 */
-}
-
-/* 헤더 설명 글씨 */
-header p, .project-tagline {
-  color: #999999 !important;
-}
-
-/* 본문 글씨 */
-p, li, span { color: var(--text-color); }
-
-/* 인용구 스타일 (펄어비스 뉴스 스타일) */
-blockquote {
-  color: #cccccc !important;
-  border-left: 3px solid var(--accent-color) !important;
-  background-color: transparent; /* 배경 투명하게 */
-  padding: 5px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
 }
 
 .wrapper {
-  max-width: 92% !important; /* 화면 더 넓게 */
-  width: 92% !important;
+  max-width: 90% !important;
+  width: 90% !important;
   margin: 0 auto;
 }
 
 section {
-  width: 100% !important; /* 사이드바 없애고 전체 폭 사용 (공홈 느낌) */
-  max-width: 1600px !important;
+  width: 100% !important;
+  max-width: 1200px !important; /* 글 읽기 편하게 너무 넓게 안 퍼지게 제한 */
   float: none !important;
   margin: 0 auto;
 }
 
-/* 🎨 3. 타이틀 디자인 (심플 & 볼드) */
-h1, h2, h3 {
-  color: var(--header-color) !important;
-  border: none !important;
-  font-weight: 700;
-}
-
+/* 🎨 3. 타이틀 및 폰트 크기 */
 h1 {
-  font-size: 3em; /* 제목 아주 크게 */
-  letter-spacing: -1px;
-  margin-bottom: 40px;
-  text-align: center; /* 가운데 정렬 (공홈 느낌) */
+  font-size: 2.5em;
+  font-weight: 800;
+  color: var(--header-color) !important;
+  border-bottom: none;
+  margin-bottom: 10px;
+  text-align: left; /* 다시 왼쪽 정렬 (글 읽기는 왼쪽부터가 편함) */
 }
 
 h2 {
-  margin-top: 60px;
-  margin-bottom: 20px;
   font-size: 1.8em;
-  position: relative;
-  padding-left: 15px;
+  border-bottom: 1px solid var(--border-color) !important;
+  padding-bottom: 10px;
+  margin-top: 50px;
+  color: var(--accent-color) !important; /* 섹션 제목을 금색으로 포인트 */
 }
 
-/* 제목 옆에 작은 포인트 바 */
-h2::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 5px;
-  height: 25px;
-  width: 4px;
-  background-color: var(--accent-color);
-}
-
-/* 🔗 4. 링크 디자인 */
+/* 🔗 4. 링크 가독성 */
 a { color: var(--link-color) !important; text-decoration: none; }
-a:hover { color: var(--accent-color) !important; text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--accent-color) !important; }
 
-/* 📦 5. 카드 뉴스 스타일 (스크린샷의 NEWS 섹션 재현) */
+/* 📦 5. 카드 리스트 (다시 박스 형태로 복귀 - 가독성 때문) */
 ul {
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); /* 카드 크기 키움 */
-  gap: 24px; /* 간격 넓힘 */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* 반응형 그리드 */
+  gap: 20px;
 }
 
 li {
-  background-color: transparent; /* 배경 투명 (글자만 둥둥 뜨게) */
-  padding: 0;
-  border: none; /* 테두리 제거 (핵심!) */
-  border-bottom: 1px solid #333; /* 하단에만 얇은 선 */
-  transition: transform 0.3s ease;
-  padding-bottom: 20px;
-}
-
-li:hover {
-  transform: translateY(-5px);
-  border-bottom: 1px solid var(--accent-color); /* 호버시 하단 선 색상 변경 */
-}
-
-/* 카드 제목 */
-li strong {
-    display: block;
-    font-size: 1.4em;
-    margin-bottom: 10px;
-    color: #ffffff !important;
-}
-
-/* 카드 설명 */
-li p {
-  font-size: 0.95em;
-  color: #888888 !important;
-  line-height: 1.6;
-}
-
-/* 📂 6. 폴더 스타일 (심플하게) */
-details {
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  padding: 15px;
-  border-radius: 4px;
-}
-
-summary { color: #fff !important; font-weight: bold; }
+  background-
