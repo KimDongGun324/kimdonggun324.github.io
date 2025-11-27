@@ -1,54 +1,42 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-  <title>{{ site.title | default: site.github.repository_name }}</title>
-</head>
-<body>
-
-  <div class="app-container">
-    
-    <aside class="sidebar">
+<aside class="sidebar">
       <div class="sidebar-top">
         <h1 class="sidebar-title" style="letter-spacing: 0.05em;">
           <a href="{{ "/" | relative_url }}" style="color:inherit; text-decoration:none;">DONGGUN KIM</a>
         </h1>
-        <p class="sidebar-desc" style="margin-top:5px; color:#666;">
-          Graphics R&D & Tech Artist
+        <p class="sidebar-desc" style="margin-top:8px; color:#86868b; font-size:0.85em; line-height:1.4;">
+          Graphics R&D<br>& Tech Artist
         </p>
         
         <nav class="sidebar-nav">
           
           <div class="nav-group">
-            <span class="nav-header">ABOUT</span>
+            <span class="nav-header">About</span>
             <ul>
-              <li><a href="{{ "/" | relative_url }}">🏠 Home</a></li>
-              <li><a href="https://github.com/kimdonggun324" target="_blank">💻 GitHub Profile</a></li>
+              <li><a href="{{ "/" | relative_url }}">Home</a></li>
+              <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub Profile</a></li>
             </ul>
           </div>
 
           <div class="nav-group">
-            <span class="nav-header">DEV LOG</span>
+            <span class="nav-header">Dev Log</span>
             <ul>
-              <li><a href="{{ "/Daily_Log/README.md" | relative_url }}">🚀 Daily Dev Log (TIL)</a></li>
+              <li><a href="{{ "/Daily_Log/README.md" | relative_url }}">Daily Study Log</a></li>
             </ul>
           </div>
 
           <div class="nav-group">
-            <span class="nav-header">RESEARCH LAB</span>
+            <span class="nav-header">Research Lab</span>
             <ul>
-              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">📐 Graphics Theory</a></li>
-              <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">🎨 Shader Implementation</a></li>
-              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">⚙️ Engine Architecture</a></li>
+              <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
+              <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
+              <li><a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">Engine Architecture</a></li>
             </ul>
           </div>
 
           <div class="nav-group">
-            <span class="nav-header">GALLERY</span>
+            <span class="nav-header">Gallery</span>
             <ul>
-              <li><a href="#">✨ Visual Experiments</a></li>
+              <li><a href="#">Visual Experiments</a></li>
             </ul>
           </div>
 
@@ -70,32 +58,14 @@
           <span class="tech-badge">Python</span>
         </div>
 
-        <div style="margin-top: 20px;">
-          <div class="profile-header">Connect</div>
+        <div style="margin-top: 25px;">
+          <div class="profile-header">Contact</div>
           <a href="mailto:your-email@example.com" class="contact-link">
-            <span class="icon">✉️</span> Email Me
+            Email Me
           </a>
           <a href="#" class="contact-link">
-            <span class="icon">💼</span> LinkedIn
+            LinkedIn
           </a>
         </div>
       </div>
     </aside>
-
-    <main class="main-content">
-      
-      <header class="main-header">
-        <h1 class="page-title">NULL ABYSS</h1>
-        <span class="page-desc">Graphics Research Lab by DongGun</span>
-      </header>
-      
-      <div class="content-body">
-        {{ content }}
-      </div>
-
-    </main>
-
-  </div>
-
-</body>
-</html>
