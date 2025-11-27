@@ -85,11 +85,11 @@
     }
     .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
 
-    /* Home 메뉴 🔥 Margin 수정됨: 35px -> 45px */
+    /* Home 메뉴 */
     .nav-home { margin-bottom: 45px; }
     .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
 
-    /* 그룹 메뉴 🔥 Margin 수정됨: 25px -> 35px */
+    /* 그룹 메뉴 */
     .nav-group { margin-bottom: 35px; }
     .nav-header {
       display: block; font-size: 0.75em; font-weight: 700; color: #999;
@@ -187,9 +187,9 @@
       position: relative;
     }
     li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
-    /* 클릭 영역 확장 CSS */
-    li.text-card a { display: block; padding: 20px; margin: -20px; height: 100%; width: 100%; position: absolute; top: 0; left: 0; }
-    
+    /* 클릭 영역 확장 CSS */
+    li.text-card a { display: block; padding: 20px; margin: -20px; height: 100%; width: 100%; position: absolute; top: 0; left: 0; }
+    
     .text-card-title { 
       display: block; font-weight: 700; font-size: 1em; 
       margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; 
@@ -249,7 +249,7 @@
           <div class="nav-group">
             <span class="nav-header">Dev Log</span>
             <ul>
-              <li><a href="{{ "/Daily_Log.html" | relative_url }}">Daily Study Log</a></li> 
+              <li><a href="{{ "/Daily_Log/" | relative_url }}">Daily Study Log</a></li> 
             </ul>
           </div>
           <div class="nav-group">
@@ -325,7 +325,7 @@
             
             <ul style="margin-bottom: 50px;">
               <li class="text-card">
-                <a href="{{ "/Daily_Log.html" | relative_url }}">
+                <a href="{{ "/Daily_Log/" | relative_url }}">
                   <span class="text-card-title">Daily Study Log</span>
                   <span class="text-card-desc">
                     "I never saved anything for the swim back."<br>
@@ -380,7 +380,7 @@
             <div class="gallery-item">
               <a href="{{ "/Engine_Core.html" | relative_url }}">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" alt="C++ Optimization">
+                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit-crop" alt="C++ Optimization">
                 </div>
                 <div class="gallery-info">
                   <strong>C++ Memory Optimization</strong>
@@ -423,7 +423,7 @@
             <div class="gallery-item">
               <a href="{{ "/Shader_Implementation.html" | relative_url }}">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit-crop" alt="Ice">
+                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto-format&fit-crop" alt="Ice">
                 </div>
                 <div class="gallery-info">
                   <strong>Ice Material</strong>
@@ -435,7 +435,7 @@
             <div class="gallery-item">
               <a href="#">
                 <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit-crop" alt="PBR">
+                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto-format&fit-crop" alt="PBR">
                 </div>
                 <div class="gallery-info">
                   <strong>Custom PBR Model</strong>
