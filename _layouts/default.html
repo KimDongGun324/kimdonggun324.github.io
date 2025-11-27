@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* 1. Mac OS Minimal Variables */
+    /* 1. 기본 변수 */
     :root {
       --bg-app: #ffffff;
       --bg-sidebar: #fbfbfd;
@@ -52,20 +52,24 @@
       font-family: 'Oswald', sans-serif; font-size: 1.6em; color: #1d1d1f;
       margin: 0 0 5px 0; letter-spacing: 0.05em; line-height: 1.2;
     }
-    .sidebar-desc { font-size: 0.85em; color: var(--text-secondary); margin-bottom: 50px; font-weight: 400; margin-top:0; line-height: 1.4; }
+    /* ⭐️ 수정: 한 줄로 강제 표시 (white-space: nowrap) */
+    .sidebar-desc { 
+      font-size: 0.85em; color: var(--text-secondary); margin-bottom: 50px; font-weight: 400; margin-top:0; 
+      white-space: nowrap; 
+    }
 
-    .nav-group { margin-bottom: 30px; }
+    .nav-group { margin-bottom: 25px; }
     .nav-header {
-      display: block; font-size: 0.7em; font-weight: 700; color: #999;
+      display: block; font-size: 0.75em; font-weight: 700; color: #999;
       margin-bottom: 10px; letter-spacing: 0.05em; text-transform: uppercase;
     }
     .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
-    .sidebar-nav li { margin-bottom: 6px; }
+    .sidebar-nav li { margin-bottom: 8px; }
     .sidebar-nav a {
-      color: #424245; font-weight: 500; font-size: 0.95em;
-      transition: color 0.2s; display: block;
+      color: #424245; font-weight: 600; font-size: 0.95em;
+      transition: color 0.2s; display: flex; align-items: center;
     }
-    .sidebar-nav a:hover { color: #1d1d1f; transform: translateX(2px); transition: transform 0.2s; }
+    .sidebar-nav a:hover { color: var(--accent-color); }
 
     .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
     .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
@@ -76,10 +80,11 @@
       font-size: 0.7em; font-weight: 600; border: 1px solid #e5e5e5;
     }
     .contact-link {
-      display: block; margin-bottom: 6px;
+      display: flex; align-items: center; margin-bottom: 8px;
       color: #424245; font-size: 0.85em; font-weight: 500; transition: color 0.2s;
     }
-    .contact-link:hover { color: var(--accent-color); text-decoration: underline; }
+    .contact-link:hover { color: var(--accent-color); }
+    .icon { width: 18px; margin-right: 8px; text-align: center; }
 
     /* 4. 중앙 메인 컨텐츠 */
     .main-content {
@@ -97,46 +102,43 @@
     }
     .page-desc { font-size: 1em; color: var(--text-secondary); font-weight: 300; }
 
-    /* ⭐️ 2열 분할 레이아웃 (좌:글 / 우:그림) */
-    .content-split-wrapper {
+    /* ⭐️ 3열 그리드 (비율 조정: 텍스트 열을 조금 더 넓게 1.2fr) */
+    .three-column-wrapper {
       display: grid;
-      grid-template-columns: minmax(500px, 1.3fr) minmax(380px, 1fr); 
-      gap: 60px; 
+      grid-template-columns: 1.2fr 1fr 1fr; 
+      gap: 40px; 
       align-items: start;
-      max-width: 1600px; 
+      max-width: 1800px; 
       margin: 0 auto;
     }
+    .column { display: flex; flex-direction: column; }
 
-    /* 컬럼 공통 */
+    /* 섹션 헤더 (애플 스타일 폰트) */
     .col-header {
-      margin-bottom: 20px; padding-bottom: 10px;
-      border-bottom: 1px solid #1d1d1f;
+      margin-bottom: 25px; padding-bottom: 12px;
+      border-bottom: 1px solid #1d1d1f; min-height: 50px;
+      display: flex; align-items: end;
     }
     .col-title {
-      font-family: "Inter", sans-serif; font-size: 1.1em; font-weight: 700; 
-      color: #1d1d1f; margin: 0; text-transform: uppercase; letter-spacing: 0.05em;
+      font-family: "Inter", sans-serif; font-size: 1.25em; font-weight: 700; 
+      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
     }
 
-    /* 텍스트 카드 스타일 (좌측) */
-    .text-section { margin-bottom: 40px; }
-    .text-section h4 {
-      font-size: 0.85em; color: #86868b; margin-bottom: 12px; 
-      font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-    }
+    /* 카드 스타일 */
     ul { padding: 0; list-style: none; margin: 0; }
     li.text-card {
       background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
-      transition: all 0.2s ease; padding: 20px; margin-bottom: 12px;
+      transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
     }
-    li.text-card:hover { transform: translateY(-2px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
-    .text-card-title { display: block; font-weight: 600; font-size: 1em; margin-bottom: 4px; color: #1d1d1f; }
+    li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
+    .text-card-title { display: block; font-weight: 700; font-size: 1em; margin-bottom: 6px; color: #1d1d1f; }
     .text-card-desc { font-size: 0.9em; color: #86868b; line-height: 1.4; }
 
-    /* 갤러리 스타일 (우측) */
-    .gallery-item { margin-bottom: 30px; }
+    /* 갤러리 스타일 */
+    .gallery-item { margin-bottom: 25px; }
     .gallery-thumb {
       width: 100%; aspect-ratio: 16/9; border-radius: 10px;
-      overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 12px;
+      overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 10px;
       transition: transform 0.2s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
     }
     .gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
@@ -144,8 +146,9 @@
     .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 2px; font-weight: 600; }
     .gallery-info span { font-size: 0.85em; color: #86868b; }
 
-    @media (max-width: 1200px) { .content-split-wrapper { grid-template-columns: 1fr; } }
+    @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 900px) {
+      .three-column-wrapper { grid-template-columns: 1fr; }
       .app-container { grid-template-columns: 1fr; }
       .sidebar { display: none; }
     }
@@ -160,7 +163,7 @@
         <h1 class="sidebar-title">
           <a href="{{ "/" | relative_url }}">DONGGUN KIM</a>
         </h1>
-        <p class="sidebar-desc">Real-time Rendering<br>& Shader R&D</p>
+        <p class="sidebar-desc">Real-time Rendering & Shader R&D</p>
         
         <nav class="sidebar-nav">
           <div class="nav-group">
@@ -178,7 +181,7 @@
             </ul>
           </div>
           <div class="nav-group">
-            <span class="nav-header">Research Tracks</span>
+            <span class="nav-header">RESEARCH</span>
             <ul>
               <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
               <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
@@ -209,8 +212,8 @@
         </div>
         <div style="margin-top: 25px;">
           <div class="profile-header">Connect</div>
-          <a href="mailto:your-email@example.com" class="contact-link">Email Me</a>
-          <a href="#" class="contact-link">LinkedIn</a>
+          <a href="mailto:your-email@example.com" class="contact-link"><span class="icon">✉️</span> Email Me</a>
+          <a href="#" class="contact-link"><span class="icon">💼</span> LinkedIn</a>
         </div>
       </div>
     </aside>
