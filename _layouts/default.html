@@ -63,7 +63,7 @@
     .sidebar-nav li { margin-bottom: 8px; }
     .sidebar-nav a {
       color: #424245; font-weight: 600; font-size: 0.95em;
-      transition: color 0.2s; display: flex; align-items: center;
+      transition: color 0.2s; display: block; /* 블록으로 변경하여 클릭 영역 확보 */
     }
     .sidebar-nav a:hover { color: var(--accent-color); }
 
@@ -76,11 +76,10 @@
       font-size: 0.7em; font-weight: 600; border: 1px solid #e5e5e5;
     }
     .contact-link {
-      display: flex; align-items: center; margin-bottom: 8px;
+      display: block; margin-bottom: 8px;
       color: #424245; font-size: 0.85em; font-weight: 500; transition: color 0.2s;
     }
-    .contact-link:hover { color: var(--accent-color); }
-    .icon { width: 18px; margin-right: 8px; text-align: center; }
+    .contact-link:hover { color: var(--accent-color); text-decoration: underline; }
 
     /* 4. 중앙 메인 컨텐츠 */
     .main-content {
@@ -109,21 +108,14 @@
     }
     .column { display: flex; flex-direction: column; }
 
-    /* ⭐️ 섹션 헤더 (폰트 수정 완료: 애플 스타일) */
     .col-header {
       margin-bottom: 25px; padding-bottom: 12px;
       border-bottom: 1px solid #1d1d1f; min-height: 50px;
       display: flex; align-items: end;
     }
     .col-title {
-      /* Oswald 제거 -> Inter 적용 */
-      font-family: "Inter", -apple-system, sans-serif; 
-      font-size: 1.25em; /* 크기 적절하게 */
-      font-weight: 700; /* 굵게 */
-      color: #1d1d1f; 
-      margin: 0; 
-      letter-spacing: -0.02em; /* 자간 좁게 */
-      text-transform: none; /* 대문자 강제 해제 */
+      font-family: "Inter", sans-serif; font-size: 1.3em; font-weight: 700; 
+      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
     }
 
     /* 카드 스타일 */
@@ -183,7 +175,7 @@
             </ul>
           </div>
           <div class="nav-group">
-            <span class="nav-header">RESEARCH</span>
+            <span class="nav-header">Research</span>
             <ul>
               <li><a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">Graphics Theory</a></li>
               <li><a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">Shader Implementation</a></li>
@@ -213,8 +205,8 @@
         </div>
         <div style="margin-top: 25px;">
           <div class="profile-header">Connect</div>
-          <a href="mailto:your-email@example.com" class="contact-link"><span class="icon">✉️</span> Email Me</a>
-          <a href="#" class="contact-link"><span class="icon">💼</span> LinkedIn</a>
+          <a href="mailto:your-email@example.com" class="contact-link">Email Me</a>
+          <a href="#" class="contact-link">LinkedIn</a>
         </div>
       </div>
     </aside>
