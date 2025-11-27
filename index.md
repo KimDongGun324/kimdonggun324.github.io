@@ -22,8 +22,8 @@
       </li>
     </ul>
 
-    <div style="margin-top: 30px;">
-      <h4 style="font-size:0.9em; color:#86868b; margin-bottom:15px; text-transform:uppercase; letter-spacing:0.05em;">Theory & Math</h4>
+    <div style="margin-top: 40px;">
+      <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700;">Graphics Theory & Math</h4>
       <ul>
         <li class="text-card">
           <a href="./01_Graphics_Theory/README.md">
@@ -35,6 +35,24 @@
           <a href="./01_Graphics_Theory/Math_Physics.md">
             <span class="text-card-title">📂 Linear Algebra</span>
             <span class="text-card-desc">셰이더 연산 필수 선형대수학</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <h4 style="font-size:0.95em; color:#1d1d1f; margin-bottom:15px; font-weight:700;">C++ & Engine Architecture</h4>
+      <ul>
+        <li class="text-card">
+          <a href="./03_Engine_CPP/README.md">
+            <span class="text-card-title">📂 C++ Deep Dive</span>
+            <span class="text-card-desc">메모리 관리 및 성능 최적화 기법</span>
+          </a>
+        </li>
+        <li class="text-card">
+          <a href="./03_Engine_CPP/UE5_Analysis.md">
+            <span class="text-card-title">📂 Unreal Engine Analysis</span>
+            <span class="text-card-desc">언리얼 엔진 5 소스 코드 분석</span>
           </a>
         </li>
       </ul>
