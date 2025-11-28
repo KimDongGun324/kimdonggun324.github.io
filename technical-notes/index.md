@@ -6,6 +6,7 @@ permalink: /technical-notes/
 
 <style>
   /* ================= Global Layout & Reset ================= */
+  /* 이 페이지에서만 사용되는 스타일을 정의합니다. */
   body, .markdown-body {
     background-color: #ffffff !important; 
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
@@ -16,14 +17,15 @@ permalink: /technical-notes/
     max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
   }
   
-/* ================= Main Page Container (중앙 정렬로 수정) ================= */
+/* ================= Main Page Container (중앙 정렬 및 여백 통일) ================= */
 .page-container {
-  max-width: 1250px; /* ⭐ 콘텐츠 최대 너비 조정 */
+  /* Daily Study Log의 기본 컨테이너 폭과 유사하게 설정 */
+  max-width: 1250px; 
   
-  /* 🔥 FIX 1: 왼쪽 밀림 현상 해결 (중앙 정렬 활성화) */
+  /* FIX 1: 왼쪽 밀림 현상 해결 (중앙 정렬 활성화) */
   margin: 40px auto; /* 상하 40px, 좌우 자동(중앙 정렬) */
   
-  /* 좌우 패딩을 기본 레이아웃과 동일하게 50px로 설정하여 여백 불일치 해결 */
+  /* FIX 2: 좌측 여백을 메인 레이아웃(50px)과 유사하게 설정하여 불일치 해결 */
   padding: 0 50px; 
     
     background-color: transparent;
@@ -37,7 +39,7 @@ permalink: /technical-notes/
   .page-intro {
     font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
     
-    /* ⭐ FIX 2: 텍스트 블록 중앙 정렬 */
+    /* 텍스트 블록 중앙 정렬 */
     margin: 0 auto 40px auto; 
     
     word-break: keep-all; 
@@ -48,7 +50,7 @@ permalink: /technical-notes/
   /* ================= Filter Buttons ================= */
   .filter-container { 
     margin-bottom: 40px; display: flex; gap: 12px; flex-wrap: wrap; 
-    /* ⭐ FIX 3: 버튼 중앙 정렬 */
+    /* FIX 3: 버튼 중앙 정렬 */
     justify-content: center; 
   }
   .filter-btn {
@@ -63,11 +65,11 @@ permalink: /technical-notes/
   /* ================= Grid Layout (4열 고정 & 중앙 정렬) ================= */
   .bento-grid {
     display: grid;
-    /* ⭐ FIX 4: 5열 대신 4열로 조정하여 카드 크기 확장 */
+    /* FIX 4: 5열 대신 4열로 조정하여 카드 크기 확장 */
     grid-template-columns: repeat(4, 1fr); 
     gap: 30px;
     margin-bottom: 60px;
-    /* justify-content: start; 삭제됨 - 중앙 정렬은 page-container가 담당 */
+    /* 중앙 정렬을 위해 justify-content: start; 삭제 */
   }
 
   /* 반응형 미디어 쿼리 */
@@ -98,7 +100,7 @@ permalink: /technical-notes/
   /* 썸네일 (흰색 배경) */
   .card-thumb {
     width: 100%; 
-    /* ⭐ FIX 5: 이미지 높이 확장 */
+    /* FIX 5: 이미지 높이 확장 */
     height: 240px; 
     background-color: #ffffff; 
     position: relative; 
@@ -135,7 +137,7 @@ permalink: /technical-notes/
   <div class="bento-grid">
       <article class="bento-card" data-tags="implementation">
       <div class="card-thumb">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500" alt="Ocean">
+        <img src="https://images.unsplash.com/photo-1618005182384-a3a8bd57fbe?q=80&w=500" alt="Ocean">
       </div>
       <div class="card-info">
         <span class="bento-tag tag-impl">Implementation</span>
