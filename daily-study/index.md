@@ -261,36 +261,67 @@ permalink: /daily-study/
 
 <div id="preview-popup" class="preview-popup"><img src="" id="preview-img"></div>
 
+<div id="preview-popup" class="preview-popup"><img src="" id="preview-img"></div>
+
 <script>
-  // 1. 잔디 심기 (2025: 11/27 ~ 12/31, 2026: 빈 잔디)
-  function generateHeatmap(elementId, startDateStr, endDateStr, activeDates = []) {
+  // 1. 잔디 심기 (Heatmap) - 점수 기반 (1~4단계)
+  function generateHeatmap(elementId, startDateStr, endDateStr, studyData = {}) {
     const grid = document.getElementById(elementId);
     const startDate = new Date(startDateStr);
     const endDate = new Date(endDateStr);
     
+    // 날짜 루프
     for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
       const box = document.createElement('div');
       box.className = 'day-box';
+      
+      // 날짜 문자열 (YYYY-MM-DD)
+      // 한국 시간 기준 이슈 방지를 위해 문자열 처리로 통일
       const dateStr = d.toISOString().split('T')[0];
+      
+      // 마우스 올리면 날짜 뜨게
       box.setAttribute('title', dateStr);
       
-      // activeDates에 있는 날짜만 색칠
-      if (activeDates.includes(dateStr)) {
-        const levels = ['day-l1', 'day-l2', 'day-l3', 'day-l4'];
-        box.classList.add(levels[Math.floor(Math.random() * 4)]);
+      // 데이터가 있는지 확인 (점수 가져오기)
+      const level = studyData[dateStr]; 
+
+      if (level) {
+        // level이 1~4라면 day-l1 ~ day-l4 클래스 추가
+        box.classList.add('day-l' + level);
+        // 마우스 올렸을 때 "날짜 (N단계)" 라고 뜨게 함
+        box.setAttribute('title', `${dateStr} (Lv.${level})`);
       }
+      
       grid.appendChild(box);
     }
   }
 
-  // 2025년: 11월 27일부터 생성 + 기록 표시
-  generateHeatmap('heatmap-grid-2025', '2025-11-27', '2025-12-31', ['2025-11-27', '2025-11-28']);
+/* 🎨 잔디 색상 규칙 (레벨)
+앞으로 이렇게 숫자를 입력하시면 됩니다.
+
+1단계 (연두색): 1 (가볍게 공부)
+2단계 (초록색): 2 (보통)
+3단계 (진한 녹색): 3 (열심히 함)
+4단계 (매우 진한 녹색): 4 (불태웠다 🔥)*/
   
-  // 2026년: 1월 1일부터 생성 + 깨끗한 빈 잔디 (데이터 없음)
-  generateHeatmap('heatmap-grid-2026', '2026-01-01', '2026-12-31', []);
+  // 🔥 [여기서 수정하세요!] 2025년 공부 기록 (날짜 : 점수)
+  const data2025 = {
+    '2025-11-27': 4,  // 1단계 (블로그 개설)
+    '2025-11-28': 1,  // 4단계 (오늘 완전 열심히 함!)
+    // '2025-11-29': 3, <-- 내일 공부하고 이렇게 추가하면 됨
+  };
+
+  // 🔥 2026년 공부 기록 (아직 비워둠)
+  const data2026 = {
+    // '2026-01-01': 4, 
+  };
+
+  // 실행 (함수 호출)
+  generateHeatmap('heatmap-grid-2025', '2025-11-27', '2025-12-31', data2025);
+  generateHeatmap('heatmap-grid-2026', '2026-01-01', '2026-12-31', data2026);
 
 
-  // 2. 필터링 기능
+  // 2. 태그 필터링
   function filterLogs(tag) {
     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
@@ -310,7 +341,7 @@ permalink: /daily-study/
     });
   }
 
-  // 3. 호버 프리뷰 (안정화)
+  // 3. 호버 프리뷰
   const popup = document.getElementById('preview-popup');
   const previewImg = document.getElementById('preview-img');
   const links = document.querySelectorAll('.study-list li');
@@ -324,7 +355,6 @@ permalink: /daily-study/
       previewImg.src = imgSrc;
       popup.classList.add('show');
       
-      // 위치 보정
       const x = e.clientX + 20;
       const y = e.clientY + 20;
       popup.style.left = x + 'px';
