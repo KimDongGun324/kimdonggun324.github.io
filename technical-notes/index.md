@@ -7,94 +7,100 @@ permalink: /technical-notes/
 <style>
   /* ================= Global Layout & Reset ================= */
   body, .markdown-body {
-    background-color: #ffffff !important;
+    background-color: #ffffff !important; 
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
     color: #1d1d1f;
   }
+  
   .markdown-body {
     max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
   }
+  
+/* ================= Main Page Container (좌측 목차 옆으로 밀착) ================= */
+.page-container {
+  /* Daily Study Log의 기본 컨테이너 폭과 유사하게 설정 */
+  max-width: 1250px; 
+  margin: 40px auto; 
+  padding: 0 50px; /* 좌측 목차 옆으로 콘텐츠를 밀착시키기 위해 좌측 패딩 50px */
+  
+  text-align: left; /* 텍스트 정렬 유지 */
+}
 
-  /* ================= Main Page Container (좌측 목차 옆으로 밀착) ================= */
-  .page-container {
-    max-width: 100%; /* 너비를 100%로 설정하여 사이드바를 제외한 전체 영역 사용 */
-    margin: 40px 0 40px 0; /* 상하 40px, 좌우 0으로 설정하여 왼쪽 정렬 */
-    padding: 0 50px; /* ⭐ FIX 1: 좌측 목차 옆으로 콘텐츠를 밀착시키기 위해 좌측 패딩 50px */
-    text-align: left;
-  }
-
-  /* 페이지 설명 */
+  /* 페이지 설명 (수평 정렬 및 마진 조정) */
   .page-intro {
     font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
-    margin: 0 0 40px 0; /* 좌측 정렬 */
+    /* ⭐ FIX 1: 상단 H2 제목과 하단 내용의 수평 마진 불일치 해결 */
+    margin: 0 0 15px 0; /* 하단 마진 축소 */
     word-break: keep-all; 
     max-width: 800px;
   }
   .highlight-text { color: #1d1d1f; font-weight: 600; }
 
-  /* ================= Filter Buttons (두 번째 이미지처럼 디자인 변경) ================= */
+  /* ================= Filter Buttons (태그 디자인 및 정렬) ================= */
   .filter-container { 
-    margin-bottom: 40px; 
+    margin-bottom: 30px; /* 마진 축소 */
     display: flex; 
-    gap: 12px; 
+    gap: 10px; /* 갭 축소 */
     flex-wrap: wrap; 
-    justify-content: flex-start; /* ⭐ FIX 2: 버튼 왼쪽 정렬 */
+    justify-content: flex-start; 
   }
   .filter-btn {
-    padding: 8px 16px; /* ⭐ FIX 2: 패딩 줄여서 태그처럼 보이게 */
-    border-radius: 18px; /* ⭐ FIX 2: 둥근 모서리 */
+    padding: 6px 14px; 
+    border-radius: 18px; 
     border: 1px solid #d2d2d7;
     background: #ffffff; 
-    font-size: 0.9em; /* ⭐ FIX 2: 폰트 크기 조정 */
+    font-size: 0.85em; /* 폰트 크기 조정 */
     font-weight: 600; 
     color: #666; 
     cursor: pointer; 
     transition: all 0.2s ease;
-    -webkit-appearance: none; /* iOS Safari 버튼 스타일 초기화 */
-    -moz-appearance: none;    /* Firefox 버튼 스타일 초기화 */
-    appearance: none;         /* 일반적인 버튼 스타일 초기화 */
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
   }
   .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #86868b; }
   .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
 
-  /* ================= Grid Layout (세 번째 이미지처럼 4열 갤러리 복구) ================= */
+  /* ================= Grid Layout (5열 복구 및 크기 축소) ================= */
   .bento-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* ⭐ FIX 3: 4열 그리드 복구 */
-    gap: 30px;
+    /* ⭐ FIX 2: 5열 그리드로 강제 복구 (필수) */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 15px; /* ⭐ FIX 3: 5열을 위한 갭 축소 */
     margin-bottom: 60px;
   }
 
-  /* 반응형 미디어 쿼리 (화면 크기에 따라 열 개수 조정) */
+  /* 반응형 미디어 쿼리 (5열을 기준으로 재설정) */
   @media (max-width: 1400px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 1100px) { .bento-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 800px)  { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 500px)  { .bento-grid { grid-template-columns: 1fr; } }
 
-  /* ================= Card Style (세 번째 이미지처럼 깔끔하게) ================= */
+
+  /* ================= Card Style (크기 축소) ================= */
   .bento-card {
     background: #ffffff; 
     border: 1px solid #eaeaea; 
-    border-radius: 20px; /* ⭐ FIX 3: 둥근 모서리 */
+    border-radius: 16px; /* ⭐ FIX 4: 모서리 둥글기 미세 조정 */
     overflow: hidden; 
     position: relative; 
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex; 
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03); /* ⭐ 그림자 축소 */
   }
   .bento-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
+    transform: translateY(-5px); /* 호버 효과 축소 */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
     border-color: transparent; 
     z-index: 10;
   }
   .bento-card.hidden { display: none; }
 
-  /* 썸네일 (정사각형에 가깝도록 높이 조정) */
+  /* 썸네일 (이미지 영역 축소) */
   .card-thumb {
     width: 100%; 
-    height: 180px; /* ⭐ FIX 3: 갤러리 이미지 높이 조정 (약간 더 정사각형에 가깝게) */
+    height: 120px; /* ⭐ FIX 5: 썸네일 높이 대폭 축소 (120px) */
     background-color: #ffffff; 
     position: relative; 
     border-bottom: 1px solid rgba(0,0,0,0.05); 
@@ -102,11 +108,11 @@ permalink: /technical-notes/
   .card-thumb img {
     width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
   }
-  .bento-card:hover .card-thumb img { transform: scale(1.08); }
+  .bento-card:hover .card-thumb img { transform: scale(1.05); }
 
   /* 텍스트 내용 */
   .card-info { 
-    padding: 20px; /* ⭐ FIX 3: 카드 내부 패딩 조정 */
+    padding: 15px; /* ⭐ FIX 6: 카드 내부 패딩 축소 */
     background: #fff; 
     flex-grow: 1; 
     display: flex; 
@@ -114,44 +120,32 @@ permalink: /technical-notes/
   }
 
   .bento-tag {
-    font-size: 0.7em; 
+    font-size: 0.65em; /* 폰트 축소 */
     font-weight: 700;
     text-transform: uppercase; 
     letter-spacing: 0.05em; 
-    margin-bottom: 10px; /* ⭐ FIX 3: 태그 하단 마진 조정 */
-    display: inline-block;
+    margin-bottom: 8px; /* 마진 축소 */
   }
-  
-  /* 태그별 색상 (유지) */
-  .tag-impl { color: #0071e3; }
-  .tag-opt { color: #ff3b30; }
-  .tag-analysis { color: #af52de; }
-  .tag-workflow { color: #28cd41; }
 
   .bento-title {
-    font-size: 1.1em; /* ⭐ FIX 3: 제목 폰트 크기 조정 */
+    font-size: 1.1em; 
     font-weight: 700; 
     color: #1d1d1f; 
-    margin-bottom: 8px; /* ⭐ FIX 3: 제목 하단 마진 조정 */
+    margin-bottom: 6px; 
     line-height: 1.35;
     letter-spacing: -0.01em;
   }
 
   .bento-desc {
-    font-size: 0.85em; /* ⭐ FIX 3: 설명 폰트 크기 조정 */
+    font-size: 0.8em; /* 폰트 축소 */
     color: #86868b; 
     line-height: 1.5; 
-    margin-bottom: 15px; /* ⭐ FIX 3: 설명 하단 마진 조정 */
-    display: -webkit-box; 
-    -webkit-line-clamp: 3; 
-    -webkit-box-orient: vertical; 
-    overflow: hidden;
-    flex-grow: 1; 
+    margin-bottom: 15px; 
   }
   
   /* Read Note 링크 */
   .read-link {
-    font-size: 0.9em; 
+    font-size: 0.85em; /* 폰트 축소 */
     font-weight: 600; 
     color: #1d1d1f; 
     text-decoration: none;
@@ -161,9 +155,9 @@ permalink: /technical-notes/
     opacity: 0.8; 
     transition: all 0.2s;
   }
-  .read-link::after { content: '→'; margin-left: 6px; transition: margin-left 0.2s; }
+  .read-link::after { content: '→'; margin-left: 5px; transition: margin-left 0.2s; }
   .bento-card:hover .read-link { opacity: 1; color: #0071e3; }
-  .bento-card:hover .read-link::after { margin-left: 10px; }
+  .bento-card:hover .read-link::after { margin-left: 8px; }
 
   .card-link-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; opacity: 0; }
 
@@ -275,4 +269,3 @@ permalink: /technical-notes/
     });
   }
 </script>
-```http://googleusercontent.com/image_generation_content/1
