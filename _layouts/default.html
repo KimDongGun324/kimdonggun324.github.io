@@ -166,15 +166,19 @@
   background: #000; 
   position: relative;
   
-  /* ⭐ 최종 FIX: -1px 또는 -2px 마진을 주어 강제로 상단 여백 제거 */
-  margin-top: -2px !important; 
+  /* ⭐ 최종 FIX: -3px 대신 -5px로 늘려서 상단 공백 완전히 제거 */
+  margin-top: -5px !important; 
 }
-    .main-banner-img {
-      width: 100%; height: 100%; object-fit: cover; 
-      /* 상단 배너 이미지 위치 조정 유지 */
-      object-position: 50% 62% !important; 
-      opacity: 0.9; display: block;
-    }
+
+/* 이미지 스타일은 그대로 유지 */
+.main-banner-img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;  
+  object-position: 50% 50% !important; 
+  opacity: 0.9; 
+  display: block;
+}
 
     /* 메인 타이틀 영역 */
     .main-header-static { 
