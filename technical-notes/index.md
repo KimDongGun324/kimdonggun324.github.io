@@ -62,15 +62,14 @@ permalink: /technical-notes/
   .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #86868b; }
   .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
 
-  /* ================= Grid Layout (4열 고정 & 중앙 정렬) ================= */
-  .bento-grid {
-    display: grid;
-    /* FIX 4: 5열 대신 4열로 조정하여 카드 크기 확장 */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 30px;
-    margin-bottom: 60px;
-    /* 중앙 정렬을 위해 justify-content: start; 삭제 */
-  }
+/* ================= Grid Layout (4열 고정 & 중앙 정렬) ================= */
+.bento-grid {
+  display: grid; /* ⭐ FIX: 이 속성이 가장 중요합니다. */
+  grid-template-columns: repeat(4, 1fr); /* 4열로 배열 (이전 요청 반영) */
+  gap: 30px;
+  margin-bottom: 60px;
+  /* 중앙 정렬 속성은 이전 단계에서 유지 */
+}
 
   /* 반응형 미디어 쿼리 */
   @media (max-width: 1400px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -97,15 +96,14 @@ permalink: /technical-notes/
   }
   .bento-card.hidden { display: none; }
 
-  /* 썸네일 (흰색 배경) */
-  .card-thumb {
-    width: 100%; 
-    /* FIX 5: 이미지 높이 확장 */
-    height: 240px; 
-    background-color: #ffffff; 
-    position: relative; 
-    border-bottom: 1px solid rgba(0,0,0,0.05); 
-  }
+/* 썸네일 (흰색 배경) */
+.card-thumb {
+  width: 100%; 
+  height: 240px; /* ⭐ 높이가 240px로 설정되어 있는지 확인 (이미지 확장) */
+  background-color: #ffffff;  
+  position: relative;  
+  border-bottom: 1px solid rgba(0,0,0,0.05);  
+}
   .card-thumb img {
     width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
   }
