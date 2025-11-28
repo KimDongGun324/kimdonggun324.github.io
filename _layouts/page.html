@@ -2,6 +2,18 @@
 layout: default
 ---
 
+<header style="margin-bottom: 40px;">
+  <h1 style="font-size: 2.5em; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;">
+    {{ page.title }}
+  </h1>
+  
+  {% if page.desc %}
+    <p style="color: #86868b; font-size: 1.1em; margin: 0;">{{ page.desc }}</p>
+  {% endif %}
+  
+  <hr style="border: 0; border-top: 1px solid #e5e5e5; margin-top: 20px;">
+</header>
+
 <div class="markdown-body">
   {{ content }}
 </div>
