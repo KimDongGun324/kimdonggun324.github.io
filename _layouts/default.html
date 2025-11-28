@@ -158,14 +158,17 @@
   padding-top: 0 !important;
 }
 
-    /* 상단 배너 */
-    .main-banner-area {
-      width: 100%;
-      height: 600px;
-      overflow: hidden;
-      background: #000;
-      position: relative;
-    }
+/* 상단 배너 */
+.main-banner-area {
+  width: 100%; 
+  height: 600px;
+  overflow: hidden; 
+  background: #000; 
+  position: relative;
+  
+  /* ⭐ 최종 FIX: -1px 또는 -2px 마진을 주어 강제로 상단 여백 제거 */
+  margin-top: -2px !important; 
+}
     .main-banner-img {
       width: 100%; height: 100%; object-fit: cover; 
       /* 상단 배너 이미지 위치 조정 유지 */
