@@ -174,17 +174,17 @@
       background: #fff; 
     }
     
-    /* 1번 요청: NULL ABYSS 폰트 교체 (Archivo Black) 및 비율 조정 */
-    .page-title-static {
-      font-family: 'Archivo Black', 'Montserrat', sans-serif; /* Archivo Black을 최우선으로 적용 */
-      font-size: 3.8em; 
-      font-weight: 500; 
-      letter-spacing: 0.35em; /* Archivo Black에 맞게 자간 미세 조정 */
-      margin: 0; 
-      color: #000; 
-      text-transform: uppercase; 
-      margin-right: -0.35em; 
-    }
+/* 1번 요청: NULL ABYSS 폰트 교체 (Barlow Condensed) 및 비율 조정 */
+.page-title-static {
+  font-family: 'Barlow Condensed', 'Montserrat', sans-serif; /* 폰트 계열 교체 */
+  font-size: 3.8em; 
+  font-weight: 600; /* 500 대신 600으로 설정 (Barlow Condensed는 600이 얇은 편) */
+  letter-spacing: 0.4em; /* 0.35em 대신 0.4em으로 조정하여 세로로 긴 느낌 강화 */
+  margin: 0; 
+  color: #000; 
+  text-transform: uppercase; 
+  margin-right: -0.4em; /* letter-spacing 값에 맞춰 보정 */
+}
     
     /* 부제 아래 공백 추가 유지 */
     .page-desc-static { 
