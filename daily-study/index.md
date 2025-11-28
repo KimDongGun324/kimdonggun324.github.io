@@ -5,6 +5,12 @@ permalink: /daily-study/
 ---
 
 <style>
+  /* ⚡ 이 페이지에서만 폭 제한을 풉니다 (화면 꽉 채우기) */
+  .markdown-body {
+    max-width: 100% !important;
+    padding: 0 20px; /* 양옆에 살짝 여백 */
+  }
+
   /* 연도 제목 스타일 */
   .year-header {
     font-size: 1.8em; font-weight: 700; color: #1d1d1f;
@@ -16,11 +22,11 @@ permalink: /daily-study/
   /* 🔥 핵심: 가로 배치를 위한 그리드 시스템 */
   .year-grid {
     display: grid;
-    /* 카드의 최소 너비를 300px로 줄여서 더 잘 들어가게 수정 */
+    /* 카드의 최소 너비를 300px로 유지하되, 화면이 넓으면 3열, 4열로 늘어남 */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px; /* 카드 사이 간격 */
+    gap: 20px; 
     margin-bottom: 50px;
-    width: 100%; /* 전체 폭 사용 */
+    width: 100%; 
   }
 
   /* 월별 토글 카드 스타일 */
@@ -34,7 +40,7 @@ permalink: /daily-study/
     border-color: #d2d2d7; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   }
   
-  /* 토글 버튼 (요약) */
+  /* 토글 버튼 */
   summary {
     padding: 15px 20px; cursor: pointer; font-weight: 600; font-size: 1.05em;
     color: #1d1d1f; list-style: none; 
@@ -107,7 +113,10 @@ permalink: /daily-study/
     </ul>
   </details>
 
-</div> <h2 class="year-header">2026</h2>
+</div>
+
+
+<h2 class="year-header">2026</h2>
 
 <div class="year-grid">
   
@@ -132,10 +141,4 @@ permalink: /daily-study/
     </ul>
   </details>
 
-</div> ```
-
-### 💡 확인 포인트
-1.  **`<div class="year-grid"> ... </div>`**: 이 태그가 `<details>` 태그들을 꼭 감싸고 있는지 확인해주세요. 이게 없으면 세로로 쌓입니다.
-2.  **`minmax(300px, 1fr)`**: 카드 최소 너비를 350px에서 300px로 줄였습니다. 이제 공간이 넉넉해서 옆으로 찰싹 붙을 겁니다.
-
-이걸로 다시 커밋해보세요!
+</div>
