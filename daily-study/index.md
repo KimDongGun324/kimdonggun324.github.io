@@ -5,9 +5,27 @@ permalink: /technical-notes/
 ---
 
 <style>
-  /* 🔥 FIX 1: Daily Study Log와 동일하게, 충돌하는 모든 전역 정렬 CSS 제거 */
-  /* 이 페이지에서는 페이지 콘텐츠만 스타일링하고, 레이아웃 정렬은 default.html에 의존합니다. */
+  /* ================= Global Layout & Reset ================= */
+  body, .markdown-body {
+    background-color: #ffffff !important; 
+    font-family: -apple-system, BlinkMacMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    color: #1d1d1f;
+  }
   
+  .markdown-body {
+    max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
+  }
+  
+/* ================= Main Content Container (좌측 밀착 및 여백 통일) ================= */
+.page-container {
+  /* ⭐ FIX 1: 중앙 정렬(margin: auto)을 유발하는 코드를 모두 제거하고, 좌측 정렬 유지 */
+  max-width: 100%; 
+  margin: 40px 0 !important; /* 상하 여백은 유지, 좌우 마진을 0으로 강제 설정 */
+  padding: 0 50px; /* 좌측 목차 옆으로 콘텐츠를 밀착시키기 위한 좌우 패딩 */
+  
+  text-align: left; 
+}
+
   /* 페이지 설명 (수직 정렬 Fix) */
   .page-intro {
     font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
@@ -43,7 +61,7 @@ permalink: /technical-notes/
   /* ================= Grid Layout (4열 안정화 및 크기 확장) ================= */
   .bento-grid {
     display: grid;
-    /* ⭐ FIX 4: 4열로 안정화 및 갭 조정 */
+    /* ⭐ FIX 3: 4열로 안정화 및 갭 조정 */
     grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
     margin-bottom: 60px;
