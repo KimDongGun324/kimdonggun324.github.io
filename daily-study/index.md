@@ -13,13 +13,14 @@ permalink: /daily-study/
     letter-spacing: -0.02em;
   }
 
-  /* 🔥 핵심: 월별 카드를 가로로 배치하는 그리드 레이아웃 */
+  /* 🔥 핵심: 가로 배치를 위한 그리드 시스템 */
   .year-grid {
     display: grid;
-    /* 화면 크기에 따라 자동으로 열 개수 조절 (최소 350px 너비 보장) */
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    /* 카드의 최소 너비를 300px로 줄여서 더 잘 들어가게 수정 */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px; /* 카드 사이 간격 */
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+    width: 100%; /* 전체 폭 사용 */
   }
 
   /* 월별 토글 카드 스타일 */
@@ -27,7 +28,7 @@ permalink: /daily-study/
     background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
     transition: all 0.2s ease;
     overflow: hidden; 
-    height: fit-content; /* 내용물만큼만 높이 차지 */
+    height: fit-content;
   }
   details.month-card:hover {
     border-color: #d2d2d7; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -38,7 +39,7 @@ permalink: /daily-study/
     padding: 15px 20px; cursor: pointer; font-weight: 600; font-size: 1.05em;
     color: #1d1d1f; list-style: none; 
     display: flex; justify-content: space-between; align-items: center;
-    background-color: #fbfbfd; /* 헤더 부분 살짝 회색 */
+    background-color: #fbfbfd;
   }
   summary::after {
     content: '+'; font-size: 1.2em; color: #86868b; transition: transform 0.2s;
@@ -64,7 +65,6 @@ permalink: /daily-study/
     font-size: 0.85em; white-space: nowrap;
   }
   
-  /* 링크 스타일 */
   .study-link { 
     color: #1d1d1f; text-decoration: none; 
     line-height: 1.4; display: block;
@@ -79,21 +79,18 @@ permalink: /daily-study/
   <details class="month-card" open>
     <summary>November</summary>
     <ul class="study-list">
-      
       <li>
         <span class="date-badge">11.21</span>
         <a href="./posts/2025-11-21-setup/" class="study-link">
           블로그 개설 및 Jekyll 테마 커스텀
         </a>
       </li>
-
       <li>
         <span class="date-badge">11.22</span>
-        <a href="./posts/2025-11-22-hlsl/" class="study-link">
+        <a href="#" class="study-link">
           HLSL 기초 문법과 렌더링 파이프라인
         </a>
       </li>
-
       <li>
         <span class="date-badge">11.23</span>
         <a href="#" class="study-link">
@@ -110,10 +107,7 @@ permalink: /daily-study/
     </ul>
   </details>
 
-</div>
-
-
-<h2 class="year-header">2026</h2>
+</div> <h2 class="year-header">2026</h2>
 
 <div class="year-grid">
   
@@ -138,4 +132,10 @@ permalink: /daily-study/
     </ul>
   </details>
 
-</div>
+</div> ```
+
+### 💡 확인 포인트
+1.  **`<div class="year-grid"> ... </div>`**: 이 태그가 `<details>` 태그들을 꼭 감싸고 있는지 확인해주세요. 이게 없으면 세로로 쌓입니다.
+2.  **`minmax(300px, 1fr)`**: 카드 최소 너비를 350px에서 300px로 줄였습니다. 이제 공간이 넉넉해서 옆으로 찰싹 붙을 겁니다.
+
+이걸로 다시 커밋해보세요!
