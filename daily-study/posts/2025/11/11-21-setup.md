@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 블로그 개설 및 Jekyll 테마 커스텀
-permalink: /daily-study/posts/2025-11-21-setup/
+permalink: /daily-study/posts/2025/11/11-21-setup.md/
 ---
 
 2-1. 주석 comments
