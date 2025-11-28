@@ -3,19 +3,31 @@ layout: default
 ---
 
 <style>
-  /* ================= CSS Variables & Reset ================= */
+  /* ================= CSS Variables & Reset & Typography ================= */
   :root {
     --ease-smooth: cubic-bezier(0.33, 1, 0.68, 1);
     --apple-blue: #0071e3;
     --apple-bg: #f5f5f7;
-    --sidebar-width: 250px; /* 사이드바 고정 너비 */
-    --content-max-width: 1200px; /* 메인 콘텐츠 최대 너비 */
+    --sidebar-width: 260px; /* 사이드바 고정 너비 */
+    --content-max-width: 1400px; /* 메인 콘텐츠 최대 너비 확장 */
+    
+    /* 애플 스타일 폰트 스택 정의 */
+    --font-stack-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-stack-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-stack-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
   }
 
-  /* 기본 레이아웃 설정 */
+  /* 기본 레이아웃 설정 및 폰트 적용 */
   body, html {
-    overflow-x: hidden; /* 가로 스크롤 방지 */
+    overflow-x: hidden;
     background-color: #ffffff;
+    font-family: var(--font-stack-body); /* 기본 바디 폰트 적용 */
+    color: #1d1d1f;
+    -webkit-font-smoothing: antialiased; /* 폰트 부드럽게 처리 */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-stack-heading); /* 헤딩 폰트 적용 */
   }
 
   /* 지킬 테마 기본 스타일 덮어쓰기 */
@@ -26,251 +38,302 @@ layout: default
   }
 
 
-  /* ================= 1. Fixed Sidebar (좌측 고정 사이드바) ================= */
+  /* ================= 1. Fixed Sidebar (좌측 고정 사이드바 - 디테일 복원) ================= */
   .sidebar-fixed-area {
     position: fixed;
     top: 0;
     left: 0;
     width: var(--sidebar-width);
     height: 100vh;
-    background: #fbfbfd; /* 아주 연한 회색 배경 */
+    background: #fbfbfd;
     border-right: 1px solid #eaeaea;
-    padding: 50px 30px;
-    overflow-y: auto; /* 내용이 길어지면 사이드바 내부 스크롤 */
+    padding: 60px 30px 40px 30px; /* 상단 패딩 늘려서 위치 내림 */
+    overflow-y: auto;
     z-index: 1000;
     display: flex;
     flex-direction: column;
   }
 
-  .sidebar-header { margin-bottom: 50px; }
-  .sidebar-name { font-size: 1.3em; font-weight: 800; color: #1d1d1f; margin-bottom: 5px; letter-spacing: -0.01em; }
+  .sidebar-header { margin-bottom: 45px; }
+  .sidebar-name { 
+    font-size: 1.3em; font-weight: 700; color: #1d1d1f; /* 진한 회색/검정 */
+    margin-bottom: 4px; letter-spacing: -0.01em; 
+  }
   .sidebar-role { font-size: 0.8em; color: #86868b; font-weight: 500; }
 
-  /* 네비게이션 간격 디테일 설정 */
-  .nav-section { margin-bottom: 40px; } /* 대분류 사이 간격 넓게 */
+  /* 네비게이션 간격 디테일 설정 (원본처럼 촘촘하게) */
+  .nav-section { margin-bottom: 35px; } 
   .nav-category { 
-    font-size: 0.7em; font-weight: 700; color: #86868b; 
-    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 15px; display: block;
+    font-size: 0.7em; font-weight: 600; color: #86868b; 
+    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; display: block;
   }
   .nav-item {
     display: block; font-size: 0.9em; color: #424245; text-decoration: none;
-    margin-bottom: 10px; /* 소분류 사이 간격 좁게 */
+    margin-bottom: 8px; /* 간격 줄임 */
     transition: color 0.2s; font-weight: 500;
   }
   .nav-item:hover { color: #0071e3; }
   .nav-item.active { color: #1d1d1f; font-weight: 700; }
 
-  /* 사이드바 하단 정보 */
-  .sidebar-footer { margin-top: auto; /* 하단 고정 */ padding-top: 40px; }
+  /* 사이드바 하단 정보 (스타일 및 내용 복원) */
+  .sidebar-footer { margin-top: auto; padding-top: 35px; }
   .footer-item { margin-bottom: 25px; }
-  .footer-label { font-size: 0.7em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 8px; }
-  .footer-text { font-size: 0.85em; color: #86868b; line-height: 1.5; margin-bottom: 4px; }
-  .footer-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .footer-label { 
+    font-size: 0.7em; font-weight: 700; color: #1d1d1f; /* 진한 색상 */
+    text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;
+  }
+  
+  /* DongGun Kim, Email 강조 스타일 */
+  .footer-text-highlight {
+    font-size: 0.9em; font-weight: 700; color: #1d1d1f; /* 진한 색상 */
+    margin-bottom: 4px;
+  }
+  .footer-text { font-size: 0.85em; color: #6e6e73; line-height: 1.4; margin-bottom: 3px; font-weight: 400; }
+  
+  /* 뱃지 스타일 복원 */
+  .footer-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
   .footer-badge { 
-    font-size: 0.7em; background: #f0f0f5; padding: 4px 8px; 
-    border-radius: 6px; color: #424245; font-weight: 600; border: 1px solid #e1e1e6;
+    font-size: 0.7em; background: #ffffff; padding: 4px 10px; 
+    border-radius: 6px; color: #1d1d1f; font-weight: 600; border: 1px solid #d2d2d7;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   }
 
 
-  /* ================= 2. Main Content Scrollable (우측 스크롤 영역) ================= */
+  /* ================= 2. Main Content Scrollable (우측 스크롤 영역 - 가로 확장) ================= */
   .main-content-scrollable {
-    margin-left: var(--sidebar-width); /* 사이드바 너비만큼 공간 확보 */
+    margin-left: var(--sidebar-width);
     width: calc(100% - var(--sidebar-width));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  /* 콘텐츠 컨테이너 */
+  /* 콘텐츠 컨테이너 (가로폭 확대) */
   .page-container {
-    max-width: var(--content-max-width);
+    max-width: var(--content-max-width); /* 최대 너비 증가 */
     margin: 0 auto;
-    padding: 60px 50px 100px 50px;
+    padding: 60px 50px 120px 50px;
     width: 100%;
   }
 
-  /* 상단 배너 (와이드 복구) */
+  /* 상단 배너 */
   .main-banner-area {
     width: 100%;
-    height: 400px; /* 와이드 높이 설정 */
+    height: 420px; /* 높이 약간 증가 */
     overflow: hidden;
     background: #1d1d1f;
-    /* margin-top 제거, 상단에 딱 붙임 */
   }
   .main-banner-img {
     width: 100%; height: 100%; object-fit: cover;
-    object-position: 50% 62%; /* 요청하신 위치 적용 */
+    object-position: 50% 62%;
     opacity: 0.9;
   }
 
   /* 헤더 타이틀 */
-  .main-header-static { text-align: center; padding: 60px 20px 40px 20px; background: #fff; }
+  .main-header-static { text-align: center; padding: 70px 20px 50px 20px; background: #fff; }
   .page-title-static {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 3.2em; font-weight: 800; letter-spacing: 0.3em;
+    font-size: 3.5em; font-weight: 800; letter-spacing: 0.3em;
     margin: 0 0 15px 0; color: #1d1d1f; text-transform: uppercase; margin-right: -0.3em;
   }
-  .page-desc-static { font-size: 1.1em; color: #86868b; font-weight: 400; letter-spacing: 0.02em; font-family: "Pretendard", sans-serif; }
-  .section-divider-main { border: 0; height: 1px; background: #eaeaea; margin: 0 auto 80px auto; max-width: var(--content-max-width); }
+  .page-desc-static { font-size: 1.15em; color: #86868b; font-weight: 400; letter-spacing: 0.02em; }
+  .section-divider-main { border: 0; height: 1px; background: #eaeaea; margin: 0 auto 100px auto; max-width: var(--content-max-width); }
 
 
-  /* ================= 3. Intro Section (철학 문구 + Slim Daily Log) ================= */
-  .intro-section {
+  /* ================= 3. Intro Section (1열 구조 및 디자인 수정) ================= */
+  .intro-section-1col {
     display: flex;
-    gap: 40px; /* 좌우 간격 */
-    margin-bottom: 120px;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 70px; /* 철학 문구와 데일리 로그 사이 간격 */
+    margin-bottom: 140px;
+    text-align: center;
   }
 
-  /* 좌측 철학 문구 영역 */
-  .philosophy-text-area {
-    flex: 1; /* 공간 차지 */
-    max-width: 45%;
+  /* 철학 문구 (가운데 정렬, 차분한 스타일) */
+  .philosophy-text-center {
+    max-width: 800px;
+    margin: 0 auto;
   }
   .philosophy-quote {
-    font-size: 1.5em;
-    font-weight: 700;
+    font-size: 1.35em; /* 크기 약간 줄임 */
+    font-weight: 600; /* 굵기 조절 */
     color: #1d1d1f;
-    line-height: 1.4;
+    line-height: 1.5;
     word-break: keep-all;
+    font-family: var(--font-stack-heading); /* 헤딩 폰트 적용 */
   }
 
-  /* 우측 Slim Daily Log 위젯 */
-  .daily-banner-slim {
-    flex: 1;
-    background: #fbfbfd; border: 1px solid #eaeaea; border-radius: 20px;
-    padding: 35px 40px; /* 패딩 줄임 */
-    text-decoration: none !important; color: #1d1d1f;
+  /* Daily Study Log 위젯 (1열 가로 와이드 형태, 애플 카드 스타일) */
+  .daily-banner-wide-1col {
+    width: 100%;
+    max-width: 1000px; /* 적절한 최대 너비 설정 */
+    background: #ffffff; /* 배경 흰색으로 변경 */
+    border-radius: 24px; /* 둥근 모서리 */
+    padding: 50px;
+    text-decoration: none !important; color: inherit;
     transition: all 0.3s var(--ease-smooth);
-    display: flex; flex-direction: column; justify-content: center;
-    height: auto; /* 높이 자동 */
+    border: 1px solid rgba(0,0,0,0.08); /* 테두리 추가 */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04); /* 부드러운 그림자 */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
-  .daily-banner-slim:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-color: #d2d2d7; }
+  .daily-banner-wide-1col:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08); /* 호버 시 그림자 강조 */
+  }
   
-  .daily-title-slim { font-size: 2em; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.02em; color: #1d1d1f; }
-  .daily-quote-slim { font-size: 1.05em; font-weight: 400; color: #424245; line-height: 1.4; margin-bottom: 5px; font-style: italic; }
-  .daily-desc-slim { font-size: 1.05em; font-weight: 400; color: #424245; line-height: 1.4; margin-bottom: 25px; }
+  .daily-content-wrapper {
+    text-align: left;
+  }
+  .daily-title-slim { font-size: 1.8em; font-weight: 700; margin-bottom: 12px; color: #1d1d1f; }
+  .daily-quote-slim { font-size: 1.05em; font-weight: 400; color: #6e6e73; line-height: 1.4; margin-bottom: 8px; font-style: italic; }
+  .daily-desc-slim { font-size: 1.05em; font-weight: 400; color: #6e6e73; line-height: 1.4; }
 
-  /* 하단 메타 정보 및 버튼 영역 */
   .daily-bottom-slim {
     display: flex; justify-content: space-between; align-items: center;
     border-top: 1px solid #eaeaea;
-    padding-top: 20px;
+    padding-top: 25px;
   }
-  .daily-meta-slim { font-size: 0.85em; color: #86868b; font-weight: 600; font-family: monospace; opacity: 0.7; }
+  .daily-meta-slim { font-size: 0.85em; color: #86868b; font-weight: 600; font-family: monospace; opacity: 0.8; }
   
   .read-arrow-btn-slim {
-    font-size: 0.9em; font-weight: 700; color: var(--apple-blue);
+    font-size: 0.9em; font-weight: 600; color: var(--apple-blue);
     display: flex; align-items: center; transition: all 0.2s;
-    background: rgba(0, 113, 227, 0.1); padding: 8px 16px; border-radius: 30px;
+    background: rgba(0, 113, 227, 0.08); padding: 10px 20px; border-radius: 30px;
   }
   .read-arrow-btn-slim::after { content: '→'; margin-left: 6px; transition: margin-left 0.2s; }
-  .daily-banner-slim:hover .read-arrow-btn-slim { background: var(--apple-blue); color: #fff; }
-  .daily-banner-slim:hover .read-arrow-btn-slim::after { margin-left: 10px; }
+  .daily-banner-wide-1col:hover .read-arrow-btn-slim { background: var(--apple-blue); color: #fff; }
+  .daily-banner-wide-1col:hover .read-arrow-btn-slim::after { margin-left: 10px; }
 
 
-  /* ================= 4. Technical Notes (가운데 정렬) ================= */
+  /* ================= 4. Technical Notes (크기 확대 및 텍스트 정중앙 정렬) ================= */
   .section-header { margin-top: 0; margin-bottom: 50px; border-bottom: 2px solid #1d1d1f; padding-bottom: 15px; }
   .section-title { font-size: 2.2em; font-weight: 700; color: #1d1d1f; margin: 0; }
   
-  .notes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 100px; }
+  .notes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-bottom: 120px; }
   .note-card {
-    height: 420px; position: relative; border-radius: 24px; overflow: hidden; text-decoration: none; background-color: #000;
+    height: 480px; /* 높이 증가 (가로폭 증가에 비례) */
+    position: relative; border-radius: 24px; overflow: hidden; text-decoration: none; background-color: #000;
     transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s;
+    display: flex; /* Flexbox를 이용한 중앙 정렬 */
+    align-items: flex-end; /* 텍스트 하단 배치 */
+    justify-content: center; /* 가로축 중앙 정렬 */
   }
-  .note-card:hover { transform: translateY(-10px) scale(1.01); box-shadow: 0 20px 40px rgba(0,0,0,0.2); z-index: 10; }
-  .note-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.6s ease; }
+  .note-card:hover { transform: translateY(-10px) scale(1.01); box-shadow: 0 25px 50px rgba(0,0,0,0.25); z-index: 10; }
+  .note-bg { 
+    position: absolute; top: 0; left: 0; 
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.6s ease; 
+  }
   .note-card:hover .note-bg { opacity: 0.5; transform: scale(1.08); }
 
   .note-content {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 35px 25px;
-    color: #fff; z-index: 2; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-    text-align: center; /* 가운데 정렬 적용 */
+    position: relative; /* relative로 변경 */
+    width: 100%; padding: 40px 30px;
+    color: #fff; z-index: 2; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    text-align: center; /* 텍스트 가운데 정렬 */
   }
-  .note-category { font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; color: rgba(255,255,255,0.8); display: block; }
-  .note-title { font-size: 1.35em; font-weight: 700; line-height: 1.2; margin-bottom: 12px; }
-  .note-desc { font-size: 0.9em; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .note-category { font-size: 0.75em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; color: rgba(255,255,255,0.85); display: block; }
+  .note-title { font-size: 1.5em; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
+  .note-desc { font-size: 0.95em; color: rgba(255,255,255,0.8); line-height: 1.5; max-width: 80%; margin: 0 auto; /* 설명글 너비 제한 및 중앙 정렬 */ }
 
 
-  /* ================= 5. Research ================= */
-  .research-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 120px; }
+  /* ================= 5. Research (크기 자동 확대) ================= */
+  .research-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-bottom: 140px; }
   .research-item {
-    background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #eaeaea;
+    background: #fff; border-radius: 22px; overflow: hidden; 
+    border: 1px solid rgba(0,0,0,0.08); /* 테두리 연하게 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04); /* 부드러운 그림자 */
     text-decoration: none; transition: all 0.3s var(--ease-smooth);
   }
-  .research-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: transparent; }
-  .research-thumb { height: 180px; overflow: hidden; background: #f5f5f7; }
+  .research-item:hover { 
+    transform: translateY(-8px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* 호버 시 그림자 강조 */
+    border-color: transparent; 
+  }
+  .research-thumb { height: 200px; overflow: hidden; background: #f5f5f7; }
   .research-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
   .research-item:hover .research-thumb img { transform: scale(1.05); }
-  .research-info { padding: 22px; }
-  .research-title { font-size: 1.1em; font-weight: 700; color: #1d1d1f; margin-bottom: 6px; }
+  .research-info { padding: 26px; text-align: left; }
+  .research-title { font-size: 1.15em; font-weight: 700; color: #1d1d1f; margin-bottom: 8px; }
   .research-sub { font-size: 0.9em; color: #86868b; line-height: 1.4; }
 
 
-  /* ================= 6. Projects (Card Style below image) ================= */
+  /* ================= 6. Projects (애플 스타일 카드 UI 적용 & 호버 색상 제거) ================= */
   .section-subtitle {
-    font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin: 0 0 30px 0; display: block;
-    border-bottom: 1px solid #eaeaea; padding-bottom: 12px;
+    font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin: 0 0 35px 0; display: block;
+    border-bottom: 1px solid #eaeaea; padding-bottom: 14px;
   }
-  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 80px; }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 100px; }
 
-  /* 프로젝트 카드 컨테이너 */
+  /* 프로젝트 카드 전체 컨테이너 (스타일 적용) */
   .project-card-block {
     text-decoration: none; color: inherit; display: block;
+    background: #ffffff; border-radius: 24px; overflow: hidden; /* 둥근 모서리 */
+    border: 1px solid rgba(0,0,0,0.08); /* 연한 테두리 */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04); /* 부드러운 그림자 */
+    transition: all 0.3s var(--ease-smooth);
+  }
+  .project-card-block:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* 호버 시 그림자 강조 */
+    border-color: transparent;
   }
 
-  /* 이미지 래퍼 (호버 효과용) */
+  /* 이미지 래퍼 */
   .project-img-wrapper {
-    height: 280px; border-radius: 20px; overflow: hidden; position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    margin-bottom: 20px; /* 텍스트와 간격 */
+    height: 300px; /* 높이 증가 */
+    overflow: hidden; position: relative;
+    border-bottom: 1px solid #eaeaea; /* 이미지 아래 구분선 */
   }
   .project-bg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-smooth); }
-  /* 호버 시 이미지만 확대 */
   .project-card-block:hover .project-bg { transform: scale(1.04); }
 
-  /* 뱃지 위치 수정 */
+  /* 뱃지 스타일 */
   .tech-badges-corner { position: absolute; top: 20px; right: 20px; display: flex; gap: 6px; z-index: 5; }
   .tech-badge-style {
-    background: rgba(0,0,0,0.7); color: #fff; backdrop-filter: blur(4px);
-    padding: 5px 10px; border-radius: 16px; font-size: 0.75em; font-weight: 600;
+    background: rgba(0,0,0,0.75); color: #fff; backdrop-filter: blur(8px); /* 블러 효과 강화 */
+    padding: 6px 12px; border-radius: 18px; font-size: 0.75em; font-weight: 600;
   }
 
-  /* 텍스트 콘텐츠 (이미지 아래 배치) */
-  .project-content-below { padding: 0 10px; }
-  .project-title-below { font-size: 1.6em; font-weight: 800; color: #1d1d1f; margin-bottom: 10px; line-height: 1.2; transition: color 0.3s; }
-  .project-desc-below { font-size: 1.05em; color: #424245; line-height: 1.5; }
+  /* 텍스트 콘텐츠 */
+  .project-content-below { padding: 30px; text-align: left; }
+  .project-title-below { 
+    font-size: 1.6em; font-weight: 700; color: #1d1d1f; margin-bottom: 12px; line-height: 1.2; 
+    /* transition: color 0.3s; 호버 색상 변경 제거 */
+  }
+  .project-desc-below { font-size: 1.05em; color: #6e6e73; line-height: 1.5; }
   
-  .project-card-block:hover .project-title-below { color: var(--apple-blue); }
+  /* .project-card-block:hover .project-title-below { color: var(--apple-blue); } 호버 색상 변경 스타일 제거 */
 
 
-  /* ================= Animations (반복 재생 설정) ================= */
+  /* ================= Animations ================= */
   .reveal-on-scroll {
-    opacity: 0; transform: translateY(50px);
+    opacity: 0; transform: translateY(40px);
     transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
   }
-  /* is-visible 클래스가 붙었을 때만 보임 */
   .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
-  
   .delay-1 { transition-delay: 0.1s; }
   .delay-2 { transition-delay: 0.2s; }
   .delay-3 { transition-delay: 0.3s; }
   .delay-4 { transition-delay: 0.4s; }
 
-  /* 반응형 처리 (태블릿 이하) */
+  /* 반응형 처리 */
+  @media (max-width: 1200px) {
+    .notes-grid, .research-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .projects-grid { gap: 30px; }
+  }
   @media (max-width: 1024px) {
-    .sidebar-fixed-area { display: none; /* 임시로 숨김 (모바일 메뉴 필요 시 추가 구현) */ }
+    .sidebar-fixed-area { display: none; }
     .main-content-scrollable { margin-left: 0; width: 100%; }
-    .page-container { padding: 40px 30px; }
-    .intro-section { flex-direction: column; gap: 30px; }
-    .philosophy-text-area, .daily-banner-slim { max-width: 100%; width: 100%; }
-    .notes-grid, .research-grid { grid-template-columns: repeat(2, 1fr); }
+    .page-container { padding: 50px 30px; }
   }
   @media (max-width: 768px) {
-    .projects-grid { grid-template-columns: 1fr; gap: 40px; }
-    .project-img-wrapper { height: 220px; }
-    .page-title-static { font-size: 2.4em; letter-spacing: 0.1em; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-img-wrapper { height: 240px; }
+    .page-title-static { font-size: 2.6em; letter-spacing: 0.1em; }
+    .philosophy-quote { font-size: 1.2em; }
+    .daily-banner-wide-1col { padding: 35px 30px; }
   }
 </style>
 
@@ -315,19 +378,20 @@ layout: default
   <div class="sidebar-footer">
     <div class="footer-item">
       <div class="footer-label">RESEARCHER</div>
-      <div class="footer-text">DongGun Kim</div>
+      <div class="footer-text-highlight">DongGun Kim</div>
       <div class="footer-text">M.S. Student @ CNU</div>
-      <div class="footer-text">Ex. Pearl Abyss TA</div>
+      <div class="footer-text">Goal: Pearl Abyss TA</div>
       <div class="footer-badges">
         <span class="footer-badge">C++</span>
         <span class="footer-badge">UE5</span>
         <span class="footer-badge">HLSL</span>
         <span class="footer-badge">Houdini</span>
+        <span class="footer-badge">Substance Designer</span>
       </div>
     </div>
     <div class="footer-item">
       <div class="footer-label">CONNECT</div>
-      <div class="footer-text">Email</div>
+      <div class="footer-text-highlight">Email</div>
       <div class="footer-text">kdg324@naver.com</div>
     </div>
   </div>
@@ -349,17 +413,17 @@ layout: default
 
   <div class="page-container">
 
-    <section class="intro-section reveal-on-scroll">
+    <section class="intro-section-1col reveal-on-scroll">
       
-      <div class="philosophy-text-area">
+      <div class="philosophy-text-center">
         <p class="philosophy-quote">
           "수식과 코드로 구현하는 빛의 논리.<br>
           펄어비스 TA를 목표로 그래픽스 이론부터 최적화까지 깊이 있게 연구하고 기록합니다."
         </p>
       </div>
 
-      <a href="{{ '/daily-study/' | relative_url }}" class="daily-banner-slim">
-        <div>
+      <a href="{{ '/daily-study/' | relative_url }}" class="daily-banner-wide-1col">
+        <div class="daily-content-wrapper">
           <h2 class="daily-title-slim">Daily Study Log</h2>
           <div class="daily-quote-slim">"I never saved anything for the swim back."</div>
           <div class="daily-desc-slim">매일 기록하는 성장과 끈기의 증명.</div>
@@ -384,7 +448,7 @@ layout: default
         <div class="note-content">
           <span class="note-category">Implementation</span>
           <h3 class="note-title">Shader & Rendering</h3>
-          <p class="note-desc">논문과 이론을 바탕으로<br>직접 구현한 그래픽스 기술</p>
+          <p class="note-desc">논문과 이론을 바탕으로 직접 구현한 그래픽스 기술</p>
         </div>
       </a>
       <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-2">
@@ -392,7 +456,7 @@ layout: default
         <div class="note-content">
           <span class="note-category">Optimization</span>
           <h3 class="note-title">C++ & Performance</h3>
-          <p class="note-desc">메모리와 연산 효율을 극대화하는<br>엔진 최적화 기록</p>
+          <p class="note-desc">메모리와 연산 효율을 극대화하는 엔진 최적화 기록</p>
         </div>
       </a>
       <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-3">
@@ -400,7 +464,7 @@ layout: default
         <div class="note-content">
           <span class="note-category">Deep Analysis</span>
           <h3 class="note-title">Engine Deep Dive</h3>
-          <p class="note-desc">언리얼 엔진 소스 코드 분석 및<br>기술적 이슈 트러블슈팅</p>
+          <p class="note-desc">언리얼 엔진 소스 코드 분석 및 기술적 이슈 트러블슈팅</p>
         </div>
       </a>
       <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-4">
@@ -408,7 +472,7 @@ layout: default
         <div class="note-content">
           <span class="note-category">Workflow</span>
           <h3 class="note-title">TA Tools & Pipeline</h3>
-          <p class="note-desc">작업 효율을 높이는<br>자동화 툴과 파이프라인 구축</p>
+          <p class="note-desc">작업 효율을 높이는 자동화 툴과 파이프라인 구축</p>
         </div>
       </a>
     </div>
@@ -450,7 +514,7 @@ layout: default
     </div>
 
 
-    <div class="section-header reveal-on-scroll" style="margin-top: 80px;">
+    <div class="section-header reveal-on-scroll" style="margin-top: 100px;">
       <h2 class="section-title">Projects</h2>
     </div>
 
@@ -485,7 +549,7 @@ layout: default
 
     </div>
 
-    <span class="section-subtitle reveal-on-scroll" style="margin-top: 60px;">Shader & Art R&D</span>
+    <span class="section-subtitle reveal-on-scroll" style="margin-top: 80px;">Shader & Art R&D</span>
     <div class="projects-grid">
 
       <a href="#" class="project-card-block reveal-on-scroll delay-1">
@@ -524,17 +588,14 @@ layout: default
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1 // 10%만 보여도 트리거
+      threshold: 0.1
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        // 화면에 들어오면 클래스 추가 (보이기)
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-        } 
-        // 화면에서 나가면 클래스 제거 (다시 숨기기 -> 반복 재생을 위해)
-        else {
+        } else {
           entry.target.classList.remove('is-visible');
         }
       });
