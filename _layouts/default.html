@@ -52,7 +52,7 @@
       height: 100vh;
       background: #fbfbfd;
       border-right: 1px solid #eaeaea;
-      /* 2번 요청: 상단 DongGun Kim 위치 아래로 이동 */
+      /* 위치 아래로 이동 유지 */
       padding: 100px 30px 0px 30px; 
       box-sizing: border-box;
       z-index: 1000;
@@ -66,15 +66,15 @@
       margin-bottom: 70px; 
       padding-top: 0;
     } 
-    /* 2번 요청: DongGun Kim 굵기 조정 (800 -> 600) */
+    /* 2번 요청: DongGun Kim 굵기 조정 (600) */
     .sidebar-name { 
       font-size: 1.4em; 
-      font-weight: 600; /* 굵기 조정 */
+      font-weight: 600; 
       color: #000; 
       letter-spacing: -0.02em; 
       margin-bottom: 4px; 
     }
-    /* 3번 요청: Role 텍스트 잘림 방지를 위해 폰트 축소 및 클립 설정 유지 */
+    /* Role 텍스트 잘림 방지를 위해 폰트 축소 및 클립 설정 유지 */
     .sidebar-role { 
       font-size: 0.78em; 
       color: var(--text-light); 
@@ -97,7 +97,7 @@
       margin-bottom: 12px; display: block; 
     }
     
-    /* 4번 요청: 메뉴 글자색 짙게 수정 */
+    /* 메뉴 글자색 짙게 수정 유지 */
     .nav-item {
       display: block; font-size: 0.95em; 
       color: var(--nav-item-darker); 
@@ -122,13 +122,13 @@
 
     .footer-item { margin-bottom: 25px; }
     
-    /* 4번 요청: DongGun Kim 폰트 사이즈 미세 축소 */
+    /* DongGun Kim 폰트 사이즈 미세 축소 유지 */
     .footer-label { 
       font-size: 0.75em; font-weight: 900; color: #000; 
       text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;
     }
     .footer-text-highlight {
-      font-size: 0.9em; /* 0.95em -> 0.9em로 축소 */
+      font-size: 0.9em; 
       font-weight: 600; color: #333; 
       margin-bottom: 4px;
     }
@@ -179,7 +179,7 @@
       font-family: 'Archivo Black', 'Montserrat', sans-serif; /* Archivo Black을 최우선으로 적용 */
       font-size: 3.8em; 
       font-weight: 700; 
-      letter-spacing: 0.35em; /* Archivo Black에 맞게 자간 미세 조정 (4.0em -> 3.5em) */
+      letter-spacing: 0.35em; /* Archivo Black에 맞게 자간 미세 조정 */
       margin: 0; 
       color: #000; 
       text-transform: uppercase; 
@@ -207,7 +207,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* 5번 요청: 문구를 위로 한 칸 이동 */
+      /* 문구를 위로 한 칸 이동 유지 */
       margin-top: 10px; 
       margin-bottom: 140px;
       text-align: center;
@@ -217,7 +217,7 @@
     .philosophy-text-center {
       max-width: 800px;
       /* 2번 요청: Daily Study Log와의 간격 증가 */
-      margin: 0 auto 75px auto; /* 55px -> 75px로 증가 */
+      margin: 0 auto 75px auto; 
     }
     .philosophy-quote {
       font-family: 'Inter', sans-serif; 
@@ -229,7 +229,7 @@
       word-break: keep-all;
     }
 
-    /* 4번 요청: Daily Study Log 위젯 가로 사이즈 축소 및 Glassmorphism 적용 */
+    /* 4번 요청: Daily Study Log 위젯 가로 사이즈 축소 */
     .daily-banner-wide-1col {
       width: 100%;
       max-width: 780px; /* 900px -> 780px로 축소하여 NULL ABYSS 로고 폭과 시각적 정렬 */
@@ -498,7 +498,7 @@
             <p class="note-desc">논문과 이론을 바탕으로 직접 구현한 그래픽스 기술</p>
           </div>
         </a>
-        <a href="{{ '/technical-notes/' | relative_ माणूस/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-card reveal-on-scroll delay-2">
+        <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-2">
           <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
           <div class="note-content">
             <span class="note-category">Optimization</span>
