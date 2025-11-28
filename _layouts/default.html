@@ -145,16 +145,20 @@
       border: 1px solid #d2d2d7;
     }
 
-    /* =========================================
-       [3] 메인 콘텐츠 영역 (Main Content)
-       ========================================= */
-    .main-content-scrollable {
-      margin-left: var(--sidebar-width);
-      width: calc(100% - var(--sidebar-width));
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+/* =========================================
+   [3] 메인 콘텐츠 영역 (Main Content)
+   ========================================= */
+.main-content-scrollable {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+  /* ⭐ 추가/수정할 코드: 모든 상단 여백을 강제로 제거 */
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 
     /* 상단 배너 */
     .main-banner-area {
