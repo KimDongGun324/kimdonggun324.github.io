@@ -20,7 +20,8 @@
       --apple-blue: #0071e3;
       --text-main: #1d1d1f; 
       --text-sub: #6e6e73; 
-      --text-light: #86868b; /* 연한 회색 변수 추가 */
+      --text-light: #86868b; 
+      --nav-item-darker: #424245; /* 4번 요청: 서브 메뉴 더 짙은 색상 */
     }
 
     /* Full-bleed 적용 */
@@ -51,7 +52,8 @@
       height: 100vh;
       background: #fbfbfd;
       border-right: 1px solid #eaeaea;
-      padding: 30px 30px 40px 30px; /* 상단 여백 조정을 위해 초기 패딩 조정 */
+      /* 2번 요청: 상단 DongGun Kim 위치 이동 (4칸 정도) */
+      padding: 100px 30px 0px 30px; /* 상단 패딩을 늘리고 하단 패딩을 0으로 초기화 */
       box-sizing: border-box;
       z-index: 1000;
       display: flex;
@@ -60,21 +62,33 @@
     }
 
     /* 사이드바 헤더 (이름 부분) */
-    .sidebar-header { margin-bottom: 70px; padding-top: 30px; } /* 위치를 아래로 내림 */
+    .sidebar-header { 
+      margin-bottom: 70px; 
+      padding-top: 0; /* 상단 패딩은 .sidebar-fixed-area에서 처리 */
+    } 
+    /* 2번 요청: DongGun Kim 굵기 조정 (800 -> 600) */
     .sidebar-name { 
-      font-size: 1.4em; font-weight: 800; color: #000; 
-      letter-spacing: -0.02em; margin-bottom: 4px; 
+      font-size: 1.4em; 
+      font-weight: 600; /* 굵기 조정 */
+      color: #000; 
+      letter-spacing: -0.02em; 
+      margin-bottom: 4px; 
     }
-    /* Role 한 줄 처리 및 폰트 축소 */
+    /* 1번 요청: Role R&D까지 잘리지 않게 조정 */
     .sidebar-role { 
-      font-size: 0.8em; color: var(--text-light); font-weight: 500; 
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
-      max-width: 100%; display: block;
+      font-size: 0.8em; /* 폰트 사이즈 미세 조정 */
+      color: var(--text-light); 
+      font-weight: 500; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: clip; /* ... 대신 R&D가 보이도록 클립으로 변경 */
+      max-width: 100%; 
+      display: block;
     }
 
     /* 사이드바 내비게이션 (메뉴) */
     .sidebar-nav {
-      flex-grow: 1; 
+      flex-grow: 1; /* 중간 공간을 밀어내어 하단 Footer를 바닥에 붙임 */
     }
     .nav-section { margin-bottom: 40px; } 
     .nav-category { 
@@ -83,10 +97,10 @@
       margin-bottom: 12px; display: block; 
     }
     
-    /* 메뉴 글자색 진하게 수정 */
+    /* 4번 요청: 메뉴 글자색 짙게 수정 */
     .nav-item {
       display: block; font-size: 0.95em; 
-      color: #333333; 
+      color: var(--nav-item-darker); /* 짙은 색상 적용 */
       font-weight: 500;
       margin-bottom: 10px; 
       transition: color 0.2s;
@@ -94,11 +108,11 @@
     .nav-item:hover { color: var(--apple-blue); }
     .nav-item.active { color: #000; font-weight: 700; }
 
-    /* 사이드바 하단 정보 (Footer) - 위계 및 위치 수정 */
+    /* 사이드바 하단 정보 (Footer) */
     .sidebar-footer { 
       margin-top: auto; 
       padding-top: 35px; 
-      padding-bottom: 50px; /* 하단 여백 채우기 */
+      padding-bottom: 40px; /* 3번 요청: 하단 정렬을 위해 padding-bottom 최소화 (컨테이너 내부 여백) */
     }
     
     .footer-divider {
@@ -107,18 +121,15 @@
 
     .footer-item { margin-bottom: 25px; }
     
-    /* 텍스트 위계(Hierarchy) 재설정 */
-    /* 1. 라벨 (가장 굵고 진함) */
+    /* 텍스트 위계(Hierarchy) 재설정 유지 */
     .footer-label { 
       font-size: 0.75em; font-weight: 900; color: #000; 
       text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;
     }
-    /* 2. 이름/이메일 (중간 굵기, 중간 색상) */
     .footer-text-highlight {
-      font-size: 0.95em; font-weight: 600; color: #333; /* 600 굵기로 조정 */
+      font-size: 0.95em; font-weight: 600; color: #333; 
       margin-bottom: 4px;
     }
-    /* 3. 부가 정보 (가장 얇고 연함) */
     .footer-text { 
       font-size: 0.85em; color: var(--text-light); line-height: 1.5; 
       font-weight: 400; 
@@ -159,11 +170,11 @@
       background: #fff; 
     }
     
-    /* NULL ABYSS 폰트 - 날렵한 스타일로 조정 */
+    /* NULL ABYSS 폰트 - 날렵한 스타일로 조정 유지 */
     .page-title-static {
       font-family: 'Montserrat', sans-serif;
       font-size: 3.8em; 
-      font-weight: 700; /* 700 굵기로 조정 */
+      font-weight: 700; 
       letter-spacing: 0.35em; 
       margin: 0; 
       color: #000; 
@@ -171,10 +182,10 @@
       margin-right: -0.35em; 
     }
     
-    /* 부제 아래 공백 추가 */
+    /* 부제 아래 공백 추가 유지 */
     .page-desc-static { 
       font-size: 1.1em; color: var(--text-light); font-weight: 500; 
-      letter-spacing: 0.02em; margin-top: 20px; /* 공백 추가 */
+      letter-spacing: 0.02em; margin-top: 20px; 
     }
 
     .page-container {
@@ -192,7 +203,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 30px;
+      /* 5번 요청: 문구를 위로 한 칸 이동 */
+      margin-top: 10px; /* 30px에서 10px로 줄임 */
       margin-bottom: 140px;
       text-align: center;
     }
@@ -200,15 +212,16 @@
     /* 철학 문구 디자인 개선 (경량 산세리프) */
     .philosophy-text-center {
       max-width: 800px;
-      margin: 0 auto 50px auto;
+      /* 5번 요청: Daily Study Log와의 간격 유지 및 폰트 굵기 조정 */
+      margin: 0 auto 35px auto; /* 하단 여백 50px -> 35px로 줄여 Daily Log와 간격 유지 */
     }
     .philosophy-quote {
       font-family: 'Inter', sans-serif; 
       font-size: 1.25em; 
-      font-weight: 300; /* 얇게 조정 */
-      color: #333;
+      font-weight: 500; /* 5번 요청: 300에서 500으로 올려 가독성 확보 */
+      color: #333; /* 폰트 색상 유지 (옅지 않게) */
       line-height: 2.0; 
-      font-style: normal; /* 기울임 제거 */
+      font-style: normal; 
       word-break: keep-all;
     }
 
@@ -217,10 +230,10 @@
       width: 100%;
       max-width: 900px;
       /* Glassmorphism 속성 */
-      background: rgba(255, 255, 255, 0.5); /* 반투명 배경 */
-      backdrop-filter: blur(12px); /* 유리창 흐림 효과 */
-      border: 1px solid rgba(255, 255, 255, 0.4); /* 연한 테두리 */
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+      background: rgba(255, 255, 255, 0.5); 
+      backdrop-filter: blur(12px); 
+      border: 1px solid rgba(255, 255, 255, 0.4); 
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08); 
       
       border-radius: 20px;
       padding: 35px 40px;
@@ -417,7 +430,8 @@
           <span class="footer-badge">UE5</span>
           <span class="footer-badge">HLSL</span>
           <span class="footer-badge">Houdini</span>
-          <span class="footer-badge">Substance Painter</span> </div>
+          <span class="footer-badge">Substance Painter</span>
+        </div>
       </div>
 
       <div class="footer-item">
