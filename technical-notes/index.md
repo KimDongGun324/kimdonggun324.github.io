@@ -8,7 +8,7 @@ permalink: /technical-notes/
   /* ================= Global Layout & Reset ================= */
   body, .markdown-body {
     background-color: #ffffff !important; 
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    font-family: -apple-system, BlinkMacMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
     color: #1d1d1f;
   }
   
@@ -16,11 +16,11 @@ permalink: /technical-notes/
     max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
   }
   
-/* ================= Main Page Container (좌측 밀착 및 여백 통일) ================= */
+/* ================= Main Content Container (좌측 밀착 및 여백 통일) ================= */
 .page-container {
-  /* ⭐ FIX 1: 중앙 정렬 제거 -> 왼쪽 정렬 강제 */
+  /* ⭐ FIX 1: 중앙 정렬(margin: auto)을 유발하는 코드를 모두 제거하고, 좌측 정렬 유지 */
   max-width: 100%; 
-  margin: 40px 0; /* 상하 40px, 좌우 0으로 설정하여 왼쪽 정렬 강제 */
+  margin: 40px 0 !important; /* 상하 여백은 유지, 좌우 마진을 0으로 강제 설정 */
   padding: 0 50px; /* 좌측 목차 옆으로 콘텐츠를 밀착시키기 위한 좌우 패딩 */
   
   text-align: left; 
@@ -29,7 +29,8 @@ permalink: /technical-notes/
   /* 페이지 설명 (수직 정렬 Fix) */
   .page-intro {
     font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
-    margin: 0 0 15px 0; /* 상단 H2 제목 바로 아래에 붙도록 마진 조정 */
+    /* 제목 아래 수직 정렬을 위해 마진 조정 */
+    margin: 0 0 15px 0; 
     word-break: keep-all; 
     max-width: 800px;
   }
@@ -41,7 +42,7 @@ permalink: /technical-notes/
     display: flex; 
     gap: 10px; 
     flex-wrap: wrap; 
-    justify-content: flex-start; /* ⭐ FIX 2: 왼쪽 정렬 강제 */
+    justify-content: flex-start; /* 왼쪽 정렬 강제 */
   }
   .filter-btn {
     padding: 6px 14px; 
@@ -53,17 +54,15 @@ permalink: /technical-notes/
     color: #666; 
     cursor: pointer; 
     transition: all 0.2s ease;
-    -webkit-appearance: none; 
-    -moz-appearance: none;    
-    appearance: none;         
   }
   .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #86868b; }
   .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
 
   /* ================= Grid Layout (4열 안정화 및 크기 확장) ================= */
   .bento-grid {
-    display: grid; /* ⭐ FIX 3: Grid 속성 복구 */
-    grid-template-columns: repeat(4, 1fr); /* 4열로 안정화 */
+    display: grid;
+    /* ⭐ FIX 3: 4열로 안정화 및 갭 조정 */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
     margin-bottom: 60px;
   }
