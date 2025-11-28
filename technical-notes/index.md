@@ -6,7 +6,6 @@ permalink: /technical-notes/
 
 <style>
   /* ================= Global Layout & Reset ================= */
-  /* 이 페이지에서만 사용되는 스타일을 정의합니다. */
   body, .markdown-body {
     background-color: #ffffff !important; 
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
@@ -17,16 +16,16 @@ permalink: /technical-notes/
     max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
   }
   
-/* ================= Main Page Container (중앙 정렬 및 여백 통일) ================= */
+/* ================= Main Page Container (왼쪽 정렬 FIX) ================= */
 .page-container {
-  /* Daily Study Log의 기본 컨테이너 폭과 유사하게 설정 */
+  /* 최대 너비는 유지하지만, 좌우 자동 마진 제거 */
   max-width: 1250px; 
   
-  /* FIX 1: 왼쪽 밀림 현상 해결 (중앙 정렬 활성화) */
-  margin: 40px auto; /* 상하 40px, 좌우 자동(중앙 정렬) */
+  /* 🔥 FIX 1: 중앙 정렬 제거 -> 왼쪽 정렬 */
+  margin: 40px 0; /* 상하 40px, 좌우 0 */
   
-  /* FIX 2: 좌측 여백을 메인 레이아웃(50px)과 유사하게 설정하여 불일치 해결 */
-  padding: 0 50px; 
+  /* 좌측 여백은 메인 레이아웃(50px)을 상속받도록 유지하는 것이 이상적입니다. */
+  padding: 0 50px; /* 여기서 50px로 강제 설정하여 좌측 여백 통일 (이전 default.html 설정과 일치) */
     
     background-color: transparent;
     box-shadow: none;
@@ -39,8 +38,8 @@ permalink: /technical-notes/
   .page-intro {
     font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
     
-    /* 텍스트 블록 중앙 정렬 */
-    margin: 0 auto 40px auto; 
+    /* 🔥 FIX 2: 텍스트 블록 중앙 정렬 제거 -> 왼쪽 정렬 */
+    margin: 0 0 40px 0; /* 마진 상쇄 및 왼쪽 정렬 */
     
     word-break: keep-all; 
     max-width: 800px;
@@ -50,8 +49,8 @@ permalink: /technical-notes/
   /* ================= Filter Buttons ================= */
   .filter-container { 
     margin-bottom: 40px; display: flex; gap: 12px; flex-wrap: wrap; 
-    /* FIX 3: 버튼 중앙 정렬 */
-    justify-content: center; 
+    /* 🔥 FIX 3: 버튼 중앙 정렬 제거 -> 왼쪽 정렬 */
+    justify-content: start; 
   }
   .filter-btn {
     padding: 10px 20px; border-radius: 24px;
@@ -62,14 +61,14 @@ permalink: /technical-notes/
   .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #86868b; }
   .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
 
-/* ================= Grid Layout (4열 고정 & 중앙 정렬) ================= */
-.bento-grid {
-  display: grid; /* ⭐ FIX: 이 속성이 가장 중요합니다. */
-  grid-template-columns: repeat(4, 1fr); /* 4열로 배열 (이전 요청 반영) */
-  gap: 30px;
-  margin-bottom: 60px;
-  /* 중앙 정렬 속성은 이전 단계에서 유지 */
-}
+  /* ================= Grid Layout (4열 고정 & 왼쪽 정렬) ================= */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px;
+    margin-bottom: 60px;
+    /* justify-content: start; 는 grid에서는 필요 없거나 auto로 처리됨 */
+  }
 
   /* 반응형 미디어 쿼리 */
   @media (max-width: 1400px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -96,14 +95,14 @@ permalink: /technical-notes/
   }
   .bento-card.hidden { display: none; }
 
-/* 썸네일 (흰색 배경) */
-.card-thumb {
-  width: 100%; 
-  height: 240px; /* ⭐ 높이가 240px로 설정되어 있는지 확인 (이미지 확장) */
-  background-color: #ffffff;  
-  position: relative;  
-  border-bottom: 1px solid rgba(0,0,0,0.05);  
-}
+  /* 썸네일 (흰색 배경) */
+  .card-thumb {
+    width: 100%; 
+    height: 240px; 
+    background-color: #ffffff; 
+    position: relative; 
+    border-bottom: 1px solid rgba(0,0,0,0.05); 
+  }
   .card-thumb img {
     width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
   }
@@ -135,7 +134,7 @@ permalink: /technical-notes/
   <div class="bento-grid">
       <article class="bento-card" data-tags="implementation">
       <div class="card-thumb">
-        <img src="https://images.unsplash.com/photo-1618005182384-a3a8bd57fbe?q=80&w=500" alt="Ocean">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500" alt="Ocean">
       </div>
       <div class="card-info">
         <span class="bento-tag tag-impl">Implementation</span>
