@@ -52,8 +52,8 @@
       height: 100vh;
       background: #fbfbfd;
       border-right: 1px solid #eaeaea;
-      /* 2번 요청: 상단 DongGun Kim 위치 이동 (4칸 정도) */
-      padding: 100px 30px 0px 30px; /* 상단 패딩을 늘리고 하단 패딩을 0으로 초기화 */
+      /* 2번 요청: 상단 DongGun Kim 위치 아래로 이동 */
+      padding: 100px 30px 0px 30px; 
       box-sizing: border-box;
       z-index: 1000;
       display: flex;
@@ -64,7 +64,7 @@
     /* 사이드바 헤더 (이름 부분) */
     .sidebar-header { 
       margin-bottom: 70px; 
-      padding-top: 0; /* 상단 패딩은 .sidebar-fixed-area에서 처리 */
+      padding-top: 0;
     } 
     /* 2번 요청: DongGun Kim 굵기 조정 (800 -> 600) */
     .sidebar-name { 
@@ -74,21 +74,21 @@
       letter-spacing: -0.02em; 
       margin-bottom: 4px; 
     }
-    /* 1번 요청: Role R&D까지 잘리지 않게 조정 */
+    /* 1번 요청: Role R&D까지 잘리지 않게 조정 (폰트 사이즈 미세 축소) */
     .sidebar-role { 
-      font-size: 0.8em; /* 폰트 사이즈 미세 조정 */
+      font-size: 0.78em; /* 폰트 사이즈 0.8em -> 0.78em로 미세 축소 */
       color: var(--text-light); 
       font-weight: 500; 
       white-space: nowrap; 
       overflow: hidden; 
-      text-overflow: clip; /* ... 대신 R&D가 보이도록 클립으로 변경 */
+      text-overflow: clip; /* R&D가 보이도록 클립으로 변경 */
       max-width: 100%; 
       display: block;
     }
 
     /* 사이드바 내비게이션 (메뉴) */
     .sidebar-nav {
-      flex-grow: 1; /* 중간 공간을 밀어내어 하단 Footer를 바닥에 붙임 */
+      flex-grow: 1; 
     }
     .nav-section { margin-bottom: 40px; } 
     .nav-category { 
@@ -112,7 +112,8 @@
     .sidebar-footer { 
       margin-top: auto; 
       padding-top: 35px; 
-      padding-bottom: 40px; /* 3번 요청: 하단 정렬을 위해 padding-bottom 최소화 (컨테이너 내부 여백) */
+      /* 3번 요청: 하단 공백 제거를 위해 padding-bottom 최소화 */
+      padding-bottom: 40px; 
     }
     
     .footer-divider {
@@ -121,13 +122,15 @@
 
     .footer-item { margin-bottom: 25px; }
     
-    /* 텍스트 위계(Hierarchy) 재설정 유지 */
+    /* 텍스트 위계(Hierarchy) 재설정 */
     .footer-label { 
       font-size: 0.75em; font-weight: 900; color: #000; 
       text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;
     }
+    /* 4번 요청: DongGun Kim 폰트 사이즈 미세 축소 */
     .footer-text-highlight {
-      font-size: 0.95em; font-weight: 600; color: #333; 
+      font-size: 0.9em; /* 0.95em -> 0.9em로 축소 */
+      font-weight: 600; color: #333; 
       margin-bottom: 4px;
     }
     .footer-text { 
@@ -159,7 +162,9 @@
       width: 100%; height: 400px; overflow: hidden; background: #000; position: relative;
     }
     .main-banner-img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      width: 100%; height: 100%; object-fit: cover; 
+      /* New Request: 상단 배너 이미지 위치 조정 */
+      object-position: 50% 62%; 
       opacity: 0.9; display: block;
     }
 
@@ -170,16 +175,16 @@
       background: #fff; 
     }
     
-    /* NULL ABYSS 폰트 - 날렵한 스타일로 조정 유지 */
+    /* NULL ABYSS 폰트 - 비율 및 간격 조정 */
     .page-title-static {
       font-family: 'Montserrat', sans-serif;
       font-size: 3.8em; 
       font-weight: 700; 
-      letter-spacing: 0.35em; 
+      letter-spacing: 0.4em; /* 1번 요청: 세로로 긴 느낌을 위해 자간을 0.35em -> 0.4em로 증가 */
       margin: 0; 
       color: #000; 
       text-transform: uppercase; 
-      margin-right: -0.35em; 
+      margin-right: -0.4em; 
     }
     
     /* 부제 아래 공백 추가 유지 */
@@ -204,7 +209,7 @@
       flex-direction: column;
       align-items: center;
       /* 5번 요청: 문구를 위로 한 칸 이동 */
-      margin-top: 10px; /* 30px에서 10px로 줄임 */
+      margin-top: 10px; 
       margin-bottom: 140px;
       text-align: center;
     }
@@ -212,14 +217,14 @@
     /* 철학 문구 디자인 개선 (경량 산세리프) */
     .philosophy-text-center {
       max-width: 800px;
-      /* 5번 요청: Daily Study Log와의 간격 유지 및 폰트 굵기 조정 */
-      margin: 0 auto 35px auto; /* 하단 여백 50px -> 35px로 줄여 Daily Log와 간격 유지 */
+      /* 2번 요청: Daily Study Log와의 간격 증가 */
+      margin: 0 auto 55px auto; /* 35px -> 55px로 증가 */
     }
     .philosophy-quote {
       font-family: 'Inter', sans-serif; 
       font-size: 1.25em; 
       font-weight: 500; /* 5번 요청: 300에서 500으로 올려 가독성 확보 */
-      color: #333; /* 폰트 색상 유지 (옅지 않게) */
+      color: #333; 
       line-height: 2.0; 
       font-style: normal; 
       word-break: keep-all;
@@ -430,7 +435,7 @@
           <span class="footer-badge">UE5</span>
           <span class="footer-badge">HLSL</span>
           <span class="footer-badge">Houdini</span>
-          <span class="footer-badge">Substance Painter</span>
+          <span class="footer-badge">Substance Painter</span> 
         </div>
       </div>
 
