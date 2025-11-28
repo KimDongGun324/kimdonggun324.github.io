@@ -1,317 +1,452 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ site.title | default: site.github.repository_name }}</title>
+---
+layout: default
+---
+
+<style>
+  /* ================= CSS Variables & Reset ================= */
+  :root {
+    --ease-smooth: cubic-bezier(0.33, 1, 0.68, 1); /* 매우 부드러운 감속 커브 */
+    --apple-blue: #0071e3;
+    --apple-bg: #f5f5f7;
+  }
+
+  .main-content {
+    padding: 0 !important;
+    max-width: 100% !important;
+    background-color: #ffffff;
+  }
   
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  .page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
 
-  <style>
-    :root {
-      --bg-app: #ffffff;
-      --bg-sidebar: #fbfbfd;
-      --text-primary: #1d1d1f;
-      --text-secondary: #86868b;
-      --accent-color: #0066cc;
-      --border-color: #e5e5e5;
-      --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-      --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      --font-stack: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-    }
+  /* ================= 1. Top Banner ================= */
+  .main-banner-area {
+    width: 100%; height: 420px;
+    overflow: hidden; position: relative;
+    background: #1d1d1f;
+  }
+  .main-banner-img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center;
+    opacity: 0.85;
+  }
 
-    * { box-sizing: border-box; }
+  .main-header-static {
+    text-align: center; padding: 50px 20px 40px 20px; background: #fff;
+  }
+  .page-title-static {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    font-size: 3.5em; font-weight: 800; letter-spacing: 0.3em; 
+    margin: 0 0 15px 0; color: #1d1d1f; text-transform: uppercase;
+    margin-right: -0.3em;
+  }
+  .page-desc-static {
+    font-size: 1.1em; color: #86868b; font-weight: 400; letter-spacing: 0.02em;
+    font-family: "Pretendard", sans-serif;
+  }
+  
+  .section-divider-main {
+    border: 0; height: 1px; background: #eaeaea; margin: 0 auto 60px auto; max-width: 1400px;
+  }
 
-    body {
-      margin: 0; padding: 0;
-      font-family: var(--font-stack);
-      color: var(--text-primary); background-color: var(--bg-app);
-      height: 100vh; overflow: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
 
-    a { text-decoration: none; color: inherit; }
+  /* ================= 2. Profile & Daily Log (Layout Fix) ================= */
+  .intro-section {
+    display: flex; flex-direction: column; gap: 40px; margin-bottom: 100px;
+    align-items: center; /* 중앙 정렬 */
+  }
 
-    .app-container {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      height: 100vh;
-    }
+  /* 2-1. Profile Center (Design Enhanced) */
+  .profile-container {
+    text-align: center;
+    padding: 40px 60px;
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04); /* 부드러운 그림자로 공간감 형성 */
+    max-width: 800px; width: 100%;
+  }
+  
+  .my-name-center { 
+    font-size: 2.8em; font-weight: 800; color: #1d1d1f; margin-bottom: 8px; letter-spacing: -0.02em; 
+  }
+  .my-role-center { 
+    font-size: 1.2em; color: #424245; font-weight: 500; margin-bottom: 5px; 
+  }
+  .my-email-center {
+    font-size: 1em; color: #86868b; font-weight: 400; margin-bottom: 25px;
+  }
+  
+  .social-center { display: flex; justify-content: center; gap: 12px; }
+  .social-btn {
+    padding: 10px 24px; border-radius: 30px; background: #f5f5f7; border: 1px solid transparent;
+    color: #1d1d1f; font-weight: 600; font-size: 0.95em; text-decoration: none; transition: all 0.2s;
+  }
+  .social-btn:hover { background: #1d1d1f; color: #fff; transform: translateY(-2px); }
 
-    /* Sidebar */
-    .sidebar {
-      background-color: var(--bg-sidebar);
-      border-right: 1px solid var(--border-color);
-      padding: 40px 30px; padding-top: 140px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      overflow-y: auto;
-    }
 
-    .sidebar-title {
-      font-family: var(--font-stack);
-      font-size: 1.4em;        
-      font-weight: 600;        
-      color: #424245;          
-      margin: 0 0 4px 0;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-    }
-    .sidebar-desc { 
-      font-size: 0.9em; 
-      color: var(--text-secondary); 
-      margin-bottom: 50px; 
-      font-weight: 400; 
-      margin-top: 0; 
-      letter-spacing: -0.01em;
-    }
+  /* 2-2. Daily Study Log (Apple Style Clean Design) */
+  .daily-banner-wide {
+    width: 100%;
+    /* 우중충한 그라데이션 제거 -> 밝은 실버/화이트 톤 적용 */
+    background: #fbfbfd;
+    border: 1px solid #eaeaea;
+    border-radius: 24px;
+    padding: 50px 60px;
+    text-decoration: none !important; color: #1d1d1f;
+    position: relative; overflow: hidden;
+    transition: all 0.3s var(--ease-smooth);
+    display: flex; justify-content: space-between; align-items: flex-end; /* 하단 정렬 */
+  }
+  .daily-banner-wide:hover { 
+    transform: scale(1.01); 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06); 
+    border-color: #d2d2d7;
+  }
 
-    .sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
-    .sidebar-nav li { margin-bottom: 8px; }
+  .daily-left { max-width: 70%; }
+  
+  .daily-title { 
+    font-size: 2.5em; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1; 
+    color: #1d1d1f;
+  }
+  .daily-quote { 
+    font-size: 1.15em; font-weight: 400; color: #424245; line-height: 1.5; margin-bottom: 10px; font-style: italic;
+  }
+  .daily-sub {
+    font-size: 1em; color: #86868b; font-weight: 500; display: block;
+  }
+
+  /* Read Log 버튼 (우측 하단) */
+  .daily-right { 
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end;
+  }
+  .read-arrow-btn {
+    font-size: 1.1em; font-weight: 700; color: var(--apple-blue);
+    display: flex; align-items: center; transition: all 0.2s;
+    background: rgba(0, 113, 227, 0.1); /* 연한 파란 배경 */
+    padding: 10px 20px; border-radius: 30px;
+  }
+  .read-arrow-btn::after { content: '→'; margin-left: 8px; transition: margin-left 0.2s; }
+  .daily-banner-wide:hover .read-arrow-btn { background: var(--apple-blue); color: #fff; }
+  .daily-banner-wide:hover .read-arrow-btn::after { margin-left: 12px; }
+
+
+  /* ================= 3. Technical Notes (Centered) ================= */
+  .section-header { margin-top: 100px; margin-bottom: 40px; border-bottom: 2px solid #1d1d1f; padding-bottom: 15px; }
+  .section-title { font-size: 2em; font-weight: 700; color: #1d1d1f; margin: 0; }
+  
+  .notes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .note-card {
+    height: 450px; position: relative; border-radius: 24px; overflow: hidden; text-decoration: none; background-color: #000;
+    transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s;
+  }
+  .note-card:hover { transform: translateY(-12px) scale(1.01); box-shadow: 0 25px 50px rgba(0,0,0,0.25); z-index: 10; }
+  
+  .note-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.6s ease; }
+  .note-card:hover .note-bg { opacity: 0.5; transform: scale(1.08); }
+
+  .note-content {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px 20px;
+    color: #fff; z-index: 2; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    text-align: center;
+  }
+  .note-category { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: rgba(255,255,255,0.9); display: block; }
+  .note-title { font-size: 1.4em; font-weight: 700; line-height: 1.2; margin-bottom: 10px; } 
+  .note-desc { font-size: 0.95em; color: rgba(255,255,255,0.8); line-height: 1.5; }
+
+
+  /* ================= 4. Research ================= */
+  .research-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .research-item {
+    background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #eaeaea;
+    text-decoration: none; transition: all 0.3s var(--ease-smooth);
+  }
+  .research-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: transparent; }
+  
+  .research-thumb { height: 200px; overflow: hidden; background: #f5f5f7; }
+  .research-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .research-item:hover .research-thumb img { transform: scale(1.05); }
+  .research-info { padding: 24px; }
+  .research-title { font-size: 1.2em; font-weight: 700; color: #1d1d1f; margin-bottom: 8px; }
+  .research-sub { font-size: 0.95em; color: #86868b; line-height: 1.4; }
+
+
+  /* ================= 5. Projects (Cinematic Wide Cards - Fixes) ================= */
+  .section-subtitle {
+    font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin: 60px 0 25px 0; display: block;
+    border-bottom: 1px solid #eaeaea; padding-bottom: 10px;
+  }
+
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  
+  .cinematic-card {
+    height: 380px; border-radius: 24px; overflow: hidden; position: relative; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.4s var(--ease-smooth);
+  }
+  .cinematic-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.25); z-index: 5; }
+
+  .cinematic-bg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+  .cinematic-card:hover .cinematic-bg { transform: scale(1.05); }
+
+  .cinematic-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
+  }
+
+  .cinematic-content {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; color: #fff;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  
+  /* 🔥 [수정됨] 이름 충돌 방지: .cinematic-badge 사용 */
+  .tech-badges { position: absolute; top: 30px; right: 30px; display: flex; gap: 8px; }
+  .cinematic-badge {
+    background: rgba(0,0,0,0.6); /* 가독성 높은 반투명 검정 */
+    color: #fff; border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600;
+  }
+
+  .cinematic-title {
+    font-size: 1.8em; font-weight: 800; margin: 0 0 10px 0; line-height: 1.2;
+    transition: transform 0.4s var(--ease-smooth);
+  }
+  
+  /* 🔥 [수정됨] 부드러운 스프링 애니메이션 */
+  .cinematic-desc {
+    font-size: 1.05em; color: rgba(255,255,255,0.9); line-height: 1.5; margin: 0;
+    /* height나 max-height 대신 opacity와 transform만 사용하여 툭 끊김 방지 */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
     
-    .sidebar-nav a {
-      color: #424245; 
-      font-weight: 500; 
-      font-size: 0.95em;
-      transition: color 0.2s, transform 0.2s; 
-      display: flex; align-items: center;
-      letter-spacing: -0.01em;
-    }
-    .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
+    /* 공간은 차지하되 안 보이게 하거나, absolute로 겹쳐야 함. 
+       여기서는 자연스러운 확장을 위해 max-height를 넉넉히 주고 easing을 부드럽게 처리 */
+    max-height: 0; 
+    overflow: hidden;
+  }
 
-    .nav-home { margin-bottom: 45px; }
-    .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
+  /* 호버 인터랙션 */
+  .cinematic-card:hover .cinematic-title { transform: translateY(-5px); }
+  .cinematic-card:hover .cinematic-desc { 
+    opacity: 1; 
+    transform: translateY(0); 
+    max-height: 200px; /* 넉넉하게 */
+    transition-delay: 0.05s;
+  }
 
-    .nav-group { margin-bottom: 35px; }
-    .nav-header {
-      display: block; font-size: 0.75em; font-weight: 700; color: #999;
-      margin-bottom: 12px; letter-spacing: 0.05em; text-transform: uppercase;
-    }
 
-    .sidebar-bottom { border-top: 1px solid var(--border-color); padding-top: 25px; }
-    .profile-header { font-size: 0.8em; font-weight: 700; color: #1d1d1f; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.05em; }
-    .profile-info { font-size: 0.85em; color: #666; line-height: 1.5; margin-bottom: 15px; }
+  /* ================= Animations ================= */
+  .reveal-on-scroll {
+    opacity: 0; transform: translateY(60px) scale(0.98);
+    transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+  }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+
+  @media (max-width: 900px) {
+    .notes-grid, .research-grid, .projects-grid { grid-template-columns: 1fr; }
+    .daily-banner-wide { flex-direction: column; text-align: left; gap: 20px; align-items: flex-start; }
+    .daily-right { align-items: flex-start; margin-top: 20px; }
+    .page-title-static { font-size: 2.2em; letter-spacing: 0.1em; }
+  }
+</style>
+
+
+<div class="main-banner-area">
+  <img src="/assets/images/main-banner.png" alt="NULL ABYSS" class="main-banner-img">
+</div>
+
+<header class="main-header-static">
+  <h1 class="page-title-static">NULL ABYSS</h1>
+  <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
+</header>
+
+<hr class="section-divider-main">
+
+
+<div class="page-container">
+
+  <section class="intro-section reveal-on-scroll">
     
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-    .tech-badge {
-      background: #fff; color: #1d1d1f; padding: 4px 8px; border-radius: 6px;
-      font-size: 0.75em; font-weight: 600; border: 1px solid #e5e5e5;
-      white-space: nowrap; 
-    }
-
-    .contact-link {
-      display: flex; align-items: center; margin-bottom: 8px;
-      color: #424245; font-size: 0.9em; font-weight: 500; transition: color 0.2s;
-    }
-    .contact-link:hover { color: var(--accent-color); }
-
-    /* Main Content */
-    .main-content {
-      padding: 60px 60px; 
-      overflow-y: auto;
-      background-color: #fff;
-      display: flex; flex-direction: column;
-    }
-
-    .main-banner {
-      width: 100%; height: 350px; 
-      margin-bottom: 40px; border-radius: 20px; overflow: hidden;
-      box-shadow: var(--hover-shadow); flex-shrink: 0; border: 1px solid rgba(0,0,0,0.02);
-    }
-    .main-banner img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: 50% 62%; transition: transform 0.5s ease;
-    }
-
-    .main-header { 
-      text-align: center; 
-      margin-bottom: 80px;  
-      margin-top: 30px;      
-      padding-bottom: 60px; 
-      border-bottom: 1px solid var(--border-color);
-    }
-    
-    .page-title {
-      font-family: var(--font-stack);
-      font-weight: 700;        
-      font-size: 4em; 
-      letter-spacing: 0.4em;  
-      margin: 0 0 25px 0;      
-      text-transform: uppercase; 
-      color: #1d1d1f;
-      margin-right: -0.4em;    
-    }
-    
-    .page-desc { 
-      font-size: 1.0em;        
-      color: var(--text-secondary); 
-      font-weight: 400; 
-      letter-spacing: 0.05em;  
-    }
-
-    .three-column-wrapper {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr; 
-      gap: 40px; align-items: start;
-      max-width: 1800px; margin: 0 auto;
-    }
-    .column { display: flex; flex-direction: column; }
-    .col-header {
-      margin-bottom: 25px; padding-bottom: 12px;
-      border-bottom: 1px solid #1d1d1f; min-height: 50px;
-      display: flex; align-items: end;
-    }
-    .col-title {
-      font-family: var(--font-stack); font-size: 1.25em; font-weight: 700; 
-      color: #1d1d1f; margin: 0; letter-spacing: -0.02em;
-    }
-
-    ul { padding: 0; list-style: none; margin: 0; }
-    li.text-card {
-      background: #ffffff; border: 1px solid #eaeaea; border-radius: 12px;
-      transition: all 0.2s ease; padding: 20px; margin-bottom: 15px;
-    }
-    li.text-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: #d2d2d7; }
-    
-    .text-card-title { 
-      display: block; font-weight: 700; font-size: 1em; 
-      margin-bottom: 6px; color: #1d1d1f; letter-spacing: -0.01em; 
-    }
-    .text-card-desc { 
-      font-size: 0.95em; color: #86868b; line-height: 1.6; 
-      letter-spacing: -0.01em; word-break: keep-all; 
-    }
-
-    .gallery-item { margin-bottom: 25px; }
-    .gallery-thumb {
-      width: 100%; aspect-ratio: 16/9; border-radius: 10px;
-      overflow: hidden; box-shadow: var(--card-shadow); margin-bottom: 10px;
-      transition: transform 0.2s; cursor: pointer; border: 1px solid rgba(0,0,0,0.05);
-    }
-    .gallery-thumb:hover { transform: scale(1.02); box-shadow: var(--hover-shadow); }
-    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 3px; font-weight: 600; letter-spacing: -0.01em; }
-    .gallery-info span { font-size: 0.9em; color: #86868b; }
-
-    /* Markdown Body Style */
-    .markdown-body {
-        max-width: 900px;
-        margin: 0 auto;
-        line-height: 1.7;
-        color: #333;
-    }
-    .markdown-body h1, .markdown-body h2 { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-top: 40px; }
-    .markdown-body p { margin-bottom: 20px; }
-    .markdown-body code { background: #f6f8fa; padding: 3px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
-
-    @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 900px) {
-      .three-column-wrapper { grid-template-columns: 1fr; }
-      .app-container { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-    }
-
-    /* 👇👇👇 여기! 맨 마지막 부분에 붙여넣으세요 👇👇👇 */
-    .markdown-body img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 20px auto;
-    }
-    
-  </style>
-</head>
-<body>
-
-  <div class="app-container">
-    
-    <aside class="sidebar">
-      <div class="sidebar-top">
-        <h1 class="sidebar-title">
-          <a href="{{ '/' | relative_url }}">DongGun Kim</a>
-        </h1>
-        <p class="sidebar-desc">Real-time Rendering & Shader R&D</p>
-        
-        <nav class="sidebar-nav">
-          
-          <div class="nav-home">
-             <ul>
-               <li><a href="{{ '/' | relative_url }}">Home</a></li>
-             </ul>
-          </div>
-
-          <div class="nav-group">
-            <span class="nav-header">About</span>
-            <ul>
-              <li><a href="{{ '/about.md' | relative_url }}">Profile</a></li>
-              <li><a href="https://github.com/kimdonggun324" target="_blank">GitHub</a></li>
-            </ul>
-          </div>
-
-          <div class="nav-group">
-            <span class="nav-header">Dev Log</span>
-            <ul>
-              <li><a href="{{ '/daily-study/' | relative_url }}">Daily Study Log</a></li>
-              <li><a href="{{ '/technical-notes/' | relative_url }}">Technical Notes</a></li>
-            </ul>
-          </div>
-          <div class="nav-group">
-            <span class="nav-header">Research</span>
-            <ul>
-              <li><a href="{{ '/01_Graphics_Theory/README.md' | relative_url }}">Graphics Theory</a></li>
-              <li><a href="{{ '/02_Shader_Lab/README.md' | relative_url }}">Shader Implementation</a></li>
-              <li><a href="{{ '/03_Engine_CPP/README.md' | relative_url }}">C++ & Engine Core</a></li>
-              <li><a href="{{ '/04_TA_Tools/README.md' | relative_url }}">TA Tools & Pipeline</a></li>
-            </ul>
-          </div>
-          <div class="nav-group">
-            <span class="nav-header">Projects</span>
-            <ul>
-              <li><a href="{{ '/Daily_Log/Archive_Engine.md' | relative_url }}">Engine & Tech Demo</a></li>
-              <li><a href="{{ '/Daily_Log/Archive_Shader.md' | relative_url }}">Shader & Art R&D</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-
-      <div class="sidebar-bottom">
-        <div class="profile-header">Researcher</div>
-        <div class="profile-info">
-          <strong>DongGun Kim</strong><br>M.S. Student @ CNU<br>Goal: Pearl Abyss TA
-        </div>
-        
-        <div class="tech-stack">
-          <span class="tech-badge">C++</span>
-          <span class="tech-badge">UE5</span>
-          <span class="tech-badge">HLSL</span>
-          <span class="tech-badge">Houdini</span>
-          <span class="tech-badge">Substance Designer</span>
-        </div>
-
-        <div style="margin-top: 25px;">
-          <div class="profile-header">Connect</div>
-          <div style="margin-bottom: 2px; font-size: 0.85em; color: #1d1d1f; font-weight: 600;">Email</div>
-          <a href="mailto:kdg324@naver.com" class="contact-link" style="color: #666; font-weight: 400; font-size: 0.85em;">
-            kdg324@naver.com
-          </a>
-        </div>
-      </div>
-    </aside>
-
-    <main class="main-content">
+    <div class="profile-container">
+      <div class="my-name-center">DongGun Kim</div>
+      <div class="my-role-center">Graphics R&D & Tech Art</div>
+      <div class="my-email-center">M.S. Student @ CNU</div>
       
-      <script type="text/javascript" id="MathJax-script" async
-        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-      </script>
-      <script>
-        window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
-      </script>
+      <div class="social-center">
+        <a href="{{ '/about.md' | relative_url }}" class="social-btn">Profile</a>
+        <a href="https://github.com/kimdonggun324" target="_blank" class="social-btn">GitHub</a>
+      </div>
+    </div>
 
-      {{ content }}
+    <a href="{{ '/daily-study/' | relative_url }}" class="daily-banner-wide">
+      <div class="daily-left">
+        <h2 class="daily-title">Daily Study Log</h2>
+        <div class="daily-quote">"I never saved anything for the swim back."</div>
+        <div class="daily-desc">매일 기록하는 성장과 끈기의 증명.</div>
+        <span class="daily-sub">Shaders & Engine Core Log • Since 2025.11</span>
+      </div>
+      
+      <div class="daily-right">
+        <div class="read-arrow-btn">Read Log</div>
+      </div>
+    </a>
 
-    </main>
+  </section>
 
+
+  <div class="section-header reveal-on-scroll">
+    <h2 class="section-title">Technical Notes</h2>
   </div>
 
-</body>
-</html>
+  <div class="notes-grid">
+    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-1">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600" class="note-bg">
+      <div class="note-content">
+        <span class="note-category">Implementation</span>
+        <h3 class="note-title">Shader & Rendering</h3>
+        <p class="note-desc">논문과 이론을 바탕으로<br>직접 구현한 그래픽스 기술</p>
+      </div>
+    </a>
+    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-2">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
+      <div class="note-content">
+        <span class="note-category">Optimization</span>
+        <h3 class="note-title">C++ & Performance</h3>
+        <p class="note-desc">메모리와 연산 효율을 극대화하는<br>엔진 최적화 기록</p>
+      </div>
+    </a>
+    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-3">
+      <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600" class="note-bg">
+      <div class="note-content">
+        <span class="note-category">Deep Analysis</span>
+        <h3 class="note-title">Engine Deep Dive</h3>
+        <p class="note-desc">언리얼 엔진 소스 코드 분석 및<br>기술적 이슈 트러블슈팅</p>
+      </div>
+    </a>
+    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-4">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600" class="note-bg">
+      <div class="note-content">
+        <span class="note-category">Workflow</span>
+        <h3 class="note-title">TA Tools & Pipeline</h3>
+        <p class="note-desc">작업 효율을 높이는<br>자동화 툴과 파이프라인 구축</p>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="section-header reveal-on-scroll">
+    <h2 class="section-title">Research</h2>
+  </div>
+
+  <div class="research-grid">
+    <a href="#" class="research-item reveal-on-scroll delay-1">
+      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=400"></div>
+      <div class="research-info">
+        <div class="research-title">Graphics Theory</div>
+        <div class="research-sub">Math & Physics Base</div>
+      </div>
+    </a>
+    <a href="#" class="research-item reveal-on-scroll delay-2">
+      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400"></div>
+      <div class="research-info">
+        <div class="research-title">Shader Implementation</div>
+        <div class="research-sub">HLSL / GLSL</div>
+      </div>
+    </a>
+    <a href="#" class="research-item reveal-on-scroll delay-3">
+      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400"></div>
+      <div class="research-info">
+        <div class="research-title">C++ & Engine Core</div>
+        <div class="research-sub">Architecture & Memory</div>
+      </div>
+    </a>
+    <a href="#" class="research-item reveal-on-scroll delay-4">
+      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=400"></div>
+      <div class="research-info">
+        <div class="research-title">TA Tools</div>
+        <div class="research-sub">Python & Houdini</div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="section-header reveal-on-scroll" style="margin-top: 80px;">
+    <h2 class="section-title">Projects</h2>
+  </div>
+
+  <span class="section-subtitle reveal-on-scroll">Engine & Tech Demo</span>
+  <div class="projects-grid">
+    <a href="#" class="cinematic-card reveal-on-scroll delay-1">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="cinematic-badge">C++</span><span class="cinematic-badge">Optimization</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">C++ Memory Optimization</h3>
+        <p class="cinematic-desc">Smart Pointer & Custom Allocator 구현을 통한 캐시 히트율 향상 및 성능 최적화 사례 연구.</p>
+      </div>
+    </a>
+    <a href="#" class="cinematic-card reveal-on-scroll delay-2">
+      <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="cinematic-badge">UE5</span><span class="cinematic-badge">Rendering</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">UE5 Rendering Pipeline Analysis</h3>
+        <p class="cinematic-desc">나나이트(Nanite) 및 루멘(Lumen) 소스 코드 심층 분석, 커스텀 렌더 패스 확장 구현.</p>
+      </div>
+    </a>
+  </div>
+
+  <span class="section-subtitle reveal-on-scroll" style="margin-top: 50px;">Shader & Art R&D</span>
+  <div class="projects-grid">
+    <a href="#" class="cinematic-card reveal-on-scroll delay-1">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="cinematic-badge">HLSL</span><span class="cinematic-badge">Simulation</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">Ocean Simulation with Gerstner Wave</h3>
+        <p class="cinematic-desc">HLSL을 활용한 물리 기반 파도 시뮬레이션. 테셀레이션 및 버텍스 오프셋 최적화 적용.</p>
+      </div>
+    </a>
+    <a href="#" class="cinematic-card reveal-on-scroll delay-2">
+      <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="cinematic-badge">PBR</span><span class="cinematic-badge">Material</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">Advanced Ice Material R&D</h3>
+        <p class="cinematic-desc">Subsurface Scattering(SSS), Parallax Occlusion Mapping을 활용한 사실적인 얼음 질감 표현.</p>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  });
+</script>
