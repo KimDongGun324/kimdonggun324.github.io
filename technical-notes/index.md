@@ -6,8 +6,9 @@ permalink: /technical-notes/
 
 <style>
   /* ================= Global Layout & Reset ================= */
+  /* 1. 배경 단순화: 전체 배경을 다시 흰색으로 변경 */
   body, .markdown-body {
-    background-color: #f2f2f7 !important; /* 애플 스타일의 더 진한 기본 배경색 */
+    background-color: #ffffff !important; 
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
     color: #1d1d1f;
   }
@@ -16,39 +17,35 @@ permalink: /technical-notes/
     max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
   }
   
-  /* ================= Main Page Container (Layered Design) ================= */
+  /* ================= Main Page Container ================= */
   .page-container {
-    /* 1. 너비 확장 및 왼쪽 정렬 */
+    /* 2. 레이아웃 정리: 회색 박스 제거 및 왼쪽 정렬 */
     max-width: 1600px; 
-    margin: 40px auto; /* 상하 여백, 중앙 정렬 */
-    padding: 40px;
+    margin: 40px auto; /* 큰 화면에서는 중앙에 위치하되 */
+    padding: 0 20px; /* 좌우 여백 확보 */
     
-    /* 2. 배경 디자인 강화 (회색 배경 위에 떠 있는 흰색 패널) */
-    background-color: #ffffff;
-    border-radius: 24px; /* 더 큰 둥근 모서리 */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* 부드럽고 깊은 그림자 */
+    /* 회색 배경, 그림자, 둥근 모서리 모두 제거 -> 투명한 컨테이너가 됨 */
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
     
-    /* 텍스트 왼쪽 정렬 */
-    text-align: left;
+    text-align: left; /* 내부 콘텐츠 왼쪽 정렬 */
   }
-
-  /* 페이지 제목 (필요 시) */
-  /* h1 { margin-top: 0; font-size: 2.2em; letter-spacing: -0.02em; } */
 
   /* 페이지 설명 */
   .page-intro {
     font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
-    margin-bottom: 40px; word-break: keep-all; max-width: 800px; /* 설명글은 너무 길어지지 않게 제한 */
+    margin-bottom: 40px; word-break: keep-all; max-width: 800px;
   }
   .highlight-text { color: #1d1d1f; font-weight: 600; }
 
   /* ================= Filter Buttons ================= */
   .filter-container { 
     margin-bottom: 40px; display: flex; gap: 12px; flex-wrap: wrap; 
-    justify-content: start; /* 버튼도 왼쪽 정렬 */
+    justify-content: start; /* 왼쪽 정렬 */
   }
   .filter-btn {
-    padding: 10px 20px; border-radius: 24px; /* 버튼 크기/둥글기 확대 */
+    padding: 10px 20px; border-radius: 24px;
     border: 1px solid #d2d2d7;
     background: #ffffff; 
     font-size: 0.95em; font-weight: 600; color: #666; cursor: pointer; transition: all 0.2s ease;
@@ -59,56 +56,55 @@ permalink: /technical-notes/
   /* ================= Grid Layout (5열 고정) ================= */
   .bento-grid {
     display: grid;
-    /* 3. 5열 고정 및 왼쪽 정렬 */
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px; /* 간격 확대 */
+    grid-template-columns: repeat(5, 1fr); /* 5열 고정 */
+    gap: 30px;
     margin-bottom: 60px;
-    justify-content: start;
+    justify-content: start; /* 왼쪽 정렬 */
   }
 
-  /* 반응형 미디어 쿼리 (화면 작아질 때 대응) */
+  /* 반응형 미디어 쿼리 */
   @media (max-width: 1400px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 1100px) { .bento-grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 800px)  { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 500px)  { .bento-grid { grid-template-columns: 1fr; } }
 
 
-  /* ================= Card Style (Unified Rounded UI) ================= */
+  /* ================= Card Style (Clean White UI) ================= */
   .bento-card {
-    background: #ffffff;
-    border: none; 
-    border-radius: 20px; /* 카드 전체 둥근 모서리 */
-    overflow: visible; /* 그림자가 잘리지 않게 */
+    background: #ffffff; /* 카드 흰색 */
+    border: 1px solid #eaeaea; /* 흰색 배경이므로 연한 테두리 추가로 구분감 줌 */
+    border-radius: 20px; 
+    overflow: hidden; /* 자식 요소가 둥근 모서리를 넘지 않게 */
     position: relative; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex; flex-direction: column;
-    /* 기본 상태 그림자 */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    /* 기본 상태 그림자는 연하게 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
   .bento-card:hover {
-    transform: translateY(-8px); /* 더 높이 떠오름 */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* 깊은 그림자 */
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12); /* 호버 시 깊은 그림자 */
+    border-color: transparent; /* 호버 시 테두리 대신 그림자 강조 */
     z-index: 10;
   }
   .bento-card.hidden { display: none; }
 
-  /* 썸네일 (상단 둥근 모서리 적용) */
+  /* 썸네일 (상단 이미지 영역) */
   .card-thumb {
-    width: 100%; height: 200px; /* 4. 크기 확대 (높이 증가) */
-    background-color: #f0f0f2;
-    position: relative; overflow: hidden;
-    /* 2. 상단만 둥글게 처리하여 하단과 통일감 부여 */
-    border-radius: 20px 20px 0 0; 
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    width: 100%; height: 200px;
+    /* 3. 핵심 수정: 이곳의 배경색을 회색에서 흰색으로 변경! */
+    background-color: #ffffff; 
+    position: relative; 
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* 이미지 하단 분리선 */
+    /* overflow: hidden이 .bento-card에 있어서 여기선 제거해도 됨 */
   }
   .card-thumb img {
     width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
   }
   .bento-card:hover .card-thumb img { transform: scale(1.08); }
 
-  /* 텍스트 내용 (하단 둥근 모서리) */
+  /* 텍스트 내용 */
   .card-info { 
     padding: 24px; background: #fff; flex-grow: 1; display: flex; flex-direction: column;
-    border-radius: 0 0 20px 20px; /* 하단만 둥글게 */
   }
 
   .bento-tag {
