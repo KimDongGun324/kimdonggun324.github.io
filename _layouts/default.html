@@ -447,10 +447,10 @@
   </aside>
 
 
-  <main class="main-content-scrollable">
+<main class="main-content-scrollable">
     
     <div class="main-banner-area">
-      <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img">
+      <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img" style="height: 600px;"> 
     </div>
 
     <header class="main-header-static">
@@ -459,35 +459,9 @@
     </header>
 
     <div class="page-container">
+        {{ content }}
+    </div>
 
-      <section class="intro-section-1col reveal-on-scroll">
-        
-        <div class="philosophy-text-center">
-          <p class="philosophy-quote">
-            "수식과 코드로 구현하는 빛의 논리.<br>
-            그래픽스 이론부터 최적화까지 깊이 있게 연구하고 기록합니다."
-          </p>
-        </div>
-
-        <a href="{{ '/daily-study/' | relative_url }}" class="daily-banner-wide-1col">
-          <div class="daily-content-wrapper">
-            <h2 class="daily-title-slim">Daily Study Log</h2>
-            <div class="daily-quote-slim">"I never saved anything for the swim back."</div>
-            <div class="daily-desc-slim">매일 기록하는 성장과 끈기의 증명.</div>
-          </div>
-          
-          <div class="daily-bottom-slim">
-            <div class="daily-meta-slim">Shaders & Engine Core Log | Since 2025.11</div>
-            <div class="read-arrow-btn-slim">Read Log</div>
-          </div>
-        </a>
-
-      </section>
-
-
-      <div class="section-header reveal-on-scroll">
-        <h2 class="section-title">Technical Notes</h2>
-      </div>
 
       <div class="notes-grid">
         <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-1">
