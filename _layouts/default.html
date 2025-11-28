@@ -449,14 +449,18 @@
 
 <main class="main-content-scrollable">
     
-    <div class="main-banner-area">
-      <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img" style="height: 600px;"> 
-    </div>
+{% if page.permalink == '/' %}
+<div class="main-banner-area">
+  <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img" style="height: 600px;">  
+</div>
+{% endif %}
 
-    <header class="main-header-static">
-      <h1 class="page-title-static">NULL ABYSS</h1>
-      <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
-    </header>
+{% if page.permalink == '/' %}
+<header class="main-header-static">
+  <h1 class="page-title-static">NULL ABYSS</h1>
+  <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
+</header>
+{% endif %}
 
     <div class="page-container">
         {{ content }}     </div>
