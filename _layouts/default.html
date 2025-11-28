@@ -5,36 +5,50 @@ layout: default
 <style>
   /* ================= CSS Variables & Reset ================= */
   :root {
-    --ease-smooth: cubic-bezier(0.33, 1, 0.68, 1); /* 매우 부드러운 감속 커브 */
+    --ease-smooth: cubic-bezier(0.33, 1, 0.68, 1);
     --apple-blue: #0071e3;
     --apple-bg: #f5f5f7;
   }
 
+  /* 메인 컨텐츠 영역 재정의 */
   .main-content {
-    padding: 0 !important;
+    padding: 0 !important; /* 상단 배너를 위해 패딩 제거 */
     max-width: 100% !important;
     background-color: #ffffff;
   }
   
+  /* 실제 콘텐츠가 들어가는 컨테이너 */
   .page-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 60px 40px;
+    padding: 40px 40px 60px 40px; /* 상단 패딩 줄임 */
   }
 
-  /* ================= 1. Top Banner ================= */
+
+  /* ================= 1. Top Banner (Apple Style Rounded) ================= */
   .main-banner-area {
-    width: 100%; height: 420px;
-    overflow: hidden; position: relative;
+    width: 100%; 
+    height: 400px; /* 높이 약간 줄임 */
+    overflow: hidden; 
+    position: relative;
     background: #1d1d1f;
+    /* 애플 스타일 둥근 모서리 & 마진 적용 */
+    border-radius: 24px;
+    margin: 40px auto 0 auto; /* 상단 마진 추가, 중앙 정렬 */
+    max-width: 1400px; /* 최대 너비 제한 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* 부드러운 그림자 */
   }
   .main-banner-img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center;
-    opacity: 0.85;
+    width: 100%; height: 100%; object-fit: cover; 
+    /* 이전 요청 위치 복원 */
+    object-position: 50% 62%; 
+    opacity: 0.9; /* 텍스트 가독성 위해 살짝 어둡게 */
   }
 
   .main-header-static {
-    text-align: center; padding: 50px 20px 40px 20px; background: #fff;
+    text-align: center;
+    padding: 40px 20px 30px 20px;
+    background: #fff;
   }
   .page-title-static {
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
@@ -55,79 +69,78 @@ layout: default
   /* ================= 2. Profile & Daily Log (Layout Fix) ================= */
   .intro-section {
     display: flex; flex-direction: column; gap: 40px; margin-bottom: 100px;
-    align-items: center; /* 중앙 정렬 */
+    align-items: center;
   }
 
-  /* 2-1. Profile Center (Design Enhanced) */
+  /* 2-1. Profile Center (Small Card Style + Link) */
+  .profile-link-wrapper {
+    text-decoration: none; color: inherit; display: block;
+    max-width: 600px; /* 너비 줄임 (명함 느낌) */
+    width: 100%;
+  }
   .profile-container {
     text-align: center;
-    padding: 40px 60px;
+    padding: 30px 40px; /* 패딩 줄임 */
     background: #ffffff;
     border: 1px solid #eaeaea;
     border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.04); /* 부드러운 그림자로 공간감 형성 */
-    max-width: 800px; width: 100%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    transition: all 0.3s var(--ease-smooth);
+  }
+  .profile-link-wrapper:hover .profile-container {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    border-color: rgba(0,0,0,0);
   }
   
-  .my-name-center { 
-    font-size: 2.8em; font-weight: 800; color: #1d1d1f; margin-bottom: 8px; letter-spacing: -0.02em; 
-  }
-  .my-role-center { 
-    font-size: 1.2em; color: #424245; font-weight: 500; margin-bottom: 5px; 
-  }
-  .my-email-center {
-    font-size: 1em; color: #86868b; font-weight: 400; margin-bottom: 25px;
-  }
+  .my-name-center { font-size: 2.4em; font-weight: 800; color: #1d1d1f; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .my-role-center { font-size: 1.1em; color: #424245; font-weight: 500; margin-bottom: 5px; }
+  .my-email-center { font-size: 0.95em; color: #86868b; font-weight: 400; margin-bottom: 20px; }
   
-  .social-center { display: flex; justify-content: center; gap: 12px; }
-  .social-btn {
-    padding: 10px 24px; border-radius: 30px; background: #f5f5f7; border: 1px solid transparent;
-    color: #1d1d1f; font-weight: 600; font-size: 0.95em; text-decoration: none; transition: all 0.2s;
+  .social-center { display: flex; justify-content: center; gap: 10px; }
+  /* 버튼 스타일 유지하되 포인터 이벤트 제거 (상위 링크가 처리) */
+  .social-btn-style {
+    padding: 8px 20px; border-radius: 30px; background: #f5f5f7; 
+    color: #1d1d1f; font-weight: 600; font-size: 0.9em; border: 1px solid transparent;
   }
-  .social-btn:hover { background: #1d1d1f; color: #fff; transform: translateY(-2px); }
 
 
-  /* 2-2. Daily Study Log (Apple Style Clean Design) */
+  /* 2-2. Daily Study Log (Layout Rearranged) */
   .daily-banner-wide {
     width: 100%;
-    /* 우중충한 그라데이션 제거 -> 밝은 실버/화이트 톤 적용 */
-    background: #fbfbfd;
-    border: 1px solid #eaeaea;
-    border-radius: 24px;
+    background: #fbfbfd; border: 1px solid #eaeaea; border-radius: 24px;
     padding: 50px 60px;
     text-decoration: none !important; color: #1d1d1f;
     position: relative; overflow: hidden;
     transition: all 0.3s var(--ease-smooth);
-    display: flex; justify-content: space-between; align-items: flex-end; /* 하단 정렬 */
+    display: flex; justify-content: space-between; 
+    align-items: flex-start; /* 상단 정렬로 변경 */
+    height: 280px; /* 높이 고정 */
   }
-  .daily-banner-wide:hover { 
-    transform: scale(1.01); 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.06); 
-    border-color: #d2d2d7;
-  }
+  .daily-banner-wide:hover { transform: scale(1.01); box-shadow: 0 15px 40px rgba(0,0,0,0.06); border-color: #d2d2d7; }
 
-  .daily-left { max-width: 70%; }
-  
-  .daily-title { 
-    font-size: 2.5em; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1; 
-    color: #1d1d1f;
+  .daily-left { 
+    max-width: 70%; 
+    display: flex; flex-direction: column; justify-content: flex-start; /* 상단부터 채움 */
   }
-  .daily-quote { 
-    font-size: 1.15em; font-weight: 400; color: #424245; line-height: 1.5; margin-bottom: 10px; font-style: italic;
-  }
-  .daily-sub {
-    font-size: 1em; color: #86868b; font-weight: 500; display: block;
-  }
+  .daily-title { font-size: 2.5em; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1; color: #1d1d1f; }
+  .daily-quote { font-size: 1.15em; font-weight: 400; color: #424245; line-height: 1.5; margin-bottom: 10px; font-style: italic; }
+  .daily-desc { font-size: 1.15em; font-weight: 400; color: #424245; line-height: 1.5; margin-bottom: 0; }
 
-  /* Read Log 버튼 (우측 하단) */
+  /* 우측 하단 정렬 */
   .daily-right { 
-    display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end;
+    display: flex; flex-direction: column; 
+    align-items: flex-end; justify-content: flex-end;
+    height: 100%;
+  }
+  .daily-meta { 
+    font-size: 0.95em; color: #86868b; font-weight: 600; font-family: monospace; opacity: 0.6; 
+    margin-bottom: 20px; text-align: right;
   }
   .read-arrow-btn {
     font-size: 1.1em; font-weight: 700; color: var(--apple-blue);
     display: flex; align-items: center; transition: all 0.2s;
-    background: rgba(0, 113, 227, 0.1); /* 연한 파란 배경 */
-    padding: 10px 20px; border-radius: 30px;
+    background: rgba(0, 113, 227, 0.1); padding: 10px 20px; border-radius: 30px;
   }
   .read-arrow-btn::after { content: '→'; margin-left: 8px; transition: margin-left 0.2s; }
   .daily-banner-wide:hover .read-arrow-btn { background: var(--apple-blue); color: #fff; }
@@ -174,7 +187,7 @@ layout: default
   .research-sub { font-size: 0.95em; color: #86868b; line-height: 1.4; }
 
 
-  /* ================= 5. Projects (Cinematic Wide Cards - Fixes) ================= */
+  /* ================= 5. Projects (Cinematic Wide Cards) ================= */
   .section-subtitle {
     font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin: 60px 0 25px 0; display: block;
     border-bottom: 1px solid #eaeaea; padding-bottom: 10px;
@@ -202,11 +215,9 @@ layout: default
     display: flex; flex-direction: column; justify-content: flex-end;
   }
   
-  /* 🔥 [수정됨] 이름 충돌 방지: .cinematic-badge 사용 */
   .tech-badges { position: absolute; top: 30px; right: 30px; display: flex; gap: 8px; }
   .cinematic-badge {
-    background: rgba(0,0,0,0.6); /* 가독성 높은 반투명 검정 */
-    color: #fff; border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.6); color: #fff; border: 1px solid rgba(255,255,255,0.2);
     padding: 6px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600;
   }
 
@@ -215,28 +226,14 @@ layout: default
     transition: transform 0.4s var(--ease-smooth);
   }
   
-  /* 🔥 [수정됨] 부드러운 스프링 애니메이션 */
   .cinematic-desc {
     font-size: 1.05em; color: rgba(255,255,255,0.9); line-height: 1.5; margin: 0;
-    /* height나 max-height 대신 opacity와 transform만 사용하여 툭 끊김 방지 */
-    opacity: 0; 
-    transform: translateY(20px); 
-    transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
-    
-    /* 공간은 차지하되 안 보이게 하거나, absolute로 겹쳐야 함. 
-       여기서는 자연스러운 확장을 위해 max-height를 넉넉히 주고 easing을 부드럽게 처리 */
-    max-height: 0; 
-    overflow: hidden;
+    opacity: 0; transform: translateY(20px); transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
+    max-height: 0; overflow: hidden;
   }
 
-  /* 호버 인터랙션 */
   .cinematic-card:hover .cinematic-title { transform: translateY(-5px); }
-  .cinematic-card:hover .cinematic-desc { 
-    opacity: 1; 
-    transform: translateY(0); 
-    max-height: 200px; /* 넉넉하게 */
-    transition-delay: 0.05s;
-  }
+  .cinematic-card:hover .cinematic-desc { opacity: 1; transform: translateY(0); max-height: 200px; transition-delay: 0.05s; }
 
 
   /* ================= Animations ================= */
@@ -252,9 +249,12 @@ layout: default
 
   @media (max-width: 900px) {
     .notes-grid, .research-grid, .projects-grid { grid-template-columns: 1fr; }
-    .daily-banner-wide { flex-direction: column; text-align: left; gap: 20px; align-items: flex-start; }
+    .daily-banner-wide { flex-direction: column; text-align: left; gap: 20px; align-items: flex-start; height: auto; }
     .daily-right { align-items: flex-start; margin-top: 20px; }
     .page-title-static { font-size: 2.2em; letter-spacing: 0.1em; }
+    
+    /* 모바일에서 사이드바가 사라져도 배너 위치 유지 */
+    .main-banner-area { margin-top: 0; border-radius: 0; } 
   }
 </style>
 
@@ -275,26 +275,28 @@ layout: default
 
   <section class="intro-section reveal-on-scroll">
     
-    <div class="profile-container">
-      <div class="my-name-center">DongGun Kim</div>
-      <div class="my-role-center">Graphics R&D & Tech Art</div>
-      <div class="my-email-center">M.S. Student @ CNU</div>
-      
-      <div class="social-center">
-        <a href="{{ '/about.md' | relative_url }}" class="social-btn">Profile</a>
-        <a href="https://github.com/kimdonggun324" target="_blank" class="social-btn">GitHub</a>
+    <a href="{{ '/about.md' | relative_url }}" class="profile-link-wrapper">
+      <div class="profile-container">
+        <div class="my-name-center">DongGun Kim</div>
+        <div class="my-role-center">Graphics R&D & Tech Art</div>
+        <div class="my-email-center">M.S. Student @ CNU</div>
+        
+        <div class="social-center">
+          <span class="social-btn-style">Profile</span>
+          <span class="social-btn-style">GitHub</span>
+        </div>
       </div>
-    </div>
+    </a>
 
     <a href="{{ '/daily-study/' | relative_url }}" class="daily-banner-wide">
       <div class="daily-left">
         <h2 class="daily-title">Daily Study Log</h2>
         <div class="daily-quote">"I never saved anything for the swim back."</div>
         <div class="daily-desc">매일 기록하는 성장과 끈기의 증명.</div>
-        <span class="daily-sub">Shaders & Engine Core Log • Since 2025.11</span>
       </div>
       
       <div class="daily-right">
+        <div class="daily-meta">Shaders & Engine Core Log<br>Since 2025.11</div>
         <div class="read-arrow-btn">Read Log</div>
       </div>
     </a>
