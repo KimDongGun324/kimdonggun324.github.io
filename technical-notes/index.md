@@ -5,115 +5,168 @@ permalink: /technical-notes/
 ---
 
 <style>
-  /* ================= Global Layout & Reset ================= */
-  body, .markdown-body {
-    background-color: #ffffff !important; 
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
-    color: #1d1d1f;
-  }
-  
-  .markdown-body {
-    max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
-  }
-  
-/* ================= Main Page Container (왼쪽 정렬 FIX) ================= */
-.page-container {
-  /* 최대 너비는 유지하지만, 좌우 자동 마진 제거 */
-  max-width: 1250px; 
-  
-  /* 🔥 FIX 1: 중앙 정렬 제거 -> 왼쪽 정렬 */
-  margin: 40px 0; /* 상하 40px, 좌우 0 */
-  
-  /* 좌측 여백은 메인 레이아웃(50px)을 상속받도록 유지하는 것이 이상적입니다. */
-  padding: 0 50px; /* 여기서 50px로 강제 설정하여 좌측 여백 통일 (이전 default.html 설정과 일치) */
-    
-    background-color: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    
-    text-align: left; 
-  }
+  /* ================= Global Layout & Reset ================= */
+  body, .markdown-body {
+    background-color: #ffffff !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    color: #1d1d1f;
+  }
+  .markdown-body {
+    max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
+  }
 
-  /* 페이지 설명 */
-  .page-intro {
-    font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
-    
-    /* 🔥 FIX 2: 텍스트 블록 중앙 정렬 제거 -> 왼쪽 정렬 */
-    margin: 0 0 40px 0; /* 마진 상쇄 및 왼쪽 정렬 */
-    
-    word-break: keep-all; 
-    max-width: 800px;
-  }
-  .highlight-text { color: #1d1d1f; font-weight: 600; }
+  /* ================= Main Page Container (좌측 목차 옆으로 밀착) ================= */
+  .page-container {
+    max-width: 100%; /* 너비를 100%로 설정하여 사이드바를 제외한 전체 영역 사용 */
+    margin: 40px 0 40px 0; /* 상하 40px, 좌우 0으로 설정하여 왼쪽 정렬 */
+    padding: 0 50px; /* ⭐ FIX 1: 좌측 목차 옆으로 콘텐츠를 밀착시키기 위해 좌측 패딩 50px */
+    text-align: left;
+  }
 
-  /* ================= Filter Buttons ================= */
-  .filter-container { 
-    margin-bottom: 40px; display: flex; gap: 12px; flex-wrap: wrap; 
-    /* 🔥 FIX 3: 버튼 중앙 정렬 제거 -> 왼쪽 정렬 */
-    justify-content: start; 
-  }
-  .filter-btn {
-    padding: 10px 20px; border-radius: 24px;
-    border: 1px solid #d2d2d7;
-    background: #ffffff; 
-    font-size: 0.95em; font-weight: 600; color: #666; cursor: pointer; transition: all 0.2s ease;
-  }
-  .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #86868b; }
-  .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
+  /* 페이지 설명 */
+  .page-intro {
+    font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.6;
+    margin: 0 0 40px 0; /* 좌측 정렬 */
+    word-break: keep-all; 
+    max-width: 800px;
+  }
+  .highlight-text { color: #1d1d1f; font-weight: 600; }
 
-  /* ================= Grid Layout (4열 고정 & 왼쪽 정렬) ================= */
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 30px;
-    margin-bottom: 60px;
-    /* justify-content: start; 는 grid에서는 필요 없거나 auto로 처리됨 */
-  }
+  /* ================= Filter Buttons (두 번째 이미지처럼 디자인 변경) ================= */
+  .filter-container { 
+    margin-bottom: 40px; 
+    display: flex; 
+    gap: 12px; 
+    flex-wrap: wrap; 
+    justify-content: flex-start; /* ⭐ FIX 2: 버튼 왼쪽 정렬 */
+  }
+  .filter-btn {
+    padding: 8px 16px; /* ⭐ FIX 2: 패딩 줄여서 태그처럼 보이게 */
+    border-radius: 18px; /* ⭐ FIX 2: 둥근 모서리 */
+    border: 1px solid #d2d2d7;
+    background: #ffffff; 
+    font-size: 0.9em; /* ⭐ FIX 2: 폰트 크기 조정 */
+    font-weight: 600; 
+    color: #666; 
+    cursor: pointer; 
+    transition: all 0.2s ease;
+    -webkit-appearance: none; /* iOS Safari 버튼 스타일 초기화 */
+    -moz-appearance: none;    /* Firefox 버튼 스타일 초기화 */
+    appearance: none;         /* 일반적인 버튼 스타일 초기화 */
+  }
+  .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #86868b; }
+  .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
 
-  /* 반응형 미디어 쿼리 */
-  @media (max-width: 1400px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
-  @media (max-width: 1100px) { .bento-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 800px)  { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 500px)  { .bento-grid { grid-template-columns: 1fr; } }
+  /* ================= Grid Layout (세 번째 이미지처럼 4열 갤러리 복구) ================= */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ⭐ FIX 3: 4열 그리드 복구 */
+    gap: 30px;
+    margin-bottom: 60px;
+  }
 
+  /* 반응형 미디어 쿼리 (화면 크기에 따라 열 개수 조정) */
+  @media (max-width: 1400px) { .bento-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 1100px) { .bento-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 800px)  { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px)  { .bento-grid { grid-template-columns: 1fr; } }
 
-  /* ================= Card Style (Clean White UI) ================= */
-  .bento-card {
-    background: #ffffff; 
-    border: 1px solid #eaeaea; 
-    border-radius: 20px; 
-    overflow: hidden; 
-    position: relative; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    display: flex; flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
-  .bento-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
-    border-color: transparent; 
-    z-index: 10;
-  }
-  .bento-card.hidden { display: none; }
+  /* ================= Card Style (세 번째 이미지처럼 깔끔하게) ================= */
+  .bento-card {
+    background: #ffffff; 
+    border: 1px solid #eaeaea; 
+    border-radius: 20px; /* ⭐ FIX 3: 둥근 모서리 */
+    overflow: hidden; 
+    position: relative; 
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex; 
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .bento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
+    border-color: transparent; 
+    z-index: 10;
+  }
+  .bento-card.hidden { display: none; }
 
-  /* 썸네일 (흰색 배경) */
-  .card-thumb {
-    width: 100%; 
-    height: 240px; 
-    background-color: #ffffff; 
-    position: relative; 
-    border-bottom: 1px solid rgba(0,0,0,0.05); 
-  }
-  .card-thumb img {
-    width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
-  }
-  .bento-card:hover .card-thumb img { transform: scale(1.08); }
+  /* 썸네일 (정사각형에 가깝도록 높이 조정) */
+  .card-thumb {
+    width: 100%; 
+    height: 180px; /* ⭐ FIX 3: 갤러리 이미지 높이 조정 (약간 더 정사각형에 가깝게) */
+    background-color: #ffffff; 
+    position: relative; 
+    border-bottom: 1px solid rgba(0,0,0,0.05); 
+  }
+  .card-thumb img {
+    width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+  }
+  .bento-card:hover .card-thumb img { transform: scale(1.08); }
 
-  /* 텍스트 내용 */
-  .card-info { 
-    padding: 24px; background: #fff; flex-grow: 1; display: flex; flex-direction: column;
-  }
+  /* 텍스트 내용 */
+  .card-info { 
+    padding: 20px; /* ⭐ FIX 3: 카드 내부 패딩 조정 */
+    background: #fff; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column;
+  }
+
+  .bento-tag {
+    font-size: 0.7em; 
+    font-weight: 700;
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    margin-bottom: 10px; /* ⭐ FIX 3: 태그 하단 마진 조정 */
+    display: inline-block;
+  }
   
-  /* ... (나머지 스타일 유지) ... */
+  /* 태그별 색상 (유지) */
+  .tag-impl { color: #0071e3; }
+  .tag-opt { color: #ff3b30; }
+  .tag-analysis { color: #af52de; }
+  .tag-workflow { color: #28cd41; }
+
+  .bento-title {
+    font-size: 1.1em; /* ⭐ FIX 3: 제목 폰트 크기 조정 */
+    font-weight: 700; 
+    color: #1d1d1f; 
+    margin-bottom: 8px; /* ⭐ FIX 3: 제목 하단 마진 조정 */
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .bento-desc {
+    font-size: 0.85em; /* ⭐ FIX 3: 설명 폰트 크기 조정 */
+    color: #86868b; 
+    line-height: 1.5; 
+    margin-bottom: 15px; /* ⭐ FIX 3: 설명 하단 마진 조정 */
+    display: -webkit-box; 
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    flex-grow: 1; 
+  }
+  
+  /* Read Note 링크 */
+  .read-link {
+    font-size: 0.9em; 
+    font-weight: 600; 
+    color: #1d1d1f; 
+    text-decoration: none;
+    display: inline-flex; 
+    align-items: center; 
+    margin-top: auto;
+    opacity: 0.8; 
+    transition: all 0.2s;
+  }
+  .read-link::after { content: '→'; margin-left: 6px; transition: margin-left 0.2s; }
+  .bento-card:hover .read-link { opacity: 1; color: #0071e3; }
+  .bento-card:hover .read-link::after { margin-left: 10px; }
+
+  .card-link-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; opacity: 0; }
+
 </style>
 
 <div class="page-container">
@@ -132,7 +185,8 @@ permalink: /technical-notes/
   </div>
 
   <div class="bento-grid">
-      <article class="bento-card" data-tags="implementation">
+
+    <article class="bento-card" data-tags="implementation">
       <div class="card-thumb">
         <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500" alt="Ocean">
       </div>
