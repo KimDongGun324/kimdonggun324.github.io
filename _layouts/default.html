@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700&family=Archivo+Black&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================
@@ -21,7 +21,7 @@
       --text-main: #1d1d1f; 
       --text-sub: #6e6e73; 
       --text-light: #86868b; 
-      --nav-item-darker: #424245; /* 4번 요청: 서브 메뉴 더 짙은 색상 */
+      --nav-item-darker: #424245; 
     }
 
     /* Full-bleed 적용 */
@@ -74,14 +74,14 @@
       letter-spacing: -0.02em; 
       margin-bottom: 4px; 
     }
-    /* 1번 요청: Role R&D까지 잘리지 않게 조정 (폰트 사이즈 미세 축소) */
+    /* 3번 요청: Role 텍스트 잘림 방지를 위해 폰트 축소 및 클립 설정 유지 */
     .sidebar-role { 
-      font-size: 0.78em; /* 폰트 사이즈 0.8em -> 0.78em로 미세 축소 */
+      font-size: 0.78em; 
       color: var(--text-light); 
       font-weight: 500; 
       white-space: nowrap; 
       overflow: hidden; 
-      text-overflow: clip; /* R&D가 보이도록 클립으로 변경 */
+      text-overflow: clip; 
       max-width: 100%; 
       display: block;
     }
@@ -100,7 +100,7 @@
     /* 4번 요청: 메뉴 글자색 짙게 수정 */
     .nav-item {
       display: block; font-size: 0.95em; 
-      color: var(--nav-item-darker); /* 짙은 색상 적용 */
+      color: var(--nav-item-darker); 
       font-weight: 500;
       margin-bottom: 10px; 
       transition: color 0.2s;
@@ -112,7 +112,7 @@
     .sidebar-footer { 
       margin-top: auto; 
       padding-top: 35px; 
-      /* 3번 요청: 하단 공백 제거를 위해 padding-bottom 최소화 */
+      /* 하단 공백 제거를 위해 padding-bottom 최소화 */
       padding-bottom: 40px; 
     }
     
@@ -122,12 +122,11 @@
 
     .footer-item { margin-bottom: 25px; }
     
-    /* 텍스트 위계(Hierarchy) 재설정 */
+    /* 4번 요청: DongGun Kim 폰트 사이즈 미세 축소 */
     .footer-label { 
       font-size: 0.75em; font-weight: 900; color: #000; 
       text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;
     }
-    /* 4번 요청: DongGun Kim 폰트 사이즈 미세 축소 */
     .footer-text-highlight {
       font-size: 0.9em; /* 0.95em -> 0.9em로 축소 */
       font-weight: 600; color: #333; 
@@ -163,7 +162,7 @@
     }
     .main-banner-img {
       width: 100%; height: 100%; object-fit: cover; 
-      /* New Request: 상단 배너 이미지 위치 조정 */
+      /* 상단 배너 이미지 위치 조정 유지 */
       object-position: 50% 62%; 
       opacity: 0.9; display: block;
     }
@@ -175,16 +174,16 @@
       background: #fff; 
     }
     
-    /* NULL ABYSS 폰트 - 비율 및 간격 조정 */
+    /* 1번 요청: NULL ABYSS 폰트 교체 (Archivo Black) 및 비율 조정 */
     .page-title-static {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Archivo Black', 'Montserrat', sans-serif; /* Archivo Black을 최우선으로 적용 */
       font-size: 3.8em; 
       font-weight: 700; 
-      letter-spacing: 0.4em; /* 1번 요청: 세로로 긴 느낌을 위해 자간을 0.35em -> 0.4em로 증가 */
+      letter-spacing: 0.35em; /* Archivo Black에 맞게 자간 미세 조정 (4.0em -> 3.5em) */
       margin: 0; 
       color: #000; 
       text-transform: uppercase; 
-      margin-right: -0.4em; 
+      margin-right: -0.35em; 
     }
     
     /* 부제 아래 공백 추가 유지 */
@@ -218,23 +217,23 @@
     .philosophy-text-center {
       max-width: 800px;
       /* 2번 요청: Daily Study Log와의 간격 증가 */
-      margin: 0 auto 55px auto; /* 35px -> 55px로 증가 */
+      margin: 0 auto 75px auto; /* 55px -> 75px로 증가 */
     }
     .philosophy-quote {
       font-family: 'Inter', sans-serif; 
       font-size: 1.25em; 
-      font-weight: 500; /* 5번 요청: 300에서 500으로 올려 가독성 확보 */
+      font-weight: 500; 
       color: #333; 
       line-height: 2.0; 
       font-style: normal; 
       word-break: keep-all;
     }
 
-    /* Daily Study Log 위젯 - Glassmorphism (프로스트 유리 효과) 적용 */
+    /* 4번 요청: Daily Study Log 위젯 가로 사이즈 축소 및 Glassmorphism 적용 */
     .daily-banner-wide-1col {
       width: 100%;
-      max-width: 900px;
-      /* Glassmorphism 속성 */
+      max-width: 780px; /* 900px -> 780px로 축소하여 NULL ABYSS 로고 폭과 시각적 정렬 */
+      /* Glassmorphism 속성 유지 */
       background: rgba(255, 255, 255, 0.5); 
       backdrop-filter: blur(12px); 
       border: 1px solid rgba(255, 255, 255, 0.4); 
@@ -384,7 +383,7 @@
     
     <div class="sidebar-header">
       <div class="sidebar-name">DongGun Kim</div>
-      <div class="sidebar-role">Real-time Rendering & Shader R&D</div>
+      <div class="sidebar-role">Real-time Rendering & Shader</div> 
     </div>
 
     <nav class="sidebar-nav">
@@ -499,7 +498,7 @@
             <p class="note-desc">논문과 이론을 바탕으로 직접 구현한 그래픽스 기술</p>
           </div>
         </a>
-        <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-2">
+        <a href="{{ '/technical-notes/' | relative_ माणूस/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-card reveal-on-scroll delay-2">
           <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
           <div class="note-content">
             <span class="note-category">Optimization</span>
