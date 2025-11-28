@@ -55,9 +55,9 @@
     /* Sidebar Title */
     .sidebar-title {
       font-family: var(--font-stack);
-      font-size: 1.4em;       
-      font-weight: 600;       
-      color: #424245;         
+      font-size: 1.4em;        
+      font-weight: 600;        
+      color: #424245;          
       margin: 0 0 4px 0;
       letter-spacing: -0.03em;
       line-height: 1.2;
@@ -85,11 +85,11 @@
     }
     .sidebar-nav a:hover { color: var(--accent-color); transform: translateX(2px); }
 
-    /* Home 메뉴 🔥 Margin 수정됨: 35px -> 45px */
+    /* Home 메뉴 */
     .nav-home { margin-bottom: 45px; }
     .nav-home a { font-weight: 600; color: #1d1d1f; font-size: 1em; }
 
-    /* 그룹 메뉴 🔥 Margin 수정됨: 25px -> 35px */
+    /* 그룹 메뉴 */
     .nav-group { margin-bottom: 35px; }
     .nav-header {
       display: block; font-size: 0.75em; font-weight: 700; color: #999;
@@ -136,7 +136,7 @@
     .main-header { 
       text-align: center; 
       margin-bottom: 80px;  
-      margin-top: 30px;     
+      margin-top: 30px;      
       padding-bottom: 60px; 
       border-bottom: 1px solid var(--border-color);
     }
@@ -144,13 +144,13 @@
     /* Page Title (Pearl Abyss Style) */
     .page-title {
       font-family: var(--font-stack);
-      font-weight: 700;       
+      font-weight: 700;        
       font-size: 4em; 
       letter-spacing: 0.4em;  
-      margin: 0 0 25px 0;     
+      margin: 0 0 25px 0;      
       text-transform: uppercase; 
       color: #1d1d1f;
-      margin-right: -0.4em;   
+      margin-right: -0.4em;    
     }
     
     /* Subtitle Style */
@@ -208,6 +208,17 @@
     .gallery-info strong { display: block; font-size: 1em; color: #1d1d1f; margin-bottom: 3px; font-weight: 600; letter-spacing: -0.01em; }
     .gallery-info span { font-size: 0.9em; color: #86868b; }
 
+    /* 서브 페이지 콘텐츠 스타일 */
+    .markdown-body {
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.7;
+        color: #333;
+    }
+    .markdown-body h1, .markdown-body h2 { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-top: 40px; }
+    .markdown-body p { margin-bottom: 20px; }
+    .markdown-body code { background: #f6f8fa; padding: 3px 6px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+
     @media (max-width: 1400px) { .three-column-wrapper { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 900px) {
       .three-column-wrapper { grid-template-columns: 1fr; }
@@ -246,7 +257,7 @@
           <div class="nav-group">
             <span class="nav-header">Dev Log</span>
             <ul>
-              <li><a href="{{ "/daily-study/" | relative_url }}">Daily Study Log</a></li>
+              <li><a href="{{ '/daily-study/' | relative_url }}">Daily Study Log</a></li>
             </ul>
           </div>
           <div class="nav-group">
@@ -294,160 +305,52 @@
 
     <main class="main-content">
       
-      <div class="main-banner">
-        <img src="/assets/images/main-banner.png" alt="Main Banner">
-      </div>
+      <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+      </script>
+      <script>
+        window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+      </script>
 
-      <header class="main-header">
-        <h1 class="page-title">NULL ABYSS</h1>
-        <span class="page-desc">Deep Dive into Shaders & Engine Core</span>
-      </header>
+      {% if page.url == "/" %}
       
-      <div class="content-body">
-        
-        <script type="text/javascript" id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-        </script>
-        <script>
-          window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
-        </script>
-
-        <div class="three-column-wrapper">
-
-          <div class="column">
-            
-            <div class="col-header">
-              <h3 class="col-title">Dev Log</h3>
-            </div>
-            
-            <ul style="margin-bottom: 50px;">
-              <li class="text-card">
-                <a href="{{ "/daily-study/" | relative_url }}">
-                  <span class="text-card-title">Daily Study Log</span>
-                  <span class="text-card-desc">
-                    "I never saved anything for the swim back."<br>
-                    Shaders & Engine Core Log. Since 2025.11
-                  </span>
-                </a>
-              </li>
-            </ul>
-
-            <div class="col-header">
-              <h3 class="col-title">Research</h3>
-            </div>
-
-            <ul>
-              <li class="text-card">
-                <a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">
-                  <span class="text-card-title">Graphics Theory & Math</span>
-                  <span class="text-card-desc">렌더링 파이프라인, PBR 이론, 선형대수학 등 그래픽스의 수학적 원리 탐구</span>
-                </a>
-              </li>
-
-              <li class="text-card">
-                <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
-                  <span class="text-card-title">Shader Implementation</span>
-                  <span class="text-card-desc">HLSL/GLSL을 활용한 커스텀 셰이더 구현 및 절차적 텍스처링 연구</span>
-                </a>
-              </li>
-
-              <li class="text-card">
-                <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
-                  <span class="text-card-title">C++ & Engine Core</span>
-                  <span class="text-card-desc">자료구조, 메모리 관리, 언리얼 엔진 소스 코드 분석을 통한 최적화 역량</span>
-                </a>
-              </li>
-
-              <li class="text-card">
-                <a href="{{ "/04_TA_Tools/README.md" | relative_url }}">
-                  <span class="text-card-title">TA Tools & Pipeline</span>
-                  <span class="text-card-desc">Substance Painter, Python 스크립팅을 활용한 에셋 제작 및 자동화 워크플로우</span>
-                </a>
-              </li>
-            </ul>
-
-          </div>
-
-
-          <div class="column">
-            <div class="col-header">
-              <h3 class="col-title">Engine & Tech Demo</h3>
-            </div>
-
-            <div class="gallery-item">
-              <a href="{{ "/03_Engine_CPP/README.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop" alt="C++ Optimization">
-                </div>
-                <div class="gallery-info">
-                  <strong>C++ Memory Optimization</strong>
-                  <span>Smart Pointer & Custom Allocator</span>
-                </div>
-              </a>
-            </div>
-
-            <div class="gallery-item">
-              <a href="{{ "/03_Engine_CPP/UE5_Analysis.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600&auto=format&fit=crop" alt="UE5">
-                </div>
-                <div class="gallery-info">
-                  <strong>UE5 Source Analysis</strong>
-                  <span>Rendering Pipeline Deep Dive</span>
-                </div>
-              </a>
-            </div>
-          </div>
-
-
-          <div class="column">
-            <div class="col-header">
-              <h3 class="col-title">Shader & Art R&D</h3>
-            </div>
-
-            <div class="gallery-item">
-              <a href="{{ "/02_Shader_Lab/README.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Water">
-                </div>
-                <div class="gallery-info">
-                  <strong>Ocean Simulation</strong>
-                  <span>Gerstner Wave / HLSL</span>
-                </div>
-              </a>
-            </div>
-
-            <div class="gallery-item">
-              <a href="{{ "/02_Shader_Lab/Procedural.md" | relative_url }}">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=600&auto=format&fit-crop" alt="Ice">
-                </div>
-                <div class="gallery-info">
-                  <strong>Ice Material</strong>
-                  <span>Subsurface Scattering</span>
-                </div>
-              </a>
-            </div>
-
-            <div class="gallery-item">
-              <a href="#">
-                <div class="gallery-thumb">
-                  <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop" alt="PBR">
-                </div>
-                <div class="gallery-info">
-                  <strong>Custom PBR Model</strong>
-                  <span>Cook-Torrance Implementation</span>
-                </div>
-              </a>
-            </div>
-          </div>
-
+        <div class="main-banner">
+          <img src="/assets/images/main-banner.png" alt="Main Banner">
         </div>
 
-      </div>
-    </main>
+        <header class="main-header">
+          <h1 class="page-title">NULL ABYSS</h1>
+          <span class="page-desc">Deep Dive into Shaders & Engine Core</span>
+        </header>
+        
+        <div class="content-body">
+          <div class="three-column-wrapper">
 
-  </div>
+            <div class="column">
+              <div class="col-header">
+                <h3 class="col-title">Dev Log</h3>
+              </div>
+              <ul style="margin-bottom: 50px;">
+                <li class="text-card">
+                  <a href="{{ '/daily-study/' | relative_url }}">
+                    <span class="text-card-title">Daily Study Log</span>
+                    <span class="text-card-desc">
+                      "I never saved anything for the swim back."<br>
+                      Shaders & Engine Core Log. Since 2025.11
+                    </span>
+                  </a>
+                </li>
+              </ul>
 
-</body>
-</html>
+              <div class="col-header">
+                <h3 class="col-title">Research</h3>
+              </div>
+              <ul>
+                <li class="text-card">
+                  <a href="{{ "/01_Graphics_Theory/README.md" | relative_url }}">
+                    <span class="text-card-title">Graphics Theory & Math</span>
+                    <span class="text-card-desc">렌더링 파이프라인, PBR 이론, 선형대수학 등 그래픽스의 수학적 원리 탐구</span>
+                  </a>
+                </li>
+                <li class="text-card">
+                  <a href="{{ "/02_Shader
