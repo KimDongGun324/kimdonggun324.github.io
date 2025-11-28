@@ -16,13 +16,15 @@ permalink: /technical-notes/
     max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
   }
   
-  /* ================= Main Page Container (왼쪽 정렬 수정됨) ================= */
-  .page-container {
-    max-width: 1600px; 
-    /* 🔥 [수정됨] margin: 40px auto; -> auto를 0으로 변경하여 왼쪽 정렬 */
-    margin: 40px 0; 
-    /* 좌우 패딩은 유지하여 너무 딱 붙지 않게 함 */
-    padding: 0 20px;
+/* ================= Main Page Container (중앙 정렬로 수정) ================= */
+.page-container {
+  max-width: 1200px; /* ⭐ 너비를 1200px 등으로 제한 (선택 사항) */
+  
+  /* 🔥 수정: margin: 40px 0; -> auto로 변경하여 중앙 정렬 */
+  margin: 40px auto; /* ⭐ FIX 1: 상하 40px, 좌우 자동(중앙 정렬) */
+  
+  /* 좌우 패딩은 컨테이너가 너무 커지는 것을 막기 위해 유지 */
+  padding: 0 20px;
     
     background-color: transparent;
     box-shadow: none;
