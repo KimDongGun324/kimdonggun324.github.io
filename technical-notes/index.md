@@ -6,7 +6,6 @@ permalink: /technical-notes/
 
 <style>
   /* ================= Global Layout & Reset ================= */
-  /* 1. 배경 단순화: 전체 배경을 다시 흰색으로 변경 */
   body, .markdown-body {
     background-color: #ffffff !important; 
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
@@ -17,19 +16,19 @@ permalink: /technical-notes/
     max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0;
   }
   
-  /* ================= Main Page Container ================= */
+  /* ================= Main Page Container (왼쪽 정렬 수정됨) ================= */
   .page-container {
-    /* 2. 레이아웃 정리: 회색 박스 제거 및 왼쪽 정렬 */
     max-width: 1600px; 
-    margin: 40px auto; /* 큰 화면에서는 중앙에 위치하되 */
-    padding: 0 20px; /* 좌우 여백 확보 */
+    /* 🔥 [수정됨] margin: 40px auto; -> auto를 0으로 변경하여 왼쪽 정렬 */
+    margin: 40px 0; 
+    /* 좌우 패딩은 유지하여 너무 딱 붙지 않게 함 */
+    padding: 0 20px;
     
-    /* 회색 배경, 그림자, 둥근 모서리 모두 제거 -> 투명한 컨테이너가 됨 */
     background-color: transparent;
     box-shadow: none;
     border-radius: 0;
     
-    text-align: left; /* 내부 콘텐츠 왼쪽 정렬 */
+    text-align: left; 
   }
 
   /* 페이지 설명 */
@@ -42,7 +41,7 @@ permalink: /technical-notes/
   /* ================= Filter Buttons ================= */
   .filter-container { 
     margin-bottom: 40px; display: flex; gap: 12px; flex-wrap: wrap; 
-    justify-content: start; /* 왼쪽 정렬 */
+    justify-content: start; /* 버튼 왼쪽 정렬 */
   }
   .filter-btn {
     padding: 10px 20px; border-radius: 24px;
@@ -53,13 +52,13 @@ permalink: /technical-notes/
   .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #86868b; }
   .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
 
-  /* ================= Grid Layout (5열 고정) ================= */
+  /* ================= Grid Layout (5열 고정 & 왼쪽 정렬) ================= */
   .bento-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 5열 고정 */
     gap: 30px;
     margin-bottom: 60px;
-    justify-content: start; /* 왼쪽 정렬 */
+    justify-content: start; /* 그리드 왼쪽 정렬 */
   }
 
   /* 반응형 미디어 쿼리 */
@@ -71,31 +70,28 @@ permalink: /technical-notes/
 
   /* ================= Card Style (Clean White UI) ================= */
   .bento-card {
-    background: #ffffff; /* 카드 흰색 */
-    border: 1px solid #eaeaea; /* 흰색 배경이므로 연한 테두리 추가로 구분감 줌 */
+    background: #ffffff; 
+    border: 1px solid #eaeaea; 
     border-radius: 20px; 
-    overflow: hidden; /* 자식 요소가 둥근 모서리를 넘지 않게 */
+    overflow: hidden; 
     position: relative; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex; flex-direction: column;
-    /* 기본 상태 그림자는 연하게 */
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
   .bento-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.12); /* 호버 시 깊은 그림자 */
-    border-color: transparent; /* 호버 시 테두리 대신 그림자 강조 */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12); 
+    border-color: transparent; 
     z-index: 10;
   }
   .bento-card.hidden { display: none; }
 
-  /* 썸네일 (상단 이미지 영역) */
+  /* 썸네일 (흰색 배경) */
   .card-thumb {
     width: 100%; height: 200px;
-    /* 3. 핵심 수정: 이곳의 배경색을 회색에서 흰색으로 변경! */
     background-color: #ffffff; 
     position: relative; 
-    border-bottom: 1px solid rgba(0,0,0,0.05); /* 이미지 하단 분리선 */
-    /* overflow: hidden이 .bento-card에 있어서 여기선 제거해도 됨 */
+    border-bottom: 1px solid rgba(0,0,0,0.05); 
   }
   .card-thumb img {
     width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
