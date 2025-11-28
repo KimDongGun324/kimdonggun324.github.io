@@ -13,7 +13,7 @@ permalink: /
         </p>
     </div>
 
-    <a href="/daily-study/" class="daily-banner-wide-1col" style="max-width: 780px;"> 
+    <a href="/daily-study/" class="daily-banner-wide-1col" style="max-width: 550px;">
         <div class="daily-content-wrapper">
             <h2 class="daily-title-slim">Daily Study Log</h2>
             <div class="daily-quote-slim">"I never saved anything for the swim back."</div>
@@ -74,14 +74,34 @@ permalink: /
 </div>
 
 <div class="research-grid">
-    <a href="/01_Graphics_Theory/README.md" class="research-item reveal-on-scroll delay-1">
-      </a>
-    <a href="/02_Shader_Lab/README.md" class="research-item reveal-on-scroll delay-2">
-      </a>
-    <a href="/03_Engine_CPP/README.md" class="research-item reveal-on-scroll delay-3">
-      </a>
-    <a href="/04_TA_Tools/README.md" class="research-item reveal-on-scroll delay-4">
-      </a>
+    <a href="#" class="research-item reveal-on-scroll delay-1">
+        <div class="research-thumb"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=400"></div>
+        <div class="research-info">
+            <div class="research-title">Graphics Theory</div>
+            <div class="research-sub">Math & Physics Base</div>
+        </div>
+    </a>
+    <a href="#" class="research-item reveal-on-scroll delay-2">
+        <div class="research-thumb"><img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400"></div>
+        <div class="research-info">
+            <div class="research-title">Shader Implementation</div>
+            <div class="research-sub">HLSL / GLSL</div>
+        </div>
+    </a>
+    <a href="#" class="research-item reveal-on-scroll delay-3">
+        <div class="research-thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400"></div>
+        <div class="research-info">
+            <div class="research-title">C++ & Engine Core</div>
+            <div class="research-sub">Architecture & Memory</div>
+        </div>
+    </a>
+    <a href="#" class="research-item reveal-on-scroll delay-4">
+        <div class="research-thumb"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=400"></div>
+        <div class="research-info">
+            <div class="research-title">TA Tools</div>
+            <div class="research-sub">Python & Houdini</div>
+        </div>
+    </a>
 </div>
 
 
@@ -91,16 +111,62 @@ permalink: /
 
 <span class="section-subtitle reveal-on-scroll">Engine & Tech Demo</span>
 <div class="projects-grid">
-    <a href="/03_Engine_CPP/README.md" class="project-card-block reveal-on-scroll delay-1">
-      </a>
-    <a href="/03_Engine_CPP/UE5_Analysis.md" class="project-card-block reveal-on-scroll delay-2">
-      </a>
+    
+    <a href="#" class="project-card-block reveal-on-scroll delay-1">
+        <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" class="project-bg">
+            <div class="tech-badges-corner">
+                <span class="tech-badge-style">C++</span><span class="tech-badge-style">Optimization</span>
+            </div>
+        </div>
+        <div class="project-content-below">
+            <h3 class="project-title-below">C++ Memory Optimization</h3>
+            <p class="project-desc-below">Smart Pointer & Custom Allocator 구현을 통한 캐시 히트율 향상 및 성능 최적화.</p>
+        </div>
+    </a>
+
+    <a href="#" class="project-card-block reveal-on-scroll delay-2">
+        <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800" class="project-bg">
+            <div class="tech-badges-corner">
+                <span class="tech-badge-style">UE5</span><span class="tech-badge-style">Rendering</span>
+            </div>
+        </div>
+        <div class="project-content-below">
+            <h3 class="project-title-below">UE5 Rendering Pipeline Analysis</h3>
+            <p class="project-desc-below">나나이트(Nanite) 및 루멘(Lumen) 소스 코드 심층 분석, 커스텀 렌더 패스 확장.</p>
+        </div>
+    </a>
+
 </div>
 
 <span class="section-subtitle reveal-on-scroll" style="margin-top: 60px;">Shader & Art R&D</span>
 <div class="projects-grid">
-    <a href="/02_Shader_Lab/Ocean.md" class="project-card-block reveal-on-scroll delay-1">
-      </a>
-    <a href="/02_Shader_Lab/Ice.md" class="project-card-block reveal-on-scroll delay-2">
-      </a>
+
+    <a href="#" class="project-card-block reveal-on-scroll delay-1">
+        <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" class="project-bg">
+            <div class="tech-badges-corner">
+                <span class="tech-badge-style">HLSL</span><span class="tech-badge-style">Simulation</span>
+            </div>
+        </div>
+        <div class="project-content-below">
+            <h3 class="project-title-below">Ocean Simulation</h3>
+            <p class="project-desc-below">HLSL을 활용한 물리 기반 파도 시뮬레이션. Gerstner Wave 알고리즘 적용.</p>
+        </div>
+    </a>
+
+    <a href="#" class="project-card-block reveal-on-scroll delay-2">
+        <div class="project-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800" class="project-bg">
+            <div class="tech-badges-corner">
+                <span class="tech-badge-style">PBR</span><span class="tech-badge-style">Material</span>
+            </div>
+        </div>
+        <div class="project-content-below">
+            <h3 class="project-title-below">Advanced Ice Material</h3>
+            <p class="project-desc-below">Subsurface Scattering(SSS)와 Parallax Occlusion Mapping을 활용한 얼음 질감 표현.</p>
+        </div>
+    </a>
+
 </div>
