@@ -275,3 +275,4 @@ permalink: /technical-notes/
     });
   }
 </script>
+```http://googleusercontent.com/image_generation_content/1
