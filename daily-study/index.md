@@ -90,7 +90,7 @@ permalink: /daily-study/
     <ul class="study-list">
       <li>
         <span class="date-badge">11.21</span>
-        <a href="./daily-study/posts/2025/11/11-21-setup/" class="study-link">
+        <a href="/daily-study/posts/2025/11/11-21-setup/" class="study-link">
           블로그 개설 및 Jekyll 테마 커스텀
         </a>
       </li>
