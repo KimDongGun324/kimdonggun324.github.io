@@ -23,15 +23,17 @@ layout: default
     box-sizing: border-box;
   }
 
-  /* ================= 1. Top Banner & Header (복구 완료) ================= */
+  /* ================= 1. Top Banner (무조건 보이게 수정) ================= */
   .main-banner-area {
     width: 100%; 
-    height: 450px; /* 높이 고정 */
+    height: 480px; /* 높이 확실하게 지정 */
     overflow: hidden; 
     position: relative;
     background: #000;
     margin-bottom: 0;
-    display: block; 
+    display: block !important; /* 강제 표시 */
+    opacity: 1 !important; /* 투명도 100% 강제 */
+    visibility: visible !important;
   }
   
   .main-banner-img {
@@ -39,14 +41,16 @@ layout: default
     height: 100%; 
     object-fit: cover; 
     object-position: center;
-    opacity: 0.8;
+    opacity: 0.85;
     display: block;
   }
 
+  /* ================= 2. Main Header Text (NULL ABYSS) ================= */
   .main-header-static {
     text-align: center; 
     padding: 70px 20px 50px 20px; 
     background: #fff;
+    display: block !important;
   }
   
   .page-title-static {
@@ -54,7 +58,7 @@ layout: default
     font-size: 4em; 
     font-weight: 700; 
     letter-spacing: 0.2em; 
-    margin: 0 0 10px 0; 
+    margin: 0 0 15px 0; 
     color: #1d1d1f; 
     text-transform: uppercase;
   }
@@ -75,7 +79,7 @@ layout: default
   }
 
 
-  /* ================= 2. Profile & Daily Log (복구 완료) ================= */
+  /* ================= 3. Profile & Daily Log ================= */
   .intro-section {
     display: flex; 
     flex-direction: column; 
@@ -84,7 +88,7 @@ layout: default
     align-items: center; 
   }
 
-  /* 프로필 스타일 */
+  /* 프로필 */
   .profile-center {
     text-align: center;
     max-width: 600px;
@@ -127,7 +131,7 @@ layout: default
     margin-top: 15px; 
   }
 
-  /* Daily Study Log 카드 스타일 (원래대로 복구) */
+  /* Daily Study Log 카드 */
   .daily-banner-wide {
     width: 100%;
     max-width: 900px;
@@ -194,7 +198,7 @@ layout: default
   }
 
 
-  /* ================= 3. Technical Deep Dive (New Grid) ================= */
+  /* ================= 4. Technical Deep Dive (New Grid) ================= */
   .section-header { 
     margin-bottom: 40px; 
     border-bottom: 2px solid #1d1d1f; 
@@ -280,7 +284,7 @@ layout: default
     margin: 0;
   }
 
-  /* Animations */
+  /* Animations (배너에는 적용하지 않음) */
   .reveal-on-scroll {
     opacity: 0; 
     transform: translateY(30px);
@@ -349,7 +353,8 @@ layout: default
     </a>
 
   </section>
-<div class="section-header reveal-on-scroll" style="margin-top: 80px;">
+
+  <div class="section-header reveal-on-scroll" style="margin-top: 80px;">
     <h2 class="section-title">Technical Deep Dive</h2>
   </div>
 
