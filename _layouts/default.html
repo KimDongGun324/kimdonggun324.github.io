@@ -150,7 +150,7 @@
       padding-top: 0 !important;
     }
 
-    /* 상단 배너 */
+    /* 상단 배너 스타일 (기존 유지) */
     .main-banner-area {
       width: 100%; 
       height: 600px;
@@ -278,26 +278,9 @@
     </div>
   </aside>
 
-
-<main class="main-content-scrollable">
-    
-{% if page.permalink == '/' %}
-<div class="main-banner-area">
-  <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img" style="height: 600px;">  
-</div>
-{% endif %}
-
-{% if page.permalink == '/' %}
-<header class="main-header-static">
-  <h1 class="page-title-static">NULL ABYSS</h1>
-  <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
-</header>
-{% endif %}
-
-    <div class="page-container">
-        {{ content }}     </div>
-
-</main>
+  <main class="main-content-scrollable">
+      {{ content }} 
+  </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
