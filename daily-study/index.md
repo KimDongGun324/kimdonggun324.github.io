@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Daily Study Log
 permalink: /daily-study/
 ---
