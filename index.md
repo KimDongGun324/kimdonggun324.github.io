@@ -164,10 +164,10 @@ permalink: /
   
   <header class="apple-header">
     <h1 class="apple-headline">
-      수식과 코드로 증명하는 빛의 논리.
+      수식과 코드로 증명하는 빛의 논리
     </h1>
     <p class="apple-subhead">
-      그래픽스 이론부터 엔진 최적화까지, 깊이 있게 연구하고 매일 기록합니다.
+      그래픽스 이론부터 엔진 최적화까지, 깊이 있게 연구하고 매일 기록합니다
     </p>
   </header>
 
