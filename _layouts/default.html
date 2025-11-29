@@ -1,416 +1,322 @@
----
-layout: default
----
-
-<style>
-  /* ================= CSS Variables & Reset ================= */
-  :root {
-    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --apple-blue: #0071e3;
-  }
-
-  /* 메인 컨텐츠 영역 확장 (흰색 배경) */
-  .main-content {
-    padding: 0 !important;
-    max-width: 100% !important;
-    background-color: #ffffff;
-  }
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | DongGun Kim</title>
   
-  .page-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 60px 40px;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 
-  /* ================= 1. Top Banner (경로 문제 해결) ================= */
-  .main-banner-area {
-    width: 100%; height: 420px;
-    overflow: hidden; position: relative;
-    background: #1d1d1f;
-  }
-  
-  /* ⚠️ 이미지 경로를 절대경로로 지정하여 오류 방지 */
-  .main-banner-img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center;
-    opacity: 0.85;
-  }
+  <style>
+    /* =========================================
+       [1] 기본 설정 및 리셋 (CSS Reset)
+       ========================================= */
+    :root {
+      --sidebar-width: 260px;
+      --content-max-width: 1400px;
+      --ease-smooth: cubic-bezier(0.33, 1, 0.68, 1);
+      --apple-blue: #0071e3;
+      --text-main: #1d1d1f; 
+      --text-sub: #6e6e73; 
+      --text-light: #86868b; 
+      --nav-item-darker: #424245; 
+    }
 
-  /* 타이틀 영역 (복원됨) */
-  .main-header-static {
-    text-align: center; padding: 60px 20px 40px 20px; background: #fff;
-  }
-  .page-title-static {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 3.5em; font-weight: 800; letter-spacing: 0.3em; 
-    margin: 0 0 15px 0; color: #1d1d1f; text-transform: uppercase;
-    margin-right: -0.3em;
-  }
-  .page-desc-static {
-    font-size: 1.1em; color: #86868b; font-weight: 400; letter-spacing: 0.02em;
-    font-family: "Pretendard", sans-serif;
-  }
-  
-  .section-divider-main {
-    border: 0; height: 1px; background: #eaeaea; margin: 0 auto 60px auto; max-width: 1400px;
-  }
+    /* Full-bleed 적용 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: #ffffff;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul, li { list-style: none; padding: 0; margin: 0; }
+    h1, h2, h3, h4, h5 { margin: 0; }
+
+    /* =========================================
+       [2] 사이드바 (Sidebar) - 좌측 고정 영역
+       ========================================= */
+    .sidebar-fixed-area {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: #fbfbfd;
+      border-right: 1px solid #eaeaea;
+      padding: 100px 30px 0px 30px; 
+      box-sizing: border-box;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    /* 사이드바 헤더 */
+    .sidebar-header { 
+      margin-bottom: 70px; 
+      padding-top: 0;
+    } 
+    .sidebar-name { 
+      font-size: 1.4em; 
+      font-weight: 600; 
+      color: #000; 
+      letter-spacing: -0.02em; 
+      margin-bottom: 4px; 
+    }
+    .sidebar-role { 
+      font-size: 0.78em; 
+      color: var(--text-light); 
+      font-weight: 500; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: clip; 
+      max-width: 100%; 
+      display: block;
+    }
+
+    /* 사이드바 내비게이션 */
+    .sidebar-nav {
+      flex-grow: 1; 
+    }
+    .nav-section { margin-bottom: 40px; } 
+    .nav-category { 
+      font-size: 0.75em; font-weight: 700; color: #86868b; 
+      text-transform: uppercase; letter-spacing: 0.05em; 
+      margin-bottom: 12px; display: block; 
+    }
+    
+    .nav-item {
+      display: block; font-size: 0.95em; 
+      color: var(--nav-item-darker); 
+      font-weight: 500;
+      margin-bottom: 10px; 
+      transition: color 0.2s;
+    }
+    .nav-item:hover { color: var(--apple-blue); }
+    .nav-item.active { color: #000; font-weight: 700; }
+
+    /* 사이드바 하단 정보 (Footer) */
+    .sidebar-footer { 
+      margin-top: auto; 
+      padding-top: 35px; 
+      padding-bottom: 40px; 
+    }
+    
+    .footer-divider {
+      height: 1px; background: #d2d2d7; margin-bottom: 25px; width: 100%;
+    }
+
+    .footer-item { margin-bottom: 25px; }
+    
+    .footer-label { 
+      font-size: 0.75em; font-weight: 900; color: #000; 
+      text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;
+    }
+    .footer-text-highlight {
+      font-size: 0.9em; 
+      font-weight: 600; color: #333; 
+      margin-bottom: 4px;
+    }
+    .footer-text { 
+      font-size: 0.85em; color: var(--text-light); line-height: 1.5; 
+      font-weight: 400; 
+    }
+
+    /* 스킬 뱃지 */
+    .footer-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+    .footer-badge { 
+      font-size: 0.65em; background: #fff; padding: 3px 8px; 
+      border-radius: 4px; color: #1d1d1f; font-weight: 600; 
+      border: 1px solid #d2d2d7;
+    }
+
+    /* [3] 메인 콘텐츠 영역 */
+    .main-content-scrollable {
+      margin-left: var(--sidebar-width);
+      width: calc(100% - var(--sidebar-width));
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    /* 상단 배너 */
+    .main-banner-area {
+      width: 100%; 
+      height: 600px;
+      overflow: hidden; 
+      background: #000; 
+      position: relative;
+      margin-top: -20px !important; 
+    }
+
+    .main-banner-img {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;  
+      object-position: 50% 50% !important; 
+      opacity: 0.9; 
+      display: block;
+    }
+
+    /* 메인 타이틀 영역 */
+    .main-header-static { 
+      text-align: center; 
+      padding: 60px 20px 10px 20px; 
+      background: #fff; 
+    }
+    
+    .page-title-static {
+      font-family: 'Barlow Condensed', 'Montserrat', sans-serif; 
+      font-size: 3.8em; 
+      font-weight: 700; 
+      letter-spacing: 0.4em; 
+      margin: 0; 
+      color: #000; 
+      text-transform: uppercase; 
+      margin-right: -0.4em; 
+    }
+    
+    .page-desc-static { 
+      font-size: 1.1em; color: var(--text-light); font-weight: 500; 
+      letter-spacing: 0.02em; margin-top: 20px; 
+    }
+
+    .page-container {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 50px 120px 50px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* 반응형 */
+    @media (max-width: 1200px) {
+      .notes-grid, .research-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 1024px) {
+      .sidebar-fixed-area { display: none; }
+      .main-content-scrollable { margin-left: 0; width: 100%; }
+      .page-container { padding: 0 30px 100px 30px; }
+    }
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <aside class="sidebar-fixed-area">
+    
+    <div class="sidebar-header">
+      <div class="sidebar-name">DongGun Kim</div>
+      <div class="sidebar-role">Real-time Rendering & Shader</div> 
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section" style="margin-bottom: 30px;">
+        <a href="/" class="nav-item active">Home</a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-category">ABOUT</span>
+        <a href="{{ '/about.md' | relative_url }}" class="nav-item">Profile</a>
+        <a href="#" class="nav-item">Portfolio</a>
+        <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
+        <a href="https://notion.so" target="_blank" class="nav-item">Notion</a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-category">DEV LOG</span>
+        <a href="{{ '/daily-study/' | relative_url }}" class="nav-item">Daily Study Log</a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-category">TECHNICAL DEEP DIVE</span>
+        <a href="#" class="nav-item">Graphics & Shader</a>
+        <a href="#" class="nav-item">Engine & Architecture</a>
+        <a href="#" class="nav-item">Optimization & Profiling</a>
+        <a href="#" class="nav-item">TA Tools & Workflow</a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="footer-divider"></div>
+      
+      <div class="footer-item">
+        <div class="footer-label">RESEARCHER</div>
+        
+        <div class="footer-text-highlight">DongGun Kim</div>
+        
+        <div class="footer-text">M.S. Student @ CNU</div>
+        <div class="footer-text">Goal: Pearl Abyss TA</div>
+        
+        <div class="footer-badges">
+          <span class="footer-badge">C++</span>
+          <span class="footer-badge">UE5</span>
+          <span class="footer-badge">HLSL</span>
+          <span class="footer-badge">Houdini</span>
+          <span class="footer-badge">Substance Painter</span> 
+        </div>
+      </div>
+
+      <div class="footer-item">
+        <div class="footer-label">CONNECT</div>
+        <div class="footer-text-highlight">Email</div>
+        <div class="footer-text">kdg324@naver.com</div>
+      </div>
+    </div>
+  </aside>
 
 
-  /* ================= 2. Profile (Center) & Daily Log (Wide) ================= */
-  .intro-section {
-    display: flex; flex-direction: column; gap: 40px; margin-bottom: 100px;
-  }
-
-  /* 2-1. 중앙 프로필 스타일 */
-  .profile-center {
-    text-align: center;
-    padding: 40px;
-    background: #ffffff; /* 투명 배경 대신 깔끔한 흰색 */
-  }
-  .my-name-center { font-size: 3em; font-weight: 800; color: #1d1d1f; margin-bottom: 10px; letter-spacing: -0.02em; }
-  .my-role-center { font-size: 1.3em; color: #424245; font-weight: 500; margin-bottom: 20px; }
-  
-  .social-center { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
-  .social-btn {
-    padding: 10px 24px; border-radius: 30px; background: #f5f5f7; border: 1px solid transparent;
-    color: #1d1d1f; font-weight: 600; font-size: 0.95em; text-decoration: none; transition: all 0.2s;
-  }
-  .social-btn:hover { background: #1d1d1f; color: #fff; transform: translateY(-2px); }
-  
-  /* 이메일 텍스트 */
-  .email-text { font-size: 1em; color: #86868b; margin-top: 15px; font-weight: 500; }
-
-
-  /* 2-2. Daily Study Log (Wide Banner) */
-  .daily-banner-wide {
-    width: 100%;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    border-radius: 24px;
-    padding: 50px 60px;
-    text-decoration: none !important; color: #1d1d1f;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .daily-banner-wide:hover { transform: scale(1.01); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-
-  .daily-left { max-width: 60%; }
-  .daily-title { font-size: 2.8em; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1; margin-top: 0; }
-  .daily-desc { font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.5; }
-  
-  .daily-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-  .daily-meta { font-size: 0.95em; color: #666; font-weight: 600; font-family: monospace; opacity: 0.6; }
-  
-  .read-arrow-btn {
-    font-size: 1.1em; font-weight: 700; color: var(--apple-blue);
-    display: flex; align-items: center; transition: all 0.2s;
-  }
-  .read-arrow-btn::after { content: '→'; margin-left: 8px; transition: margin-left 0.2s; }
-  .daily-banner-wide:hover .read-arrow-btn::after { margin-left: 15px; }
-
-
-  /* ================= 3. Technical Notes (Centered) ================= */
-  .section-header { margin-top: 100px; margin-bottom: 40px; border-bottom: 2px solid #1d1d1f; padding-bottom: 15px; }
-  .section-title { font-size: 2em; font-weight: 700; color: #1d1d1f; margin: 0; }
-  
-  .notes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .note-card {
-    height: 450px; position: relative; border-radius: 24px; overflow: hidden; text-decoration: none; background-color: #000;
-    transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
-  }
-  .note-card:hover { transform: translateY(-12px) scale(1.01); box-shadow: 0 25px 50px rgba(0,0,0,0.25); z-index: 10; }
-  
-  .note-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: all 0.6s ease; }
-  .note-card:hover .note-bg { opacity: 0.5; transform: scale(1.08); }
-
-  .note-content {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px 20px; /* 좌우 패딩 */
-    color: #fff; z-index: 2; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    text-align: center; /* 중앙 정렬 */
-  }
-  .note-category { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: rgba(255,255,255,0.9); display: block; }
-  .note-title { font-size: 1.4em; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
-  .note-desc { font-size: 0.95em; color: rgba(255,255,255,0.8); line-height: 1.5; }
-
-
-  /* ================= 4. Research (Hover Effect Fix) ================= */
-  .research-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .research-item {
-    background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #eaeaea;
-    text-decoration: none; transition: all 0.3s var(--ease-out-expo);
-  }
-  /* Projects와 동일하게 그림자 + 떠오름 효과 적용 */
-  .research-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: transparent; }
-  
-  .research-thumb { height: 200px; overflow: hidden; background: #f5f5f7; }
-  .research-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-  .research-item:hover .research-thumb img { transform: scale(1.05); }
-  .research-info { padding: 24px; }
-  .research-title { font-size: 1.2em; font-weight: 700; color: #1d1d1f; margin-bottom: 8px; }
-  .research-sub { font-size: 0.95em; color: #86868b; line-height: 1.4; }
-
-
-  /* ================= 5. Projects (Cinematic Wide Cards) ================= */
-  .section-subtitle {
-    font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin: 60px 0 25px 0; display: block;
-    border-bottom: 1px solid #eaeaea; padding-bottom: 10px;
-  }
-
-  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-  
-  .cinematic-card {
-    height: 380px; /* 시원한 높이 */
-    border-radius: 24px; overflow: hidden; position: relative; text-decoration: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    transition: all 0.4s var(--ease-out-expo);
-  }
-  .cinematic-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.25); z-index: 5; }
-
-  .cinematic-bg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
-  .cinematic-card:hover .cinematic-bg { transform: scale(1.05); }
-
-  .cinematic-overlay {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
-  }
-
-  .cinematic-content {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; color: #fff;
-    display: flex; flex-direction: column; justify-content: flex-end;
-  }
-  
-  .tech-badges { position: absolute; top: 30px; right: 30px; display: flex; gap: 8px; }
-  .tech-badge {
-    background: rgba(0,0,0,0.6); /* 가독성 높은 반투명 검정 */
-    color: #fff; border: 1px solid rgba(255,255,255,0.2);
-    padding: 6px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600;
-  }
-
-  .cinematic-title {
-    font-size: 1.8em; font-weight: 800; margin: 0 0 10px 0; line-height: 1.2;
-    transition: transform 0.4s var(--ease-out-expo);
-  }
-  
-  .cinematic-desc {
-    font-size: 1.05em; color: rgba(255,255,255,0.9); line-height: 1.5; margin: 0;
-    opacity: 0; transform: translateY(20px); transition: all 0.4s var(--ease-out-expo);
-    max-height: 0;
-  }
-
-  /* 호버 인터랙션 */
-  .cinematic-card:hover .cinematic-title { transform: translateY(-10px); }
-  .cinematic-card:hover .cinematic-desc { opacity: 1; transform: translateY(0); max-height: 100px; transition-delay: 0.1s; }
-
-
-  /* ================= Animations ================= */
-  .reveal-on-scroll {
-    opacity: 0; transform: translateY(60px) scale(0.98);
-    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-  }
-  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-  .delay-1 { transition-delay: 0.1s; }
-  .delay-2 { transition-delay: 0.2s; }
-  .delay-3 { transition-delay: 0.3s; }
-  .delay-4 { transition-delay: 0.4s; }
-
-  @media (max-width: 900px) {
-    .notes-grid, .research-grid, .projects-grid { grid-template-columns: 1fr; }
-    .daily-banner-wide { flex-direction: column; text-align: center; gap: 20px; }
-    .daily-right { align-items: center; }
-    .page-title-static { font-size: 2.2em; letter-spacing: 0.1em; }
-  }
-</style>
-
-
+<main class="main-content-scrollable">
+    
+{% if page.permalink == '/' %}
 <div class="main-banner-area">
-  <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img">
+  <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img" style="height: 600px;">  
 </div>
+{% endif %}
 
+{% if page.permalink == '/' %}
 <header class="main-header-static">
   <h1 class="page-title-static">NULL ABYSS</h1>
   <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
 </header>
+{% endif %}
 
-<hr class="section-divider-main">
+    <div class="page-container">
+        {{ content }}     </div>
 
+</main>
 
-<div class="page-container">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
 
-  <section class="intro-section reveal-on-scroll">
-    
-    <div class="profile-center">
-      <div class="my-name-center">DongGun Kim</div>
-      <div class="my-role-center">Graphics R&D & Tech Art / M.S. Student @ CNU</div>
-      
-      <div class="email-text">kdg324@naver.com</div>
-      
-      <div class="social-center">
-        <a href="{{ '/about.md' | relative_url }}" class="social-btn">Profile</a>
-        <a href="https://github.com/kimdonggun324" target="_blank" class="social-btn">GitHub</a>
-      </div>
-    </div>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, observerOptions);
 
-    <a href="{{ '/daily-study/' | relative_url }}" class="daily-banner-wide">
-      <div class="daily-left">
-        <h2 class="daily-title">Daily Study Log</h2>
-        <div class="daily-desc">
-          "I never saved anything for the swim back."<br>
-          매일 기록하는 성장과 끈기의 증명.
-        </div>
-      </div>
-      <div class="daily-right">
-        <div class="read-arrow-btn">Read Log</div>
-        <div class="daily-meta">Shaders & Engine Core Log<br>Since 2025.11</div>
-      </div>
-    </a>
-
-  </section>
-
-
-  <div class="section-header reveal-on-scroll">
-    <h2 class="section-title">Technical Notes</h2>
-  </div>
-
-  <div class="notes-grid">
-    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-1">
-      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600" class="note-bg">
-      <div class="note-content">
-        <span class="note-category">Implementation</span>
-        <h3 class="note-title">Shader & Rendering</h3>
-        <p class="note-desc">논문과 이론을 바탕으로<br>직접 구현한 그래픽스 기술</p>
-      </div>
-    </a>
-    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-2">
-      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
-      <div class="note-content">
-        <span class="note-category">Optimization</span>
-        <h3 class="note-title">C++ & Performance</h3>
-        <p class="note-desc">메모리와 연산 효율을 극대화하는<br>엔진 최적화 기록</p>
-      </div>
-    </a>
-    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-3">
-      <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600" class="note-bg">
-      <div class="note-content">
-        <span class="note-category">Deep Analysis</span>
-        <h3 class="note-title">Engine Deep Dive</h3>
-        <p class="note-desc">언리얼 엔진 소스 코드 분석 및<br>기술적 이슈 트러블슈팅</p>
-      </div>
-    </a>
-    <a href="{{ '/technical-notes/' | relative_url }}" class="note-card reveal-on-scroll delay-4">
-      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600" class="note-bg">
-      <div class="note-content">
-        <span class="note-category">Workflow</span>
-        <h3 class="note-title">TA Tools & Pipeline</h3>
-        <p class="note-desc">작업 효율을 높이는<br>자동화 툴과 파이프라인 구축</p>
-      </div>
-    </a>
-  </div>
-
-
-  <div class="section-header reveal-on-scroll">
-    <h2 class="section-title">Research</h2>
-  </div>
-
-  <div class="research-grid">
-    <a href="#" class="research-item reveal-on-scroll delay-1">
-      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=400"></div>
-      <div class="research-info">
-        <div class="research-title">Graphics Theory</div>
-        <div class="research-sub">Math & Physics Base</div>
-      </div>
-    </a>
-    <a href="#" class="research-item reveal-on-scroll delay-2">
-      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400"></div>
-      <div class="research-info">
-        <div class="research-title">Shader Implementation</div>
-        <div class="research-sub">HLSL / GLSL</div>
-      </div>
-    </a>
-    <a href="#" class="research-item reveal-on-scroll delay-3">
-      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=400"></div>
-      <div class="research-info">
-        <div class="research-title">C++ & Engine Core</div>
-        <div class="research-sub">Architecture & Memory</div>
-      </div>
-    </a>
-    <a href="#" class="research-item reveal-on-scroll delay-4">
-      <div class="research-thumb"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=400"></div>
-      <div class="research-info">
-        <div class="research-title">TA Tools</div>
-        <div class="research-sub">Python & Houdini</div>
-      </div>
-    </a>
-  </div>
-
-
-  <div class="section-header reveal-on-scroll" style="margin-top: 80px;">
-    <h2 class="section-title">Projects</h2>
-  </div>
-
-  <span class="section-subtitle reveal-on-scroll">Engine & Tech Demo</span>
-  <div class="projects-grid">
-    <a href="#" class="cinematic-card reveal-on-scroll delay-1">
-      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" class="cinematic-bg">
-      <div class="cinematic-overlay"></div>
-      <div class="tech-badges">
-        <span class="tech-badge">C++</span><span class="tech-badge">Optimization</span>
-      </div>
-      <div class="cinematic-content">
-        <h3 class="cinematic-title">C++ Memory Optimization</h3>
-        <p class="cinematic-desc">Smart Pointer & Custom Allocator 구현을 통한 캐시 히트율 향상 및 성능 최적화 사례 연구.</p>
-      </div>
-    </a>
-    <a href="#" class="cinematic-card reveal-on-scroll delay-2">
-      <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800" class="cinematic-bg">
-      <div class="cinematic-overlay"></div>
-      <div class="tech-badges">
-        <span class="tech-badge">UE5</span><span class="tech-badge">Rendering</span>
-      </div>
-      <div class="cinematic-content">
-        <h3 class="cinematic-title">UE5 Rendering Pipeline Analysis</h3>
-        <p class="cinematic-desc">나나이트(Nanite) 및 루멘(Lumen) 소스 코드 심층 분석, 커스텀 렌더 패스 확장 구현.</p>
-      </div>
-    </a>
-  </div>
-
-  <span class="section-subtitle reveal-on-scroll" style="margin-top: 50px;">Shader & Art R&D</span>
-  <div class="projects-grid">
-    <a href="#" class="cinematic-card reveal-on-scroll delay-1">
-      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" class="cinematic-bg">
-      <div class="cinematic-overlay"></div>
-      <div class="tech-badges">
-        <span class="tech-badge">HLSL</span><span class="tech-badge">Simulation</span>
-      </div>
-      <div class="cinematic-content">
-        <h3 class="cinematic-title">Ocean Simulation with Gerstner Wave</h3>
-        <p class="cinematic-desc">HLSL을 활용한 물리 기반 파도 시뮬레이션. 테셀레이션 및 버텍스 오프셋 최적화 적용.</p>
-      </div>
-    </a>
-    <a href="#" class="cinematic-card reveal-on-scroll delay-2">
-      <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800" class="cinematic-bg">
-      <div class="cinematic-overlay"></div>
-      <div class="tech-badges">
-        <span class="tech-badge">PBR</span><span class="tech-badge">Material</span>
-      </div>
-      <div class="cinematic-content">
-        <h3 class="cinematic-title">Advanced Ice Material R&D</h3>
-        <p class="cinematic-desc">Subsurface Scattering(SSS), Parallax Occlusion Mapping을 활용한 사실적인 얼음 질감 표현.</p>
-      </div>
-    </a>
-  </div>
-
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-  });
-</script>
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>
