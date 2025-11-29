@@ -20,16 +20,14 @@ permalink: /daily-study/posts/2025/11/11-21-setup/
 
 **핵심 수식 (The Glow Formula):**
 
-$$Glow(d, r) = \frac{k}{|d - r|}$$
+> **Glow(d, r) = k / |d - r|**
 
 여기서:
-* $d$: 원점(중심)에서 현재 픽셀까지의 거리 (`length(uv)`)
-* $r$: 원의 현재 반지름 (시간에 따라 변함)
-* $k$: 빛의 강도 계수
+* **d**: 원점(중심)에서 현재 픽셀까지의 거리 (`length(uv)`)
+* **r**: 원의 현재 반지름 (시간에 따라 변함)
+* **k**: 빛의 강도 계수
 
 이 수식을 통해 경계면이 칼같이 잘리는 것이 아니라, 빛이 부드럽게 퍼져나가는 물리 기반(Physically Based) 느낌의 감쇠를 구현했습니다.
-
----
 
 ### Interactive Demo
 
@@ -42,37 +40,22 @@ $$Glow(d, r) = \frac{k}{|d - r|}$$
 #ifdef GL_ES
 precision mediump float;
 #endif
-
 uniform vec2 u_resolution;
 uniform float u_time;
-uniform vec2 u_mouse; // 마우스 좌표 입력 (새로 추가됨!)
-
+uniform vec2 u_mouse;
 void main() {
-    // 1. UV 좌표 정규화 및 중앙 정렬
     vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.y, u_resolution.x);
-    
-    // 2. 마우스 입력 정규화 (0.0 ~ 1.0 범위로 변환)
     vec2 mouseNorm = u_mouse.xy / u_resolution.xy;
-
-    // 3. 인터랙션 로직 추가
-    // 마우스가 캔버스 위에 있을 때만 Y축 위치에 따라 반지름 기본 크기 변경
     float baseRadius = (u_mouse.x <= 0.0 && u_mouse.y <= 0.0) ? 0.3 : 0.1 + 0.4 * mouseNorm.y;
-    // 숨쉬는 애니메이션 추가
     float radius = baseRadius + 0.02 * sin(u_time * 5.0);
-
-    // 4. SDF 계산 및 Glow 효과 적용 (위 수식 구현)
     float dist = length(uv);
     float glow = 0.015 / abs(dist - radius);
-
-    // 5. 컬러 합성 (마우스 X축에 따라 붉은색 강도 조절)
     vec3 baseColor = vec3(0.2, 0.5, 1.0);
-    baseColor.r += mouseNorm.x * 0.8; // 오른쪽으로 갈수록 붉어짐
-
+    baseColor.r += mouseNorm.x * 0.8;
     vec3 color = baseColor * glow;
-    
-    // 6. 최종 출력
     gl_FragColor = vec4(color, 1.0);
-}
-" width="500" height="500" style="cursor: crosshair; box-shadow: 0 0 20px rgba(0, 100, 255, 0.3); border-radius: 8px;"></canvas>
+}" width="500" height="500" style="cursor: crosshair; box-shadow: 0 0 20px rgba(0, 100, 255, 0.3); border-radius: 8px;"></canvas>
     
-    <script type="text/javascript" src="
+    <script type="text/javascript" src="https://rawgit.com/patriciogonzalezvivo/glslCanvas/master/dist/GlslCanvas.js"></script>
+    <p style="font-size: 0.8em; color: gray;">Powered by glslCanvas & WebGL</p>
+</div>
