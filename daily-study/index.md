@@ -5,30 +5,31 @@ permalink: /daily-study/
 ---
 
 <style>
-  /* 🔥 [추가됨] 페이지 전체 래퍼: 사이드바 옆에 예쁘게 나오게 하고, 위쪽 여백 줌 */
+  /* [수정됨] 페이지 전체 래퍼: 사이드바 옆에 내용이 오도록 함 */
+  /* 중요: margin-left를 주지 않고 padding만 줍니다. (default 레이아웃이 알아서 처리함) */
   .page-content-wrapper {
-    padding: 60px 40px 100px 40px; /* 위 60px 띄워서 답답함 해소 */
-    max-width: 1200px; 
+    padding: 60px 40px 100px 40px; 
+    max-width: 1200px;
     margin: 0 auto;
     box-sizing: border-box;
   }
 
-  /* ================= Global Layout ================= */
+  /* [수정됨] 충돌 방지를 위해 width: 100% 제거 */
   .markdown-body {
-    width: 100% !important; margin: 0 !important; padding: 0 !important;
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    box-sizing: border-box;
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
     color: #1d1d1f;
   }
   
   /* ================= 1. Heatmap (잔디) ================= */
-  .heatmap-section { margin-bottom: 30px; }
-  .heatmap-title { font-size: 0.9em; font-weight: 600; color: #86868b; margin-bottom: 10px; }
+  .heatmap-section { margin-bottom: 40px; }
+  .heatmap-title { font-size: 0.9em; font-weight: 600; color: #86868b; margin-bottom: 15px; }
   
-  #heatmap-grid-2025 { display: flex; flex-wrap: wrap; gap: 3px; max-width: 100%; padding-bottom: 5px; }
-  #heatmap-grid-2026 { display: grid; grid-template-columns: repeat(53, 1fr); grid-template-rows: repeat(7, 1fr); gap: 3px; overflow-x: auto; padding-bottom: 5px; }
+  #heatmap-grid-2025 { display: flex; flex-wrap: wrap; gap: 4px; padding-bottom: 5px; }
+  #heatmap-grid-2026 { display: grid; grid-template-columns: repeat(53, 1fr); grid-template-rows: repeat(7, 1fr); gap: 4px; overflow-x: auto; padding-bottom: 5px; }
   
   .day-box {
-    width: 10px; height: 10px; background-color: #ebedf0; border-radius: 2px; cursor: pointer;
+    width: 11px; height: 11px; background-color: #ebedf0; border-radius: 2px; cursor: pointer;
     transition: transform 0.1s;
   }
   .day-box:hover { transform: scale(1.3); border: 1px solid rgba(0,0,0,0.2); }
@@ -41,111 +42,113 @@ permalink: /daily-study/
   /* ================= 2. Featured Research ================= */
   .featured-section {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 20px; margin-bottom: 50px;
+    gap: 24px; margin-bottom: 60px;
   }
   .featured-card {
-    background: #fbfbfd; border: 1px solid #eaeaea; border-radius: 12px;
-    padding: 24px; transition: all 0.2s ease; position: relative; overflow: hidden;
+    background: #fff; border: 1px solid #eaeaea; border-radius: 16px;
+    padding: 30px; transition: all 0.2s ease; position: relative; overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
   }
-  .featured-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: #0066cc; }
+  .featured-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+  
   .featured-tag {
-    font-size: 0.7em; font-weight: 700; color: #0066cc; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: block;
+    font-size: 0.75em; font-weight: 700; color: #1d1d1f; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; display: block;
   }
-  .featured-title { font-size: 1.25em; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
-  .featured-desc { font-size: 0.9em; color: #666; line-height: 1.5; margin-bottom: 20px; }
-  .featured-link { font-size: 0.9em; font-weight: 600; color: #1d1d1f; text-decoration: none; display: inline-flex; align-items: center; }
-  .featured-link::after { content: '→'; margin-left: 5px; transition: margin-left 0.2s; }
+  .featured-title { font-size: 1.4em; font-weight: 700; margin-bottom: 10px; line-height: 1.2; color: #1d1d1f; }
+  .featured-desc { font-size: 1em; color: #424245; line-height: 1.5; margin-bottom: 24px; }
+  .featured-link { font-size: 0.95em; font-weight: 600; color: #1d1d1f; text-decoration: none; display: inline-flex; align-items: center; }
+  .featured-link::after { content: '→'; margin-left: 6px; transition: margin-left 0.2s; }
   .featured-card:hover .featured-link::after { margin-left: 10px; }
 
   /* ================= 3. Tech Timeline ================= */
-  .timeline-section { margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #eaeaea; }
-  .timeline-title { font-size: 1.2em; font-weight: 700; color: #1d1d1f; margin-bottom: 20px; }
+  .timeline-section { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid #eaeaea; }
+  .timeline-title { font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin-bottom: 25px; }
+  
   .timeline-container {
-    display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; -ms-overflow-style: none; scrollbar-width: none;
+    display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; 
+    -ms-overflow-style: none; scrollbar-width: none;
   }
   .timeline-container::-webkit-scrollbar { display: none; }
+  
   .quarter-block {
-    min-width: 240px; flex: 1; background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 20px;
+    min-width: 260px; flex: 1; background: #fff; border: 1px solid #eaeaea; border-radius: 14px; padding: 24px;
     transition: border-color 0.2s;
   }
   .quarter-block:hover { border-color: #d2d2d7; }
-  .quarter-label { font-weight: 800; font-size: 1.1em; color: #1d1d1f; margin-bottom: 5px; }
-  .quarter-date { font-size: 0.8em; color: #86868b; margin-bottom: 15px; font-weight: 500; }
+  
+  .quarter-label { font-weight: 800; font-size: 1.1em; color: #1d1d1f; margin-bottom: 6px; }
+  .quarter-date { font-size: 0.85em; color: #86868b; margin-bottom: 16px; font-weight: 500; }
+  
   .tech-badges { display: flex; flex-wrap: wrap; gap: 6px; }
-  .focus-badge { font-size: 0.75em; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: #f5f5f7; color: #555; }
+  .focus-badge { font-size: 0.75em; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: #f5f5f7; color: #1d1d1f; border: 1px solid #e5e5e5; }
   
   /* ================= 4. Filter Buttons ================= */
-  .filter-container { margin-bottom: 30px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-container { margin-bottom: 40px; display: flex; gap: 10px; flex-wrap: wrap; }
   .filter-btn {
-    padding: 6px 14px; border-radius: 18px; border: 1px solid #eaeaea; background: #fff;
-    font-size: 0.85em; font-weight: 600; color: #666; cursor: pointer; transition: all 0.2s;
+    padding: 8px 16px; border-radius: 20px; border: 1px solid #eaeaea; background: #fff;
+    font-size: 0.9em; font-weight: 500; color: #666; cursor: pointer; transition: all 0.2s;
   }
-  .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; border-color: #d2d2d7; }
-  .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; }
+  .filter-btn:hover { background: #f5f5f7; color: #1d1d1f; }
+  .filter-btn.active { background: #1d1d1f; color: #fff; border-color: #1d1d1f; font-weight: 600; }
 
   /* ================= 5. Daily Logs Layout ================= */
-  .year-header { font-size: 1.6em; font-weight: 700; margin-top: 50px; margin-bottom: 25px; border-bottom: 2px solid #eaeaea; padding-bottom: 12px; }
+  .year-header { font-size: 1.8em; font-weight: 700; margin-top: 60px; margin-bottom: 30px; border-bottom: 2px solid #eaeaea; padding-bottom: 15px; }
   
-  /* 🔥 [수정됨] align-items: start 추가 -> 옆 카드가 길어져도 나는 안 길어짐! */
   .year-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-    gap: 25px; 
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); 
+    gap: 24px; 
     width: 100%; 
-    margin-bottom: 60px;
-    align-items: start; /* 핵심 수정 사항 */
+    margin-bottom: 80px;
+    align-items: start;
   }
   
   details.month-card {
-    background: #ffffff; border: 1px solid #eaeaea; border-radius: 14px; overflow: hidden;
-    transition: all 0.2s ease; /* 애니메이션 속도 조절 */
+    background: #ffffff; border: 1px solid #eaeaea; border-radius: 16px; overflow: hidden;
+    transition: all 0.2s ease;
   }
-  details.month-card:hover { border-color: #c7c7cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  details.month-card:hover { border-color: #c7c7cc; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
   
   summary {
-    padding: 14px 18px; cursor: pointer; font-weight: 600; font-size: 1em;
+    padding: 16px 20px; cursor: pointer; font-weight: 600; font-size: 1.05em;
     background-color: #fbfbfd; display: flex; justify-content: space-between; align-items: center;
     user-select: none; transition: background-color 0.2s;
   }
   summary:hover { background-color: #f5f5f7; }
   summary::after { content: '+'; color: #999; font-size: 1.2em; font-weight: 400; }
-  details[open] summary::after { content: '−'; color: #0066cc; font-weight: 600; }
+  details[open] summary::after { content: '−'; color: #1d1d1f; font-weight: 600; }
   
-  /* 리스트 스타일 */
-  .study-list { padding: 5px 18px 18px 18px; border-top: 1px solid #eaeaea; }
+  .study-list { padding: 5px 20px 20px 20px; border-top: 1px solid #eaeaea; }
   .study-list li {
-    padding: 12px 0; border-bottom: 1px solid #f0f0f0; display: flex; gap: 12px; align-items: center; position: relative;
+    padding: 14px 0; border-bottom: 1px solid #f0f0f0; display: flex; gap: 14px; align-items: center; position: relative;
     transition: opacity 0.2s ease;
   }
   .study-list li:last-child { border-bottom: none; }
   .study-list li.hidden { display: none !important; }
 
-  /* 🔥 [수정됨] 날짜 뱃지 디자인 (애플 스타일) */
   .date-badge {
-    /* 코딩 폰트 제거, 기본 고딕 폰트 사용 */
-    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", sans-serif; 
-    font-weight: 600; color: #555;
-    background: #f2f2f7; /* 애플 스타일 연한 회색 */
+    font-family: "Pretendard", -apple-system, sans-serif; 
+    font-weight: 600; color: #1d1d1f;
+    background: #f2f2f7; 
     padding: 4px 8px; border-radius: 6px; 
-    font-size: 0.8em; min-width: 44px; text-align: center;
-    letter-spacing: -0.02em; /* 자간 좁혀서 숫자 예쁘게 */
+    font-size: 0.85em; min-width: 48px; text-align: center;
+    letter-spacing: -0.02em;
   }
   
   .study-link {
-    font-size: 0.92em; color: #1d1d1f; text-decoration: none; position: relative; cursor: pointer;
+    font-size: 0.95em; color: #1d1d1f; text-decoration: none; position: relative; cursor: pointer;
     line-height: 1.4; flex-grow: 1; transition: color 0.2s;
   }
-  .study-link:hover { color: #0066cc; }
+  .study-link:hover { color: #0071e3; }
   
-  /* 태그 점 색상 */
   .tag-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
   
-  /* 호버 프리뷰 팝업 */
+  /* 호버 프리뷰 */
   .preview-popup {
     position: fixed; pointer-events: none; z-index: 1000;
-    width: 300px; background: #fff; border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15); border: 1px solid #eaeaea;
-    padding: 6px; opacity: 0; transform: translateY(8px);
+    width: 320px; background: #fff; border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 1px solid #eaeaea;
+    padding: 8px; opacity: 0; transform: translateY(10px);
     transition: opacity 0.2s, transform 0.2s;
     visibility: hidden;
   }
@@ -154,6 +157,11 @@ permalink: /daily-study/
 </style>
 
 <div class="page-content-wrapper">
+
+  <header style="margin-bottom: 50px;">
+    <h1 style="font-size: 2.8em; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;">Daily Study Log</h1>
+    <p style="color: #86868b; font-size: 1.1em;">매일의 성장과 연구 기록</p>
+  </header>
 
   <div class="heatmap-section">
     <div class="heatmap-title">2025 Activity (Since Nov 27)</div>
@@ -273,31 +281,21 @@ permalink: /daily-study/
 <div id="preview-popup" class="preview-popup"><img src="" id="preview-img"></div>
 
 <script>
-  // 1. 잔디 심기 (Heatmap) - 점수 기반 (1~4단계)
+  // 1. 잔디 심기 (Heatmap)
   function generateHeatmap(elementId, startDateStr, endDateStr, studyData = {}) {
     const grid = document.getElementById(elementId);
     const startDate = new Date(startDateStr);
     const endDate = new Date(endDateStr);
     
-    // 날짜 루프
     for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
       const box = document.createElement('div');
       box.className = 'day-box';
-      
-      // 날짜 문자열 (YYYY-MM-DD)
-      // 한국 시간 기준 이슈 방지를 위해 문자열 처리로 통일
       const dateStr = d.toISOString().split('T')[0];
-      
-      // 마우스 올리면 날짜 뜨게
       box.setAttribute('title', dateStr);
       
-      // 데이터가 있는지 확인 (점수 가져오기)
       const level = studyData[dateStr]; 
-
       if (level) {
-        // level이 1~4라면 day-l1 ~ day-l4 클래스 추가
         box.classList.add('day-l' + level);
-        // 마우스 올렸을 때 "날짜 (N단계)" 라고 뜨게 함
         box.setAttribute('title', `${dateStr} (Lv.${level})`);
       }
       
@@ -305,27 +303,13 @@ permalink: /daily-study/
     }
   }
 
-/* 🎨 잔디 색상 규칙 (레벨)
-앞으로 이렇게 숫자를 입력하시면 됩니다.
-
-1단계 (연두색): 1 (가볍게 공부)
-2단계 (초록색): 2 (보통)
-3단계 (진한 녹색): 3 (열심히 함)
-4단계 (매우 진한 녹색): 4 (불태웠다 🔥)*/
-  
-  // 🔥 [여기서 수정하세요!] 2025년 공부 기록 (날짜 : 점수)
+  // 데이터
   const data2025 = {
-    '2025-11-27': 4,  // 1단계 (블로그 개설)
-    '2025-11-28': 1,  // 4단계 (오늘 완전 열심히 함!)
-    // '2025-11-29': 3, <-- 내일 공부하고 이렇게 추가하면 됨
+    '2025-11-27': 4,
+    '2025-11-28': 1,
   };
+  const data2026 = {};
 
-  // 🔥 2026년 공부 기록 (아직 비워둠)
-  const data2026 = {
-    // '2026-01-01': 4, 
-  };
-
-  // 실행 (함수 호출)
   generateHeatmap('heatmap-grid-2025', '2025-11-27', '2025-12-31', data2025);
   generateHeatmap('heatmap-grid-2026', '2026-01-01', '2026-12-31', data2026);
 
