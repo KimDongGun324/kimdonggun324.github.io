@@ -14,6 +14,13 @@ permalink: /
     --accent-black: #1d1d1f; 
   }
 
+  /* 폰트 (Pretendard 적용: 애플 스타일 한글 폰트) */
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+  body {
+    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  }
+
   /* 전체 래퍼 */
   .apple-wrapper {
     max-width: 1200px;
@@ -22,23 +29,23 @@ permalink: /
     box-sizing: border-box;
   }
 
-  /* [수정] 헤더 텍스트: 가운데 정렬 적용 */
+  /* [수정됨] 헤더 텍스트: 크기 축소 및 한 줄 최적화 */
   .apple-header {
     margin-bottom: 60px;
     padding: 0 20px;
-    text-align: center; /* 가운데 정렬 핵심 */
+    text-align: center;
   }
   .apple-headline {
-    font-size: 3.2rem;
+    font-size: 2.5rem; /* 3.2rem -> 2.5rem 로 축소 (더 세련됨) */
     font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.3;
+    letter-spacing: -0.03em; /* 자간을 좁혀서 단단한 느낌 */
     color: var(--text-main);
-    margin-bottom: 20px;
-    word-break: keep-all;
+    margin-bottom: 16px;
+    word-break: keep-all; /* 단어 중간에 줄바꿈 방지 */
   }
   .apple-subhead {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-sub);
     font-weight: 400;
     line-height: 1.6;
@@ -63,7 +70,7 @@ permalink: /
     flex-direction: column;
     justify-content: space-between;
     box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-    border: 1px solid rgba(0,0,0,0.06); /* 테두리를 조금 더 진하게 */
+    border: 1px solid rgba(0,0,0,0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none !important;
     color: inherit;
@@ -73,6 +80,18 @@ permalink: /
     transform: translateY(-4px);
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
   }
+  
+  /* [수정됨] 화살표 인터랙션 (호버시 오른쪽 이동) */
+  .bento-item:hover .icon-arrow {
+    transform: translateX(5px); /* 오른쪽으로 5px 이동 */
+  }
+  .icon-arrow {
+    font-size: 1.5rem;
+    align-self: flex-end;
+    margin-top: auto;
+    font-weight: 300;
+    transition: transform 0.3s ease; /* 부드러운 움직임 */
+  }
 
   /* 그리드 크기 조절 */
   .col-span-12 { grid-column: span 12; }
@@ -81,9 +100,9 @@ permalink: /
   /* 텍스트 스타일 */
   .bento-label {
     font-size: 0.8rem;
-    font-weight: 800; /* 굵게 변경 */
+    font-weight: 800;
     text-transform: uppercase;
-    color: var(--text-main); /* 회색에서 검정으로 변경하여 가독성 확보 */
+    color: var(--text-main);
     margin-bottom: 12px;
     letter-spacing: 0.05em;
     opacity: 0.6;
@@ -103,7 +122,7 @@ permalink: /
     font-weight: 400;
   }
 
-  /* 다크 모드 카드 (Portfolio 강조용) */
+  /* 다크 모드 카드 (Portfolio 강조) */
   .bento-dark {
     background: var(--accent-black);
     color: #fff;
@@ -113,45 +132,21 @@ permalink: /
   .bento-dark .bento-desc { color: #f5f5f7; }
   .bento-dark .bento-label { color: #a1a1a6; opacity: 1; }
 
-  /* 화살표 아이콘 */
-  .icon-arrow {
-    font-size: 1.5rem;
-    align-self: flex-end;
-    margin-top: auto;
-    font-weight: 300;
-  }
-
-  /* [신규] 기술 스택 뱃지 스타일 */
+  /* 기술 스택 뱃지 */
   .tech-badge-container {
-    display: flex;
-    gap: 8px;
-    margin-top: 15px;
-    flex-wrap: wrap;
+    display: flex; gap: 8px; margin-top: 15px; flex-wrap: wrap;
   }
   .tech-badge {
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: #f5f5f7;
-    color: #1d1d1f;
-    border: 1px solid #e5e5e5;
+    font-size: 0.75rem; font-weight: 600; padding: 4px 10px;
+    border-radius: 6px; background: #f5f5f7; color: #1d1d1f; border: 1px solid #e5e5e5;
   }
 
-  /* [수정] 테크니컬 노트 썸네일 (흑백 처리) */
+  /* 썸네일 이미지 (컬러 유지 + 배경 흰색 강조) */
   .tech-thumb {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 24px;
+    width: 100%; height: 180px; object-fit: cover;
+    border-radius: 12px; margin-bottom: 24px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    filter: grayscale(100%); /* 기본 흑백 */
-    transition: filter 0.4s ease; /* 부드러운 전환 */
-  }
-  /* 호버 시 컬러로 변경 */
-  .bento-item:hover .tech-thumb {
-    filter: grayscale(0%);
+    /* 흑백 필터 제거: 엔지니어링 결과물은 컬러가 생명 */
   }
 
   /* 반응형 */
@@ -159,8 +154,8 @@ permalink: /
     .bento-grid { display: flex; flex-direction: column; }
     .bento-item { min-height: 260px; }
     .col-span-6 { grid-column: span 12; }
-    .apple-headline { font-size: 2.2rem; }
-    .apple-header { text-align: left; } /* 모바일은 왼쪽 정렬이 나을 수 있음 */
+    /* 모바일에서는 폰트 크기 더 줄임 */
+    .apple-headline { font-size: 1.8rem; } 
   }
 </style>
 
@@ -169,8 +164,7 @@ permalink: /
   
   <header class="apple-header">
     <h1 class="apple-headline">
-      수식과 코드로 증명하는<br>
-      <span style="color: #86868b;">빛의 논리.</span>
+      수식과 코드로 증명하는 빛의 논리.
     </h1>
     <p class="apple-subhead">
       그래픽스 이론부터 엔진 최적화까지,<br>
@@ -180,16 +174,18 @@ permalink: /
 
   <div class="bento-grid">
     
-    <a href="#" class="bento-item col-span-12 bento-dark" style="min-height: 380px;">
-      <div style="position:absolute; inset:0; background: linear-gradient(45deg, #000000 0%, #2c2c2e 100%); z-index:0;"></div>
+    <a href="#" class="bento-item col-span-12 bento-dark" style="min-height: 320px;">
+      <div style="position:absolute; inset:0; background: #000; z-index:0; overflow:hidden;">
+         <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600" style="width:100%; height:100%; object-fit:cover; opacity:0.4;">
+      </div>
       
       <div style="position:relative; z-index:1; height:100%; display:flex; flex-direction:column;">
         <div>
           <div class="bento-label" style="color:#a1a1a6;">Showcase</div>
-          <div class="bento-title" style="font-size: 2.4rem;">Graphics R&D</div>
+          <div class="bento-title" style="font-size: 2.2rem;">Graphics R&D</div>
           <div class="bento-desc" style="max-width: 600px; opacity: 0.9;">
-            DirectX/Vulkan API를 활용한 자체 엔진 개발 및<br>
-            HLSL 기반의 물리 기반 렌더링(PBR) 구현 결과물.
+            DirectX/Vulkan API 자체 엔진 개발 및<br>
+            HLSL 기반 물리 기반 렌더링(PBR) 구현.
           </div>
         </div>
         <div class="icon-arrow" style="color: #fff;">View Portfolio →</div>
@@ -211,7 +207,7 @@ permalink: /
             <span class="tech-badge">UE5</span>
           </div>
         </div>
-        <div class="icon-arrow">↗</div>
+        <div class="icon-arrow">→</div>
       </div>
     </a>
 
@@ -236,7 +232,7 @@ permalink: /
 <div class="apple-wrapper reveal-on-scroll" style="padding-top: 0;">
   
   <header class="apple-header" style="margin-bottom: 30px; margin-top: 20px;">
-    <h2 class="apple-headline" style="font-size: 2.2rem;">Technical Notes</h2>
+    <h2 class="apple-headline" style="font-size: 2.0rem;">Technical Notes</h2>
     <p class="apple-subhead">Engine Architecture & Optimization Notes</p>
   </header>
 
