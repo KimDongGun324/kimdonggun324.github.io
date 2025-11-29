@@ -3,7 +3,7 @@ layout: default
 ---
 
 <style>
-  /* ================= CSS Variables & Reset ================= */
+  /* ================= CSS Reset & Variables ================= */
   :root {
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --apple-blue: #0071e3;
@@ -11,7 +11,7 @@ layout: default
     --text-sub: #86868b;
   }
 
-  /* 메인 컨텐츠 영역 강제 설정 (스타일 깨짐 방지) */
+  /* 메인 컨텐츠 영역 배경 강제 설정 */
   .main-content-scrollable {
     background-color: #ffffff !important;
   }
@@ -23,10 +23,10 @@ layout: default
     box-sizing: border-box;
   }
 
-  /* ================= 1. Top Banner & Header (스타일 복구) ================= */
+  /* ================= 1. Top Banner & Header ================= */
   .main-banner-area {
     width: 100%; 
-    height: 450px; /* 적절한 높이로 고정 */
+    height: 450px; 
     overflow: hidden; 
     position: relative;
     background: #000;
@@ -49,7 +49,7 @@ layout: default
   }
   
   .page-title-static {
-    font-family: 'Barlow Condensed', sans-serif; /* 폰트가 없으면 기본 산세리프로 대체됨 */
+    font-family: 'Barlow Condensed', sans-serif; 
     font-size: 4em; 
     font-weight: 700; 
     letter-spacing: 0.2em; 
@@ -65,7 +65,6 @@ layout: default
     letter-spacing: 0.05em;
   }
   
-  /* 구분선 */
   .section-divider-main {
     border: 0; 
     height: 1px; 
@@ -75,16 +74,16 @@ layout: default
   }
 
 
-  /* ================= 2. Profile & Daily Log (카드 스타일 복구) ================= */
+  /* ================= 2. Profile & Daily Log ================= */
   .intro-section {
     display: flex; 
     flex-direction: column; 
     gap: 50px; 
     margin-bottom: 120px;
-    align-items: center; /* 중앙 정렬 */
+    align-items: center; 
   }
 
-  /* 2-1. 프로필 영역 */
+  /* 2-1. 프로필 */
   .profile-center {
     text-align: center;
     max-width: 600px;
@@ -127,11 +126,11 @@ layout: default
     margin-top: 15px; 
   }
 
-  /* 2-2. Daily Study Log (와이드 카드 복구) */
+  /* 2-2. Daily Study Log (디자인 복구) */
   .daily-banner-wide {
     width: 100%;
-    max-width: 900px; /* 너무 넓지 않게 제한 */
-    background: #fbfbfd; /* 애플 스타일의 아주 연한 회색 */
+    max-width: 900px;
+    background: #fbfbfd;
     border: 1px solid #d2d2d7;
     border-radius: 24px;
     padding: 45px 50px;
@@ -141,7 +140,6 @@ layout: default
     overflow: hidden;
     transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
     
-    /* 내부 레이아웃 */
     display: flex; 
     justify-content: space-between; 
     align-items: center;
@@ -155,7 +153,7 @@ layout: default
 
   .daily-left { 
     flex: 1; 
-    text-align: left; /* 텍스트 좌측 정렬 강제 */
+    text-align: left; 
   }
   .daily-title { 
     font-size: 2.2em; 
@@ -195,7 +193,7 @@ layout: default
   }
 
 
-  /* ================= 3. Technical Deep Dive (Grid Layout Fixed) ================= */
+  /* ================= 3. Technical Deep Dive (New Grid) ================= */
   .section-header { 
     margin-bottom: 40px; 
     border-bottom: 2px solid #1d1d1f; 
@@ -209,22 +207,21 @@ layout: default
     margin: 0; 
   }
   
-  /* 그리드 설정 - 깨짐 방지 */
   .notes-grid { 
     display: grid; 
-    grid-template-columns: repeat(4, 1fr); /* 4열 강제 */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 24px; 
     width: 100%;
   }
   
   .note-card {
     position: relative; 
-    height: 420px; /* 높이 고정 */
+    height: 420px; 
     border-radius: 22px; 
     overflow: hidden; 
     text-decoration: none; 
     background-color: #000;
-    display: block; /* 블록 요소로 설정 */
+    display: block; 
     transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
   }
   .note-card:hover { 
@@ -233,7 +230,6 @@ layout: default
     z-index: 5; 
   }
   
-  /* 배경 이미지 */
   .note-bg { 
     width: 100%; 
     height: 100%; 
@@ -247,7 +243,6 @@ layout: default
     transform: scale(1.08); 
   }
 
-  /* 텍스트 컨텐츠 (카드 하단 위치) */
   .note-content {
     position: absolute; 
     bottom: 0; 
@@ -267,7 +262,7 @@ layout: default
     text-transform: uppercase; 
     letter-spacing: 0.05em; 
     margin-bottom: 8px; 
-    color: #4daaff; /* 가독성 좋은 파란색 */
+    color: #4daaff; 
     display: block; 
   }
   .note-title { 
@@ -284,7 +279,7 @@ layout: default
     margin: 0;
   }
 
-  /* 애니메이션 */
+  /* Animations */
   .reveal-on-scroll {
     opacity: 0; 
     transform: translateY(30px);
@@ -299,7 +294,6 @@ layout: default
   .delay-3 { transition-delay: 0.3s; }
   .delay-4 { transition-delay: 0.4s; }
 
-  /* 반응형 처리 */
   @media (max-width: 1100px) {
     .notes-grid { grid-template-columns: repeat(2, 1fr); }
   }
@@ -370,46 +364,4 @@ layout: default
     </a>
 
     <a href="#" class="note-card reveal-on-scroll delay-2">
-      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
-      <div class="note-content">
-        <span class="note-category">Core Engineering</span>
-        <h3 class="note-title">Engine & Architecture</h3>
-        <p class="note-desc">C++과 언리얼 엔진 소스 분석,<br>메모리와 렌더링 파이프라인 제어.</p>
-      </div>
-    </a>
-
-    <a href="#" class="note-card reveal-on-scroll delay-3">
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600" class="note-bg">
-      <div class="note-content">
-        <span class="note-category">Performance</span>
-        <h3 class="note-title">Optimization & Profiling</h3>
-        <p class="note-desc">GPU 프로파일링 기반의<br>논리적인 최적화 및 디버깅.</p>
-      </div>
-    </a>
-
-    <a href="#" class="note-card reveal-on-scroll delay-4">
-      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600" class="note-bg">
-      <div class="note-content">
-        <span class="note-category">Pipeline Automation</span>
-        <h3 class="note-title">TA Tools & Workflow</h3>
-        <p class="note-desc">Houdini와 Python을 활용한<br>효율적인 아트 워크플로우 설계.</p>
-      </div>
-    </a>
-  </div>
-  
-  </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-  });
-</script>
+      <img src="
