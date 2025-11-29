@@ -175,7 +175,7 @@ permalink: /
     
     <a href="#" class="bento-item col-span-12 bento-dark" style="min-height: 320px;">
       <div style="position:absolute; inset:0; background: #000; z-index:0; overflow:hidden;">
-         <img src="/assets/images/Gh.png" style="width:100%; height:100%; object-fit:cover; opacity:0.4;">
+         <img src="/assets/images/Gh.png" style="width:100%; height:100%; object-fit:contain; opacity:0.4;">
       </div>
       
       <div style="position:relative; z-index:1; height:100%; display:flex; flex-direction:column;">
