@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | DongGun Kim</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
 
   <style>
     /* =========================================
@@ -24,7 +22,7 @@
       --nav-item-darker: #424245; 
     }
 
-    /* Full-bleed 적용 */
+/* Full-bleed 적용 */
     body, html {
       margin: 0;
       padding: 0;
@@ -32,7 +30,10 @@
       height: 100%;
       overflow-x: hidden;
       background-color: #ffffff;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+      
+      /* 🔥 [수정됨] 폰트 이름을 'Pretendard'로 변경 */
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
