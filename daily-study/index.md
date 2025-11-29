@@ -5,9 +5,17 @@ permalink: /daily-study/
 ---
 
 <style>
+  /* 🔥 [추가됨] 페이지 전체 래퍼: 사이드바 옆에 예쁘게 나오게 하고, 위쪽 여백 줌 */
+  .page-content-wrapper {
+    padding: 60px 40px 100px 40px; /* 위 60px 띄워서 답답함 해소 */
+    max-width: 1200px; 
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
   /* ================= Global Layout ================= */
   .markdown-body {
-    max-width: 100% !important; margin: 0 !important; width: 100% !important; padding: 0 10px;
+    width: 100% !important; margin: 0 !important; padding: 0 !important;
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", sans-serif;
     color: #1d1d1f;
   }
@@ -145,122 +153,123 @@ permalink: /daily-study/
   .preview-popup img { width: 100%; border-radius: 8px; display: block; }
 </style>
 
-<div class="heatmap-section">
-  <div class="heatmap-title">2025 Activity (Since Nov 27)</div>
-  <div id="heatmap-grid-2025"></div>
-</div>
-<div class="heatmap-section">
-  <div class="heatmap-title">2026 Activity</div>
-  <div id="heatmap-grid-2026"></div>
-</div>
+<div class="page-content-wrapper">
 
-<section class="featured-section">
-  <div class="featured-card">
-    <span class="featured-tag">Shader Implementation</span>
-    <div class="featured-title">Ocean Simulation with Gerstner Wave</div>
-    <div class="featured-desc">파도의 물리적 움직임을 HLSL로 구현하고 최적화한 연구 기록입니다. 버텍스 오프셋 연산을 최적화하여 프레임 드랍을 15% 개선했습니다.</div>
-    <a href="/technical-notes/" class="featured-link">Read Case Study</a>
+  <div class="heatmap-section">
+    <div class="heatmap-title">2025 Activity (Since Nov 27)</div>
+    <div id="heatmap-grid-2025"></div>
   </div>
-  <div class="featured-card">
-    <span class="featured-tag">C++ & Engine Core</span>
-    <div class="featured-title">UE5 Rendering Pipeline Analysis</div>
-    <div class="featured-desc">언리얼 엔진 5의 나나이트(Nanite) 소스 코드를 분석하고, 커스텀 렌더 패스를 추가하여 스타일라이즈드 렌더링을 구현했습니다.</div>
-    <a href="/technical-notes/" class="featured-link">Read Case Study</a>
+  <div class="heatmap-section">
+    <div class="heatmap-title">2026 Activity</div>
+    <div id="heatmap-grid-2026"></div>
   </div>
-</section>
 
-<section class="timeline-section">
-  <div class="timeline-title">Research Roadmap & Milestones</div>
-  <div class="timeline-container">
-    <div class="quarter-block" style="border-left: 3px solid #0066cc;">
-      <div class="quarter-label" style="color: #0066cc;">2025 Q4</div>
-      <div class="quarter-date">Nov - Dec</div>
-      <div class="tech-badges">
-        <span class="focus-badge">HLSL Base</span>
-        <span class="focus-badge">Linear Algebra</span>
-        <span class="focus-badge">Jekyll Setup</span>
+  <section class="featured-section">
+    <div class="featured-card">
+      <span class="featured-tag">Shader Implementation</span>
+      <div class="featured-title">Ocean Simulation with Gerstner Wave</div>
+      <div class="featured-desc">파도의 물리적 움직임을 HLSL로 구현하고 최적화한 연구 기록입니다. 버텍스 오프셋 연산을 최적화하여 프레임 드랍을 15% 개선했습니다.</div>
+      <a href="/technical-notes/" class="featured-link">Read Case Study</a>
+    </div>
+    <div class="featured-card">
+      <span class="featured-tag">C++ & Engine Core</span>
+      <div class="featured-title">UE5 Rendering Pipeline Analysis</div>
+      <div class="featured-desc">언리얼 엔진 5의 나나이트(Nanite) 소스 코드를 분석하고, 커스텀 렌더 패스를 추가하여 스타일라이즈드 렌더링을 구현했습니다.</div>
+      <a href="/technical-notes/" class="featured-link">Read Case Study</a>
+    </div>
+  </section>
+
+  <section class="timeline-section">
+    <div class="timeline-title">Research Roadmap & Milestones</div>
+    <div class="timeline-container">
+      <div class="quarter-block" style="border-left: 3px solid #0066cc;">
+        <div class="quarter-label" style="color: #0066cc;">2025 Q4</div>
+        <div class="quarter-date">Nov - Dec</div>
+        <div class="tech-badges">
+          <span class="focus-badge">HLSL Base</span>
+          <span class="focus-badge">Linear Algebra</span>
+          <span class="focus-badge">Jekyll Setup</span>
+        </div>
+      </div>
+      <div class="quarter-block">
+        <div class="quarter-label">2026 Q1</div>
+        <div class="quarter-date">Jan - Mar</div>
+        <div class="tech-badges">
+          <span class="focus-badge">UE5 Material Graph</span>
+          <span class="focus-badge">PBR Theory</span>
+          <span class="focus-badge">C++ Core</span>
+        </div>
+      </div>
+      <div class="quarter-block">
+        <div class="quarter-label">2026 Q2</div>
+        <div class="quarter-date">Apr - Jun</div>
+        <div class="tech-badges">
+          <span class="focus-badge">Houdini Proc. Gen</span>
+          <span class="focus-badge">Substance Designer</span>
+        </div>
       </div>
     </div>
-    <div class="quarter-block">
-      <div class="quarter-label">2026 Q1</div>
-      <div class="quarter-date">Jan - Mar</div>
-      <div class="tech-badges">
-        <span class="focus-badge">UE5 Material Graph</span>
-        <span class="focus-badge">PBR Theory</span>
-        <span class="focus-badge">C++ Core</span>
-      </div>
-    </div>
-    <div class="quarter-block">
-      <div class="quarter-label">2026 Q2</div>
-      <div class="quarter-date">Apr - Jun</div>
-      <div class="tech-badges">
-        <span class="focus-badge">Houdini Proc. Gen</span>
-        <span class="focus-badge">Substance Designer</span>
-      </div>
-    </div>
+  </section>
+
+  <div class="filter-container">
+    <button class="filter-btn active" onclick="filterLogs('all')">All</button>
+    <button class="filter-btn" onclick="filterLogs('graphics')">Graphics Theory</button>
+    <button class="filter-btn" onclick="filterLogs('shader')">Shader Implementation</button>
+    <button class="filter-btn" onclick="filterLogs('engine')">C++ & Engine Core</button>
+    <button class="filter-btn" onclick="filterLogs('tools')">TA Tools & Pipeline</button>
   </div>
-</section>
 
-<div class="filter-container">
-  <button class="filter-btn active" onclick="filterLogs('all')">All</button>
-  <button class="filter-btn" onclick="filterLogs('graphics')">Graphics Theory</button>
-  <button class="filter-btn" onclick="filterLogs('shader')">Shader Implementation</button>
-  <button class="filter-btn" onclick="filterLogs('engine')">C++ & Engine Core</button>
-  <button class="filter-btn" onclick="filterLogs('tools')">TA Tools & Pipeline</button>
+  <h2 class="year-header">2025</h2>
+  <div class="year-grid">
+    
+    <details class="month-card" open>
+      <summary>November</summary>
+      <ul class="study-list">
+        <li data-tags="tools" data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=300">
+          <span class="date-badge">11.21</span>
+          <span class="tag-dot" style="background:#2e7d32;"></span>
+          <a href="/daily-study/posts/2025/11/11-21-setup/" class="study-link">블로그 개설 및 Jekyll 테마 커스텀 (Design System)</a>
+        </li>
+        
+        <li data-tags="shader" data-image="/assets/images/2025/11/Pasted_image_20251128191707.png">
+          <span class="date-badge">11.22</span>
+          <span class="tag-dot" style="background:#9c27b0;"></span>
+          <a href="#" class="study-link">HLSL 기초 문법과 주석의 중요성 (ShaderLab)</a>
+        </li>
+        
+        <li data-tags="graphics" data-image="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=300">
+          <span class="date-badge">11.23</span>
+          <span class="tag-dot" style="background:#2196f3;"></span>
+          <a href="#" class="study-link">선형대수학: 벡터의 내적과 렌더링 응용</a>
+        </li>
+      </ul>
+    </details>
+
+    <details class="month-card">
+      <summary>December</summary>
+      <ul class="study-list">
+        <li data-tags="all"><span class="date-badge">Coming</span> 기록 없음</li>
+      </ul>
+    </details>
+  </div>
+
+  <h2 class="year-header">2026</h2>
+  <div class="year-grid">
+    <details class="month-card"><summary>January</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>February</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>March</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>April</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>May</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>June</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>July</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>August</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>September</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>October</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>November</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+    <details class="month-card"><summary>December</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
+  </div>
+
 </div>
-
-<h2 class="year-header">2025</h2>
-<div class="year-grid">
-  
-  <details class="month-card" open>
-    <summary>November</summary>
-    <ul class="study-list">
-      <li data-tags="tools" data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=300">
-        <span class="date-badge">11.21</span>
-        <span class="tag-dot" style="background:#2e7d32;"></span>
-        <a href="/daily-study/posts/2025/11/11-21-setup/" class="study-link">블로그 개설 및 Jekyll 테마 커스텀 (Design System)</a>
-      </li>
-      
-      <li data-tags="shader" data-image="/assets/images/2025/11/Pasted_image_20251128191707.png">
-        <span class="date-badge">11.22</span>
-        <span class="tag-dot" style="background:#9c27b0;"></span>
-        <a href="#" class="study-link">HLSL 기초 문법과 주석의 중요성 (ShaderLab)</a>
-      </li>
-      
-      <li data-tags="graphics" data-image="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=300">
-        <span class="date-badge">11.23</span>
-        <span class="tag-dot" style="background:#2196f3;"></span>
-        <a href="#" class="study-link">선형대수학: 벡터의 내적과 렌더링 응용</a>
-      </li>
-    </ul>
-  </details>
-
-  <details class="month-card">
-    <summary>December</summary>
-    <ul class="study-list">
-      <li data-tags="all"><span class="date-badge">Coming</span> 기록 없음</li>
-    </ul>
-  </details>
-</div>
-
-<h2 class="year-header">2026</h2>
-<div class="year-grid">
-  <details class="month-card"><summary>January</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>February</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>March</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>April</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>May</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>June</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>July</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>August</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>September</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>October</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>November</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-  <details class="month-card"><summary>December</summary><ul class="study-list"><li><span class="date-badge">Coming</span>...</li></ul></details>
-</div>
-
-<div id="preview-popup" class="preview-popup"><img src="" id="preview-img"></div>
-
 <div id="preview-popup" class="preview-popup"><img src="" id="preview-img"></div>
 
 <script>
