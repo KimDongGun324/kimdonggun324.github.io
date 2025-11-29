@@ -7,155 +7,310 @@ layout: default
   :root {
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --apple-blue: #0071e3;
+    --text-main: #1d1d1f;
+    --text-sub: #86868b;
   }
 
-  /* 메인 컨텐츠 영역 확장 (흰색 배경) */
-  .main-content {
-    padding: 0 !important;
-    max-width: 100% !important;
-    background-color: #ffffff;
+  /* 메인 컨텐츠 영역 강제 설정 (스타일 깨짐 방지) */
+  .main-content-scrollable {
+    background-color: #ffffff !important;
   }
   
   .page-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 60px 40px;
+    padding: 0 40px 120px 40px;
+    box-sizing: border-box;
   }
 
-  /* ================= 1. Top Banner (경로 문제 해결) ================= */
+  /* ================= 1. Top Banner & Header (스타일 복구) ================= */
   .main-banner-area {
-    width: 100%; height: 420px;
-    overflow: hidden; position: relative;
-    background: #1d1d1f;
+    width: 100%; 
+    height: 450px; /* 적절한 높이로 고정 */
+    overflow: hidden; 
+    position: relative;
+    background: #000;
+    margin-bottom: 0;
   }
   
-  /* ⚠️ 이미지 경로를 절대경로로 지정하여 오류 방지 */
   .main-banner-img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center;
-    opacity: 0.85;
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center;
+    opacity: 0.8;
+    display: block;
   }
 
-  /* 타이틀 영역 (복원됨) */
   .main-header-static {
-    text-align: center; padding: 60px 20px 40px 20px; background: #fff;
-  }
-  .page-title-static {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 3.5em; font-weight: 800; letter-spacing: 0.3em; 
-    margin: 0 0 15px 0; color: #1d1d1f; text-transform: uppercase;
-    margin-right: -0.3em;
-  }
-  .page-desc-static {
-    font-size: 1.1em; color: #86868b; font-weight: 400; letter-spacing: 0.02em;
-    font-family: "Pretendard", sans-serif;
+    text-align: center; 
+    padding: 70px 20px 50px 20px; 
+    background: #fff;
   }
   
+  .page-title-static {
+    font-family: 'Barlow Condensed', sans-serif; /* 폰트가 없으면 기본 산세리프로 대체됨 */
+    font-size: 4em; 
+    font-weight: 700; 
+    letter-spacing: 0.2em; 
+    margin: 0 0 10px 0; 
+    color: #1d1d1f; 
+    text-transform: uppercase;
+  }
+  
+  .page-desc-static {
+    font-size: 1.1em; 
+    color: #86868b; 
+    font-weight: 500; 
+    letter-spacing: 0.05em;
+  }
+  
+  /* 구분선 */
   .section-divider-main {
-    border: 0; height: 1px; background: #eaeaea; margin: 0 auto 60px auto; max-width: 1400px;
+    border: 0; 
+    height: 1px; 
+    background: #eaeaea; 
+    margin: 0 auto 80px auto; 
+    max-width: 1400px;
   }
 
 
-  /* ================= 2. Profile (Center) & Daily Log (Wide) ================= */
+  /* ================= 2. Profile & Daily Log (카드 스타일 복구) ================= */
   .intro-section {
-    display: flex; flex-direction: column; gap: 40px; margin-bottom: 100px;
+    display: flex; 
+    flex-direction: column; 
+    gap: 50px; 
+    margin-bottom: 120px;
+    align-items: center; /* 중앙 정렬 */
   }
 
-  /* 2-1. 중앙 프로필 스타일 */
+  /* 2-1. 프로필 영역 */
   .profile-center {
     text-align: center;
-    padding: 40px;
-    background: #ffffff; /* 투명 배경 대신 깔끔한 흰색 */
+    max-width: 600px;
   }
-  .my-name-center { font-size: 3em; font-weight: 800; color: #1d1d1f; margin-bottom: 10px; letter-spacing: -0.02em; }
-  .my-role-center { font-size: 1.3em; color: #424245; font-weight: 500; margin-bottom: 20px; }
+  .my-name-center { 
+    font-size: 2.5em; 
+    font-weight: 700; 
+    color: #1d1d1f; 
+    margin-bottom: 10px; 
+    letter-spacing: -0.02em; 
+  }
+  .my-role-center { 
+    font-size: 1.1em; 
+    color: #424245; 
+    font-weight: 500; 
+    margin-bottom: 25px; 
+  }
   
-  .social-center { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+  .social-center { 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+  }
   .social-btn {
-    padding: 10px 24px; border-radius: 30px; background: #f5f5f7; border: 1px solid transparent;
-    color: #1d1d1f; font-weight: 600; font-size: 0.95em; text-decoration: none; transition: all 0.2s;
+    padding: 10px 24px; 
+    border-radius: 30px; 
+    background: #f5f5f7; 
+    color: #1d1d1f; 
+    font-weight: 600; 
+    font-size: 0.9em; 
+    transition: all 0.2s;
   }
-  .social-btn:hover { background: #1d1d1f; color: #fff; transform: translateY(-2px); }
-  
-  /* 이메일 텍스트 */
-  .email-text { font-size: 1em; color: #86868b; margin-top: 15px; font-weight: 500; }
+  .social-btn:hover { 
+    background: #1d1d1f; 
+    color: #fff; 
+  }
+  .email-text { 
+    font-size: 0.95em; 
+    color: #86868b; 
+    margin-top: 15px; 
+  }
 
-
-  /* 2-2. Daily Study Log (Wide Banner) */
+  /* 2-2. Daily Study Log (와이드 카드 복구) */
   .daily-banner-wide {
     width: 100%;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    max-width: 900px; /* 너무 넓지 않게 제한 */
+    background: #fbfbfd; /* 애플 스타일의 아주 연한 회색 */
+    border: 1px solid #d2d2d7;
     border-radius: 24px;
-    padding: 50px 60px;
-    text-decoration: none !important; color: #1d1d1f;
-    position: relative; overflow: hidden;
+    padding: 45px 50px;
+    text-decoration: none !important; 
+    color: #1d1d1f;
+    position: relative; 
+    overflow: hidden;
     transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
-    display: flex; justify-content: space-between; align-items: center;
+    
+    /* 내부 레이아웃 */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    box-sizing: border-box;
   }
-  .daily-banner-wide:hover { transform: scale(1.01); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+  .daily-banner-wide:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08); 
+    border-color: transparent;
+  }
 
-  .daily-left { max-width: 60%; }
-  .daily-title { font-size: 2.8em; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1; margin-top: 0; }
-  .daily-desc { font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.5; }
+  .daily-left { 
+    flex: 1; 
+    text-align: left; /* 텍스트 좌측 정렬 강제 */
+  }
+  .daily-title { 
+    font-size: 2.2em; 
+    font-weight: 700; 
+    margin: 0 0 15px 0; 
+    color: #000;
+  }
+  .daily-desc { 
+    font-size: 1.05em; 
+    font-weight: 400; 
+    color: #424245; 
+    line-height: 1.6; 
+  }
   
-  .daily-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-  .daily-meta { font-size: 0.95em; color: #666; font-weight: 600; font-family: monospace; opacity: 0.6; }
-  
+  .daily-right { 
+    text-align: right; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+    gap: 8px; 
+    min-width: 200px;
+  }
   .read-arrow-btn {
-    font-size: 1.1em; font-weight: 700; color: var(--apple-blue);
-    display: flex; align-items: center; transition: all 0.2s;
+    font-size: 1em; 
+    font-weight: 600; 
+    color: #fff;
+    background-color: #0071e3;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin-bottom: 5px;
   }
-  .read-arrow-btn::after { content: '→'; margin-left: 8px; transition: margin-left 0.2s; }
-  .daily-banner-wide:hover .read-arrow-btn::after { margin-left: 15px; }
+  .daily-meta { 
+    font-size: 0.85em; 
+    color: #86868b; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+  }
 
 
-  /* ================= 3. Technical Deep Dive (New Layout) ================= */
-  .section-header { margin-top: 100px; margin-bottom: 40px; border-bottom: 2px solid #1d1d1f; padding-bottom: 15px; }
-  .section-title { font-size: 2em; font-weight: 700; color: #1d1d1f; margin: 0; }
+  /* ================= 3. Technical Deep Dive (Grid Layout Fixed) ================= */
+  .section-header { 
+    margin-bottom: 40px; 
+    border-bottom: 2px solid #1d1d1f; 
+    padding-bottom: 15px; 
+    margin-top: 0;
+  }
+  .section-title { 
+    font-size: 2em; 
+    font-weight: 700; 
+    color: #1d1d1f; 
+    margin: 0; 
+  }
   
-  .notes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  /* 그리드 설정 - 깨짐 방지 */
+  .notes-grid { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); /* 4열 강제 */
+    gap: 24px; 
+    width: 100%;
+  }
+  
   .note-card {
-    height: 480px; position: relative; border-radius: 24px; overflow: hidden; text-decoration: none; background-color: #000;
+    position: relative; 
+    height: 420px; /* 높이 고정 */
+    border-radius: 22px; 
+    overflow: hidden; 
+    text-decoration: none; 
+    background-color: #000;
+    display: block; /* 블록 요소로 설정 */
     transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
   }
-  .note-card:hover { transform: translateY(-12px) scale(1.01); box-shadow: 0 25px 50px rgba(0,0,0,0.25); z-index: 10; }
+  .note-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3); 
+    z-index: 5; 
+  }
   
-  .note-bg { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: all 0.6s ease; }
-  .note-card:hover .note-bg { opacity: 0.4; transform: scale(1.08); }
+  /* 배경 이미지 */
+  .note-bg { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.6; 
+    transition: transform 0.6s ease, opacity 0.6s; 
+    display: block;
+  }
+  .note-card:hover .note-bg { 
+    opacity: 0.4; 
+    transform: scale(1.08); 
+  }
 
+  /* 텍스트 컨텐츠 (카드 하단 위치) */
   .note-content {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 35px 25px;
-    color: #fff; z-index: 2; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-    text-align: left; /* 딥 다이브는 좌측 정렬이 더 전문적으로 보임 */
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    padding: 30px 24px;
+    box-sizing: border-box;
+    color: #fff; 
+    z-index: 10; 
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+    text-align: left;
   }
+  
   .note-category { 
-    font-size: 0.75em; font-weight: 800; text-transform: uppercase; 
-    letter-spacing: 0.05em; margin-bottom: 12px; color: #0071e3; display: block; 
+    font-size: 0.75em; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    margin-bottom: 8px; 
+    color: #4daaff; /* 가독성 좋은 파란색 */
+    display: block; 
   }
-  .note-title { font-size: 1.5em; font-weight: 800; line-height: 1.1; margin-bottom: 12px; }
-  .note-desc { font-size: 0.9em; color: rgba(255,255,255,0.7); line-height: 1.5; }
+  .note-title { 
+    font-size: 1.4em; 
+    font-weight: 700; 
+    line-height: 1.2; 
+    margin: 0 0 10px 0; 
+    color: #fff;
+  }
+  .note-desc { 
+    font-size: 0.9em; 
+    color: rgba(255,255,255,0.8); 
+    line-height: 1.5; 
+    margin: 0;
+  }
 
-  /* ================= Animations ================= */
+  /* 애니메이션 */
   .reveal-on-scroll {
-    opacity: 0; transform: translateY(60px) scale(0.98);
-    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+    opacity: 0; 
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
   }
-  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+  .reveal-on-scroll.is-visible { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
   .delay-1 { transition-delay: 0.1s; }
   .delay-2 { transition-delay: 0.2s; }
   .delay-3 { transition-delay: 0.3s; }
   .delay-4 { transition-delay: 0.4s; }
 
-  @media (max-width: 1200px) {
+  /* 반응형 처리 */
+  @media (max-width: 1100px) {
     .notes-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 900px) {
-    .notes-grid { grid-template-columns: 1fr; }
+  @media (max-width: 768px) {
     .daily-banner-wide { flex-direction: column; text-align: center; gap: 20px; }
+    .daily-left { text-align: center; }
     .daily-right { align-items: center; }
-    .page-title-static { font-size: 2.2em; letter-spacing: 0.1em; }
+    .notes-grid { grid-template-columns: 1fr; }
+    .page-title-static { font-size: 2.5em; }
   }
 </style>
-
 
 <div class="main-banner-area">
   <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img">
@@ -168,7 +323,6 @@ layout: default
 
 <hr class="section-divider-main">
 
-
 <div class="page-container">
 
   <section class="intro-section reveal-on-scroll">
@@ -179,7 +333,7 @@ layout: default
       
       <div class="email-text">kdg324@naver.com</div>
       
-      <div class="social-center">
+      <div class="social-center" style="margin-top: 20px;">
         <a href="{{ '/about.md' | relative_url }}" class="social-btn">Profile</a>
         <a href="https://github.com/kimdonggun324" target="_blank" class="social-btn">GitHub</a>
       </div>
@@ -194,13 +348,14 @@ layout: default
         </div>
       </div>
       <div class="daily-right">
-        <div class="read-arrow-btn">Read Log</div>
+        <div class="read-arrow-btn">Read Log →</div>
         <div class="daily-meta">Shaders & Engine Core Log<br>Since 2025.11</div>
       </div>
     </a>
 
   </section>
-  <div class="section-header reveal-on-scroll">
+
+  <div class="section-header reveal-on-scroll" style="margin-top: 80px;">
     <h2 class="section-title">Technical Deep Dive</h2>
   </div>
 
@@ -210,7 +365,7 @@ layout: default
       <div class="note-content">
         <span class="note-category">Math & Physics</span>
         <h3 class="note-title">Graphics & Shader</h3>
-        <p class="note-desc">HLSL, GLSL 및 PBR 이론을 바탕으로<br>화면 위에 빛을 구현하는 기록.</p>
+        <p class="note-desc">HLSL, GLSL 및 PBR 이론을 바탕으로<br>빛의 논리를 구현하는 기록.</p>
       </div>
     </a>
 
@@ -219,7 +374,7 @@ layout: default
       <div class="note-content">
         <span class="note-category">Core Engineering</span>
         <h3 class="note-title">Engine & Architecture</h3>
-        <p class="note-desc">C++과 언리얼 엔진 소스 코드를 분석하며<br>메모리와 렌더링 파이프라인을 제어합니다.</p>
+        <p class="note-desc">C++과 언리얼 엔진 소스 분석,<br>메모리와 렌더링 파이프라인 제어.</p>
       </div>
     </a>
 
@@ -228,7 +383,7 @@ layout: default
       <div class="note-content">
         <span class="note-category">Performance</span>
         <h3 class="note-title">Optimization & Profiling</h3>
-        <p class="note-desc">GPU 프로파일링과 데이터에 기반한<br>논리적인 최적화 및 디버깅 사례.</p>
+        <p class="note-desc">GPU 프로파일링 기반의<br>논리적인 최적화 및 디버깅.</p>
       </div>
     </a>
 
@@ -237,16 +392,16 @@ layout: default
       <div class="note-content">
         <span class="note-category">Pipeline Automation</span>
         <h3 class="note-title">TA Tools & Workflow</h3>
-        <p class="note-desc">Houdini와 Python을 활용하여<br>아티스트를 위한 효율적인 워크플로우를 설계합니다.</p>
+        <p class="note-desc">Houdini와 Python을 활용한<br>효율적인 아트 워크플로우 설계.</p>
       </div>
     </a>
   </div>
-
-</div>
+  
+  </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
