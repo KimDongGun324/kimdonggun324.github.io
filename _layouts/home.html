@@ -6,10 +6,10 @@ layout: default
   /* ================= CSS Variables & Reset ================= */
   :root {
     --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-    --apple-gray: #f5f5f7;
     --apple-blue: #0071e3;
   }
 
+  /* 메인 컨텐츠 영역 확장 (흰색 배경) */
   .main-content {
     padding: 0 !important;
     max-width: 100% !important;
@@ -22,41 +22,31 @@ layout: default
     padding: 60px 40px;
   }
 
-  /* ================= 1. Top Banner & Header (복원됨) ================= */
+  /* ================= 1. Top Banner (경로 문제 해결) ================= */
   .main-banner-area {
-    width: 100%;
-    height: 420px; /* 높이 살짝 키움 */
-    overflow: hidden;
-    position: relative;
-    background: #1d1d1f; /* 이미지 없을 때 기본 배경색 */
+    width: 100%; height: 420px;
+    overflow: hidden; position: relative;
+    background: #1d1d1f;
   }
-  /* 이미지 경로 수정: assets/images 폴더에 main-banner.png가 있어야 함 */
+  
+  /* ⚠️ 이미지 경로를 절대경로로 지정하여 오류 방지 */
   .main-banner-img {
     width: 100%; height: 100%; object-fit: cover; object-position: center;
-    opacity: 0.8; /* 텍스트 가독성 위해 살짝 어둡게 */
+    opacity: 0.85;
   }
 
+  /* 타이틀 영역 (복원됨) */
   .main-header-static {
-    text-align: center;
-    padding: 50px 20px 40px 20px;
-    background: #fff;
+    text-align: center; padding: 60px 20px 40px 20px; background: #fff;
   }
-  /* 이전 스타일 복원: 넓은 자간, 얇은 두께 */
   .page-title-static {
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-    font-size: 3.5em; 
-    font-weight: 700; 
-    letter-spacing: 0.3em; /* 자간 넓게 */
-    margin: 0 0 15px 0; 
-    color: #1d1d1f; 
-    text-transform: uppercase;
-    margin-right: -0.3em; /* 시각적 보정 */
+    font-size: 3.5em; font-weight: 800; letter-spacing: 0.3em; 
+    margin: 0 0 15px 0; color: #1d1d1f; text-transform: uppercase;
+    margin-right: -0.3em;
   }
   .page-desc-static {
-    font-size: 1.05em; 
-    color: #86868b; 
-    font-weight: 300; 
-    letter-spacing: 0.05em;
+    font-size: 1.1em; color: #86868b; font-weight: 400; letter-spacing: 0.02em;
     font-family: "Pretendard", sans-serif;
   }
   
@@ -65,94 +55,66 @@ layout: default
   }
 
 
-  /* ================= 2. Profile & Daily Log (New Design) ================= */
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 30px; margin-bottom: 80px;
-    /* 중요: 높이 강제 일치 */
-    align-items: stretch; 
+  /* ================= 2. Profile (Center) & Daily Log (Wide) ================= */
+  .intro-section {
+    display: flex; flex-direction: column; gap: 40px; margin-bottom: 100px;
   }
 
-  /* 공통 카드 스타일 (애플 글래스 느낌) */
-  .hero-card {
-    background: #ffffff;
-    border: 1px solid rgba(0,0,0,0.08); /* 아주 연한 테두리 */
-    border-radius: 24px;
+  /* 2-1. 중앙 프로필 스타일 */
+  .profile-center {
+    text-align: center;
     padding: 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03); /* 붕 뜬 느낌 */
-    display: flex; flex-direction: column; justify-content: center;
-    transition: all 0.3s var(--ease-out-expo);
-    height: 100%; /* 부모 그리드 높이에 맞춤 */
+    background: #ffffff; /* 투명 배경 대신 깔끔한 흰색 */
   }
-  .hero-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-    border-color: rgba(0,0,0,0.0);
-  }
-
-  /* Profile 스타일 */
-  .my-name { font-size: 2.4em; font-weight: 800; color: #1d1d1f; margin-bottom: 12px; letter-spacing: -0.02em; }
-  .my-info { font-size: 1.1em; color: #424245; line-height: 1.6; margin-bottom: 0; }
-  .my-info div { margin-bottom: 4px; }
-  .my-email { font-weight: 500; color: #86868b; margin-top: 15px; font-size: 0.95em; }
-
-  .social-links { margin-top: 30px; display: flex; gap: 10px; }
+  .my-name-center { font-size: 3em; font-weight: 800; color: #1d1d1f; margin-bottom: 10px; letter-spacing: -0.02em; }
+  .my-role-center { font-size: 1.3em; color: #424245; font-weight: 500; margin-bottom: 20px; }
+  
+  .social-center { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
   .social-btn {
-    padding: 8px 18px; border-radius: 20px; background: #f5f5f7; 
-    color: #1d1d1f; font-weight: 600; font-size: 0.9em; text-decoration: none; transition: all 0.2s;
+    padding: 10px 24px; border-radius: 30px; background: #f5f5f7; border: 1px solid transparent;
+    color: #1d1d1f; font-weight: 600; font-size: 0.95em; text-decoration: none; transition: all 0.2s;
   }
-  .social-btn:hover { background: #1d1d1f; color: #fff; }
+  .social-btn:hover { background: #1d1d1f; color: #fff; transform: translateY(-2px); }
+  
+  /* 이메일 텍스트 */
+  .email-text { font-size: 1em; color: #86868b; margin-top: 15px; font-weight: 500; }
 
-  /* Daily Log 스타일 */
-  .daily-link-wrapper { text-decoration: none; display: block; height: 100%; color: inherit; }
-  
-  .daily-label { 
-    font-size: 0.85em; font-weight: 700; color: #86868b; 
-    text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; 
-  }
-  .daily-title { font-size: 2.6em; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1.1; }
-  .daily-desc { 
-    font-size: 1.15em; font-weight: 400; color: #424245; line-height: 1.5; margin-bottom: 30px; 
-  }
-  
-  .daily-footer {
-    margin-top: auto; /* 바닥에 붙이기 */
+
+  /* 2-2. Daily Study Log (Wide Banner) */
+  .daily-banner-wide {
+    width: 100%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 24px;
+    padding: 50px 60px;
+    text-decoration: none !important; color: #1d1d1f;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
     display: flex; justify-content: space-between; align-items: center;
   }
-  .daily-meta { font-size: 0.9em; color: #86868b; font-weight: 500; }
+  .daily-banner-wide:hover { transform: scale(1.01); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+
+  .daily-left { max-width: 60%; }
+  .daily-title { font-size: 2.8em; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.02em; line-height: 1; margin-top: 0; }
+  .daily-desc { font-size: 1.2em; font-weight: 400; color: #424245; line-height: 1.5; }
   
-  /* Read Log 버튼 스타일 (Technical Notes와 통일) */
-  .read-log-btn {
-    font-size: 1em; font-weight: 600; color: var(--apple-blue); 
-    display: flex; align-items: center; opacity: 0.8; transition: all 0.2s;
+  .daily-right { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .daily-meta { font-size: 0.95em; color: #666; font-weight: 600; font-family: monospace; opacity: 0.6; }
+  
+  .read-arrow-btn {
+    font-size: 1.1em; font-weight: 700; color: var(--apple-blue);
+    display: flex; align-items: center; transition: all 0.2s;
   }
-  .read-log-btn::after { content: '→'; margin-left: 6px; transition: margin-left 0.2s; }
-  
-  /* 호버 시 효과 */
-  .hero-card:hover .read-log-btn { opacity: 1; margin-right: 5px; }
-  .hero-card:hover .read-log-btn::after { margin-left: 12px; }
+  .read-arrow-btn::after { content: '→'; margin-left: 8px; transition: margin-left 0.2s; }
+  .daily-banner-wide:hover .read-arrow-btn::after { margin-left: 15px; }
 
 
-  /* ================= Section Headers ================= */
-  .section-header {
-    margin-top: 100px; margin-bottom: 40px;
-    border-bottom: 2px solid #1d1d1f; padding-bottom: 15px;
-  }
+  /* ================= 3. Technical Notes (Centered) ================= */
+  .section-header { margin-top: 100px; margin-bottom: 40px; border-bottom: 2px solid #1d1d1f; padding-bottom: 15px; }
   .section-title { font-size: 2em; font-weight: 700; color: #1d1d1f; margin: 0; }
-  .section-subtitle {
-    font-size: 1.2em; font-weight: 600; color: #424245; margin: 50px 0 25px 0; display: block;
-    border-bottom: 1px solid #eaeaea; padding-bottom: 10px;
-  }
-
-
-  /* ================= 3. Technical Notes (Pearl Abyss Style) ================= */
-  .notes-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
-  }
+  
+  .notes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .note-card {
-    height: 480px; position: relative; border-radius: 24px; overflow: hidden; text-decoration: none;
-    background-color: #000;
+    height: 450px; position: relative; border-radius: 24px; overflow: hidden; text-decoration: none; background-color: #000;
     transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
   }
   .note-card:hover { transform: translateY(-12px) scale(1.01); box-shadow: 0 25px 50px rgba(0,0,0,0.25); z-index: 10; }
@@ -161,46 +123,82 @@ layout: default
   .note-card:hover .note-bg { opacity: 0.5; transform: scale(1.08); }
 
   .note-content {
-    position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; color: #fff; z-index: 2;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px 20px; /* 좌우 패딩 */
+    color: #fff; z-index: 2; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    text-align: center; /* 중앙 정렬 */
   }
-  .note-category { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; color: rgba(255,255,255,0.9); }
-  .note-title { font-size: 1.7em; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
-  .note-desc { font-size: 1em; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .note-category { font-size: 0.8em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: rgba(255,255,255,0.9); display: block; }
+  .note-title { font-size: 1.4em; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+  .note-desc { font-size: 0.95em; color: rgba(255,255,255,0.8); line-height: 1.5; }
 
 
-  /* ================= 4. Research Gallery ================= */
+  /* ================= 4. Research (Hover Effect Fix) ================= */
   .research-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .research-item {
     background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #eaeaea;
-    text-decoration: none; transition: all 0.3s ease;
+    text-decoration: none; transition: all 0.3s var(--ease-out-expo);
   }
-  .research-item:hover { border-color: var(--apple-blue); transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+  /* Projects와 동일하게 그림자 + 떠오름 효과 적용 */
+  .research-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: transparent; }
   
   .research-thumb { height: 200px; overflow: hidden; background: #f5f5f7; }
   .research-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-  .research-item:hover .research-thumb img { transform: scale(1.1); }
-  
+  .research-item:hover .research-thumb img { transform: scale(1.05); }
   .research-info { padding: 24px; }
   .research-title { font-size: 1.2em; font-weight: 700; color: #1d1d1f; margin-bottom: 8px; }
   .research-sub { font-size: 0.95em; color: #86868b; line-height: 1.4; }
 
 
-  /* ================= 5. Projects Grid ================= */
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-  .project-item {
-    background: #fff; border-radius: 24px; overflow: hidden; border: 1px solid #eaeaea;
-    text-decoration: none; transition: all 0.3s ease; display: flex; flex-direction: column;
+  /* ================= 5. Projects (Cinematic Wide Cards) ================= */
+  .section-subtitle {
+    font-size: 1.3em; font-weight: 700; color: #1d1d1f; margin: 60px 0 25px 0; display: block;
+    border-bottom: 1px solid #eaeaea; padding-bottom: 10px;
   }
-  .project-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: transparent; }
+
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
   
-  .project-thumb { height: 280px; overflow: hidden; background: #1d1d1f; }
-  .project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; opacity: 0.9; }
-  .project-item:hover .project-thumb img { transform: scale(1.05); opacity: 1; }
+  .cinematic-card {
+    height: 380px; /* 시원한 높이 */
+    border-radius: 24px; overflow: hidden; position: relative; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: all 0.4s var(--ease-out-expo);
+  }
+  .cinematic-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.25); z-index: 5; }
+
+  .cinematic-bg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+  .cinematic-card:hover .cinematic-bg { transform: scale(1.05); }
+
+  .cinematic-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.1) 100%);
+  }
+
+  .cinematic-content {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; color: #fff;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
   
-  .project-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-  .project-title { font-size: 1.5em; font-weight: 800; color: #1d1d1f; margin-bottom: 10px; }
-  .project-desc { font-size: 1.1em; color: #666; line-height: 1.5; }
+  .tech-badges { position: absolute; top: 30px; right: 30px; display: flex; gap: 8px; }
+  .tech-badge {
+    background: rgba(0,0,0,0.6); /* 가독성 높은 반투명 검정 */
+    color: #fff; border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 12px; border-radius: 20px; font-size: 0.8em; font-weight: 600;
+  }
+
+  .cinematic-title {
+    font-size: 1.8em; font-weight: 800; margin: 0 0 10px 0; line-height: 1.2;
+    transition: transform 0.4s var(--ease-out-expo);
+  }
+  
+  .cinematic-desc {
+    font-size: 1.05em; color: rgba(255,255,255,0.9); line-height: 1.5; margin: 0;
+    opacity: 0; transform: translateY(20px); transition: all 0.4s var(--ease-out-expo);
+    max-height: 0;
+  }
+
+  /* 호버 인터랙션 */
+  .cinematic-card:hover .cinematic-title { transform: translateY(-10px); }
+  .cinematic-card:hover .cinematic-desc { opacity: 1; transform: translateY(0); max-height: 100px; transition-delay: 0.1s; }
 
 
   /* ================= Animations ================= */
@@ -215,8 +213,10 @@ layout: default
   .delay-4 { transition-delay: 0.4s; }
 
   @media (max-width: 900px) {
-    .hero-grid, .notes-grid, .research-grid, .projects-grid { grid-template-columns: 1fr; }
-    .page-title-static { font-size: 2.5em; letter-spacing: 0.1em; }
+    .notes-grid, .research-grid, .projects-grid { grid-template-columns: 1fr; }
+    .daily-banner-wide { flex-direction: column; text-align: center; gap: 20px; }
+    .daily-right { align-items: center; }
+    .page-title-static { font-size: 2.2em; letter-spacing: 0.1em; }
   }
 </style>
 
@@ -227,7 +227,7 @@ layout: default
 
 <header class="main-header-static">
   <h1 class="page-title-static">NULL ABYSS</h1>
-  <p class="page-desc-static">Deep Dive into Real-time Rendering, Shaders & Engine Core</p>
+  <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
 </header>
 
 <hr class="section-divider-main">
@@ -235,35 +235,31 @@ layout: default
 
 <div class="page-container">
 
-  <section class="hero-grid reveal-on-scroll">
+  <section class="intro-section reveal-on-scroll">
     
-    <div class="hero-card profile-card">
-      <div class="my-name">DongGun Kim</div>
-      <div class="my-info">
-        <div>M.S. Student @ CNU</div>
-        <div>Graphics R&D & Tech Art</div>
-      </div>
-      <div class="my-email">kdg324@naver.com</div>
+    <div class="profile-center">
+      <div class="my-name-center">DongGun Kim</div>
+      <div class="my-role-center">Graphics R&D & Tech Art / M.S. Student @ CNU</div>
       
-      <div class="social-links">
+      <div class="email-text">kdg324@naver.com</div>
+      
+      <div class="social-center">
         <a href="{{ '/about.md' | relative_url }}" class="social-btn">Profile</a>
         <a href="https://github.com/kimdonggun324" target="_blank" class="social-btn">GitHub</a>
       </div>
     </div>
 
-    <a href="{{ '/daily-study/' | relative_url }}" class="daily-link-wrapper">
-      <div class="hero-card daily-card">
-        <span class="daily-label">Dev Log</span>
-        <div class="daily-title">Daily Study Log</div>
+    <a href="{{ '/daily-study/' | relative_url }}" class="daily-banner-wide">
+      <div class="daily-left">
+        <h2 class="daily-title">Daily Study Log</h2>
         <div class="daily-desc">
           "I never saved anything for the swim back."<br>
           매일 기록하는 성장과 끈기의 증명.
         </div>
-        
-        <div class="daily-footer">
-          <div class="daily-meta">Shaders & Engine Core Log • Since 2025.11</div>
-          <div class="read-log-btn">Read Log</div>
-        </div>
+      </div>
+      <div class="daily-right">
+        <div class="read-arrow-btn">Read Log</div>
+        <div class="daily-meta">Shaders & Engine Core Log<br>Since 2025.11</div>
       </div>
     </a>
 
@@ -279,7 +275,7 @@ layout: default
       <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600" class="note-bg">
       <div class="note-content">
         <span class="note-category">Implementation</span>
-        <h3 class="note-title">Shader &<br>Rendering</h3>
+        <h3 class="note-title">Shader & Rendering</h3>
         <p class="note-desc">논문과 이론을 바탕으로<br>직접 구현한 그래픽스 기술</p>
       </div>
     </a>
@@ -287,7 +283,7 @@ layout: default
       <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
       <div class="note-content">
         <span class="note-category">Optimization</span>
-        <h3 class="note-title">C++ &<br>Performance</h3>
+        <h3 class="note-title">C++ & Performance</h3>
         <p class="note-desc">메모리와 연산 효율을 극대화하는<br>엔진 최적화 기록</p>
       </div>
     </a>
@@ -295,7 +291,7 @@ layout: default
       <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600" class="note-bg">
       <div class="note-content">
         <span class="note-category">Deep Analysis</span>
-        <h3 class="note-title">Engine<br>Deep Dive</h3>
+        <h3 class="note-title">Engine Deep Dive</h3>
         <p class="note-desc">언리얼 엔진 소스 코드 분석 및<br>기술적 이슈 트러블슈팅</p>
       </div>
     </a>
@@ -303,7 +299,7 @@ layout: default
       <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600" class="note-bg">
       <div class="note-content">
         <span class="note-category">Workflow</span>
-        <h3 class="note-title">TA Tools &<br>Pipeline</h3>
+        <h3 class="note-title">TA Tools & Pipeline</h3>
         <p class="note-desc">작업 효율을 높이는<br>자동화 툴과 파이프라인 구축</p>
       </div>
     </a>
@@ -352,36 +348,52 @@ layout: default
 
   <span class="section-subtitle reveal-on-scroll">Engine & Tech Demo</span>
   <div class="projects-grid">
-    <a href="#" class="project-item reveal-on-scroll delay-1">
-      <div class="project-thumb"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800"></div>
-      <div class="project-info">
-        <div class="project-title">C++ Memory Optimization</div>
-        <div class="project-desc">Smart Pointer & Custom Allocator 구현을 통한 캐시 히트율 향상 및 성능 최적화 사례 연구.</div>
+    <a href="#" class="cinematic-card reveal-on-scroll delay-1">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="tech-badge">C++</span><span class="tech-badge">Optimization</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">C++ Memory Optimization</h3>
+        <p class="cinematic-desc">Smart Pointer & Custom Allocator 구현을 통한 캐시 히트율 향상 및 성능 최적화 사례 연구.</p>
       </div>
     </a>
-    <a href="#" class="project-item reveal-on-scroll delay-2">
-      <div class="project-thumb"><img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800"></div>
-      <div class="project-info">
-        <div class="project-title">UE5 Rendering Pipeline Analysis</div>
-        <div class="project-desc">나나이트(Nanite) 및 루멘(Lumen) 소스 코드 심층 분석, 커스텀 렌더 패스 확장 구현.</div>
+    <a href="#" class="cinematic-card reveal-on-scroll delay-2">
+      <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="tech-badge">UE5</span><span class="tech-badge">Rendering</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">UE5 Rendering Pipeline Analysis</h3>
+        <p class="cinematic-desc">나나이트(Nanite) 및 루멘(Lumen) 소스 코드 심층 분석, 커스텀 렌더 패스 확장 구현.</p>
       </div>
     </a>
   </div>
 
   <span class="section-subtitle reveal-on-scroll" style="margin-top: 50px;">Shader & Art R&D</span>
   <div class="projects-grid">
-    <a href="#" class="project-item reveal-on-scroll delay-1">
-      <div class="project-thumb"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800"></div>
-      <div class="project-info">
-        <div class="project-title">Ocean Simulation with Gerstner Wave</div>
-        <div class="project-desc">HLSL을 활용한 물리 기반 파도 시뮬레이션. 테셀레이션 및 버텍스 오프셋 최적화 적용.</div>
+    <a href="#" class="cinematic-card reveal-on-scroll delay-1">
+      <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="tech-badge">HLSL</span><span class="tech-badge">Simulation</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">Ocean Simulation with Gerstner Wave</h3>
+        <p class="cinematic-desc">HLSL을 활용한 물리 기반 파도 시뮬레이션. 테셀레이션 및 버텍스 오프셋 최적화 적용.</p>
       </div>
     </a>
-    <a href="#" class="project-item reveal-on-scroll delay-2">
-      <div class="project-thumb"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800"></div>
-      <div class="project-info">
-        <div class="project-title">Advanced Ice Material R&D</div>
-        <div class="project-desc">Subsurface Scattering(SSS), Parallax Occlusion Mapping을 활용한 사실적인 얼음 질감 표현.</div>
+    <a href="#" class="cinematic-card reveal-on-scroll delay-2">
+      <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=800" class="cinematic-bg">
+      <div class="cinematic-overlay"></div>
+      <div class="tech-badges">
+        <span class="tech-badge">PBR</span><span class="tech-badge">Material</span>
+      </div>
+      <div class="cinematic-content">
+        <h3 class="cinematic-title">Advanced Ice Material R&D</h3>
+        <p class="cinematic-desc">Subsurface Scattering(SSS), Parallax Occlusion Mapping을 활용한 사실적인 얼음 질감 표현.</p>
       </div>
     </a>
   </div>
