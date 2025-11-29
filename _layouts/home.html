@@ -31,6 +31,7 @@ layout: default
     position: relative;
     background: #000;
     margin-bottom: 0;
+    display: block; /* 강제 표시 */
   }
   
   .main-banner-img {
@@ -364,4 +365,46 @@ layout: default
     </a>
 
     <a href="#" class="note-card reveal-on-scroll delay-2">
-      <img src="
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
+      <div class="note-content">
+        <span class="note-category">Core Engineering</span>
+        <h3 class="note-title">Engine & Architecture</h3>
+        <p class="note-desc">C++과 언리얼 엔진 소스 분석,<br>메모리와 렌더링 파이프라인 제어.</p>
+      </div>
+    </a>
+
+    <a href="#" class="note-card reveal-on-scroll delay-3">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600" class="note-bg">
+      <div class="note-content">
+        <span class="note-category">Performance</span>
+        <h3 class="note-title">Optimization & Profiling</h3>
+        <p class="note-desc">GPU 프로파일링 기반의<br>논리적인 최적화 및 디버깅.</p>
+      </div>
+    </a>
+
+    <a href="#" class="note-card reveal-on-scroll delay-4">
+      <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=600" class="note-bg">
+      <div class="note-content">
+        <span class="note-category">Pipeline Automation</span>
+        <h3 class="note-title">TA Tools & Workflow</h3>
+        <p class="note-desc">Houdini와 Python을 활용한<br>효율적인 아트 워크플로우 설계.</p>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  });
+</script>
