@@ -25,13 +25,13 @@ permalink: /
   .apple-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0 100px 0;
+    padding: 80px 0 100px 0;
     box-sizing: border-box;
   }
 
   /* [수정됨] 헤더 텍스트: 크기 축소 및 한 줄 최적화 */
   .apple-header {
-    margin-bottom: 60px;
+    margin-bottom: 80px;
     padding: 0 20px;
     text-align: center;
   }
@@ -167,8 +167,7 @@ permalink: /
       수식과 코드로 증명하는 빛의 논리.
     </h1>
     <p class="apple-subhead">
-      그래픽스 이론부터 엔진 최적화까지,<br>
-      깊이 있게 연구하고 매일 기록합니다.
+      그래픽스 이론부터 엔진 최적화까지, 깊이 있게 연구하고 매일 기록합니다.
     </p>
   </header>
 
