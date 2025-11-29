@@ -31,7 +31,7 @@ permalink: /
 
   /* [수정됨] 헤더 텍스트: 크기 축소 및 한 줄 최적화 */
   .apple-header {
-    margin-bottom: 100px;
+    margin-bottom: 120px;
     padding: 0 20px;
     text-align: center;
   }
