@@ -139,7 +139,7 @@
       border: 1px solid #d2d2d7;
     }
 
-    /* [3] 메인 콘텐츠 영역 */
+    /* [3] 메인 콘텐츠 영역 (껍데기) */
     .main-content-scrollable {
       margin-left: var(--sidebar-width);
       width: calc(100% - var(--sidebar-width));
@@ -150,67 +150,10 @@
       padding-top: 0 !important;
     }
 
-    /* 상단 배너 */
-    .main-banner-area {
-      width: 100%; 
-      height: 600px;
-      overflow: hidden; 
-      background: #000; 
-      position: relative;
-      margin-top: -20px !important; 
-    }
-
-    .main-banner-img {
-      width: 100%; 
-      height: 100%; 
-      object-fit: cover;  
-      object-position: 50% 50% !important; 
-      opacity: 0.9; 
-      display: block;
-    }
-
-    /* 메인 타이틀 영역 */
-    .main-header-static { 
-      text-align: center; 
-      padding: 60px 20px 10px 20px; 
-      background: #fff; 
-    }
-    
-    .page-title-static {
-      font-family: 'Barlow Condensed', 'Montserrat', sans-serif; 
-      font-size: 3.8em; 
-      font-weight: 700; 
-      letter-spacing: 0.4em; 
-      margin: 0; 
-      color: #000; 
-      text-transform: uppercase; 
-      margin-right: -0.4em; 
-    }
-    
-    .page-desc-static { 
-      font-size: 1.1em; color: var(--text-light); font-weight: 500; 
-      letter-spacing: 0.02em; margin-top: 20px; 
-    }
-
-    .page-container {
-      max-width: var(--content-max-width);
-      margin: 0 auto;
-      padding: 0 50px 120px 50px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
     /* 반응형 */
-    @media (max-width: 1200px) {
-      .notes-grid, .research-grid { grid-template-columns: repeat(2, 1fr); }
-    }
     @media (max-width: 1024px) {
       .sidebar-fixed-area { display: none; }
       .main-content-scrollable { margin-left: 0; width: 100%; }
-      .page-container { padding: 0 30px 100px 30px; }
-    }
-    @media (max-width: 768px) {
-      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -232,7 +175,7 @@
         <span class="nav-category">ABOUT</span>
         <a href="{{ '/about.md' | relative_url }}" class="nav-item">Profile</a>
         <a href="#" class="nav-item">Portfolio</a>
-        <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
+        <a href="https://github.com/kimdonggun324" target="_blank" class="nav-item">GitHub</a>
         <a href="https://notion.so" target="_blank" class="nav-item">Notion</a>
       </div>
 
@@ -278,26 +221,9 @@
     </div>
   </aside>
 
-
-<main class="main-content-scrollable">
-    
-{% if page.permalink == '/' %}
-<div class="main-banner-area">
-  <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img" style="height: 600px;">  
-</div>
-{% endif %}
-
-{% if page.permalink == '/' %}
-<header class="main-header-static">
-  <h1 class="page-title-static">NULL ABYSS</h1>
-  <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
-</header>
-{% endif %}
-
-    <div class="page-container">
-        {{ content }}     </div>
-
-</main>
+  <main class="main-content-scrollable">
+      {{ content }}
+  </main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
