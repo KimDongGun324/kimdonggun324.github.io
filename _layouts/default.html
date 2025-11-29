@@ -10,7 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* [1] 기본 설정 (Reset) */
+    /* =========================================
+       [1] 기본 설정 및 리셋 (CSS Reset)
+       ========================================= */
     :root {
       --sidebar-width: 260px;
       --content-max-width: 1400px;
@@ -22,63 +24,200 @@
       --nav-item-darker: #424245; 
     }
 
+    /* Full-bleed 적용 */
     body, html {
-      margin: 0; padding: 0; width: 100%; height: 100%;
-      overflow-x: hidden; background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: #ffffff;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
+
     a { text-decoration: none; color: inherit; }
     ul, li { list-style: none; padding: 0; margin: 0; }
     h1, h2, h3, h4, h5 { margin: 0; }
 
-    /* [2] 사이드바 (Sidebar) */
+    /* =========================================
+       [2] 사이드바 (Sidebar) - 좌측 고정 영역
+       ========================================= */
     .sidebar-fixed-area {
-      position: fixed; top: 0; left: 0;
-      width: var(--sidebar-width); height: 100vh;
-      background: #fbfbfd; border-right: 1px solid #eaeaea;
-      padding: 100px 30px 0px 30px; box-sizing: border-box;
-      z-index: 1000; display: flex; flex-direction: column; overflow-y: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: 100vh;
+      background: #fbfbfd;
+      border-right: 1px solid #eaeaea;
+      padding: 100px 30px 0px 30px; 
+      box-sizing: border-box;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
     }
-    .sidebar-header { margin-bottom: 70px; padding-top: 0; } 
-    .sidebar-name { font-size: 1.4em; font-weight: 600; color: #000; letter-spacing: -0.02em; margin-bottom: 4px; }
-    .sidebar-role { font-size: 0.78em; color: var(--text-light); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: clip; display: block; }
 
-    .sidebar-nav { flex-grow: 1; }
+    /* 사이드바 헤더 */
+    .sidebar-header { 
+      margin-bottom: 70px; 
+      padding-top: 0;
+    } 
+    .sidebar-name { 
+      font-size: 1.4em; 
+      font-weight: 600; 
+      color: #000; 
+      letter-spacing: -0.02em; 
+      margin-bottom: 4px; 
+    }
+    .sidebar-role { 
+      font-size: 0.78em; 
+      color: var(--text-light); 
+      font-weight: 500; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: clip; 
+      max-width: 100%; 
+      display: block;
+    }
+
+    /* 사이드바 내비게이션 */
+    .sidebar-nav {
+      flex-grow: 1; 
+    }
     .nav-section { margin-bottom: 40px; } 
-    .nav-category { font-size: 0.75em; font-weight: 700; color: #86868b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; display: block; }
-    .nav-item { display: block; font-size: 0.95em; color: var(--nav-item-darker); font-weight: 500; margin-bottom: 10px; transition: color 0.2s; }
+    .nav-category { 
+      font-size: 0.75em; font-weight: 700; color: #86868b; 
+      text-transform: uppercase; letter-spacing: 0.05em; 
+      margin-bottom: 12px; display: block; 
+    }
+    
+    .nav-item {
+      display: block; font-size: 0.95em; 
+      color: var(--nav-item-darker); 
+      font-weight: 500;
+      margin-bottom: 10px; 
+      transition: color 0.2s;
+    }
     .nav-item:hover { color: var(--apple-blue); }
     .nav-item.active { color: #000; font-weight: 700; }
 
-    .sidebar-footer { margin-top: auto; padding-top: 35px; padding-bottom: 40px; }
-    .footer-divider { height: 1px; background: #d2d2d7; margin-bottom: 25px; width: 100%; }
-    .footer-item { margin-bottom: 25px; }
-    .footer-label { font-size: 0.75em; font-weight: 900; color: #000; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em; }
-    .footer-text-highlight { font-size: 0.9em; font-weight: 600; color: #333; margin-bottom: 4px; }
-    .footer-text { font-size: 0.85em; color: var(--text-light); line-height: 1.5; font-weight: 400; }
-    .footer-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
-    .footer-badge { font-size: 0.65em; background: #fff; padding: 3px 8px; border-radius: 4px; color: #1d1d1f; font-weight: 600; border: 1px solid #d2d2d7; }
+    /* 사이드바 하단 정보 (Footer) */
+    .sidebar-footer { 
+      margin-top: auto; 
+      padding-top: 35px; 
+      padding-bottom: 40px; 
+    }
+    
+    .footer-divider {
+      height: 1px; background: #d2d2d7; margin-bottom: 25px; width: 100%;
+    }
 
-    /* [3] 메인 콘텐츠 레이아웃 (껍데기만 남김) */
+    .footer-item { margin-bottom: 25px; }
+    
+    .footer-label { 
+      font-size: 0.75em; font-weight: 900; color: #000; 
+      text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;
+    }
+    .footer-text-highlight {
+      font-size: 0.9em; 
+      font-weight: 600; color: #333; 
+      margin-bottom: 4px;
+    }
+    .footer-text { 
+      font-size: 0.85em; color: var(--text-light); line-height: 1.5; 
+      font-weight: 400; 
+    }
+
+    /* 스킬 뱃지 */
+    .footer-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+    .footer-badge { 
+      font-size: 0.65em; background: #fff; padding: 3px 8px; 
+      border-radius: 4px; color: #1d1d1f; font-weight: 600; 
+      border: 1px solid #d2d2d7;
+    }
+
+    /* [3] 메인 콘텐츠 영역 */
     .main-content-scrollable {
       margin-left: var(--sidebar-width);
       width: calc(100% - var(--sidebar-width));
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      margin-top: 0 !important; padding-top: 0 !important;
+      display: flex;
+      flex-direction: column;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
     }
 
+    /* 상단 배너 */
+    .main-banner-area {
+      width: 100%; 
+      height: 600px;
+      overflow: hidden; 
+      background: #000; 
+      position: relative;
+      margin-top: -20px !important; 
+    }
+
+    .main-banner-img {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;  
+      object-position: 50% 50% !important; 
+      opacity: 0.9; 
+      display: block;
+    }
+
+    /* 메인 타이틀 영역 */
+    .main-header-static { 
+      text-align: center; 
+      padding: 60px 20px 10px 20px; 
+      background: #fff; 
+    }
+    
+    .page-title-static {
+      font-family: 'Barlow Condensed', 'Montserrat', sans-serif; 
+      font-size: 3.8em; 
+      font-weight: 700; 
+      letter-spacing: 0.4em; 
+      margin: 0; 
+      color: #000; 
+      text-transform: uppercase; 
+      margin-right: -0.4em; 
+    }
+    
+    .page-desc-static { 
+      font-size: 1.1em; color: var(--text-light); font-weight: 500; 
+      letter-spacing: 0.02em; margin-top: 20px; 
+    }
+
+    .page-container {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 0 50px 120px 50px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* 반응형 */
+    @media (max-width: 1200px) {
+      .notes-grid, .research-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 1024px) {
       .sidebar-fixed-area { display: none; }
       .main-content-scrollable { margin-left: 0; width: 100%; }
+      .page-container { padding: 0 30px 100px 30px; }
+    }
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
   <aside class="sidebar-fixed-area">
+    
     <div class="sidebar-header">
       <div class="sidebar-name">DongGun Kim</div>
       <div class="sidebar-role">Real-time Rendering & Shader</div> 
@@ -88,17 +227,20 @@
       <div class="nav-section" style="margin-bottom: 30px;">
         <a href="/" class="nav-item active">Home</a>
       </div>
+
       <div class="nav-section">
         <span class="nav-category">ABOUT</span>
         <a href="{{ '/about.md' | relative_url }}" class="nav-item">Profile</a>
         <a href="#" class="nav-item">Portfolio</a>
-        <a href="https://github.com/kimdonggun324" target="_blank" class="nav-item">GitHub</a>
+        <a href="https://github.com" target="_blank" class="nav-item">GitHub</a>
         <a href="https://notion.so" target="_blank" class="nav-item">Notion</a>
       </div>
+
       <div class="nav-section">
         <span class="nav-category">DEV LOG</span>
         <a href="{{ '/daily-study/' | relative_url }}" class="nav-item">Daily Study Log</a>
       </div>
+
       <div class="nav-section">
         <span class="nav-category">TECHNICAL Notes</span>
         <a href="#" class="nav-item">Graphics & Shader</a>
@@ -110,16 +252,24 @@
 
     <div class="sidebar-footer">
       <div class="footer-divider"></div>
+      
       <div class="footer-item">
         <div class="footer-label">RESEARCHER</div>
+        
         <div class="footer-text-highlight">DongGun Kim</div>
+        
         <div class="footer-text">M.S. Student @ CNU</div>
         <div class="footer-text">Goal: Pearl Abyss TA</div>
+        
         <div class="footer-badges">
-          <span class="footer-badge">C++</span><span class="footer-badge">UE5</span><span class="footer-badge">HLSL</span>
-          <span class="footer-badge">Houdini</span><span class="footer-badge">Substance Painter</span> 
+          <span class="footer-badge">C++</span>
+          <span class="footer-badge">UE5</span>
+          <span class="footer-badge">HLSL</span>
+          <span class="footer-badge">Houdini</span>
+          <span class="footer-badge">Substance Painter</span> 
         </div>
       </div>
+
       <div class="footer-item">
         <div class="footer-label">CONNECT</div>
         <div class="footer-text-highlight">Email</div>
@@ -128,18 +278,43 @@
     </div>
   </aside>
 
-  <main class="main-content-scrollable">
-      {{ content }} 
-  </main>
+
+<main class="main-content-scrollable">
+    
+{% if page.permalink == '/' %}
+<div class="main-banner-area">
+  <img src="{{ '/assets/images/main-banner.png' | relative_url }}" alt="NULL ABYSS" class="main-banner-img" style="height: 600px;">  
+</div>
+{% endif %}
+
+{% if page.permalink == '/' %}
+<header class="main-header-static">
+  <h1 class="page-title-static">NULL ABYSS</h1>
+  <p class="page-desc-static">Deep Dive into Shaders & Engine Core</p>
+</header>
+{% endif %}
+
+    <div class="page-container">
+        {{ content }}     </div>
+
+</main>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
         });
       }, observerOptions);
+
       document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
     });
   </script>
