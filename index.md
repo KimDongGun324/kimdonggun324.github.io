@@ -217,41 +217,74 @@ permalink: /
 </div>
 
 
-<div class="section-header reveal-on-scroll">
-    <h2 class="section-title">Technical Notes</h2>
-</div>
+<div class="apple-wrapper reveal-on-scroll" style="padding-top: 0;">
+  
+  <header class="apple-header" style="margin-bottom: 30px;">
+    <h2 class="apple-headline" style="font-size: 2.2rem;">Technical Notes</h2>
+    <p class="apple-subhead">그래픽스 이론과 최적화 기법 연구 노트</p>
+  </header>
 
-<div class="notes-grid">
-    <a href="/technical-notes/" class="note-card reveal-on-scroll delay-1">
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600" class="note-bg">
-        <div class="note-content">
-            <span class="note-category">Implementation</span>
-            <h3 class="note-title">Shader & Rendering</h3>
-            <p class="note-desc">논문과 이론을 바탕으로 직접 구현한 그래픽스 기술</p>
+  <div class="bento-grid">
+    
+    <a href="/technical-notes/" class="bento-item col-span-6">
+      <div style="position:relative; z-index:1; height:100%; display:flex; flex-direction:column;">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600" class="tech-thumb" alt="Shader">
+        
+        <div>
+          <div class="bento-label" style="color:#0071e3;">Implementation</div>
+          <div class="bento-title" style="font-size: 1.5rem;">Shader & Rendering</div>
+          <div class="bento-desc">
+            논문과 이론을 바탕으로 직접 구현한<br>물리 기반 렌더링(PBR) 기술.
+          </div>
         </div>
+        <div class="icon-arrow">→</div>
+      </div>
     </a>
-    <a href="/technical-notes/" class="note-card reveal-on-scroll delay-2">
-        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="note-bg">
-        <div class="note-content">
-            <span class="note-category">Optimization</span>
-            <h3 class="note-title">C++ & Performance</h3>
-            <p class="note-desc">메모리와 연산 효율을 극대화하는 엔진 최적화 기록</p>
+
+    <a href="/technical-notes/" class="bento-item col-span-6">
+      <div style="position:relative; z-index:1; height:100%; display:flex; flex-direction:column;">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600" class="tech-thumb" alt="C++">
+        
+        <div>
+          <div class="bento-label" style="color:#0071e3;">Optimization</div>
+          <div class="bento-title" style="font-size: 1.5rem;">C++ & Performance</div>
+          <div class="bento-desc">
+            메모리 관리와 캐시 히트율을 고려한<br>엔진 레벨 최적화 기록.
+          </div>
         </div>
+        <div class="icon-arrow">→</div>
+      </div>
     </a>
-    <a href="/technical-notes/" class="note-card reveal-on-scroll delay-3">
-        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600" class="note-bg">
-        <div class="note-content">
-            <span class="note-category">Deep Analysis</span>
-            <h3 class="note-title">Engine Deep Dive</h3>
-            <p class="note-desc">언리얼 엔진 소스 코드 분석 및 트러블슈팅</p>
+
+    <a href="/technical-notes/" class="bento-item col-span-6">
+      <div style="position:relative; z-index:1; height:100%; display:flex; flex-direction:column;">
+        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=600" class="tech-thumb" alt="Engine">
+        
+        <div>
+          <div class="bento-label" style="color:#0071e3;">Deep Analysis</div>
+          <div class="bento-title" style="font-size: 1.5rem;">Engine Deep Dive</div>
+          <div class="bento-desc">
+            언리얼 엔진 소스 코드 분석 및<br>렌더링 파이프라인 개조.
+          </div>
         </div>
+        <div class="icon-arrow">→</div>
+      </div>
     </a>
-    <a href="/technical-notes/" class="note-card reveal-on-scroll delay-4">
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600" class="note-bg">
-        <div class="note-content">
-            <span class="note-category">Workflow</span>
-            <h3 class="note-title">TA Tools & Pipeline</h3>
-            <p class="note-desc">효율을 높이는 자동화 툴과 파이프라인 구축</p>
+
+    <a href="/technical-notes/" class="bento-item col-span-6">
+      <div style="position:relative; z-index:1; height:100%; display:flex; flex-direction:column;">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=600" class="tech-thumb" alt="Tools">
+        
+        <div>
+          <div class="bento-label" style="color:#0071e3;">Workflow</div>
+          <div class="bento-title" style="font-size: 1.5rem;">TA Tools & Pipeline</div>
+          <div class="bento-desc">
+            Python & Houdini를 활용한<br>자동화 툴과 파이프라인 구축.
+          </div>
         </div>
+        <div class="icon-arrow">→</div>
+      </div>
     </a>
+
+  </div>
 </div>
