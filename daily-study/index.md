@@ -5,7 +5,7 @@ permalink: /daily-study/
 ---
 
 <style>
-  /* [수정됨] 페이지 전체 래퍼: 사이드바 옆에 내용이 오도록 함 */
+  /* [수정됨] 페이지 전체 래퍼: 사이드바 옆에 내용이 오도록 함 */ 
   /* 중요: margin-left를 주지 않고 padding만 줍니다. (default 레이아웃이 알아서 처리함) */
   .page-content-wrapper {
     padding: 60px 40px 100px 40px; 
@@ -158,7 +158,7 @@ permalink: /daily-study/
 
 <div class="page-content-wrapper">
 
-  <header style="margin-bottom: 50px;">
+ /* <header style="margin-bottom: 50px;">
     <h1 style="font-size: 2.8em; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;">Daily Study Log</h1>
     <p style="color: #86868b; font-size: 1.1em;">매일의 성장과 연구 기록</p>
   </header>
@@ -172,7 +172,7 @@ permalink: /daily-study/
     <div id="heatmap-grid-2026"></div>
   </div>
 
-  /*<section class="featured-section">
+ <section class="featured-section">
     <div class="featured-card">
       <span class="featured-tag">Shader Implementation</span>
       <div class="featured-title">Ocean Simulation with Gerstner Wave</div>
@@ -185,7 +185,7 @@ permalink: /daily-study/
       <div class="featured-desc">언리얼 엔진 5의 나나이트(Nanite) 소스 코드를 분석하고, 커스텀 렌더 패스를 추가하여 스타일라이즈드 렌더링을 구현했습니다.</div>
       <a href="/technical-notes/" class="featured-link">Read Case Study</a>
     </div>
-  </section>*/
+  </section> */
 
   <section class="timeline-section">
     <div class="timeline-title">Research Roadmap & Milestones</div>
@@ -231,19 +231,19 @@ permalink: /daily-study/
   <div class="year-grid">
 
 
-  // 12월 TIL
+  `` 12월 TIL
 
 <details class="month-card" open>
-    <summary>December</summary>
-    <ul class="study-list">
-        <li data-tags="tools"
-            <span class="date-badge">12.09</span>
-            <span class="tag-dot" style="background:#2e7d32;"></span>
-            <a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/09" class="study-link" target="_blank">
-            C++ - Stack Memory and Literal Optimization Study
-            </a>
-        </li>
-    </ul>
+ <summary>December</summary>
+   <ul class="study-list">
+      <li data-tags="tools"
+       <span class="date-badge">12.09</span>
+        <span class="tag-dot" style="background:#2e7d32;"></span>
+        <a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/09.md" class="study-link" target="_blank">
+        C++ - Stack Memory and Literal Optimization Study
+      </a>
+    </li>
+  </ul>
 </details>
   </div>
 
