@@ -185,7 +185,7 @@ permalink: /daily-study/
       <div class="featured-desc">언리얼 엔진 5의 나나이트(Nanite) 소스 코드를 분석하고, 커스텀 렌더 패스를 추가하여 스타일라이즈드 렌더링을 구현했습니다.</div>
       <a href="/technical-notes/" class="featured-link">Read Case Study</a>
     </div>
-  </section>
+  </section>*/
 
   <section class="timeline-section">
     <div class="timeline-title">Research Roadmap & Milestones</div>
