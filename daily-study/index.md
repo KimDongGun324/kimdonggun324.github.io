@@ -236,11 +236,11 @@ permalink: /daily-study/
 <details class="month-card" open>
     <summary>December</summary>
     <ul class="study-list">
-        <li data-tags="tools" data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=300">
+        <li data-tags="tools"
             <span class="date-badge">12.09</span>
             <span class="tag-dot" style="background:#2e7d32;"></span>
-            <a href="https://github.com/kimdonggun324/daily-study/blob/main/posts/2025/12/09/" class="study-link" target="_blank">
-            C++ - Stack Memory and Literal Optimization Study (Design System)
+            <a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/09" class="study-link" target="_blank">
+            C++ - Stack Memory and Literal Optimization Study
             </a>
         </li>
     </ul>
