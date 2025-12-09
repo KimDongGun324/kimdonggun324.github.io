@@ -172,7 +172,7 @@ permalink: /daily-study/
     <div id="heatmap-grid-2026"></div>
   </div>
 
-  <section class="featured-section">
+  /*<section class="featured-section">
     <div class="featured-card">
       <span class="featured-tag">Shader Implementation</span>
       <div class="featured-title">Ocean Simulation with Gerstner Wave</div>
@@ -256,7 +256,11 @@ permalink: /daily-study/
     <details class="month-card">
       <summary>December</summary>
       <ul class="study-list">
-        <li data-tags="all"><span class="date-badge">Coming</span> 기록 없음</li>
+        <li data-tags="tools" data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=300">
+          <span class="date-badge">12.09</span>
+          <span class="tag-dot" style="background:#2e7d32;"></span>
+          <a href="/daily-study/posts/2025/12/09/" class="study-link">C++ - Stack Memory and Literal Optimization Study (Design System)</a>
+        </li>
       </ul>
     </details>
   </div>
