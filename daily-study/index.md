@@ -159,33 +159,18 @@ permalink: /daily-study/
 <div class="page-content-wrapper">
 
  <header style="margin-bottom: 50px;">
-    <h1 style="font-size: 2.8em; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;">Daily Study Log</h1>
+    <h1 style="font-size: 2.8em; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;">Today I Learned</h1>
     <p style="color: #86868b; font-size: 1.1em;">매일의 성장과 연구 기록</p>
   </header>
 
   <div class="heatmap-section">
-    <div class="heatmap-title">2025 Activity (Since Nov 27)</div>
+    <div class="heatmap-title">2025 Activity (Since Dec 09)</div>
     <div id="heatmap-grid-2025"></div>
   </div>
   <div class="heatmap-section">
     <div class="heatmap-title">2026 Activity</div>
     <div id="heatmap-grid-2026"></div>
   </div>
-
- <section class="featured-section">
-    <div class="featured-card">
-      <span class="featured-tag">Shader Implementation</span>
-      <div class="featured-title">Ocean Simulation with Gerstner Wave</div>
-      <div class="featured-desc">파도의 물리적 움직임을 HLSL로 구현하고 최적화한 연구 기록입니다. 버텍스 오프셋 연산을 최적화하여 프레임 드랍을 15% 개선했습니다.</div>
-      <a href="/technical-notes/" class="featured-link">Read Case Study</a>
-    </div>
-    <div class="featured-card">
-      <span class="featured-tag">C++ & Engine Core</span>
-      <div class="featured-title">UE5 Rendering Pipeline Analysis</div>
-      <div class="featured-desc">언리얼 엔진 5의 나나이트(Nanite) 소스 코드를 분석하고, 커스텀 렌더 패스를 추가하여 스타일라이즈드 렌더링을 구현했습니다.</div>
-      <a href="/technical-notes/" class="featured-link">Read Case Study</a>
-    </div>
-  </section>
 
   <section class="timeline-section">
     <div class="timeline-title">Research Roadmap & Milestones</div>
