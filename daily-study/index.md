@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Daily Study Log
+title: Today I Learned
 permalink: /daily-study/
 ---
 
