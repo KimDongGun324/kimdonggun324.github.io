@@ -253,16 +253,18 @@ permalink: /daily-study/
       </ul>
     </details>
 
-    <details class="month-card">
-      <summary>December</summary>
-      <ul class="study-list">
+<details class="month-card" open>
+    <summary>December</summary>
+    <ul class="study-list">
         <li data-tags="tools" data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=300">
-          <span class="date-badge">12.09</span>
-          <span class="tag-dot" style="background:#2e7d32;"></span>
-          <a href="/daily-study/posts/2025/12/09/" class="study-link">C++ - Stack Memory and Literal Optimization Study (Design System)</a>
+            <span class="date-badge">12.09</span>
+            <span class="tag-dot" style="background:#2e7d32;"></span>
+            <a href="/entry/C-Stack-Memory-and-Literal-Optimization-Study-Design-System" class="study-link">
+                C++ - Stack Memory and Literal Optimization Study (Design System)
+            </a>
         </li>
-      </ul>
-    </details>
+    </ul>
+</details>
   </div>
 
   <h2 class="year-header">2026</h2>
