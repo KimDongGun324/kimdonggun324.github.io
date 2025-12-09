@@ -179,9 +179,9 @@ permalink: /daily-study/
         <div class="quarter-label" style="color: #0066cc;">2025 Q4</div>
         <div class="quarter-date">Nov - Dec</div>
         <div class="tech-badges">
-          <span class="focus-badge">HLSL Base</span>
-          <span class="focus-badge">Linear Algebra</span>
-          <span class="focus-badge">Jekyll Setup</span>
+          <span class="focus-badge">C++</span>
+          <span class="focus-badge">Basic CS</span>
+          <span class="focus-badge">Algorithms & DS</span>
         </div>
       </div>
       <div class="quarter-block">
@@ -190,7 +190,7 @@ permalink: /daily-study/
         <div class="tech-badges">
           <span class="focus-badge">UE5 Material Graph</span>
           <span class="focus-badge">PBR Theory</span>
-          <span class="focus-badge">C++ Core</span>
+          <span class="focus-badge">Computer Graphics</span>
         </div>
       </div>
       <div class="quarter-block">
