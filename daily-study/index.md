@@ -291,12 +291,12 @@ C++ - Stack Memory and Literal Optimization Study
 
   // 데이터
   const data2025 = {
-    '2025-11-27': 4,
-    '2025-11-28': 1,
+    '2025-12-09': 3,
+    
   };
   const data2026 = {};
 
-  generateHeatmap('heatmap-grid-2025', '2025-11-27', '2025-12-31', data2025);
+  generateHeatmap('heatmap-grid-2025', '2025-12-09', '2025-12-31', data2025);
   generateHeatmap('heatmap-grid-2026', '2026-01-01', '2026-12-31', data2026);
 
 
