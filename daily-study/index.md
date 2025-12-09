@@ -229,29 +229,6 @@ permalink: /daily-study/
 
   <h2 class="year-header">2025</h2>
   <div class="year-grid">
-    
-    <details class="month-card" open>
-      <summary>November</summary>
-      <ul class="study-list">
-        <li data-tags="tools" data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=300">
-          <span class="date-badge">11.21</span>
-          <span class="tag-dot" style="background:#2e7d32;"></span>
-          <a href="/daily-study/posts/2025/11/11-21-setup/" class="study-link">블로그 개설 및 Jekyll 테마 커스텀 (Design System)</a>
-        </li>
-        
-        <li data-tags="shader" data-image="/assets/images/2025/11/Pasted_image_20251128191707.png">
-          <span class="date-badge">11.22</span>
-          <span class="tag-dot" style="background:#9c27b0;"></span>
-          <a href="#" class="study-link">HLSL 기초 문법과 주석의 중요성 (ShaderLab)</a>
-        </li>
-        
-        <li data-tags="graphics" data-image="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=300">
-          <span class="date-badge">11.23</span>
-          <span class="tag-dot" style="background:#2196f3;"></span>
-          <a href="#" class="study-link">선형대수학: 벡터의 내적과 렌더링 응용</a>
-        </li>
-      </ul>
-    </details>
 
 <details class="month-card" open>
     <summary>December</summary>
