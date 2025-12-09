@@ -158,7 +158,7 @@ permalink: /daily-study/
 
 <div class="page-content-wrapper">
 
- /* <header style="margin-bottom: 50px;">
+ <header style="margin-bottom: 50px;">
     <h1 style="font-size: 2.8em; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em;">Daily Study Log</h1>
     <p style="color: #86868b; font-size: 1.1em;">매일의 성장과 연구 기록</p>
   </header>
@@ -185,7 +185,7 @@ permalink: /daily-study/
       <div class="featured-desc">언리얼 엔진 5의 나나이트(Nanite) 소스 코드를 분석하고, 커스텀 렌더 패스를 추가하여 스타일라이즈드 렌더링을 구현했습니다.</div>
       <a href="/technical-notes/" class="featured-link">Read Case Study</a>
     </div>
-  </section> */
+  </section>
 
   <section class="timeline-section">
     <div class="timeline-title">Research Roadmap & Milestones</div>
@@ -231,19 +231,17 @@ permalink: /daily-study/
   <div class="year-grid">
 
 
-  `` 12월 TIL
-
 <details class="month-card" open>
- <summary>December</summary>
-   <ul class="study-list">
-      <li data-tags="tools"
-       <span class="date-badge">12.09</span>
-        <span class="tag-dot" style="background:#2e7d32;"></span>
-        <a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/09.md" class="study-link" target="_blank">
-        C++ - Stack Memory and Literal Optimization Study
-      </a>
-    </li>
-  </ul>
+<summary>December</summary>
+<ul class="study-list">
+<li data-tags="tools">
+<span class="date-badge">12.09</span>
+<span class="tag-dot" style="background:#2e7d32;"></span>
+<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/09.md" class="study-link" target="_blank">
+C++ - Stack Memory and Literal Optimization Study
+</a>
+</li>
+</ul>
 </details>
   </div>
 
