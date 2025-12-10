@@ -219,6 +219,7 @@ permalink: /daily-study/
 <details class="month-card" open>
 <summary>December</summary>
 <ul class="study-list">
+  
 <li data-tags="tools">
 <span class="date-badge">12.09</span>
 <span class="tag-dot" style="background:#2e7d32;"></span>
@@ -226,6 +227,15 @@ permalink: /daily-study/
 C++ - Stack Memory and Literal Optimization Study
 </a>
 </li>
+
+<li data-tags="tools">
+<span class="date-badge">12.10</span>
+<span class="tag-dot" style="background:#2e7d32;"></span>
+<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/10.md class="study-link" target="_blank">
+Building a Researcher's Pipeline: Reflections on the First Semester
+</a>
+</li>
+  
 </ul>
 </details>
   </div>
@@ -277,6 +287,7 @@ C++ - Stack Memory and Literal Optimization Study
   // 데이터
   const data2025 = {
     '2025-12-09': 3,
+    '2025-12-10': 1,
     
   };
   const data2026 = {};
