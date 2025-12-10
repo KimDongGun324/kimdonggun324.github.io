@@ -231,7 +231,7 @@ C++ - Stack Memory and Literal Optimization Study
 <li data-tags="tools">
 <span class="date-badge">12.10</span>
 <span class="tag-dot" style="background:#2e7d32;"></span>
-<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/10.md class="study-link" target="_blank">
+<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/10.md" class="study-link" target="_blank">
 Building a Researcher's Pipeline: Reflections on the First Semester
 </a>
 </li>
