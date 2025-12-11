@@ -298,6 +298,7 @@ A Farewell and A New Resolve
   const data2025 = {
     '2025-12-09': 3,
     '2025-12-10': 1,
+    '2025-12-11': 1,
     
   };
   const data2026 = {};
