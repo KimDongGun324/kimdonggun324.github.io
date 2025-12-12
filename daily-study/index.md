@@ -244,6 +244,14 @@ A Farewell and A New Resolve
 </a>
 </li>
 
+<li data-tags="tools">
+<span class="date-badge">12.12</span>
+<span class="tag-dot" style="background:#2e7d32;"></span>
+<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/12.md" class="study-link" target="_blank">
+Daily Log 2025_12_12
+</a>
+</li>
+
 
   
 </ul>
@@ -299,6 +307,7 @@ A Farewell and A New Resolve
     '2025-12-09': 3,
     '2025-12-10': 1,
     '2025-12-11': 1,
+    '2025-12-12': 1,
     
   };
   const data2026 = {};
