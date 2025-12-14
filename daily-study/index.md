@@ -260,7 +260,13 @@ Daily Log 2025_12_13
 </a>
 </li>
 
-
+<li data-tags="tools">
+<span class="date-badge">12.14</span>
+<span class="tag-dot" style="background:#2e7d32;"></span>
+<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/14.md" class="study-link" target="_blank">
+Daily Log 2025_12_14
+</a>
+</li>
   
 </ul>
 </details>
