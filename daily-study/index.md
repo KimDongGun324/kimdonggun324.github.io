@@ -267,6 +267,14 @@ Daily Log 2025_12_13
 Daily Log 2025_12_14
 </a>
 </li>
+
+<li data-tags="tools">
+<span class="date-badge">12.15</span>
+<span class="tag-dot" style="background:#2e7d32;"></span>
+<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/15.md" class="study-link" target="_blank">
+Daily Log 2025_12_15
+</a>
+</li>
   
 </ul>
 </details>
@@ -324,6 +332,7 @@ Daily Log 2025_12_14
     '2025-12-12': 1,
     '2025-12-13': 1,
     '2025-12-14': 1,
+    '2025-12-15': 1,
     
   };
   const data2026 = {};
