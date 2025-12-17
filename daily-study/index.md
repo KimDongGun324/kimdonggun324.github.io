@@ -284,7 +284,13 @@ C++ - Forward Declaration and Header Files Analysis
 </a>
 </li>
 
-
+<li data-tags="tools">
+<span class="date-badge">12.17</span>
+<span class="tag-dot" style="background:#2e7d32;"></span>
+<a href="https://github.com/KimDongGun324/kimdonggun324.github.io/blob/main/daily-study/posts/2025/12/17.md" class="study-link" target="_blank">
+논문 작성
+</a>
+</li>
   
 </ul>
 </details>
@@ -343,6 +349,7 @@ C++ - Forward Declaration and Header Files Analysis
     '2025-12-13': 1,
     '2025-12-14': 1,
     '2025-12-15': 1,
+    '2025-12-16': 1,
     '2025-12-16': 1,
     
   };
