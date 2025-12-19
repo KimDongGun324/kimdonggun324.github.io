@@ -214,10 +214,10 @@ permalink: /
       <div style="position:relative; z-index:1; height:100%; display:flex; flex-direction:column;">
         <div>
           <div class="bento-label">Consistency</div>
-          <div class="bento-title">Daily Study Log</div>
+          <div class="bento-title">Today I Learned</div>
           <div class="bento-desc">
             "I never saved anything for the swim back."<br>
-            2025년 11월부터 이어온 매일의 연구 기록.
+            2025년 12월부터 이어온 매일의 연구 기록.
           </div>
         </div>
         <div class="icon-arrow">→</div>
