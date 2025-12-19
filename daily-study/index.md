@@ -176,8 +176,8 @@ permalink: /daily-study/
     <div class="timeline-title">Research Roadmap & Milestones</div>
     <div class="timeline-container">
       <div class="quarter-block" style="border-left: 3px solid #0066cc;">
-        <div class="quarter-label" style="color: #0066cc;">2025 Q4</div>
-        <div class="quarter-date">Nov - Dec</div>
+        <div class="quarter-label" style="color: #0066cc;">Q1</div>
+        <div class="quarter-date">Nov - Feb</div>
         <div class="tech-badges">
           <span class="focus-badge">C++</span>
           <span class="focus-badge">Basic CS</span>
@@ -185,8 +185,8 @@ permalink: /daily-study/
         </div>
       </div>
       <div class="quarter-block">
-        <div class="quarter-label">2026 Q1</div>
-        <div class="quarter-date">Jan - Mar</div>
+        <div class="quarter-label">Q2</div>
+        <div class="quarter-date">Mar - Jun</div>
         <div class="tech-badges">
           <span class="focus-badge">UE5 Material Graph</span>
           <span class="focus-badge">PBR Theory</span>
@@ -194,8 +194,8 @@ permalink: /daily-study/
         </div>
       </div>
       <div class="quarter-block">
-        <div class="quarter-label">2026 Q2</div>
-        <div class="quarter-date">Apr - Jun</div>
+        <div class="quarter-label">Q3</div>
+        <div class="quarter-date">Jul - Aug</div>
         <div class="tech-badges">
           <span class="focus-badge">Houdini Proc. Gen</span>
           <span class="focus-badge">Substance Designer</span>
