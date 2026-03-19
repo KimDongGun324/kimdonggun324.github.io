@@ -1,0 +1,295 @@
+#그래픽스 새싹코스 PAR1 — 강의 핵심 개념 정리
+
+> [!NOTE]
+> > **수강 맥락**: DirectX 11 초기화 + ImGui 사용법 강좌  
+> > **목표**: 실시간 그래픽스 파이프라인의 전체 흐름을 이해하고, 2D 이미지 처리 → 3D로 확장
+
+---
+
+## 실습 부분
+
+![[../../../900. Settings/03. Attachments/Pasted image 20260319175022.png]]
+
+![[../../../900. Settings/03. Attachments/Pasted image 20260319175148.png]]
+
+![[../../../900. Settings/03. Attachments/Pasted image 20260319175055.png]]
+
+## 1. 조건부 연산자 (Conditional Operator / 삼항 연산자)
+
+### 개념
+
+- C/C++에서 `if-else` 대신 쓸 수 있는 **단축 문법**
+- 흔히 **"사망 연산자"** 라고도 불림 (생긴 게 험해서)
+
+```cpp
+// 기본 형태
+(조건) ? 참일 때 값 : 거짓일 때 값
+
+// 두 개 중첩한 형태 (강의 예제)
+(조건A) ? 값A : (조건B) ? 값B : 값C
+// → if-else if-else 와 동일
+```
+
+### 왜 쉐이더에서 중요한가?
+
+> [!NOTE]
+> > 💡 **GPU는 if문을 매우 싫어한다**
+
+- GPU는 수천 개의 픽셀을 **동시에(병렬로)** 처리
+- `if` 분기가 있으면 GPU가 두 경우를 **모두 계산하고 버려야** 하는 구조
+- 반면 조건부 연산자(`?:`)는 GPU 컴파일러가 **더 효율적인 코드로 최적화**하기 쉬움
+- → **HLSL 쉐이더 코드에서 `if` 대신 `?:` 를 자주 쓰는 이유**
+
+### 강의 실습 예제 (RGB 반복 패턴)
+
+```cpp
+// 픽셀 x 좌표에 따라 R → G → B → R → ... 반복
+int idx = x % 3;
+color = (idx == 0) ? RED : (idx == 1) ? GREEN : BLUE;
+```
+
+---
+
+## 2. WinAPI — 윈도우와 메시지 루프
+
+### 윈도우 생성 흐름
+
+```
+WndProc 전방 선언
+    ↓
+WNDCLASS(WC) 생성 시 WndProc 등록
+    ↓
+CreateWindow() 로 실제 창 생성
+```
+
+### 메시지 루프 (while 문)
+
+```
+while (실행 중) {
+    PeekMessage()  ← "윈도우야, 사용자가 뭔가 했어?"
+        ↓ 이벤트 있으면
+    switch-case로 처리
+        마우스 클릭 → 총알 발사
+        스페이스    → 점프
+        ↓
+    Update()  ← 그릴 데이터 갱신
+    Render()  ← 실제 화면에 출력
+}
+```
+
+> [!NOTE]
+> > 📌 **지금 단계에서는** 마우스/키보드 이벤트 처리는 나중에 실시간 그래픽스 파이프라인과 엮어서 다룸
+
+---
+
+## 3. 스왑 체인 (Swap Chain)
+
+### 비유로 이해하기
+
+> [!NOTE]
+> > 교과서 귀퉁이에 그림 그려서 빠르게 넘기면 애니메이션처럼 보이는 것!
+
+### 실제 동작 방식
+
+```
+[Back Buffer] ← CPU/GPU가 여기다 그림을 그림
+      ↓ (SwapChain.Present)
+[Front Buffer] → 모니터에 출력
+      ↓
+다시 Back Buffer에 다음 프레임 그리고 교체 반복
+```
+
+- GPU 메모리를 **두 개 이상** 사용해 번갈아 화면에 보여주는 구조
+- 화면이 그려지는 도중에 교체되면 화면이 찢기는 현상(Tearing)이 생기므로 이를 방지
+
+---
+
+## 4. DirectX 11 초기화 구조 (전체 흐름)
+
+```
+Initialize()
+├── 해상도/컬러 포맷 설정 (RGBA 각 8bit = 32bit 컬러)
+├── SwapChain 생성
+├── CreateRenderTarget  ← 실제 그림 그릴 메모리 공간(BackBuffer)
+├── Viewport 설정       ← 창 중 실제 렌더링할 영역 지정
+├── InitShaders
+│   ├── Vertex Shader (.hlsl) 파일 읽기 → 컴파일 → GPU에 로드
+│   ├── Pixel Shader  (.hlsl) 파일 읽기 → 컴파일 → GPU에 로드
+│   └── InputLayout 설정 (CPU→GPU 데이터 구조 명세)
+├── Vertex Buffer 생성  ← 정점(꼭짓점) 데이터
+├── Index Buffer 생성   ← 정점 간 연결 관계
+└── Texture 설정        ← GPU 이미지 메모리
+```
+
+### 렌더링 루프
+
+```
+매 프레임마다:
+1. RenderTarget 초기화 (화면 싹 지우기)
+2. Update() → 데이터 갱신
+3. Render() → 화면에 그리기
+4. SwapChain.Present() → 모니터에 출력
+```
+
+---
+
+## 5. 핵심 용어 정리
+
+
+![[../../../900. Settings/03. Attachments/Pasted image 20260319175323.png]]
+
+이건 IMGUI 개발자가 정한 규칙이다
+
+### Vertex (정점) & Buffer
+
+|용어|설명|
+|---|---|
+|Vertex|3D 공간의 점 하나 (위치, UV 등 포함)|
+|Vertex Buffer|정점들의 데이터를 담은 GPU 메모리|
+|Index Buffer|정점 간 연결 관계 저장 (어떤 점끼리 삼각형을 이루는지)|
+
+> [!NOTE]
+> > ❓ **왜 3D 위치인데 벡터4(float4)?**  
+> > → 강의에서 "꼭 기억해뒀다가 나중에 설명 들어라" 고 함  
+> > → 힌트: **동차 좌표계(Homogeneous Coordinates)** 와 관련 (행렬 곱으로 이동 변환을 하기 위함)
+
+### Shader (쉐이더)
+
+|쉐이더 종류|역할|
+|---|---|
+|**Vertex Shader**|정점(꼭짓점)의 위치를 계산|
+|**Pixel Shader**|각 픽셀의 최종 색상을 결정|
+|Compute Shader|일반 GPU 연산 (딥러닝, 물리 시뮬레이션 등)|
+|Ray Tracing 관련 Shader|실시간 레이트레이싱 구현 시 사용|
+
+> [!NOTE]
+> > 파이프라인 단순 흐름:  
+> > `CPU 데이터` → **Vertex Shader** (위치 계산) → **Rasterization** (삼각형→픽셀 변환) → **Pixel Shader** (색상 결정) → `화면 출력`
+
+### Texture (텍스처)
+
+- **GPU 메모리에 저장된 이미지**
+- 3D 모델 표면에 이미지를 붙여 그럴듯하게 보이게 만드는 기술
+- 이 예제의 구조:
+  
+  ```
+  C++로 메모리에 그림 그리기    ↓Texture 메모리로 복사    ↓화면에 Texture를 렌더링
+  ```
+
+### UV (텍스처 좌표)
+
+- 2D 이미지에서 색을 가져오는 좌표 시스템
+- `(0,0)` ~ `(1,1)` 사이의 값으로 이미지의 어느 위치를 샘플링할지 결정
+- 2차원이라서 `float2(u, v)`
+
+### Input Layout
+
+- CPU → GPU로 데이터를 보낼 때 **데이터 구조를 설명해주는 명세서**
+- "float 4개짜리 위치 먼저, 그 다음 float 2개짜리 UV" 이런 식으로 GPU에게 알려주는 것
+
+### Render Target View
+
+- GPU가 실제로 그림을 그리는 **목적지 메모리**를 가리키는 포인터
+- 보통 SwapChain의 Back Buffer가 Render Target이 됨
+
+### Viewport
+
+- 전체 윈도우 창 중에서 **실제 렌더링에 사용할 영역**을 지정
+- 창 하나를 여러 개로 분할해서 렌더링할 때(분할 화면 등) 활용
+
+---
+
+## 6. ImGui 사용법
+
+### 개념
+
+- **즉시 모드 GUI (Immediate Mode GUI)**
+- 게임/그래픽스 개발 중 **파라미터를 실시간으로 조절**할 때 사용하는 디버그 UI 라이브러리
+- 오픈 소스 ([Dear ImGui](https://github.com/ocornut/imgui))
+
+### 렌더링 루프 내 사용 순서 (보충필요)
+
+```cpp
+// 1. ImGui 새 프레임 준비
+ImGui_ImplDX11_NewFrame();
+ImGui_ImplWin32_NewFrame();
+ImGui::NewFrame();
+
+// 2. UI 요소 정의
+ImGui::Begin("Background Color");           // 창 시작
+ImGui::SliderFloat3("Canvas Color",         // 라벨
+                     canvasColor,           // 바꿀 값 포인터
+                     0.0f, 1.0f);           // 최솟값, 최댓값
+ImGui::End();                               // 창 끝
+
+// 3. 실제 씬 렌더링
+
+// 4. ImGui 렌더링 (씬 위에 덮어 그리기)
+ImGui::Render();
+ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+```
+
+### 실습 — 슬라이더로 배경색 실시간 변경
+
+```cpp
+// Example 클래스 멤버 변수 추가
+float canvasColor[4] = {0.0f, 0.0f, 0.0f, 1.0f}; // RGBA
+
+// Update()에서 canvasColor를 배경 초기화 색으로 사용
+context->ClearRenderTargetView(renderTargetView, canvasColor);
+```
+
+> [!NOTE]
+> > 🎯 **핵심 포인트**: ImGui 슬라이더가 바꾸는 건 그냥 float 배열일 뿐  
+> > → 그 값을 DirectX 렌더링 코드에서 읽어다 쓰면 실시간 반영!
+
+---
+
+## 7. 네이밍 컨벤션 (이 강의 기준)
+
+| 대상     | 규칙         | 예시             |     |
+| ------ | ---------- | -------------- | --- |
+| 클래스 이름 | PascalCase | `ExampleClass` |     |
+| 멤버 변수  | camelCase  | `canvasColor`  |     |
+
+> [!NOTE]
+> > 실무에서는 팀/회사 컨벤션을 따를 것  
+> > (헝가리안 표기법은 요즘 잘 안 씀 → IDE가 타입 다 알려주기 때문)
+
+---
+
+## 8. 강의 전체 학습 로드맵 (언급된 순서)
+
+```
+현재 단계
+  ├── C++로 픽셀 직접 그리기 (2D 이미지 처리)
+  ├── DirectX 11 기본 초기화 구조 이해
+  └── ImGui로 실시간 파라미터 조절
+
+다음 단계
+  ├── Ray Tracing 직접 구현 (렌더링 원리 이해)
+  │     → "광선이 물체에 닿으면 어떤 색?"을 수학으로
+  │
+  └── 실시간 그래픽스 파이프라인
+        ├── Rasterization (레이 트레이싱을 빠르게 근사)
+        ├── DirectX 11 본격 사용
+        └── Vertex / Pixel Shader 직접 작성 (HLSL)
+```
+
+> [!NOTE]
+> > 💬 교수님 말씀:  
+> > _"레이 트레이싱으로 원리 먼저 이해하면, 나중에 DirectX 코드가 '당연히 있는 거 가져다 쓰듯이' 편하게 느껴진다"_
+
+---
+
+## 9. 헷갈리기 쉬운 포인트 정리
+
+| 질문                                 | 답                                  |
+| ---------------------------------- | ---------------------------------- |
+| 윈도우 해상도 ≠ 렌더링 해상도?                 | 맞음. 별도로 설정 가능                      |
+| BackBuffer에 그린 게 바로 보이나?           | ❌ SwapChain.Present() 호출 시 모니터에 출력 |
+| ClearRenderTarget 색을 바꾸면 배경색이 바뀌나? | ❌ 전체 화면을 다시 덮어 그리므로 안 보임 (나중에 다룸)  |
+| float4 위치에서 4번째 값(w)은?             | 동차 좌표계 → 뒤에서 설명 예정                 |
+| Compute Shader는 언제?                | 딥러닝, 물리 시뮬레이션, 레이트레이싱 등 범용 GPU 연산  |
+
+---
